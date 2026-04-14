@@ -4,11 +4,10 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Kuabo — Build your life anywhere</title>
-<meta name="description" content="The app that guides immigrants step by step after their visa — USA, France, Canada. DV Lottery, work visa, family, Army, students. Coming soon on App Store & Google Play."/>
+<meta name="description" content="The app that guides immigrants step by step after their visa. USA, France, Canada. Coming soon."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
 
-<!-- Firebase -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import { getFirestore,collection,addDoc,getCountFromServer } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
@@ -17,7 +16,7 @@ async function loadCount(){try{const n=(await getCountFromServer(collection(db,"
 window.kuaboSubmit=async function(formId){
   const input=document.getElementById("ei-"+formId),btn=document.getElementById("eb-"+formId),msg=document.getElementById("em-"+formId);
   const email=(input?.value||"").trim(),lang=document.documentElement.lang||"en";
-  const T={en:{empty:"Enter your email",bad:"Invalid email address",ok:"🎉 You're in! We'll notify you at launch.",err:"Error — please try again.",wait:"..."},fr:{empty:"Entre ton email",bad:"Email invalide",ok:"🎉 Tu es sur la liste ! On te prévient au lancement.",err:"Erreur — réessaie.",wait:"..."},es:{empty:"Ingresa tu email",bad:"Email inválido",ok:"🎉 ¡Estás en la lista! Te avisamos al lanzamiento.",err:"Error — inténtalo.",wait:"..."}};
+  const T={en:{empty:"Enter your email",bad:"Invalid email",ok:"🎉 You're in! We'll notify you at launch.",err:"Error — try again.",wait:"..."},fr:{empty:"Entre ton email",bad:"Email invalide",ok:"🎉 Tu es sur la liste !",err:"Erreur — réessaie.",wait:"..."},es:{empty:"Ingresa tu email",bad:"Email inválido",ok:"🎉 ¡Estás en la lista!",err:"Error.",wait:"..."}};
   const t=T[lang]||T.en;
   if(!email){flash(msg,t.empty,false);return;}
   if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){flash(msg,t.bad,false);return;}
@@ -34,15 +33,16 @@ window.addEventListener("load",loadCount);
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;}
-body::before{content:"";position:fixed;inset:0;opacity:.3;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");}
+body::before{content:"";position:fixed;inset:0;opacity:.25;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:15px 32px;background:rgba(11,15,26,.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04);}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;padding:14px 32px;background:rgba(11,15,26,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.04);}
 .logo{font-family:'Playfair Display',serif;font-size:24px;font-weight:900;text-decoration:none;color:var(--text);}
 .logo .g{color:var(--gold);}
-.nav-right{display:flex;align-items:center;gap:12px;}
-.nav-app{padding:8px 16px;background:var(--gold);border-radius:20px;color:#000;font-size:12px;font-weight:700;text-decoration:none;white-space:nowrap;transition:opacity .2s;}
-.nav-app:hover{opacity:.85;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+/* ✅ Try the app → ouvre la demo, pas un lien externe */
+.nav-demo-btn{padding:8px 18px;background:var(--gold);border:none;border-radius:20px;color:#000;font-size:12px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;white-space:nowrap;transition:opacity .2s;}
+.nav-demo-btn:hover{opacity:.85;}
 .langs{display:flex;gap:6px;}
 .lb{padding:5px 11px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);font-size:11px;font-family:'DM Sans',sans-serif;cursor:pointer;transition:all .2s;}
 .lb.on,.lb:hover{border-color:var(--gold);color:var(--gold);background:rgba(232,184,75,.08);}
@@ -54,7 +54,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content
 .badge{display:inline-flex;align-items:center;gap:7px;padding:6px 16px;border-radius:20px;background:rgba(232,184,75,.08);border:1px solid rgba(232,184,75,.22);font-size:11px;color:var(--gold);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:22px;animation:fadeUp .5s ease both;}
 .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite;flex-shrink:0;}
 h1{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,82px);font-weight:900;line-height:1.08;letter-spacing:-1px;margin-bottom:18px;animation:fadeUp .5s .1s ease both;}
-.g{color:var(--gold);}.t{color:var(--teal);}.p{color:var(--purple);}
+.g{color:var(--gold);}.t{color:var(--teal);}
 .sub{font-size:clamp(14px,2vw,18px);color:var(--muted);line-height:1.75;max-width:560px;margin:0 auto 32px;animation:fadeUp .5s .15s ease both;padding:0 4px;}
 .chips{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;animation:fadeUp .5s .2s ease both;padding:0 8px;}
 .chip{display:inline-flex;align-items:center;gap:5px;padding:6px 12px;border-radius:24px;border:1px solid var(--border);background:var(--bg2);font-size:12px;font-weight:500;transition:all .25s;cursor:default;}
@@ -78,90 +78,91 @@ h1{font-family:'Playfair Display',serif;font-size:clamp(32px,7vw,82px);font-weig
 .cline{font-size:12px;color:var(--muted);animation:fadeUp .5s .3s ease both;text-align:center;}
 .cline.hidden{display:none;}
 .cnum{color:var(--gold);font-weight:700;}
-.stores{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:28px;animation:fadeUp .5s .35s ease both;}
+.stores{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px;animation:fadeUp .5s .35s ease both;}
 .sbtn{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--bg3);border:1px solid var(--border);border-radius:11px;cursor:pointer;text-decoration:none;color:var(--text);transition:all .25s;}
 .sbtn:hover{border-color:var(--gold);background:rgba(232,184,75,.06);transform:translateY(-2px);}
 .sbtn svg{width:20px;height:20px;flex-shrink:0;}
 .sbtn-lbl{font-size:9px;color:var(--muted);display:block;}
 .sbtn-nm{font-size:13px;font-weight:700;}
-.demo-trigger{display:inline-flex;align-items:center;gap:8px;padding:11px 24px;border-radius:12px;border:1.5px solid rgba(45,212,191,.35);background:rgba(45,212,191,.06);color:var(--teal);font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;margin-top:18px;animation:fadeUp .5s .4s ease both;}
-.demo-trigger:hover{background:rgba(45,212,191,.12);transform:translateY(-2px);}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px;animation:fadeUp .5s .38s ease both;}
+.btn-demo{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:12px;border:1.5px solid rgba(45,212,191,.4);background:rgba(45,212,191,.07);color:var(--teal);font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .25s;}
+.btn-demo:hover{background:rgba(45,212,191,.14);transform:translateY(-2px);}
 
 /* SECTIONS */
-.sect{padding:70px 20px;text-align:center;position:relative;}
+.sect{padding:72px 20px;text-align:center;position:relative;}
 .stag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
 h2{font-family:'Playfair Display',serif;font-size:clamp(24px,4.5vw,50px);font-weight:900;line-height:1.1;letter-spacing:-1px;margin-bottom:12px;}
-.ssub{font-size:15px;color:var(--muted);line-height:1.75;max-width:480px;margin:0 auto 40px;padding:0 4px;}
+.ssub{font-size:15px;color:var(--muted);line-height:1.75;max-width:520px;margin:0 auto 44px;padding:0 4px;}
 .divl{width:48px;height:2px;background:linear-gradient(to right,var(--gold),var(--teal));border-radius:2px;margin:0 auto 24px;}
 
-/* SCREENSHOTS */
-.screens-row{display:flex;gap:14px;justify-content:center;align-items:flex-end;flex-wrap:wrap;margin-bottom:32px;}
-.sc-phone{width:clamp(130px,28vw,200px);background:var(--bg2);border:1.5px solid var(--border);border-radius:28px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.5);position:relative;flex-shrink:0;}
-.sc-phone.feat{width:clamp(150px,32vw,220px);border-color:rgba(232,184,75,.35);box-shadow:0 0 50px rgba(232,184,75,.1),0 24px 60px rgba(0,0,0,.6);transform:translateY(-16px);}
-.sc-notch{width:70px;height:20px;background:var(--bg);border-radius:0 0 12px 12px;margin:0 auto 10px;}
-.sc-body{padding:0 10px 16px;}
-.sc-hdr{display:flex;justify-content:space-between;align-items:center;padding:6px 0 10px;border-bottom:1px solid var(--border);margin-bottom:8px;}
-.sc-logo{font-family:'Playfair Display',serif;font-size:13px;font-weight:900;}
-.mc{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;margin-bottom:6px;}
-.ml{font-size:7px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700;margin-bottom:4px;}
-.mp{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
-.mf{height:100%;background:linear-gradient(to right,var(--gold),var(--teal));border-radius:2px;}
-.mblur{filter:blur(4px);pointer-events:none;}
-.sc-lock{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:8px;font-weight:700;padding:3px 10px;border-radius:8px;white-space:nowrap;}
-.sc-float{animation:float 4s ease-in-out infinite;}
-.sc-float2{animation:float 4s .7s ease-in-out infinite;}
-.sc-float3{animation:float 4s 1.4s ease-in-out infinite;}
+/* ══ FEATURE SCREENS — captures simulées ══ */
+.fscreens{display:flex;gap:20px;justify-content:center;align-items:flex-end;flex-wrap:wrap;margin-bottom:16px;}
+.fscreen{background:var(--bg2);border-radius:28px;overflow:hidden;position:relative;flex-shrink:0;box-shadow:0 24px 60px rgba(0,0,0,.55);}
+.fscreen.main{width:clamp(160px,35vw,240px);border:2px solid rgba(232,184,75,.4);box-shadow:0 0 60px rgba(232,184,75,.12),0 24px 60px rgba(0,0,0,.6);transform:translateY(-18px);}
+.fscreen.side{width:clamp(130px,27vw,190px);border:1.5px solid var(--border);}
+.fn{width:64px;height:18px;background:var(--bg);border-radius:0 0 10px 10px;margin:0 auto 10px;}
+.fb{padding:0 10px 14px;}
+.fhdr{display:flex;justify-content:space-between;align-items:center;padding:6px 0 9px;border-bottom:1px solid var(--border);margin-bottom:8px;}
+.flogo-s{font-family:'Playfair Display',serif;font-size:13px;font-weight:900;}
+.fc{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:8px;margin-bottom:6px;}
+.fl{font-size:7px;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);font-weight:700;margin-bottom:4px;}
+.fp{height:3px;background:var(--border);border-radius:2px;overflow:hidden;}
+.ff{height:100%;background:linear-gradient(to right,var(--gold),var(--teal));border-radius:2px;}
+.blur{filter:blur(5px);pointer-events:none;}
+.lock-tag{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:7px;font-weight:700;padding:3px 9px;border-radius:7px;white-space:nowrap;}
+.fa{animation:float 4s ease-in-out infinite;}
+.fa2{animation:float 4s .6s ease-in-out infinite;}
+.fa3{animation:float 4s 1.2s ease-in-out infinite;}
+.screen-label{font-size:11px;color:var(--muted);text-align:center;margin-bottom:36px;}
 
-/* FEATURES */
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:14px;max-width:960px;margin:0 auto;}
-.fcard{background:var(--bg2);border:1px solid var(--border);border-radius:16px;padding:22px;text-align:left;transition:all .3s;position:relative;overflow:hidden;}
-.fcard::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--gold),var(--teal));opacity:0;transition:opacity .3s;}
-.fcard:hover{border-color:rgba(232,184,75,.2);transform:translateY(-3px);}
-.fcard:hover::before{opacity:1;}
-.ficon{font-size:30px;margin-bottom:10px;display:block;}
-.ftitle{font-size:15px;font-weight:700;margin-bottom:7px;}
-.fdesc{font-size:13px;color:var(--muted);line-height:1.65;}
-.ftag{display:inline-block;margin-top:10px;padding:3px 9px;border-radius:6px;font-size:9px;font-weight:700;background:rgba(232,184,75,.1);color:var(--gold);}
+/* ══ CAPTURE FEATURES — grille screenshots ══ */
+.caps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:960px;margin:0 auto;}
+.cap-card{background:var(--bg2);border:1px solid var(--border);border-radius:20px;overflow:hidden;transition:transform .25s,border-color .25s;cursor:pointer;}
+.cap-card:hover{transform:translateY(-5px);border-color:rgba(232,184,75,.3);}
+/* Fausse capture d'écran */
+.cap-screen{height:200px;background:var(--bg3);position:relative;overflow:hidden;border-radius:0;}
+.cap-badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.6);border-radius:7px;padding:3px 9px;font-size:9px;font-weight:700;}
+.cap-info{padding:16px;}
+.cap-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;}
+.cap-desc{font-size:12px;color:var(--muted);line-height:1.55;}
 
-/* NOT LOTTERY */
-.notlot{background:linear-gradient(135deg,rgba(20,29,46,.9),rgba(15,21,33,.9));border:1.5px solid rgba(232,184,75,.25);border-radius:22px;padding:40px 32px;max-width:860px;margin:0 auto 0;}
-.notlot-title{font-family:'Playfair Display',serif;font-size:clamp(22px,4vw,38px);font-weight:900;margin-bottom:10px;line-height:1.15;}
-.notlot-sub{font-size:15px;color:var(--muted);line-height:1.7;max-width:500px;margin:0 auto 32px;}
-.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start;max-width:720px;margin:0 auto;}
-.cmp-col{background:var(--bg);border-radius:16px;padding:20px;text-align:left;}
-.cmp-col.no{border:1px solid rgba(239,68,68,.3);}
-.cmp-col.yes{border:1px solid rgba(34,197,94,.3);}
-.cmp-hdr{font-size:12px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:7px;}
-.cmp-col.no .cmp-hdr{color:var(--red);}
-.cmp-col.yes .cmp-hdr{color:var(--green);}
-.cmp-item{font-size:12px;color:var(--muted);padding:8px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;}
-.cmp-item:last-child{border:none;}
-.cmp-arrow{display:flex;align-items:center;justify-content:center;font-size:24px;color:var(--gold);padding-top:55px;}
+/* ══ HOW IT WORKS ══ */
+.steps-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;margin:0 auto;position:relative;}
+.steps-row::before{content:'';position:absolute;top:46px;left:calc(16.67% + 18px);right:calc(16.67% + 18px);height:2px;background:linear-gradient(to right,var(--gold),var(--teal));z-index:0;}
+.step-c{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:28px 20px;text-align:center;position:relative;z-index:1;}
+.step-n{width:44px;height:44px;border-radius:50%;background:var(--gold);color:#000;font-size:18px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-family:'Playfair Display',serif;}
+.step-t{font-size:14px;font-weight:700;color:var(--text);margin-bottom:7px;}
+.step-d{font-size:12px;color:var(--muted);line-height:1.6;}
 
-/* WHO */
-.who-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:0 auto 0;}
-.who-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:24px 16px;text-align:center;transition:transform .2s,border-color .2s;position:relative;overflow:hidden;}
-.who-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--wc, var(--gold));}
-.who-card:hover{transform:translateY(-4px);border-color:rgba(232,184,75,.3);}
-.who-emoji{font-size:36px;margin-bottom:12px;}
-.who-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:5px;}
-.who-desc{font-size:11px;color:var(--muted);line-height:1.5;}
-.who-geo{font-size:10px;color:var(--gold);margin-top:7px;font-weight:600;}
+/* ══ NOT LOTTERY ══ */
+.notlot{background:linear-gradient(135deg,#0d1420,#0a0f1a);border:1.5px solid rgba(232,184,75,.2);border-radius:22px;padding:36px 28px;max-width:820px;margin:0 auto;}
+.compare{display:grid;grid-template-columns:1fr auto 1fr;gap:16px;align-items:start;margin-top:28px;}
+.cmp{background:var(--bg);border-radius:14px;padding:18px;text-align:left;}
+.cmp.no{border:1px solid rgba(239,68,68,.3);}
+.cmp.yes{border:1px solid rgba(34,197,94,.3);}
+.cmph{font-size:12px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:6px;}
+.cmp.no .cmph{color:var(--red);}
+.cmp.yes .cmph{color:var(--green);}
+.cmpi{font-size:12px;color:var(--muted);padding:7px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:7px;}
+.cmpi:last-child{border:none;}
+.cmparrow{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--gold);padding-top:50px;}
 
-/* HOW IT WORKS */
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:860px;margin:0 auto;position:relative;}
-.steps-grid::before{content:'';position:absolute;top:52px;left:calc(16.67% + 20px);right:calc(16.67% + 20px);height:2px;background:linear-gradient(to right,var(--gold),var(--teal));z-index:0;}
-.step-card{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:28px 20px;text-align:center;position:relative;z-index:1;}
-.step-num{width:48px;height:48px;border-radius:50%;background:var(--gold);color:#000;font-size:20px;font-weight:900;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:'Playfair Display',serif;}
-.step-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;}
-.step-desc{font-size:12px;color:var(--muted);line-height:1.65;}
+/* ══ WHO ══ */
+.who-g{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:0 auto;}
+.who-c{background:var(--bg2);border:1px solid var(--border);border-radius:18px;padding:22px 16px;text-align:center;transition:transform .2s;position:relative;overflow:hidden;}
+.who-c::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--wcc,var(--gold));}
+.who-c:hover{transform:translateY(-4px);}
+.we{font-size:34px;margin-bottom:10px;}
+.wt{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.wd{font-size:11px;color:var(--muted);line-height:1.5;}
+.wg{font-size:10px;color:var(--gold);margin-top:7px;font-weight:600;}
 
-/* WC BANNER */
+/* ══ WC BANNER ══ */
 .wcb{background:linear-gradient(135deg,rgba(249,115,22,.09),rgba(232,184,75,.07));border:1.5px solid rgba(249,115,22,.28);border-radius:18px;padding:22px 24px;max-width:720px;margin:0 auto 48px;display:flex;align-items:flex-start;gap:16px;flex-wrap:wrap;justify-content:center;text-align:left;}
 .wcb-em{font-size:44px;flex-shrink:0;}
 .wcb h3{font-size:17px;font-weight:800;color:var(--orange);margin-bottom:5px;}
 .wcb p{font-size:13px;color:var(--muted);line-height:1.65;}
-.wcc{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap;}
+.wcc2{display:flex;gap:7px;margin-top:9px;flex-wrap:wrap;}
 .wcct{padding:3px 11px;border-radius:7px;background:rgba(249,115,22,.1);font-size:11px;font-weight:600;color:var(--orange);}
 .wstrip{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:40px;}
 .wchip{display:inline-flex;align-items:center;gap:7px;padding:8px 16px;border-radius:10px;background:var(--bg2);border:1px solid var(--border);font-size:13px;font-weight:500;transition:all .25s;}
@@ -181,32 +182,35 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
 .flinks a:hover{color:var(--gold);}
 .fcopy{font-size:10px;color:#3a4a60;}
 
-/* MODALS */
-.demo-overlay{position:fixed;inset:0;z-index:500;background:rgba(11,15,26,.95);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
-.demo-overlay.on{display:flex;animation:fadeIn .3s ease;}
-.demo-box{background:var(--bg2);border:1.5px solid rgba(45,212,191,.3);border-radius:24px;padding:24px 20px;max-width:380px;width:100%;position:relative;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);margin:auto;}
-.demo-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;}
-.demo-step{display:none;text-align:center;}
-.demo-step.on{display:block;animation:fadeUp .35s ease both;}
-.demo-phone-mini{width:clamp(130px,40vw,160px);height:280px;background:var(--bg);border:1.5px solid var(--border);border-radius:22px;margin:0 auto 16px;overflow:hidden;position:relative;}
-.demo-notch{width:50px;height:14px;background:var(--bg2);border-radius:0 0 8px 8px;margin:0 auto 8px;}
-.demo-body{padding:0 8px;}
-.demo-prog{display:flex;gap:5px;justify-content:center;margin-bottom:16px;}
-.demo-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;}
-.demo-dot.on{background:var(--teal);transform:scale(1.2);}
-.demo-title{font-size:16px;font-weight:800;margin-bottom:6px;}
-.demo-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
-.demo-btns{display:flex;gap:8px;}
-.demo-next{flex:2;padding:12px;background:var(--gold);border:none;border-radius:10px;color:#000;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.demo-next:hover{background:#c9952a;}
-.demo-skip{flex:1;padding:12px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;}
-.store-overlay{position:fixed;inset:0;z-index:500;background:rgba(11,15,26,.93);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:16px;}
-.store-overlay.on{display:flex;animation:fadeIn .3s ease;}
-.store-box{background:var(--bg2);border:1.5px solid rgba(232,184,75,.3);border-radius:22px;padding:28px 22px;max-width:400px;width:100%;text-align:center;position:relative;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
-.store-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;}
+/* DEMO MODAL */
+.dm-ov{position:fixed;inset:0;z-index:500;background:rgba(11,15,26,.96);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;padding:16px;overflow-y:auto;}
+.dm-ov.on{display:flex;animation:fadeIn .3s ease;}
+.dm-box{background:var(--bg2);border:1.5px solid rgba(45,212,191,.3);border-radius:24px;padding:24px 20px;max-width:400px;width:100%;position:relative;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);margin:auto;}
+.dm-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;}
+.dm-step{display:none;text-align:center;}
+.dm-step.on{display:block;animation:fadeUp .35s ease both;}
+.dm-prog{display:flex;gap:5px;justify-content:center;margin-bottom:18px;}
+.dm-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all .3s;}
+.dm-dot.on{background:var(--teal);transform:scale(1.2);}
+/* Mini phone inside demo */
+.dm-phone{width:clamp(140px,42vw,170px);height:300px;background:var(--bg);border:1.5px solid var(--border);border-radius:24px;margin:0 auto 16px;overflow:hidden;}
+.dm-notch{width:50px;height:14px;background:var(--bg2);border-radius:0 0 8px 8px;margin:0 auto 8px;}
+.dm-body{padding:0 9px;}
+.dm-title{font-size:16px;font-weight:800;margin-bottom:6px;}
+.dm-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:16px;}
+.dm-btns{display:flex;gap:8px;}
+.dm-next{flex:2;padding:12px;background:var(--gold);border:none;border-radius:10px;color:#000;font-size:13px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+.dm-next:hover{background:#c9952a;}
+.dm-skip{flex:1;padding:12px;background:var(--bg3);border:1px solid var(--border);border-radius:10px;color:var(--muted);font-size:12px;cursor:pointer;font-family:'DM Sans',sans-serif;}
+
+/* STORE MODAL */
+.st-ov{position:fixed;inset:0;z-index:500;background:rgba(11,15,26,.93);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:16px;}
+.st-ov.on{display:flex;animation:fadeIn .3s ease;}
+.st-box{background:var(--bg2);border:1.5px solid rgba(232,184,75,.3);border-radius:22px;padding:28px 22px;max-width:400px;width:100%;text-align:center;position:relative;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
+.st-close{position:absolute;top:12px;right:14px;background:none;border:none;color:var(--muted);font-size:22px;cursor:pointer;padding:4px;}
 
 /* CONFETTI */
-.confetti-piece{position:fixed;pointer-events:none;z-index:9999;animation:confettiFall 1.6s ease-in forwards;}
+.cf{position:fixed;pointer-events:none;z-index:9999;animation:confettiFall 1.6s ease-in forwards;}
 @keyframes confettiFall{0%{transform:translateY(-20px) rotate(0deg);opacity:1}100%{transform:translateY(110vh) rotate(720deg);opacity:0}}
 
 /* REVEAL */
@@ -218,49 +222,39 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes popIn{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
 
 /* RESPONSIVE */
-@media(max-width:390px){
-  nav{padding:12px 14px;}.lb{padding:4px 8px;font-size:10px;}
-  .hero{padding:80px 14px 50px;}h1{font-size:28px;letter-spacing:-.5px;}
-  .chip{font-size:11px;padding:5px 10px;}.urgency{padding:12px 14px;}.utext{font-size:13px;}
-  .eform button{font-size:12px;padding:14px 12px;}.screens-row{display:none;}
-  .nav-app{display:none;}
-}
+@media(max-width:390px){nav{padding:12px 14px;}.lb{padding:4px 8px;font-size:10px;}.hero{padding:80px 14px 50px;}h1{font-size:28px;}.nav-demo-btn{display:none;}}
 @media(max-width:580px){
-  nav{padding:12px 16px;}.logo{font-size:20px;}.nav-app{font-size:11px;padding:7px 12px;}
-  .hero{padding:88px 16px 56px;}
-  .eform{flex-direction:column;border-radius:14px;border-width:1.5px;}
-  .eform input{border-radius:12px 12px 0 0;font-size:16px;padding:15px 16px;}
-  .eform button{border-radius:0 0 12px 12px;padding:14px 16px;font-size:14px;min-width:unset;width:100%;}
-  .chips{gap:6px;}.chip{font-size:11px;padding:5px 11px;}
+  nav{padding:12px 16px;}.logo{font-size:20px;}.nav-demo-btn{font-size:11px;padding:7px 12px;}
+  .hero{padding:86px 16px 54px;}
+  .eform{flex-direction:column;border-radius:14px;}.eform input{border-radius:12px 12px 0 0;font-size:16px;padding:15px 16px;}.eform button{border-radius:0 0 12px 12px;padding:14px 16px;font-size:14px;width:100%;}
+  .chips{gap:6px;}.chip{font-size:11px;padding:5px 10px;}
   .urgency{flex-direction:column;text-align:center;gap:8px;padding:14px 16px;}
-  .screens-row{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:0 16px 16px;gap:12px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-  .screens-row::-webkit-scrollbar{display:none;}
-  .sc-phone{width:150px;flex-shrink:0;}.sc-phone.feat{width:170px;transform:translateY(-10px);}
-  .wcb{flex-direction:column;align-items:center;text-align:center;padding:18px 16px;gap:12px;}.wcc{justify-content:center;}
-  .wstrip{gap:6px;}.wchip{padding:7px 12px;font-size:12px;}
-  .grid{grid-template-columns:1fr;}
-  .who-grid{grid-template-columns:1fr 1fr;}
-  .steps-grid{grid-template-columns:1fr;}
-  .steps-grid::before{display:none;}
-  .compare{grid-template-columns:1fr;}.cmp-arrow{display:none;}
-  .notlot{padding:28px 18px;}
+  .fscreens{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:0 16px 16px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .fscreens::-webkit-scrollbar{display:none;}
+  .fscreen.side{width:140px;flex-shrink:0;}.fscreen.main{width:165px;flex-shrink:0;}
+  .caps-grid{grid-template-columns:1fr;}
+  .steps-row{grid-template-columns:1fr;}.steps-row::before{display:none;}
+  .who-g{grid-template-columns:1fr 1fr;}
+  .compare{grid-template-columns:1fr;}.cmparrow{display:none;}
+  .notlot{padding:24px 16px;}
+  .wcb{flex-direction:column;align-items:center;text-align:center;padding:18px 16px;gap:12px;}.wcc2{justify-content:center;}
   .srow{flex-direction:column;align-items:center;}.socbtn{width:100%;max-width:280px;justify-content:center;}
   .stores{flex-direction:column;align-items:center;}.sbtn{width:100%;max-width:240px;justify-content:center;}
-  .demo-box{padding:20px 16px;}.demo-title{font-size:15px;}
-  .flinks{gap:10px;}.sect{padding:56px 16px;}
+  .hero-btns{flex-direction:column;align-items:center;}.btn-demo{width:100%;max-width:280px;justify-content:center;}
+  .sect{padding:54px 16px;}
 }
 @media(max-width:768px){
   nav{padding:13px 20px;}
-  .screens-row{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:0 20px 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
-  .screens-row::-webkit-scrollbar{display:none;}
-  .grid{grid-template-columns:repeat(2,1fr);}
-  .who-grid{grid-template-columns:repeat(2,1fr);}
+  .fscreens{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:0 20px 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch;}
+  .fscreens::-webkit-scrollbar{display:none;}
+  .caps-grid{grid-template-columns:repeat(2,1fr);}
+  .who-g{grid-template-columns:repeat(2,1fr);}
   .wcb{padding:20px;}
 }
-@media(min-width:1200px){.grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:1200px){.caps-grid{grid-template-columns:repeat(3,1fr);}}
 </style>
 </head>
 <body>
@@ -269,11 +263,12 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
 <nav>
   <a class="logo" href="#"><span class="g">Ku</span>abo</a>
   <div class="nav-right">
-    <a class="nav-app" href="https://kuabo-app.vercel.app" target="_blank" id="nav-app-btn">Try the app →</a>
+    <!-- ✅ Try the app → ouvre la demo, RIEN vers l'extérieur -->
+    <button class="nav-demo-btn" onclick="openDemo()" id="nav-app-btn">👁️ See the app</button>
     <div class="langs">
       <button class="lb on" onclick="setL('en')">🇺🇸 EN</button>
-      <button class="lb"    onclick="setL('fr')">🇫🇷 FR</button>
-      <button class="lb"    onclick="setL('es')">🇪🇸 ES</button>
+      <button class="lb" onclick="setL('fr')">🇫🇷 FR</button>
+      <button class="lb" onclick="setL('es')">🇪🇸 ES</button>
     </div>
   </div>
 </nav>
@@ -283,7 +278,7 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
   <span class="globe">🌍</span>
   <div class="badge"><span class="badge-dot"></span><span id="badge-txt">Coming soon worldwide</span></div>
   <h1 id="h1">Travel. Settle.<br/><span class="g">Live</span> your life <span class="t">anywhere.</span></h1>
-  <p class="sub" id="sub">Whether you're moving to the USA, travelling for the 2026 World Cup, or starting a new life in a new country — Kuabo guides you step by step, after your visa.</p>
+  <p class="sub" id="sub">Whether you're moving to the USA, travelling for the 2026 World Cup, or starting a new life — Kuabo guides you step by step, after your visa.</p>
   <div class="chips">
     <div class="chip wc">🏆 <span class="c-wc">World Cup 2026</span></div>
     <div class="chip dv">🎰 <span class="c-dv">DV Lottery</span></div>
@@ -302,7 +297,9 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
   </div>
   <div class="emsg" id="em-hero"></div>
   <div class="cline hidden"><span class="cnum">0</span> <span id="cline-t">people are already waiting</span></div>
-  <button class="demo-trigger" onclick="openDemo()">👁️ <span id="demo-btn-t">See a quick preview</span></button>
+  <div class="hero-btns">
+    <button class="btn-demo" onclick="openDemo()">👁️ <span id="demo-btn-t">See a quick preview</span></button>
+  </div>
   <div class="stores">
     <a class="sbtn" onclick="openStore()">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
@@ -315,135 +312,310 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
   </div>
 </section>
 
-<!-- SCREENSHOTS -->
-<section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%);padding-top:56px;">
+<!-- ══ APP PREVIEW — 3 écrans simulés ══ -->
+<section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%);padding-top:52px;">
   <div class="rev">
     <div class="stag" id="sc-tag">App preview</div>
     <h2 id="sc-title">A glimpse of what's coming</h2>
     <div class="divl"></div>
-    <p class="ssub" id="sc-sub">Designed for real people — immigrants, travellers, World Cup fans. Simple, powerful, personal.</p>
+    <p class="ssub" id="sc-sub">Simple, personal, powerful. Built for real immigrants — not paperwork robots.</p>
   </div>
-  <div class="screens-row rev" style="transition-delay:.1s">
-    <div class="sc-phone sc-float2">
-      <div class="sc-notch"></div>
-      <div class="sc-body">
-        <div class="sc-hdr"><div class="sc-logo"><span class="g">Ku</span>abo</div><div style="font-size:8px;color:var(--muted)" id="ph1-name">Alex</div></div>
-        <div class="mc"><div class="ml" id="ph1-l1">🚀 Phase 1 — Landing</div><div style="font-size:10px;font-weight:700;margin-bottom:5px" id="ph1-t1">3 steps done</div><div class="mp"><div class="mf" style="width:40%"></div></div></div>
-        <div class="mc mblur"><div class="ml">⏱ urgent step</div><div style="display:flex;align-items:center;gap:5px"><span style="font-size:18px">🪪</span><div><div style="font-size:9px;font-weight:700" id="ph1-ssn">SSN</div><div style="font-size:16px;font-weight:900;color:var(--red)">4</div></div></div></div>
-        <div class="mblur"><div class="mc" style="background:rgba(45,212,191,.05);border-color:rgba(45,212,191,.15)"><div class="ml" style="color:var(--teal)" id="ph1-ai">🤖 Kuabo AI</div><div style="font-size:8px;color:var(--muted)" id="ph1-ai2">Ask me anything...</div></div></div>
+  <div class="fscreens rev" style="transition-delay:.1s">
+    <!-- Écran gauche : Explorer / carte -->
+    <div class="fscreen side fa2">
+      <div class="fn"></div>
+      <div class="fb">
+        <div class="fhdr"><div class="flogo-s"><span class="g">Ku</span>abo</div><div style="font-size:8px;color:var(--teal)">🌍 Explorer</div></div>
+        <div class="fc blur"><div class="fl">📍 Near you</div><div style="font-size:8px;color:var(--muted)">SSA · DMV · Banks · USCIS</div></div>
+        <div class="fc" style="border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.05)"><div class="fl" style="color:var(--orange)">🏆 World Cup 2026</div><div style="font-size:8px;color:var(--muted)">USA · Canada · Mexico</div><div style="font-size:8px;color:var(--orange);margin-top:3px;font-weight:600">Guide ready ✓</div></div>
+        <div class="fc blur"><div class="fl">💰 Budget</div><div style="font-size:8px;color:var(--muted)">Walmart · Aldi · Target</div><div style="font-size:8px;color:var(--green);margin-top:2px;font-weight:600">Save $127/month ↑</div></div>
       </div>
     </div>
-    <div class="sc-phone feat sc-float">
-      <div class="sc-notch"></div>
-      <div class="sc-body">
-        <div class="sc-hdr"><div class="sc-logo"><span class="g">Ku</span>abo</div><div style="width:20px;height:20px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#000">K</div></div>
-        <div class="mc" style="border-color:rgba(232,184,75,.3);background:rgba(232,184,75,.05)">
-          <div class="ml" id="ph2-dash">✅ Dashboard</div>
+    <!-- Écran central PRINCIPAL : Dashboard -->
+    <div class="fscreen main fa">
+      <div class="fn"></div>
+      <div class="fb">
+        <div class="fhdr"><div class="flogo-s"><span class="g">Ku</span>abo</div><div style="width:22px;height:22px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#000">K</div></div>
+        <!-- Parcours -->
+        <div class="fc" style="border-color:rgba(232,184,75,.3);background:rgba(232,184,75,.04)">
+          <div class="fl" id="ph-phase">🚀 Phase 1 — Landing</div>
           <div style="display:flex;gap:5px;margin-top:4px">
-            <div style="flex:1;background:var(--bg);border-radius:5px;padding:5px;text-align:center"><div style="font-size:13px;font-weight:900;color:var(--gold)">60%</div><div style="font-size:6px;color:var(--muted)" id="ph2-p">Phase 2</div></div>
-            <div style="flex:1;background:var(--bg);border-radius:5px;padding:5px;text-align:center"><div style="font-size:13px;font-weight:900;color:var(--green)">7</div><div style="font-size:6px;color:var(--muted)" id="ph2-s">Steps</div></div>
-            <div style="flex:1;background:var(--bg);border-radius:5px;padding:5px;text-align:center"><div style="font-size:13px;font-weight:900;color:var(--teal)">3</div><div style="font-size:6px;color:var(--muted)" id="ph2-b">Badges</div></div>
+            <div style="flex:1;background:var(--bg);border-radius:6px;padding:5px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--gold)">71%</div><div style="font-size:6px;color:var(--muted)" id="ph-p">Done</div></div>
+            <div style="flex:1;background:var(--bg);border-radius:6px;padding:5px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--green)">450</div><div style="font-size:6px;color:var(--muted)" id="ph-s">Score</div></div>
+            <div style="flex:1;background:var(--bg);border-radius:6px;padding:5px;text-align:center"><div style="font-size:14px;font-weight:900;color:var(--teal)">7🔥</div><div style="font-size:6px;color:var(--muted)" id="ph-b">Streak</div></div>
           </div>
         </div>
-        <div class="mblur">
-          <div class="mc"><div class="ml" id="ph2-jobs">💼 Jobs near you</div><div style="font-size:8px;color:var(--muted)" id="ph2-j2">3 compatible offers</div></div>
-          <div class="mc"><div class="ml" id="ph2-comm">🌍 Community</div><div style="font-size:8px;color:var(--muted)" id="ph2-c2">47 Kuabos nearby</div></div>
-          <div class="mc"><div class="ml" id="ph2-shop">🏪 Smart Budget</div><div style="font-size:8px;color:var(--muted)" id="ph2-s2">Save $127 this month</div></div>
+        <!-- Deadline urgente -->
+        <div class="fc" style="border-color:rgba(239,68,68,.3);background:rgba(239,68,68,.04)">
+          <div class="fl" style="color:var(--red)" id="ph-dl">⏱ Urgent deadline</div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <span style="font-size:22px">🪪</span>
+            <div><div style="font-size:8px;font-weight:700" id="ph-ssn">Social Security Number</div><div style="font-size:20px;font-weight:900;color:var(--red);line-height:1">4</div><div style="font-size:6px;color:var(--muted)" id="ph-days">days left</div></div>
+          </div>
+        </div>
+        <!-- Army -->
+        <div class="fc blur" style="border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.04)">
+          <div class="fl" style="color:var(--green)">🎖️ Army Guide</div>
+          <div style="font-size:8px;color:var(--muted)">Naturalization in 1 year</div>
+          <div style="font-size:8px;color:var(--green);margin-top:2px;font-weight:600">Bases near you →</div>
         </div>
       </div>
-      <div class="sc-lock" id="sc-lock">Coming soon 🔒</div>
+      <div class="lock-tag" id="sc-lock">Coming soon 🔒</div>
     </div>
-    <div class="sc-phone sc-float3">
-      <div class="sc-notch"></div>
-      <div class="sc-body">
-        <div class="sc-hdr"><div class="sc-logo"><span class="g">Ku</span>abo</div><div style="font-size:8px;color:var(--teal)" id="ph3-tab">🌍 Explorer</div></div>
-        <div class="mc mblur"><div class="ml" id="ph3-map">📍 Near you</div><div style="font-size:8px;color:var(--muted)">SSA · DMV · Banks · USCIS</div></div>
-        <div class="mc" style="border-color:rgba(249,115,22,.3);background:rgba(249,115,22,.05)"><div class="ml" style="color:var(--orange)">🏆 World Cup 2026</div><div style="font-size:8px;color:var(--muted)" id="ph3-wc">USA · Canada · Mexico</div><div style="font-size:8px;color:var(--orange);margin-top:3px;font-weight:600" id="ph3-wc2">Guide ready ✓</div></div>
-        <div class="mc mblur"><div class="ml" id="ph3-doc">📄 Documents</div><div style="display:flex;flex-direction:column;gap:3px"><div style="font-size:8px">🛂 Passport ✅</div><div style="font-size:8px">🪪 SSN ⏳</div></div></div>
+    <!-- Écran droit : Budget & Magasins -->
+    <div class="fscreen side fa3">
+      <div class="fn"></div>
+      <div class="fb">
+        <div class="fhdr"><div class="flogo-s"><span class="g">Ku</span>abo</div><div style="font-size:8px;color:var(--green)">💰 Budget</div></div>
+        <div class="fc" style="border-color:rgba(34,197,94,.25);background:rgba(34,197,94,.04)">
+          <div class="fl" style="color:var(--green)" id="bud-lbl">Monthly savings</div>
+          <div style="font-size:20px;font-weight:900;color:var(--green)">+$340</div>
+          <div style="font-size:7px;color:var(--muted)" id="bud-sub">vs average immigrant</div>
+        </div>
+        <div class="fc"><div class="fl" id="bud-stores">Where to shop</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-top:2px">
+            <div style="background:var(--bg);border-radius:5px;padding:5px;text-align:center;font-size:8px;color:var(--text)">🛒 <div style="font-weight:700;font-size:9px">Walmart</div><div style="color:var(--green);font-weight:700">$</div></div>
+            <div style="background:var(--bg);border-radius:5px;padding:5px;text-align:center;font-size:8px;color:var(--text)">🥦 <div style="font-weight:700;font-size:9px">Aldi</div><div style="color:var(--green);font-weight:700">$</div></div>
+            <div style="background:var(--bg);border-radius:5px;padding:5px;text-align:center;font-size:8px;color:var(--text)">🎯 <div style="font-weight:700;font-size:9px">Target</div><div style="color:var(--gold);font-weight:700">$$</div></div>
+            <div style="background:var(--bg);border-radius:5px;padding:5px;text-align:center;font-size:8px;color:var(--text)">💊 <div style="font-weight:700;font-size:9px">CVS</div><div style="color:var(--gold);font-weight:700">$$</div></div>
+          </div>
+        </div>
+        <div class="fc blur"><div class="fl" id="bud-apps">Savings apps</div><div style="font-size:8px;color:var(--muted)">Ibotta · Honey · Flipp</div></div>
       </div>
     </div>
+  </div>
+  <p class="screen-label" id="sc-note">👆 Scroll / swipe to explore · Full app coming soon</p>
+</section>
+
+<!-- ══ CAPTURES FEATURES COOL ══ -->
+<section class="sect">
+  <div class="rev">
+    <div class="stag" id="feat-tag">Inside Kuabo</div>
+    <h2 id="feat-h2">The features you'll<br/>actually use every day</h2>
+    <div class="divl"></div>
+  </div>
+  <div class="caps-grid rev" style="transition-delay:.1s">
+
+    <!-- 1. Deadlines intelligentes -->
+    <div class="cap-card" onclick="openDemo()">
+      <div class="cap-screen" style="background:linear-gradient(135deg,#150a0a,#1a0d10)">
+        <div style="padding:16px">
+          <div style="font-size:9px;color:var(--red);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">⏱ Upcoming deadlines</div>
+          <div style="background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.25);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;align-items:center;gap:10px">
+            <span style="font-size:28px">🪪</span>
+            <div><div style="font-size:11px;font-weight:700;color:var(--text)">Social Security Number</div><div style="font-size:24px;font-weight:900;color:var(--red);line-height:1">4</div><div style="font-size:9px;color:var(--muted)">days left · Jan 24</div></div>
+          </div>
+          <div style="background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:10px;padding:8px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:10px;color:var(--muted)">🏦 Bank account</span>
+            <span style="font-size:10px;font-weight:700;color:var(--orange)">14 days →</span>
+          </div>
+          <div style="background:rgba(232,184,75,.05);border:1px solid rgba(232,184,75,.15);border-radius:10px;padding:8px;margin-top:6px;display:flex;justify-content:space-between;align-items:center">
+            <span style="font-size:10px;color:var(--muted)">🚗 Driver's license</span>
+            <span style="font-size:10px;font-weight:700;color:var(--gold)">45 days →</span>
+          </div>
+        </div>
+        <div class="cap-badge" style="color:var(--red);border:1px solid rgba(239,68,68,.3)">Auto-calculated</div>
+      </div>
+      <div class="cap-info">
+        <div class="cap-title" id="c1t">⏱ Smart Deadlines</div>
+        <div class="cap-desc" id="c1d">Kuabo auto-calculates every deadline from your arrival date. SSN in 10 days, bank in 14, taxes in 90. Never miss anything critical.</div>
+      </div>
+    </div>
+
+    <!-- 2. Kuabo Score + Badges -->
+    <div class="cap-card" onclick="openDemo()">
+      <div class="cap-screen" style="background:linear-gradient(135deg,#071520,#0a1628)">
+        <div style="padding:16px">
+          <div style="font-size:9px;color:var(--teal);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">⭐ Kuabo Score</div>
+          <!-- Score radar -->
+          <div style="text-align:center;margin-bottom:10px">
+            <div style="font-size:44px;font-weight:900;color:var(--teal);line-height:1">450</div>
+            <div style="font-size:9px;color:var(--muted);margin-bottom:6px">/ 1000 · En route 🚀</div>
+            <div style="height:5px;background:var(--border);border-radius:5px;overflow:hidden;margin:0 8px">
+              <div style="width:45%;height:100%;background:linear-gradient(to right,var(--teal),var(--green));border-radius:5px"></div>
+            </div>
+          </div>
+          <!-- Badges -->
+          <div style="font-size:8px;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px">Badges unlocked</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <div style="background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.25);border-radius:20px;padding:4px 10px;font-size:9px;color:var(--gold)">🪪 SSN Done</div>
+            <div style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:4px 10px;font-size:9px;color:var(--green)">🏦 Banker</div>
+            <div style="background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.25);border-radius:20px;padding:4px 10px;font-size:9px;color:var(--teal)">🔥 7-day streak</div>
+            <div style="background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);border-radius:20px;padding:4px 10px;font-size:9px;color:var(--purple)">🌍 Explorer</div>
+          </div>
+        </div>
+        <div class="cap-badge" style="color:var(--teal);border:1px solid rgba(45,212,191,.3)">Gamification</div>
+      </div>
+      <div class="cap-info">
+        <div class="cap-title" id="c2t">⭐ Kuabo Score & Badges</div>
+        <div class="cap-desc" id="c2d">Every step you complete earns points and unlocks badges. Your immigration journey becomes a personal challenge — motivating, not stressful.</div>
+      </div>
+    </div>
+
+    <!-- 3. Budget & Magasins -->
+    <div class="cap-card" onclick="openDemo()">
+      <div class="cap-screen" style="background:linear-gradient(135deg,#071510,#0a1a10)">
+        <div style="padding:14px">
+          <div style="font-size:9px;color:var(--green);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">💰 Budget & Stores</div>
+          <div style="background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:10px;margin-bottom:8px">
+            <div style="font-size:9px;color:var(--muted);margin-bottom:3px">Monthly salary $3,500</div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px"><span style="color:var(--muted)">🏠 Rent (Texas)</span><span style="color:var(--red);font-weight:700">$1,400</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:10px;margin-bottom:4px"><span style="color:var(--muted)">🛒 Food</span><span style="color:var(--orange);font-weight:700">$420</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:10px"><span style="color:var(--muted)">💰 Savings</span><span style="color:var(--green);font-weight:700">+$780</span></div>
+          </div>
+          <div style="font-size:8px;color:var(--muted);font-weight:600;margin-bottom:5px">WHERE TO SHOP</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:4px">
+            <div style="background:var(--bg3);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px">🛒</div><div style="font-size:8px;font-weight:700">Walmart</div><div style="font-size:7px;color:var(--green)">$</div></div>
+            <div style="background:var(--bg3);border-radius:8px;padding:6px;text-align:center"><div style="font-size:14px">🥦</div><div style="font-size:8px;font-weight:700">Aldi</div><div style="font-size:7px;color:var(--green)">$</div></div>
+          </div>
+        </div>
+        <div class="cap-badge" style="color:var(--green);border:1px solid rgba(34,197,94,.3)">Save $150/mo</div>
+      </div>
+      <div class="cap-info">
+        <div class="cap-title" id="c3t">💰 Budget Calculator & Stores</div>
+        <div class="cap-desc" id="c3d">Monthly budget by US state, store guide (Walmart, Aldi, Target, Costco, CVS), savings apps — everything to spend smart from day one.</div>
+      </div>
+    </div>
+
+    <!-- 4. Kuabo AI -->
+    <div class="cap-card" onclick="openDemo()">
+      <div class="cap-screen" style="background:linear-gradient(135deg,#0d0a1a,#120f22)">
+        <div style="padding:14px">
+          <div style="font-size:9px;color:var(--purple);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px">🤖 Kuabo AI</div>
+          <!-- Chat messages -->
+          <div style="display:flex;flex-direction:column;gap:7px">
+            <div style="background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);border-radius:12px 12px 12px 3px;padding:8px 10px;font-size:9px;color:var(--text);max-width:85%">When should I go to the SSA office for my SSN?</div>
+            <div style="background:rgba(232,184,75,.08);border:1px solid rgba(232,184,75,.2);border-radius:12px 12px 3px 12px;padding:8px 10px;font-size:9px;color:var(--text);margin-left:auto;max-width:90%">Wait <strong style="color:var(--gold)">10 days</strong> after arrival. Bring your passport, I-94 and visa. Go early morning — SSA offices open at 9am. Your deadline is <strong style="color:var(--red)">January 24</strong>. 🪪</div>
+            <div style="background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);border-radius:12px 12px 12px 3px;padding:8px 10px;font-size:9px;color:var(--text);max-width:85%">Which bank should I open?</div>
+            <div style="background:rgba(232,184,75,.08);border:1px solid rgba(232,184,75,.2);border-radius:12px 12px 3px 12px;padding:8px 10px;font-size:9px;color:var(--text);margin-left:auto;max-width:90%;opacity:.6">Chase accepts just your passport…</div>
+          </div>
+        </div>
+        <div class="cap-badge" style="color:var(--purple);border:1px solid rgba(167,139,250,.3)">24/7 · FR EN ES</div>
+      </div>
+      <div class="cap-info">
+        <div class="cap-title" id="c4t">🤖 Kuabo AI Assistant</div>
+        <div class="cap-desc" id="c4d">Ask anything, get an instant answer tailored to your exact situation. SSN, bank, housing, taxes — available 24/7 in French, English and Spanish.</div>
+      </div>
+    </div>
+
+    <!-- 5. Army Guide -->
+    <div class="cap-card" onclick="openDemo()">
+      <div class="cap-screen" style="background:linear-gradient(135deg,#071510,#091a10)">
+        <div style="padding:14px">
+          <div style="font-size:9px;color:var(--green);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">🎖️ US Army Guide</div>
+          <div style="background:rgba(34,197,94,.06);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:10px;margin-bottom:7px">
+            <div style="font-size:10px;font-weight:700;color:var(--green);margin-bottom:5px">DV Lottery + Army = 🔥</div>
+            <div style="font-size:8px;color:var(--muted);line-height:1.55">Naturalization in <strong style="color:var(--green)">1 year</strong> instead of 5. Free housing, healthcare, salary from day 1.</div>
+          </div>
+          <div style="font-size:8px;color:var(--muted);font-weight:600;margin-bottom:5px">MILITARY BASES NEAR YOU</div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="background:var(--bg3);border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:8px">🪖 Fort Worth Recruiting</span><span style="font-size:7px;color:var(--green);font-weight:600">2.3 mi →</span></div>
+            <div style="background:var(--bg3);border-radius:8px;padding:7px;display:flex;justify-content:space-between;align-items:center"><span style="font-size:8px">🪖 Army Careers Center</span><span style="font-size:7px;color:var(--green);font-weight:600">4.7 mi →</span></div>
+          </div>
+        </div>
+        <div class="cap-badge" style="color:var(--green);border:1px solid rgba(34,197,94,.3)">Army + DV</div>
+      </div>
+      <div class="cap-info">
+        <div class="cap-title" id="c5t">🎖️ US Army Guide</div>
+        <div class="cap-desc" id="c5d">For DV holders thinking about the Army — naturalization in 1 year, base finder, ASVAB guide, salary info. Everything explained clearly.</div>
+      </div>
+    </div>
+
+    <!-- 6. Explorer / Carte services -->
+    <div class="cap-card" onclick="openDemo()">
+      <div class="cap-screen" style="background:linear-gradient(135deg,#0a0f1a,#0d1520)">
+        <div style="padding:14px">
+          <div style="font-size:9px;color:var(--teal);font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">📍 Services near you</div>
+          <div style="display:flex;gap:5px;margin-bottom:8px;flex-wrap:wrap">
+            <span style="background:rgba(232,184,75,.15);border:1px solid rgba(232,184,75,.3);border-radius:20px;padding:3px 9px;font-size:8px;color:var(--gold);font-weight:700">🪪 SSA</span>
+            <span style="background:rgba(249,115,22,.1);border:1px solid rgba(249,115,22,.25);border-radius:20px;padding:3px 9px;font-size:8px;color:var(--orange);font-weight:700">🚗 DMV</span>
+            <span style="background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);border-radius:20px;padding:3px 9px;font-size:8px;color:var(--green);font-weight:700">🏦 Banks</span>
+            <span style="background:rgba(45,212,191,.1);border:1px solid rgba(45,212,191,.25);border-radius:20px;padding:3px 9px;font-size:8px;color:var(--teal);font-weight:700">🏥 Clinics</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="background:var(--bg3);border-radius:8px;padding:7px;display:flex;justify-content:space-between"><div><div style="font-size:8px;font-weight:600">SSA Office — Dallas</div><div style="font-size:7px;color:var(--green)">Open · 0.8 mi</div></div><span style="font-size:12px">→</span></div>
+            <div style="background:var(--bg3);border-radius:8px;padding:7px;display:flex;justify-content:space-between"><div><div style="font-size:8px;font-weight:600">Chase Bank — Main St</div><div style="font-size:7px;color:var(--green)">Open · 1.2 mi</div></div><span style="font-size:12px">→</span></div>
+            <div style="background:var(--bg3);border-radius:8px;padding:7px;display:flex;justify-content:space-between"><div><div style="font-size:8px;font-weight:600">DMV Texas — Irving</div><div style="font-size:7px;color:var(--red)">Closed · 3.1 mi</div></div><span style="font-size:12px">→</span></div>
+          </div>
+        </div>
+        <div class="cap-badge" style="color:var(--teal);border:1px solid rgba(45,212,191,.3)">GPS · Real-time</div>
+      </div>
+      <div class="cap-info">
+        <div class="cap-title" id="c6t">📍 Services Map</div>
+        <div class="cap-desc" id="c6d">SSA, DMV, USCIS, banks, clinics — all located near you in real time. Opening hours, distance, directions. No more searching Google for hours.</div>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ★ NOT A LOTTERY APP — nouvelle section clé -->
-<section class="sect" id="about">
+<!-- ══ NOT A LOTTERY APP ══ -->
+<section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 60%,var(--bg) 100%)">
   <div class="rev">
     <div class="stag" id="notlot-tag">Important</div>
     <h2 id="notlot-h2">Kuabo is NOT a visa lottery app.</h2>
     <div class="divl"></div>
-    <p class="ssub" id="notlot-sub">Kuabo starts where your visa ends. We guide you through everything that comes after.</p>
+    <p class="ssub" id="notlot-sub">Kuabo starts where your visa ends. We help you with everything that comes after.</p>
   </div>
   <div class="notlot rev" style="transition-delay:.1s">
     <div class="compare">
-      <div class="cmp-col no">
-        <div class="cmp-hdr">❌ <span id="cmp-no-hdr">Kuabo does NOT</span></div>
-        <div class="cmp-item">✗ <span id="cno1">Enter the DV Lottery for you</span></div>
-        <div class="cmp-item">✗ <span id="cno2">File your visa application</span></div>
-        <div class="cmp-item">✗ <span id="cno3">Handle legal immigration cases</span></div>
-        <div class="cmp-item">✗ <span id="cno4">Replace an immigration lawyer</span></div>
+      <div class="cmp no">
+        <div class="cmph">❌ <span id="cno-hdr">Kuabo does NOT</span></div>
+        <div class="cmpi">✗ <span id="cno1">Enter the DV Lottery for you</span></div>
+        <div class="cmpi">✗ <span id="cno2">File your visa application</span></div>
+        <div class="cmpi">✗ <span id="cno3">Handle immigration legal cases</span></div>
+        <div class="cmpi">✗ <span id="cno4">Replace an immigration lawyer</span></div>
       </div>
-      <div class="cmp-arrow">→</div>
-      <div class="cmp-col yes">
-        <div class="cmp-hdr">✅ <span id="cmp-yes-hdr">Kuabo DOES</span></div>
-        <div class="cmp-item">✓ <span id="cyes1">Guide you after your visa is granted</span></div>
-        <div class="cmp-item">✓ <span id="cyes2">Organize all your post-arrival steps</span></div>
-        <div class="cmp-item">✓ <span id="cyes3">Track deadlines — SSN, bank, taxes…</span></div>
-        <div class="cmp-item">✓ <span id="cyes4">AI assistant, services map, community</span></div>
+      <div class="cmparrow">→</div>
+      <div class="cmp yes">
+        <div class="cmph">✅ <span id="cyes-hdr">Kuabo DOES</span></div>
+        <div class="cmpi">✓ <span id="cyes1">Guide you step by step after your visa</span></div>
+        <div class="cmpi">✓ <span id="cyes2">Track deadlines — SSN, bank, taxes, ID</span></div>
+        <div class="cmpi">✓ <span id="cyes3">AI assistant in your language 24/7</span></div>
+        <div class="cmpi">✓ <span id="cyes4">Services map, budget, community, Army</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ★ POUR QUI — nouvelle section -->
-<section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%)">
+<!-- ══ POUR QUI ══ -->
+<section class="sect">
   <div class="rev">
     <div class="stag" id="who-tag">For everyone</div>
     <h2 id="who-h2">For all immigrants,<br/>whatever your situation</h2>
     <div class="divl"></div>
-    <p class="ssub" id="who-sub">DV Lottery, work visa, family, Army, student — Kuabo adapts to your situation and your country.</p>
+    <p class="ssub" id="who-sub">DV Lottery, work visa, family, Army, student, refugee — Kuabo adapts to you.</p>
   </div>
-  <div class="who-grid rev" style="transition-delay:.1s;margin-bottom:0;">
-    <div class="who-card" style="--wc:var(--gold)"><div class="who-emoji">🎰</div><div class="who-title" id="w1t">DV Lottery</div><div class="who-desc" id="w1d">Diversity Visa winners — full guide from day one</div><div class="who-geo">🇺🇸 USA</div></div>
-    <div class="who-card" style="--wc:var(--teal)"><div class="who-emoji">💼</div><div class="who-title" id="w2t">Work visa</div><div class="who-desc" id="w2d">H-1B, L-1, O-1, TN — professional integration</div><div class="who-geo">🇺🇸 USA · 🇫🇷 France</div></div>
-    <div class="who-card" style="--wc:var(--purple)"><div class="who-emoji">👨‍👩‍👧</div><div class="who-title" id="w3t">Family</div><div class="who-desc" id="w3d">I-130, Fiancé(e) — join your loved ones</div><div class="who-geo">🇺🇸 USA · 🇨🇦 Canada</div></div>
-    <div class="who-card" style="--wc:var(--green)"><div class="who-emoji">🎖️</div><div class="who-title" id="w4t">US Army</div><div class="who-desc" id="w4d">Soldiers & DV families — accelerated naturalization</div><div class="who-geo">🇺🇸 USA</div></div>
-    <div class="who-card" style="--wc:var(--orange)"><div class="who-emoji">🎓</div><div class="who-title" id="w5t">Students</div><div class="who-desc" id="w5d">F-1, OPT, STEM — international student life</div><div class="who-geo">🇺🇸 USA · 🇫🇷 France · 🇨🇦 Canada</div></div>
-    <div class="who-card" style="--wc:var(--teal)"><div class="who-emoji">🌍</div><div class="who-title" id="w6t">Refugees & Asylum</div><div class="who-desc" id="w6d">Humanitarian status — adapted support</div><div class="who-geo">🇺🇸 USA · 🇫🇷 France</div></div>
+  <div class="who-g rev" style="transition-delay:.1s">
+    <div class="who-c" style="--wcc:var(--gold)"><div class="we">🎰</div><div class="wt" id="w1t">DV Lottery</div><div class="wd" id="w1d">Diversity Visa — full guide from day one</div><div class="wg">🇺🇸 USA</div></div>
+    <div class="who-c" style="--wcc:var(--teal)"><div class="we">💼</div><div class="wt" id="w2t">Work visa</div><div class="wd" id="w2d">H-1B, L-1, O-1, TN — pro integration</div><div class="wg">🇺🇸 USA · 🇫🇷 France</div></div>
+    <div class="who-c" style="--wcc:var(--purple)"><div class="we">👨‍👩‍👧</div><div class="wt" id="w3t">Family</div><div class="wd" id="w3d">I-130, Fiancé(e) — join your loved ones</div><div class="wg">🇺🇸 USA · 🇨🇦 Canada</div></div>
+    <div class="who-c" style="--wcc:var(--green)"><div class="we">🎖️</div><div class="wt" id="w4t">US Army</div><div class="wd" id="w4d">Soldiers & DV — naturalization in 1 year</div><div class="wg">🇺🇸 USA</div></div>
+    <div class="who-c" style="--wcc:var(--orange)"><div class="we">🎓</div><div class="wt" id="w5t">Students</div><div class="wd" id="w5d">F-1, OPT, STEM — student life abroad</div><div class="wg">🇺🇸 🇫🇷 🇨🇦</div></div>
+    <div class="who-c" style="--wcc:var(--teal)"><div class="we">🌍</div><div class="wt" id="w6t">Refugees</div><div class="wd" id="w6d">Humanitarian status — adapted support</div><div class="wg">🇺🇸 USA · 🇫🇷 France</div></div>
   </div>
 </section>
 
-<!-- ★ COMMENT ÇA MARCHE — nouvelle section -->
-<section class="sect">
+<!-- ══ HOW IT WORKS ══ -->
+<section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%)">
   <div class="rev">
     <div class="stag" id="how-tag">How it works</div>
     <h2 id="how-h2">3 steps,<br/>everything becomes simple</h2>
     <div class="divl"></div>
   </div>
-  <div class="steps-grid rev" style="transition-delay:.1s">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-title" id="s1t">Create your profile</div>
-      <div class="step-desc" id="s1d">Tell us your visa type, arrival date and situation. Kuabo calculates everything automatically.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-title" id="s2t">Your roadmap activates</div>
-      <div class="step-desc" id="s2d">Steps are organized by priority with exact deadlines. Check them off one by one.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-title" id="s3t">You advance with guidance</div>
-      <div class="step-desc" id="s3d">Detailed guides, services map, Kuabo AI, community — you're never alone again.</div>
-    </div>
+  <div class="steps-row rev" style="transition-delay:.1s">
+    <div class="step-c"><div class="step-n">1</div><div class="step-t" id="s1t">Create your profile</div><div class="step-d" id="s1d">Visa type, arrival date, state. Kuabo calculates everything automatically.</div></div>
+    <div class="step-c"><div class="step-n">2</div><div class="step-t" id="s2t">Your roadmap activates</div><div class="step-d" id="s2d">Steps organized by priority with exact deadlines. Check them off one by one.</div></div>
+    <div class="step-c"><div class="step-n">3</div><div class="step-t" id="s3t">You advance guided</div><div class="step-d" id="s3d">AI, services map, store guide, community — you're never alone again.</div></div>
   </div>
 </section>
 
-<!-- WORLD CUP + WORLD -->
-<section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%)">
+<!-- ══ WORLD CUP ══ -->
+<section class="sect">
   <div class="rev">
     <div class="wcb">
       <div class="wcb-em">🏆</div>
-      <div><h3 id="wc-t">World Cup 2026 — Kuabo is ready</h3><p id="wc-d">USA, Canada, Mexico — Kuabo prepares your trip, visa, hotels, tickets and everything for a stress-free World Cup experience.</p><div class="wcc"><span class="wcct">🇺🇸 USA</span><span class="wcct">🇨🇦 Canada</span><span class="wcct">🇲🇽 Mexico</span></div></div>
+      <div><h3 id="wc-t">World Cup 2026 — Kuabo is ready</h3><p id="wc-d">USA, Canada, Mexico — Kuabo prepares your trip, visa, hotels, tickets and everything for a stress-free World Cup experience.</p><div class="wcc2"><span class="wcct">🇺🇸 USA</span><span class="wcct">🇨🇦 Canada</span><span class="wcct">🇲🇽 Mexico</span></div></div>
     </div>
   </div>
   <div class="rev" style="transition-delay:.1s">
@@ -458,30 +630,13 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="sect">
-  <div class="rev">
-    <div class="stag" id="feat-tag">What Kuabo does</div>
-    <h2 id="feat-title">Everything you need,<br/>in one app</h2>
-    <div class="divl"></div>
-  </div>
-  <div class="grid rev" style="transition-delay:.1s">
-    <div class="fcard"><span class="ficon">🗺️</span><div class="ftitle" id="f1t">Step-by-step guide</div><div class="fdesc" id="f1d">Moving, tourism or World Cup — Kuabo adapts your roadmap to your exact situation.</div><span class="ftag" id="f1g">Personalized</span></div>
-    <div class="fcard"><span class="ficon">🏆</span><div class="ftitle" id="f2t">World Cup 2026</div><div class="fdesc" id="f2d">Full travel guide for USA, Canada & Mexico. Visa, hotels, tickets, transport — all covered.</div><span class="ftag" id="f2g">USA · Canada · Mexico</span></div>
-    <div class="fcard"><span class="ficon">⏱</span><div class="ftitle" id="f3t">Smart deadlines</div><div class="fdesc" id="f3d">Kuabo auto-calculates your deadlines from your arrival date. SSN, Green Card, permits — never miss one.</div><span class="ftag" id="f3g">Auto-calculated</span></div>
-    <div class="fcard"><span class="ficon">🤖</span><div class="ftitle" id="f4t">Kuabo AI</div><div class="fdesc" id="f4d">Your 24/7 personal assistant. Knows your situation and answers in your language — FR, EN or ES.</div><span class="ftag" id="f4g">FR · EN · ES</span></div>
-    <div class="fcard"><span class="ficon">🏪</span><div class="ftitle" id="f5t">Budget & Local life</div><div class="fdesc" id="f5d">Store guides, coupons, smart budget. Save money every week wherever you are in the world.</div><span class="ftag" id="f5g">Save $150/month</span></div>
-    <div class="fcard"><span class="ficon">🌍</span><div class="ftitle" id="f6t">Global community</div><div class="fdesc" id="f6d">Thousands of Kuabos sharing tips, jobs and local advice. You're never alone on your journey.</div><span class="ftag" id="f6g">Worldwide</span></div>
-  </div>
-</section>
-
 <!-- SOCIAL -->
 <section class="sect" style="background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 50%,var(--bg) 100%)">
   <div class="rev">
     <div class="stag" id="soc-tag">Community</div>
     <h2 id="soc-title">Follow us,<br/>stay informed</h2>
     <div class="divl"></div>
-    <p class="ssub" id="soc-sub">News, immigration tips, travel guides, launch date — all on our socials.</p>
+    <p class="ssub" id="soc-sub">News, immigration tips, launch date — all on our socials.</p>
   </div>
   <div class="srow rev" style="transition-delay:.1s">
     <a class="socbtn" href="https://instagram.com/kuabo_app" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>@kuabo_app</a>
@@ -491,7 +646,7 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
 </section>
 
 <!-- FINAL CTA -->
-<section class="sect" style="padding-bottom:60px">
+<section class="sect" style="padding-bottom:64px">
   <div class="rev" style="max-width:540px;margin:0 auto">
     <div style="font-size:50px;margin-bottom:16px">🚀</div>
     <h2 id="cta-t">Don't miss the launch</h2>
@@ -520,33 +675,88 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
   <div class="fcopy">© 2026 Kuabo. All rights reserved.</div>
 </footer>
 
-<!-- DEMO MODAL -->
-<div class="demo-overlay" id="demo-overlay">
-  <div class="demo-box">
-    <button class="demo-close" onclick="closeDemo()">×</button>
-    <div class="demo-prog"><div class="demo-dot on"></div><div class="demo-dot"></div><div class="demo-dot"></div><div class="demo-dot"></div></div>
-    <div class="demo-step on" id="ds0">
-      <div class="demo-phone-mini"><div class="demo-notch"></div><div class="demo-body"><div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:6px">🚀 PHASE 1 — LANDING</div><div style="height:3px;background:var(--border);border-radius:2px;margin-bottom:8px;overflow:hidden"><div style="width:40%;height:100%;background:linear-gradient(to right,var(--gold),var(--teal));border-radius:2px"></div></div><div style="display:flex;flex-direction:column;gap:4px"><div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--green)">✓</span><span id="ds0-i1">SSN appointment</span></div><div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--green)">✓</span><span id="ds0-i2">Bank account opened</span></div><div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--border)">○</span><span style="color:var(--muted)" id="ds0-i3">Get driver's license</span></div><div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--border)">○</span><span style="color:var(--muted)" id="ds0-i4">First tax filing</span></div></div></div></div>
-      <div class="demo-title" id="ds0-t">Your roadmap</div>
-      <div class="demo-desc" id="ds0-d">5 phases, from arrival to citizenship. Check each step as you go — Kuabo tracks your progress automatically.</div>
-      <div class="demo-btns"><button class="demo-skip" onclick="closeDemo()" id="ds-skip">Skip</button><button class="demo-next" onclick="demoNext()" id="ds-next">Next →</button></div>
+<!-- ══ DEMO MODAL — 4 étapes ══ -->
+<div class="dm-ov" id="demo-overlay">
+  <div class="dm-box">
+    <button class="dm-close" onclick="closeDemo()">×</button>
+    <div class="dm-prog"><div class="dm-dot on"></div><div class="dm-dot"></div><div class="dm-dot"></div><div class="dm-dot"></div></div>
+
+    <!-- Étape 0 : Parcours -->
+    <div class="dm-step on" id="ds0">
+      <div class="dm-phone">
+        <div class="dm-notch"></div>
+        <div class="dm-body">
+          <div style="font-size:8px;color:var(--gold);font-weight:700;margin-bottom:6px">🚀 PHASE 1 — LANDING</div>
+          <div style="height:3px;background:var(--border);border-radius:2px;margin-bottom:8px;overflow:hidden"><div style="width:71%;height:100%;background:linear-gradient(to right,var(--gold),var(--teal));border-radius:2px"></div></div>
+          <div style="display:flex;flex-direction:column;gap:4px">
+            <div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--green)">✓</span><span id="ds0-i1">SSN appointment booked</span></div>
+            <div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--green)">✓</span><span id="ds0-i2">Bank account opened</span></div>
+            <div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--green)">✓</span><span id="ds0-i3">SIM card activated</span></div>
+            <div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--border)">○</span><span style="color:var(--muted)" id="ds0-i4">Get driver's license</span></div>
+            <div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--border)">○</span><span style="color:var(--muted)" id="ds0-i5">First tax filing</span></div>
+          </div>
+          <div style="margin-top:8px;background:rgba(232,184,75,.08);border:1px solid rgba(232,184,75,.2);border-radius:7px;padding:5px;text-align:center">
+            <span style="font-size:9px;color:var(--gold);font-weight:700" id="ds0-score">⭐ Score 450 · Rank: Explorer</span>
+          </div>
+        </div>
+      </div>
+      <div class="dm-title" id="ds0-t">Your roadmap</div>
+      <div class="dm-desc" id="ds0-d">5 phases from arrival to citizenship. Check each step — Kuabo tracks your progress and rewards you with points.</div>
+      <div class="dm-btns"><button class="dm-skip" onclick="closeDemo()">Skip</button><button class="dm-next" onclick="demoNext()">Next →</button></div>
     </div>
-    <div class="demo-step" id="ds1">
-      <div class="demo-phone-mini"><div class="demo-notch"></div><div class="demo-body"><div style="font-size:7px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px" id="ds1-l">⏱ URGENT STEP</div><div style="display:flex;align-items:center;gap:8px;padding:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:8px;margin-bottom:6px"><span style="font-size:24px">🪪</span><div><div style="font-size:9px;font-weight:700" id="ds1-ssn">Social Security Number</div><div style="font-size:22px;font-weight:900;color:var(--red);line-height:1">4</div><div style="font-size:7px;color:var(--muted)" id="ds1-days">days remaining</div></div></div><div style="font-size:8px;color:var(--muted)" id="ds1-next2">Next: Bank account — 14 days</div></div></div>
-      <div class="demo-title" id="ds1-t">Smart deadlines</div>
-      <div class="demo-desc" id="ds1-d">Kuabo auto-calculates your most urgent steps from your arrival date. SSN always comes first.</div>
-      <div class="demo-btns"><button class="demo-skip" onclick="closeDemo()" id="ds1-skip">Skip</button><button class="demo-next" onclick="demoNext()" id="ds1-next">Next →</button></div>
+
+    <!-- Étape 1 : Deadline -->
+    <div class="dm-step" id="ds1">
+      <div class="dm-phone">
+        <div class="dm-notch"></div>
+        <div class="dm-body">
+          <div style="font-size:7px;color:var(--red);font-weight:700;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px" id="ds1-l">⏱ Urgent deadline</div>
+          <div style="display:flex;align-items:center;gap:8px;padding:10px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:10px;margin-bottom:8px">
+            <span style="font-size:28px">🪪</span>
+            <div><div style="font-size:9px;font-weight:700" id="ds1-ssn">Social Security Number</div><div style="font-size:28px;font-weight:900;color:var(--red);line-height:1">4</div><div style="font-size:7px;color:var(--muted)" id="ds1-days">days left · Jan 24</div></div>
+          </div>
+          <div style="font-size:8px;color:var(--muted);margin-bottom:4px" id="ds1-next2">🏦 Bank — 14 days · 🚗 DMV — 45 days</div>
+          <div style="display:flex;gap:5px">
+            <div style="flex:1;padding:6px;background:var(--green);border-radius:7px;text-align:center;font-size:8px;font-weight:700;color:#000" id="ds1-done">Done ✅</div>
+            <div style="flex:1;padding:6px;background:rgba(232,184,75,.1);border:1px solid rgba(232,184,75,.3);border-radius:7px;text-align:center;font-size:8px;font-weight:700;color:var(--gold)" id="ds1-guide">Guide 📖</div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-title" id="ds1-t">Smart deadlines</div>
+      <div class="dm-desc" id="ds1-d">Kuabo auto-calculates every deadline from your arrival date. SSN in 10 days, bank in 14, taxes in 90. Never miss anything.</div>
+      <div class="dm-btns"><button class="dm-skip" onclick="closeDemo()">Skip</button><button class="dm-next" onclick="demoNext()">Next →</button></div>
     </div>
-    <div class="demo-step" id="ds2">
-      <div class="demo-phone-mini"><div class="demo-notch"></div><div class="demo-body"><div style="font-size:9px;color:var(--orange);font-weight:700;margin-bottom:8px">🏆 WORLD CUP 2026</div><div style="display:flex;gap:4px;margin-bottom:6px"><div style="flex:1;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;padding:5px;text-align:center;font-size:9px;color:var(--orange)">🇺🇸 USA</div><div style="flex:1;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;padding:5px;text-align:center;font-size:9px;color:var(--orange)">🇨🇦 CAN</div><div style="flex:1;background:rgba(249,115,22,.08);border:1px solid rgba(249,115,22,.2);border-radius:6px;padding:5px;text-align:center;font-size:9px;color:var(--orange)">🇲🇽 MEX</div></div><div style="font-size:8px;display:flex;align-items:center;gap:4px;margin-bottom:3px"><span style="color:var(--green)">✓</span><span id="ds2-v">Visa guide ready</span></div><div style="font-size:8px;display:flex;align-items:center;gap:4px;margin-bottom:3px"><span style="color:var(--green)">✓</span><span id="ds2-h">Hotel finder</span></div><div style="font-size:8px;display:flex;align-items:center;gap:4px"><span style="color:var(--green)">✓</span><span id="ds2-t">Transport guide</span></div></div></div>
-      <div class="demo-title" id="ds2-t2">World Cup 2026 🏆</div>
-      <div class="demo-desc" id="ds2-d">Going to the World Cup? Kuabo guides you through visa, hotels, tickets and transport for all 3 countries.</div>
-      <div class="demo-btns"><button class="demo-skip" onclick="closeDemo()" id="ds2-skip">Skip</button><button class="demo-next" onclick="demoNext()" id="ds2-next">Get notified →</button></div>
+
+    <!-- Étape 2 : Budget & Magasins -->
+    <div class="dm-step" id="ds2">
+      <div class="dm-phone">
+        <div class="dm-notch"></div>
+        <div class="dm-body">
+          <div style="font-size:8px;color:var(--green);font-weight:700;margin-bottom:6px">💰 Budget · Texas</div>
+          <div style="background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.2);border-radius:9px;padding:8px;margin-bottom:6px">
+            <div style="display:flex;justify-content:space-between;font-size:8px;margin-bottom:3px"><span style="color:var(--muted)" id="ds2-rent">🏠 Rent</span><span style="color:var(--red);font-weight:700">$1,400</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:8px;margin-bottom:3px"><span style="color:var(--muted)" id="ds2-food">🛒 Food</span><span style="color:var(--orange);font-weight:700">$420</span></div>
+            <div style="display:flex;justify-content:space-between;font-size:8px"><span style="color:var(--muted)" id="ds2-save">💰 Savings</span><span style="color:var(--green);font-weight:700">+$780</span></div>
+          </div>
+          <div style="font-size:7px;color:var(--muted);font-weight:600;margin-bottom:4px" id="ds2-shops">WHERE TO SHOP</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:3px">
+            <div style="background:var(--bg3);border-radius:7px;padding:5px;text-align:center"><div style="font-size:13px">🛒</div><div style="font-size:7px;font-weight:700">Walmart $</div></div>
+            <div style="background:var(--bg3);border-radius:7px;padding:5px;text-align:center"><div style="font-size:13px">🥦</div><div style="font-size:7px;font-weight:700">Aldi $</div></div>
+            <div style="background:var(--bg3);border-radius:7px;padding:5px;text-align:center"><div style="font-size:13px">🎯</div><div style="font-size:7px;font-weight:700">Target $$</div></div>
+            <div style="background:var(--bg3);border-radius:7px;padding:5px;text-align:center"><div style="font-size:13px">📦</div><div style="font-size:7px;font-weight:700">Costco $$$</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dm-title" id="ds2-t">Budget & Stores</div>
+      <div class="dm-desc" id="ds2-d">Monthly budget by US state + store guide. Walmart, Aldi, Target, Costco, CVS — where to shop and how to save $150/month from day one.</div>
+      <div class="dm-btns"><button class="dm-skip" onclick="closeDemo()">Skip</button><button class="dm-next" onclick="demoNext()">Get notified →</button></div>
     </div>
-    <div class="demo-step" id="ds3">
+
+    <!-- Étape 3 : CTA final -->
+    <div class="dm-step" id="ds3">
       <div style="font-size:52px;margin-bottom:12px">🚀</div>
-      <div class="demo-title" id="ds3-t">That's just the beginning</div>
-      <div class="demo-desc" id="ds3-d">Jobs, community, budget, AI assistant, documents — all in one app. Be the first to know when we launch.</div>
+      <div class="dm-title" id="ds3-t">That's just the beginning</div>
+      <div class="dm-desc" id="ds3-d">AI assistant, community, Army guide, services map, jobs — all in one app. Be the first to know when we launch.</div>
       <div class="eform" style="margin-bottom:10px"><input type="email" id="ei-demo" placeholder="Your email" onkeydown="if(event.key==='Enter')kuaboSubmit('demo')"/><button id="eb-demo" onclick="kuaboSubmit('demo')">Notify me 🚀</button></div>
       <div class="emsg" id="em-demo"></div>
     </div>
@@ -554,126 +764,138 @@ footer{padding:36px 20px;border-top:1px solid var(--border);text-align:center;}
 </div>
 
 <!-- STORE MODAL -->
-<div class="store-overlay" id="store-overlay" onclick="closeStore()">
-  <div class="store-box" onclick="event.stopPropagation()">
-    <button class="store-close" onclick="closeStore()">×</button>
+<div class="st-ov" id="store-overlay" onclick="closeStore()">
+  <div class="st-box" onclick="event.stopPropagation()">
+    <button class="st-close" onclick="closeStore()">×</button>
     <span style="font-size:50px;display:block;margin-bottom:14px">📱</span>
     <h3 style="font-family:'Playfair Display',serif;font-size:22px;margin-bottom:8px" id="st-t">Coming soon!</h3>
-    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:22px" id="st-d">Kuabo is coming very soon to App Store and Google Play. Sign up to be the first to know!</p>
+    <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:22px" id="st-d">Kuabo is coming very soon to App Store and Google Play. Sign up to be the first!</p>
     <div class="eform" style="margin-bottom:10px"><input type="email" id="ei-store" placeholder="Your email" onkeydown="if(event.key==='Enter')kuaboSubmit('store')"/><button id="eb-store" onclick="kuaboSubmit('store')">Notify me 🚀</button></div>
     <div class="emsg" id="em-store"></div>
   </div>
 </div>
 
-<div id="confetti-container"></div>
+<div id="cc"></div>
 
 <script>
-function launchConfetti(){const colors=["#e8b84b","#22c55e","#2dd4bf","#f97316","#a78bfa","#f472b6"];const cont=document.getElementById("confetti-container");for(let i=0;i<30;i++){const el=document.createElement("div");el.className="confetti-piece";el.style.cssText=`left:${Math.random()*100}%;top:-10px;background:${colors[i%colors.length]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>.5?"50%":"2px"};animation-delay:${Math.random()*.5}s;animation-duration:${1.2+Math.random()*.8}s;`;cont.appendChild(el);setTimeout(()=>el.remove(),2500);}}
+function launchConfetti(){const c=["#e8b84b","#22c55e","#2dd4bf","#f97316","#a78bfa","#f472b6"],ct=document.getElementById("cc");for(let i=0;i<30;i++){const el=document.createElement("div");el.className="cf";el.style.cssText=`left:${Math.random()*100}%;top:-10px;background:${c[i%6]};width:${6+Math.random()*8}px;height:${6+Math.random()*8}px;border-radius:${Math.random()>.5?"50%":"2px"};animation-delay:${Math.random()*.5}s;animation-duration:${1.2+Math.random()*.8}s;`;ct.appendChild(el);setTimeout(()=>el.remove(),2500);}}
 let demoStep=0;
-function openDemo(){demoStep=0;showDemoStep(0);document.getElementById("demo-overlay").classList.add("on");}
+function openDemo(){demoStep=0;showStep(0);document.getElementById("demo-overlay").classList.add("on");}
 function closeDemo(){document.getElementById("demo-overlay").classList.remove("on");}
-function demoNext(){demoStep=Math.min(demoStep+1,3);showDemoStep(demoStep);}
+function demoNext(){demoStep=Math.min(demoStep+1,3);showStep(demoStep);}
 function showDemoDone(){launchConfetti();setTimeout(closeDemo,2000);}
-function showDemoStep(n){document.querySelectorAll(".demo-step").forEach((s,i)=>s.classList.toggle("on",i===n));document.querySelectorAll(".demo-dot").forEach((d,i)=>d.classList.toggle("on",i===n));}
+function showStep(n){document.querySelectorAll(".dm-step").forEach((s,i)=>s.classList.toggle("on",i===n));document.querySelectorAll(".dm-dot").forEach((d,i)=>d.classList.toggle("on",i===n));}
 function openStore(){document.getElementById("store-overlay").classList.add("on");}
 function closeStore(){document.getElementById("store-overlay").classList.remove("on");}
 
 const TX={
   en:{
-    badge:"Coming soon worldwide",
-    h1:'Travel. Settle.<br/><span class="g">Live</span> your life <span class="t">anywhere.</span>',
+    badge:"Coming soon worldwide",h1:'Travel. Settle.<br/><span class="g">Live</span> your life <span class="t">anywhere.</span>',
     sub:"Whether you're moving to the USA, travelling for the 2026 World Cup, or starting a new life — Kuabo guides you step by step, after your visa.",
     chips:["World Cup 2026","DV Lottery","Tourism","Work visa","US Army","Student"],
-    urgT:"🔥 The app is coming very soon",urgS:"Sign up now — be among the very first",btn:"Notify me 🚀",cline:"people are already waiting",demoBtn:"See a quick preview",
-    s1l:"Coming soon on",s2l:"Coming soon on",navApp:"Try the app →",
-    scTag:"App preview",scTitle:"A glimpse of what's coming",scSub:"Designed for real people — immigrants, travellers, World Cup fans.",
-    notlotTag:"Important",notlotH2:"Kuabo is NOT a visa lottery app.",notlotSub:"Kuabo starts where your visa ends. We guide you through everything that comes after.",
-    cmpNoHdr:"Kuabo does NOT",cmpYesHdr:"Kuabo DOES",
-    cno:["Enter the DV Lottery for you","File your visa application","Handle legal immigration cases","Replace an immigration lawyer"],
-    cyes:["Guide you after your visa is granted","Organize all your post-arrival steps","Track deadlines — SSN, bank, taxes…","AI assistant, services map, community"],
-    whoTag:"For everyone",whoH2:"For all immigrants,<br/>whatever your situation",whoSub:"DV Lottery, work visa, family, Army, student — Kuabo adapts to your situation and your country.",
-    who:[["DV Lottery","Diversity Visa winners — full guide from day one"],["Work visa","H-1B, L-1, O-1, TN — professional integration"],["Family","I-130, Fiancé(e) — join your loved ones"],["US Army","Soldiers & DV families — accelerated naturalization"],["Students","F-1, OPT, STEM — international student life"],["Refugees & Asylum","Humanitarian status — adapted support"]],
+    urgT:"🔥 The app is coming very soon",urgS:"Sign up now — be among the very first",btn:"Notify me 🚀",cline:"people are already waiting",
+    demoBtn:"See a quick preview",navBtn:"👁️ See the app",s1l:"Coming soon on",s2l:"Coming soon on",
+    scTag:"App preview",scTitle:"A glimpse of what's coming",scSub:"Simple, personal, powerful. Built for real immigrants — not paperwork robots.",scNote:"👆 Scroll / swipe to explore · Full app coming soon",
+    scLock:"Coming soon 🔒",
+    phPhase:"🚀 Phase 1 — Landing",phP:"Done",phS:"Score",phB:"Streak",phDl:"⏱ Urgent deadline",phSsn:"Social Security Number",phDays:"days left",
+    budLbl:"Monthly savings",budSub:"vs average immigrant",budStores:"Where to shop",budApps:"Savings apps",
+    featTag:"Inside Kuabo",featH2:"The features you'll<br/>actually use every day",
+    c1t:"⏱ Smart Deadlines",c1d:"Kuabo auto-calculates every deadline from your arrival date. SSN in 10 days, bank in 14, taxes in 90. Never miss anything critical.",
+    c2t:"⭐ Kuabo Score & Badges",c2d:"Every step you complete earns points and unlocks badges. Your immigration journey becomes a personal challenge — motivating, not stressful.",
+    c3t:"💰 Budget Calculator & Stores",c3d:"Monthly budget by US state, store guide (Walmart, Aldi, Target, Costco, CVS), savings apps — everything to spend smart from day one.",
+    c4t:"🤖 Kuabo AI Assistant",c4d:"Ask anything, get an instant answer tailored to your exact situation. SSN, bank, housing, taxes — available 24/7 in French, English and Spanish.",
+    c5t:"🎖️ US Army Guide",c5d:"For DV holders thinking about the Army — naturalization in 1 year, base finder, ASVAB guide, salary info. Everything explained clearly.",
+    c6t:"📍 Services Map",c6d:"SSA, DMV, USCIS, banks, clinics — all located near you in real time. Opening hours, distance, directions. No more searching Google for hours.",
+    notlotTag:"Important",notlotH2:"Kuabo is NOT a visa lottery app.",notlotSub:"Kuabo starts where your visa ends. We help you with everything that comes after.",
+    cnoHdr:"Kuabo does NOT",cyesHdr:"Kuabo DOES",
+    cno:["Enter the DV Lottery for you","File your visa application","Handle immigration legal cases","Replace an immigration lawyer"],
+    cyes:["Guide you step by step after your visa","Track deadlines — SSN, bank, taxes, ID","AI assistant in your language 24/7","Services map, budget, community, Army"],
+    whoTag:"For everyone",whoH2:"For all immigrants,<br/>whatever your situation",whoSub:"DV Lottery, work visa, family, Army, student, refugee — Kuabo adapts to you.",
+    who:[["DV Lottery","Diversity Visa — full guide from day one"],["Work visa","H-1B, L-1, O-1, TN — pro integration"],["Family","I-130, Fiancé(e) — join your loved ones"],["US Army","Soldiers & DV — naturalization in 1 year"],["Students","F-1, OPT, STEM — student life abroad"],["Refugees","Humanitarian status — adapted support"]],
     howTag:"How it works",howH2:"3 steps,<br/>everything becomes simple",
-    steps:[["Create your profile","Tell us your visa type, arrival date and situation. Kuabo calculates everything automatically."],["Your roadmap activates","Steps are organized by priority with exact deadlines. Check them off one by one."],["You advance with guidance","Detailed guides, services map, Kuabo AI, community — you're never alone again."]],
-    wcT:"World Cup 2026 — Kuabo is ready",wcD:"USA, Canada, Mexico — Kuabo prepares your trip, visa, hotels, tickets and everything for a stress-free experience.",
+    steps:[["Create your profile","Visa type, arrival date, state. Kuabo calculates everything automatically."],["Your roadmap activates","Steps organized by priority with exact deadlines. Check them off one by one."],["You advance guided","AI, services map, store guide, community — you're never alone again."]],
+    wcT:"World Cup 2026 — Kuabo is ready",wcD:"USA, Canada, Mexico — Kuabo prepares your trip, visa, hotels, tickets and everything for a stress-free World Cup experience.",
     worldTag:"Available worldwide",worldTitle:'Kuabo goes<br/>where you go',
-    featTag:"What Kuabo does",featTitle:'Everything you need,<br/>in one app',
-    f:["Step-by-step guide","World Cup 2026","Smart deadlines","Kuabo AI","Budget & Local life","Global community"],
-    fd:["Moving, tourism or World Cup — Kuabo adapts your roadmap to your exact situation.","Full travel guide for USA, Canada & Mexico. Visa, hotels, tickets, transport — all covered.","Kuabo auto-calculates your deadlines from your arrival date. Never miss one.","Your 24/7 personal assistant. Knows your situation and answers in your language.","Store guides, coupons, smart budget. Save money every week wherever you are.","Thousands of Kuabos sharing tips, jobs and local advice. You're never alone."],
-    fg:["Personalized","USA · Canada · Mexico","Auto-calculated","FR · EN · ES","Save $150/month","Worldwide"],
-    socTag:"Community",socTitle:'Follow us,<br/>stay informed',socSub:"News, immigration tips, travel guides, launch date — all on our socials.",
+    socTag:"Community",socTitle:'Follow us,<br/>stay informed',socSub:"News, immigration tips, launch date — all on our socials.",
     ctaT:"Don't miss the launch",ctaS:"Join the first people to get Kuabo. We'll email you the moment the app goes live.",ctaCl:"people are already waiting",ctaBtn:"Notify me 🚀",
-    stT:"Coming soon!",stD:"Kuabo is coming very soon to App Store and Google Play. Sign up to be the first to know!",
+    stT:"Coming soon!",stD:"Kuabo is coming very soon to App Store and Google Play. Sign up to be the first!",
     fPriv:"Privacy",fTerm:"Terms",footerTag:"Build your life anywhere. 🌍",
-    ds0t:"Your roadmap",ds0d:"5 phases, from arrival to citizenship. Check each step — Kuabo tracks your progress.",
-    ds1t:"Smart deadlines",ds1d:"Kuabo auto-calculates your most urgent steps. SSN always comes first.",
-    ds2t:"World Cup 2026 🏆",ds2d:"Going to the World Cup? Kuabo guides you for all 3 host countries.",
-    ds3t:"That's just the beginning",ds3d:"Jobs, community, budget, AI — all in one app. Be the first to know when we launch.",
-    skip:"Skip",next:"Next →",nextLast:"Get notified →"
+    ds0Score:"⭐ Score 450 · Rank: Explorer",ds0t:"Your roadmap",ds0d:"5 phases from arrival to citizenship. Check each step — Kuabo tracks your progress and rewards you with points.",
+    ds1t:"Smart deadlines",ds1d:"Kuabo auto-calculates every deadline from your arrival date. SSN in 10 days, bank in 14, taxes in 90.",ds1l:"⏱ Urgent deadline",ds1ssn:"Social Security Number",ds1days:"days left · Jan 24",ds1next:"🏦 Bank — 14 days · 🚗 DMV — 45 days",ds1done:"Done ✅",ds1guide:"Guide 📖",
+    ds2t:"Budget & Stores",ds2d:"Monthly budget by US state + store guide. Walmart, Aldi, Target, Costco, CVS — where to shop and how to save $150/month from day one.",ds2rent:"🏠 Rent",ds2food:"🛒 Food",ds2save:"💰 Savings",ds2shops:"WHERE TO SHOP",
+    ds3t:"That's just the beginning",ds3d:"AI assistant, community, Army guide, services map, jobs — all in one app. Be the first to know when we launch.",
   },
   fr:{
-    badge:"Bientôt disponible partout",
-    h1:'Voyage. Installe-toi.<br/><span class="g">Vis</span> ta vie <span class="t">n\'importe où.</span>',
+    badge:"Bientôt disponible partout",h1:'Voyage. Installe-toi.<br/><span class="g">Vis</span> ta vie <span class="t">n\'importe où.</span>',
     sub:"Que tu t'installes aux USA, que tu voyages pour la Coupe du Monde 2026, ou que tu commences une nouvelle vie — Kuabo te guide étape par étape, après ton visa.",
     chips:["Coupe du Monde 2026","DV Lottery","Tourisme","Visa travail","US Army","Étudiant"],
-    urgT:"🔥 L'app arrive très bientôt",urgS:"Inscris-toi maintenant — sois parmi les premiers",btn:"Me notifier 🚀",cline:"personnes attendent déjà",demoBtn:"Voir un aperçu rapide",
-    s1l:"Bientôt sur",s2l:"Bientôt sur",navApp:"Essayer l'app →",
-    scTag:"Aperçu de l'app",scTitle:"Un avant-goût de ce qui arrive",scSub:"Conçu pour les vrais gens — immigrants, voyageurs, fans de la Coupe du Monde.",
+    urgT:"🔥 L'app arrive très bientôt",urgS:"Inscris-toi maintenant — sois parmi les premiers",btn:"Me notifier 🚀",cline:"personnes attendent déjà",
+    demoBtn:"Voir un aperçu rapide",navBtn:"👁️ Voir l'app",s1l:"Bientôt sur",s2l:"Bientôt sur",
+    scTag:"Aperçu de l'app",scTitle:"Un avant-goût de ce qui arrive",scSub:"Simple, personnel, puissant. Fait pour de vrais immigrants — pas des robots administratifs.",scNote:"👆 Glisse pour explorer · L'app complète arrive bientôt",
+    scLock:"Bientôt disponible 🔒",
+    phPhase:"🚀 Phase 1 — Atterrissage",phP:"Complété",phS:"Score",phB:"Streak",phDl:"⏱ Deadline urgente",phSsn:"Numéro de Sécurité Sociale",phDays:"jours restants",
+    budLbl:"Économies mensuelles",budSub:"vs immigrant moyen",budStores:"Où faire ses courses",budApps:"Apps pour économiser",
+    featTag:"Dans Kuabo",featH2:"Les fonctionnalités que tu vas<br/>vraiment utiliser chaque jour",
+    c1t:"⏱ Deadlines intelligentes",c1d:"Kuabo calcule automatiquement chaque deadline depuis ta date d'arrivée. SSN dans 10 jours, banque dans 14, taxes dans 90. Ne rate plus rien.",
+    c2t:"⭐ Kuabo Score & Badges",c2d:"Chaque étape complétée rapporte des points et débloque des badges. Ton immigration devient un défi personnel — motivant, pas stressant.",
+    c3t:"💰 Calculateur Budget & Magasins",c3d:"Budget mensuel par état US, guide des magasins (Walmart, Aldi, Target, Costco, CVS), apps d'économies — tout pour dépenser intelligemment dès le premier jour.",
+    c4t:"🤖 Assistant Kuabo AI",c4d:"Pose n'importe quelle question, obtiens une réponse adaptée à ta situation exacte. SSN, banque, logement, taxes — disponible 24h/24 en français, anglais et espagnol.",
+    c5t:"🎖️ Guide US Army",c5d:"Pour les détenteurs DV qui pensent à l'Army — naturalisation en 1 an, localisateur de bases, guide ASVAB, info salaires. Tout expliqué clairement.",
+    c6t:"📍 Carte des Services",c6d:"SSA, DMV, USCIS, banques, cliniques — tous localisés près de toi en temps réel. Horaires, distance, itinéraire. Plus besoin de chercher sur Google pendant des heures.",
     notlotTag:"Important",notlotH2:"Kuabo n'est PAS une app de loterie visa.",notlotSub:"Kuabo commence là où ton visa s'arrête. On t'accompagne pour tout ce qui vient après.",
-    cmpNoHdr:"Kuabo ne fait PAS",cmpYesHdr:"Kuabo fait",
-    cno:["Participer à la DV Lottery","Déposer ta candidature visa","Traiter des dossiers légaux","Remplacer un avocat"],
-    cyes:["Te guider après l'obtention du visa","Organiser toutes tes démarches post-arrivée","Suivre les deadlines — SSN, banque, taxes…","IA, carte des services, communauté"],
-    whoTag:"Pour qui",whoH2:"Pour tous les immigrants,<br/>quelle que soit ta situation",whoSub:"DV Lottery, visa travail, famille, Army, étudiant — Kuabo s'adapte à ta situation et à ton pays.",
-    who:[["DV Lottery","Gagnants Diversity Visa — guide complet dès le premier jour"],["Visa travail","H-1B, L-1, O-1, TN — intégration professionnelle"],["Famille","I-130, Fiancé(e) — rejoindre tes proches"],["US Army","Soldats & familles DV — naturalisation accélérée"],["Étudiants","F-1, OPT, STEM — vie étudiante à l'international"],["Réfugiés & Asile","Statuts humanitaires — accompagnement adapté"]],
+    cnoHdr:"Kuabo ne fait PAS",cyesHdr:"Kuabo fait",
+    cno:["Participer à la DV Lottery","Déposer ta candidature visa","Gérer des dossiers légaux","Remplacer un avocat"],
+    cyes:["Te guider après l'obtention du visa","Suivre les deadlines — SSN, banque, taxes","IA dans ta langue 24h/24","Carte services, budget, communauté, Army"],
+    whoTag:"Pour qui",whoH2:"Pour tous les immigrants,<br/>quelle que soit ta situation",whoSub:"DV Lottery, visa travail, famille, Army, étudiant, réfugié — Kuabo s'adapte à toi.",
+    who:[["DV Lottery","Diversity Visa — guide complet dès le premier jour"],["Visa travail","H-1B, L-1, O-1, TN — intégration pro"],["Famille","I-130, Fiancé(e) — rejoindre tes proches"],["US Army","Soldats & DV — naturalisation en 1 an"],["Étudiants","F-1, OPT, STEM — vie étudiante à l'étranger"],["Réfugiés","Statuts humanitaires — accompagnement adapté"]],
     howTag:"Comment ça marche",howH2:"3 étapes,<br/>tout devient simple",
-    steps:[["Tu crées ton profil","Tu indiques ton visa, ta date d'arrivée et ta situation. Kuabo calcule tout automatiquement."],["Ton parcours s'active","Les étapes s'organisent par priorité avec des deadlines précises. Tu coches au fur et à mesure."],["Tu avances guidé","Guides détaillés, carte des services, Kuabo AI, communauté — tu n'es plus jamais seul."]],
+    steps:[["Tu crées ton profil","Visa, date d'arrivée, état. Kuabo calcule tout automatiquement."],["Ton parcours s'active","Étapes par priorité avec deadlines précises. Tu coches au fur et à mesure."],["Tu avances guidé","IA, carte des services, guide magasins, communauté — plus jamais seul."]],
     wcT:"Coupe du Monde 2026 — Kuabo est là",wcD:"USA, Canada, Mexique — Kuabo prépare ton voyage, visa, hôtels, billets et tout pour une expérience sans stress.",
     worldTag:"Disponible partout",worldTitle:'Kuabo va là<br/>où tu vas',
-    featTag:"Ce que fait Kuabo",featTitle:'Tout ce dont tu as besoin,<br/>dans une seule app',
-    f:["Guide étape par étape","Coupe du Monde 2026","Deadlines intelligentes","Kuabo AI","Budget & Vie locale","Communauté mondiale"],
-    fd:["Installation, tourisme ou Coupe du Monde — Kuabo adapte ton guide à ta situation.","Guide complet pour USA, Canada et Mexique. Visa, hôtels, billets, transport.","Kuabo calcule automatiquement tes échéances depuis ta date d'arrivée.","Ton assistant personnel 24h/24. Il connaît ta situation et répond dans ta langue.","Guides magasins, coupons, budget intelligent. Économise chaque semaine.","Des milliers de Kuabos partagent leurs bons plans, emplois et conseils."],
-    fg:["Personnalisé","USA · Canada · Mexique","Auto-calculé","FR · EN · ES","Économise 150$/mois","Partout dans le monde"],
-    socTag:"Communauté",socTitle:'Suis-nous,<br/>reste informé',socSub:"Actualités, tips voyage et immigration, date de lancement — tout est là.",
+    socTag:"Communauté",socTitle:'Suis-nous,<br/>reste informé',socSub:"Actualités, tips immigration, date de lancement — tout sur nos réseaux.",
     ctaT:"Ne rate pas le lancement",ctaS:"Rejoins les premiers à recevoir Kuabo. On t'envoie un email dès que l'app est disponible.",ctaCl:"personnes attendent déjà",ctaBtn:"Me notifier 🚀",
     stT:"Bientôt disponible !",stD:"L'app Kuabo arrive très prochainement sur App Store et Google Play. Inscris-toi !",
     fPriv:"Confidentialité",fTerm:"Conditions",footerTag:"Construis ta vie partout. 🌍",
-    ds0t:"Ta feuille de route",ds0d:"5 phases, de l'atterrissage à la citoyenneté. Coche chaque étape — Kuabo suit ta progression.",
-    ds1t:"Deadlines intelligentes",ds1d:"Kuabo calcule automatiquement tes étapes les plus urgentes. Le SSN est toujours en premier.",
-    ds2t:"Coupe du Monde 2026 🏆",ds2d:"Tu vas à la Coupe du Monde ? Kuabo te guide pour les 3 pays hôtes.",
-    ds3t:"C'est juste le début",ds3d:"Jobs, communauté, budget, IA — tout en une app. Sois le premier à savoir quand on lance.",
-    skip:"Passer",next:"Suivant →",nextLast:"Être notifié →"
+    ds0Score:"⭐ Score 450 · Rang : Explorer",ds0t:"Ta feuille de route",ds0d:"5 phases de l'atterrissage à la citoyenneté. Coche chaque étape — Kuabo suit ta progression et te récompense.",
+    ds1t:"Deadlines intelligentes",ds1d:"Kuabo calcule automatiquement chaque deadline depuis ta date d'arrivée. SSN dans 10 jours, banque dans 14, taxes dans 90.",ds1l:"⏱ Deadline urgente",ds1ssn:"Numéro de Sécurité Sociale",ds1days:"jours restants · 24 jan",ds1next:"🏦 Banque — 14 jours · 🚗 DMV — 45 jours",ds1done:"Fait ✅",ds1guide:"Guide 📖",
+    ds2t:"Budget & Magasins",ds2d:"Budget mensuel par état US + guide des magasins. Walmart, Aldi, Target, Costco, CVS — où faire ses courses et économiser 150$/mois dès le premier jour.",ds2rent:"🏠 Loyer",ds2food:"🛒 Nourriture",ds2save:"💰 Épargne",ds2shops:"OÙ FAIRE SES COURSES",
+    ds3t:"C'est juste le début",ds3d:"IA, communauté, guide Army, carte services, emplois — tout en une app. Sois le premier à savoir quand on lance.",
   },
   es:{
-    badge:"Próximamente en todo el mundo",
-    h1:'Viaja. Instálate.<br/><span class="g">Vive</span> tu vida <span class="t">donde quieras.</span>',
+    badge:"Próximamente en todo el mundo",h1:'Viaja. Instálate.<br/><span class="g">Vive</span> tu vida <span class="t">donde quieras.</span>',
     sub:"Ya sea que te mudes a EE.UU., viajes por la Copa del Mundo 2026, o empieces una nueva vida — Kuabo te guía paso a paso, después de tu visa.",
     chips:["Copa del Mundo 2026","Lotería DV","Turismo","Visa trabajo","US Army","Estudiante"],
-    urgT:"🔥 La app llega muy pronto",urgS:"Regístrate ahora — sé de los primeros",btn:"Notificarme 🚀",cline:"personas ya esperan",demoBtn:"Ver una vista previa",
-    s1l:"Próximamente en",s2l:"Próximamente en",navApp:"Probar la app →",
-    scTag:"Vista previa de la app",scTitle:"Un vistazo de lo que viene",scSub:"Diseñado para personas reales — inmigrantes, viajeros, fans de la Copa del Mundo.",
-    notlotTag:"Importante",notlotH2:"Kuabo NO es una app de lotería de visas.",notlotSub:"Kuabo empieza donde termina tu visa. Te guiamos en todo lo que viene después.",
-    cmpNoHdr:"Kuabo NO hace",cmpYesHdr:"Kuabo HACE",
-    cno:["Participar en la Lotería DV","Presentar tu solicitud de visa","Gestionar casos legales de inmigración","Reemplazar a un abogado"],
-    cyes:["Guiarte tras obtener tu visa","Organizar todos tus trámites post-llegada","Seguir plazos — SSN, banco, impuestos…","IA, mapa de servicios, comunidad"],
-    whoTag:"Para quién",whoH2:"Para todos los inmigrantes,<br/>sin importar tu situación",whoSub:"Lotería DV, visa de trabajo, familia, Army, estudiante — Kuabo se adapta a tu situación y país.",
-    who:[["Lotería DV","Ganadores Diversity Visa — guía completa desde el primer día"],["Visa trabajo","H-1B, L-1, O-1, TN — integración profesional"],["Familia","I-130, Prometido(a) — reunirte con tus seres queridos"],["US Army","Soldados & familias DV — naturalización acelerada"],["Estudiantes","F-1, OPT, STEM — vida estudiantil internacional"],["Refugiados & Asilo","Estatus humanitario — acompañamiento adaptado"]],
+    urgT:"🔥 La app llega muy pronto",urgS:"Regístrate ahora — sé de los primeros",btn:"Notificarme 🚀",cline:"personas ya esperan",
+    demoBtn:"Ver una vista previa",navBtn:"👁️ Ver la app",s1l:"Próximamente en",s2l:"Próximamente en",
+    scTag:"Vista previa de la app",scTitle:"Un vistazo de lo que viene",scSub:"Simple, personal, poderoso. Hecho para inmigrantes reales.",scNote:"👆 Desliza para explorar · App completa próximamente",
+    scLock:"Próximamente 🔒",
+    phPhase:"🚀 Fase 1 — Llegada",phP:"Hecho",phS:"Score",phB:"Racha",phDl:"⏱ Plazo urgente",phSsn:"Número de Seguridad Social",phDays:"días restantes",
+    budLbl:"Ahorros mensuales",budSub:"vs inmigrante promedio",budStores:"Dónde comprar",budApps:"Apps para ahorrar",
+    featTag:"Dentro de Kuabo",featH2:"Las funciones que<br/>usarás cada día",
+    c1t:"⏱ Plazos Inteligentes",c1d:"Kuabo calcula automáticamente cada plazo desde tu fecha de llegada. SSN en 10 días, banco en 14, impuestos en 90. Nunca te pierdas nada.",
+    c2t:"⭐ Kuabo Score & Insignias",c2d:"Cada paso que completas gana puntos y desbloquea insignias. Tu inmigración se convierte en un reto personal — motivador, no estresante.",
+    c3t:"💰 Calculadora Presupuesto & Tiendas",c3d:"Presupuesto mensual por estado de EE.UU., guía de tiendas (Walmart, Aldi, Target, Costco, CVS) — todo para gastar inteligente desde el primer día.",
+    c4t:"🤖 Asistente Kuabo AI",c4d:"Pregunta lo que sea, obtén una respuesta adaptada a tu situación. SSN, banco, vivienda, impuestos — disponible 24/7 en francés, inglés y español.",
+    c5t:"🎖️ Guía US Army",c5d:"Para titulares de DV que piensan en el Army — naturalización en 1 año, localizador de bases, guía ASVAB, info de salarios. Todo explicado claramente.",
+    c6t:"📍 Mapa de Servicios",c6d:"SSA, DMV, USCIS, bancos, clínicas — todos ubicados cerca de ti en tiempo real. Horarios, distancia, itinerario. Sin buscar en Google por horas.",
+    notlotTag:"Importante",notlotH2:"Kuabo NO es una app de lotería de visas.",notlotSub:"Kuabo empieza donde termina tu visa. Te ayudamos con todo lo que viene después.",
+    cnoHdr:"Kuabo NO hace",cyesHdr:"Kuabo HACE",
+    cno:["Participar en la Lotería DV","Presentar tu solicitud de visa","Gestionar casos legales","Reemplazar a un abogado"],
+    cyes:["Guiarte paso a paso después de tu visa","Seguir plazos — SSN, banco, impuestos","IA en tu idioma 24/7","Mapa servicios, presupuesto, comunidad, Army"],
+    whoTag:"Para quién",whoH2:"Para todos los inmigrantes,<br/>sin importar tu situación",whoSub:"Lotería DV, visa trabajo, familia, Army, estudiante, refugiado — Kuabo se adapta a ti.",
+    who:[["Lotería DV","Diversity Visa — guía completa desde el primer día"],["Visa trabajo","H-1B, L-1, O-1, TN — integración profesional"],["Familia","I-130, Prometido(a) — reunirte con tus seres queridos"],["US Army","Soldados & DV — naturalización en 1 año"],["Estudiantes","F-1, OPT, STEM — vida estudiantil en el extranjero"],["Refugiados","Estatus humanitario — acompañamiento adaptado"]],
     howTag:"Cómo funciona",howH2:"3 pasos,<br/>todo se vuelve simple",
-    steps:[["Crea tu perfil","Cuéntanos tu visa, fecha de llegada y situación. Kuabo lo calcula todo automáticamente."],["Tu hoja de ruta se activa","Los pasos se organizan por prioridad con plazos exactos. Márcalos uno a uno."],["Avanzas con orientación","Guías detalladas, mapa de servicios, Kuabo AI, comunidad — nunca más estás solo."]],
+    steps:[["Crea tu perfil","Visa, fecha de llegada, estado. Kuabo lo calcula todo automáticamente."],["Tu hoja de ruta se activa","Pasos por prioridad con plazos exactos. Márcalos uno a uno."],["Avanzas con orientación","IA, mapa de servicios, guía de tiendas, comunidad — nunca más solo."]],
     wcT:"Copa del Mundo 2026 — Kuabo está listo",wcD:"EE.UU., Canadá, México — Kuabo prepara tu viaje, visa, hoteles, entradas y todo para una experiencia sin estrés.",
     worldTag:"Disponible en todo el mundo",worldTitle:'Kuabo va<br/>donde tú vas',
-    featTag:"Qué hace Kuabo",featTitle:'Todo lo que necesitas,<br/>en una sola app',
-    f:["Guía paso a paso","Copa del Mundo 2026","Fechas límite inteligentes","Kuabo AI","Presupuesto & Vida local","Comunidad mundial"],
-    fd:["Instalación, turismo o Copa del Mundo — Kuabo adapta tu guía a tu situación.","Guía completa para EE.UU., Canadá y México. Visa, hoteles, entradas, transporte.","Kuabo calcula automáticamente tus plazos desde tu fecha de llegada.","Tu asistente personal 24/7. Conoce tu situación y responde en tu idioma.","Guías de tiendas, cupones, presupuesto inteligente. Ahorra cada semana.","Miles de Kuabos comparten consejos, empleos y tips locales."],
-    fg:["Personalizado","EE.UU. · Canadá · México","Auto-calculado","FR · EN · ES","Ahorra 150$/mes","En todo el mundo"],
-    socTag:"Comunidad",socTitle:'Síguenos,<br/>mantente informado',socSub:"Noticias, tips de viaje e inmigración, fecha de lanzamiento — todo aquí.",
-    ctaT:"No te pierdas el lanzamiento",ctaS:"Únete a los primeros en recibir Kuabo. Te avisamos por email cuando la app esté lista.",ctaCl:"personas ya esperan",ctaBtn:"Notificarme 🚀",
+    socTag:"Comunidad",socTitle:'Síguenos,<br/>mantente informado',socSub:"Noticias, tips de inmigración, fecha de lanzamiento — todo en nuestras redes.",
+    ctaT:"No te pierdas el lanzamiento",ctaS:"Únete a los primeros en recibir Kuabo. Te avisamos cuando la app esté lista.",ctaCl:"personas ya esperan",ctaBtn:"Notificarme 🚀",
     stT:"¡Próximamente!",stD:"La app Kuabo llega muy pronto a App Store y Google Play. ¡Regístrate!",
     fPriv:"Privacidad",fTerm:"Términos",footerTag:"Construye tu vida en cualquier lugar. 🌍",
-    ds0t:"Tu hoja de ruta",ds0d:"5 fases, del aterrizaje a la ciudadanía. Marca cada paso — Kuabo sigue tu progreso.",
-    ds1t:"Fechas límite inteligentes",ds1d:"Kuabo calcula automáticamente tus pasos más urgentes. El SSN siempre primero.",
-    ds2t:"Copa del Mundo 2026 🏆",ds2d:"¿Vas a la Copa del Mundo? Kuabo te guía para los 3 países anfitriones.",
-    ds3t:"Eso es solo el comienzo",ds3d:"Empleos, comunidad, presupuesto, IA — todo en una app. Sé el primero en saberlo.",
-    skip:"Saltar",next:"Siguiente →",nextLast:"Ser notificado →"
+    ds0Score:"⭐ Score 450 · Rango: Explorer",ds0t:"Tu hoja de ruta",ds0d:"5 fases del aterrizaje a la ciudadanía. Marca cada paso — Kuabo sigue tu progreso y te recompensa.",
+    ds1t:"Plazos inteligentes",ds1d:"Kuabo calcula automáticamente cada plazo desde tu fecha de llegada. SSN en 10 días, banco en 14, impuestos en 90.",ds1l:"⏱ Plazo urgente",ds1ssn:"Número de Seguridad Social",ds1days:"días restantes · 24 ene",ds1next:"🏦 Banco — 14 días · 🚗 DMV — 45 días",ds1done:"Hecho ✅",ds1guide:"Guía 📖",
+    ds2t:"Presupuesto & Tiendas",ds2d:"Presupuesto mensual por estado + guía de tiendas. Walmart, Aldi, Target, Costco, CVS — dónde comprar y cómo ahorrar $150/mes desde el primer día.",ds2rent:"🏠 Alquiler",ds2food:"🛒 Comida",ds2save:"💰 Ahorros",ds2shops:"DÓNDE COMPRAR",
+    ds3t:"Eso es solo el comienzo",ds3d:"IA, comunidad, guía Army, mapa servicios, empleos — todo en una app. Sé el primero en saberlo.",
   }
 };
 
@@ -683,43 +905,33 @@ function setL(l){
   const t=TX[l];
   const s=(id,v,html)=>{const el=document.getElementById(id);if(el){if(html)el.innerHTML=v;else el.textContent=v;}};
   s("badge-txt",t.badge);s("h1",t.h1,true);s("sub",t.sub);
-  document.querySelectorAll(".c-wc").forEach(e=>e.textContent=t.chips[0]);
-  document.querySelectorAll(".c-dv").forEach(e=>e.textContent=t.chips[1]);
-  document.querySelectorAll(".c-to").forEach(e=>e.textContent=t.chips[2]);
-  document.querySelectorAll(".c-wk").forEach(e=>e.textContent=t.chips[3]);
-  document.querySelectorAll(".c-ar").forEach(e=>e.textContent=t.chips[4]);
-  document.querySelectorAll(".c-st").forEach(e=>e.textContent=t.chips[5]);
+  ["wc","dv","to","wk","ar","st"].forEach((k,i)=>document.querySelectorAll(".c-"+k).forEach(e=>e.textContent=t.chips[i]));
   s("urg-t",t.urgT);s("urg-s",t.urgS);
   ["hero","cta","store","demo"].forEach(id=>{const b=document.getElementById("eb-"+id);if(b)b.textContent=id==="cta"?t.ctaBtn:t.btn;});
   s("cline-t",t.cline);s("cta-cl",t.ctaCl);s("demo-btn-t",t.demoBtn);
+  const nb=document.getElementById("nav-app-btn");if(nb)nb.textContent=t.navBtn;
   s("s1l",t.s1l);s("s2l",t.s2l);
-  const na=document.getElementById("nav-app-btn");if(na)na.textContent=t.navApp;
-  s("sc-tag",t.scTag);s("sc-title",t.scTitle);s("sc-sub",t.scSub);
-  // Not lottery
+  s("sc-tag",t.scTag);s("sc-title",t.scTitle);s("sc-sub",t.scSub);s("sc-note",t.scNote);s("sc-lock",t.scLock);
+  s("ph-phase",t.phPhase);s("ph-p",t.phP);s("ph-s",t.phS);s("ph-b",t.phB);s("ph-dl",t.phDl);s("ph-ssn",t.phSsn);s("ph-days",t.phDays);
+  s("bud-lbl",t.budLbl);s("bud-sub",t.budSub);s("bud-stores",t.budStores);s("bud-apps",t.budApps);
+  s("feat-tag",t.featTag);s("feat-h2",t.featH2,true);
+  for(let i=1;i<=6;i++){s("c"+i+"t",t["c"+i+"t"]);s("c"+i+"d",t["c"+i+"d"]);}
   s("notlot-tag",t.notlotTag);s("notlot-h2",t.notlotH2);s("notlot-sub",t.notlotSub);
-  s("cmp-no-hdr",t.cmpNoHdr);s("cmp-yes-hdr",t.cmpYesHdr);
-  t.cno.forEach((v,i)=>s("cno"+(i+1),v));
-  t.cyes.forEach((v,i)=>s("cyes"+(i+1),v));
-  // Who
+  s("cno-hdr",t.cnoHdr);s("cyes-hdr",t.cyesHdr);
+  t.cno.forEach((v,i)=>s("cno"+(i+1),v));t.cyes.forEach((v,i)=>s("cyes"+(i+1),v));
   s("who-tag",t.whoTag);s("who-h2",t.whoH2,true);s("who-sub",t.whoSub);
   t.who.forEach((v,i)=>{s("w"+(i+1)+"t",v[0]);s("w"+(i+1)+"d",v[1]);});
-  // How
   s("how-tag",t.howTag);s("how-h2",t.howH2,true);
   t.steps.forEach((v,i)=>{s("s"+(i+1)+"t",v[0]);s("s"+(i+1)+"d",v[1]);});
-  s("wc-t",t.wcT);s("wc-d",t.wcD);
-  s("world-tag",t.worldTag);s("world-title",t.worldTitle,true);
-  s("feat-tag",t.featTag);s("feat-title",t.featTitle,true);
-  for(let i=1;i<=6;i++){s(`f${i}t`,t.f[i-1]);s(`f${i}d`,t.fd[i-1]);s(`f${i}g`,t.fg[i-1]);}
+  s("wc-t",t.wcT);s("wc-d",t.wcD);s("world-tag",t.worldTag);s("world-title",t.worldTitle,true);
   s("soc-tag",t.socTag);s("soc-title",t.socTitle,true);s("soc-sub",t.socSub);
   s("cta-t",t.ctaT);s("cta-s",t.ctaS);s("st-t",t.stT);s("st-d",t.stD);
   s("f-priv",t.fPriv);s("f-terms",t.fTerm);s("footer-tag",t.footerTag);
-  s("ds0-t",t.ds0t);s("ds0-d",t.ds0d);s("ds1-t",t.ds1t);s("ds1-d",t.ds1d);
-  s("ds2-t2",t.ds2t);s("ds2-d",t.ds2d);s("ds3-t",t.ds3t);s("ds3-d",t.ds3d);
-  document.querySelectorAll(".demo-skip").forEach(e=>e.textContent=t.skip);
-  document.querySelectorAll(".demo-next").forEach((e,i)=>{e.textContent=i===2?t.nextLast:t.next;});
-  document.querySelectorAll("input[type='email']").forEach(inp=>{
-    inp.placeholder=l==="fr"?"Ton adresse email":l==="es"?"Tu dirección de email":"Your email address";
-  });
+  s("ds0-score",t.ds0Score);s("ds0-t",t.ds0t);s("ds0-d",t.ds0d);
+  s("ds1-t",t.ds1t);s("ds1-d",t.ds1d);s("ds1-l",t.ds1l);s("ds1-ssn",t.ds1ssn);s("ds1-days",t.ds1days);s("ds1-next2",t.ds1next);s("ds1-done",t.ds1done);s("ds1-guide",t.ds1guide);
+  s("ds2-t",t.ds2t);s("ds2-d",t.ds2d);s("ds2-rent",t.ds2rent);s("ds2-food",t.ds2food);s("ds2-save",t.ds2save);s("ds2-shops",t.ds2shops);
+  s("ds3-t",t.ds3t);s("ds3-d",t.ds3d);
+  document.querySelectorAll("input[type='email']").forEach(inp=>{inp.placeholder=l==="fr"?"Ton adresse email":l==="es"?"Tu dirección de email":"Your email address";});
 }
 
 const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add("vis");obs.unobserve(e.target);}});},{threshold:.1});
