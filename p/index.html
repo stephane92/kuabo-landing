@@ -251,41 +251,74 @@ async function loadProfile() {
   const { token, username } = getParams();
   if (!token && !username) { showError(); return; }
 
-  try {
-    let snap;
+  // Timeout de sécurité — si rien après 8s → erreur
+  const timeout = setTimeout(() => showError(), 8000);
 
-    // Priorité 1 : token secret (lien sécurisé)
+  try {
+    let snap = null;
+
+    // Priorité 1 : token secret
     if (token) {
-      snap = await getDocs(query(
-        collection(db, 'users'),
-        where('profileToken', '==', token),
-        limit(1)
-      ));
+      console.log('Recherche par token:', token);
+      try {
+        snap = await getDocs(query(
+          collection(db, 'users'),
+          where('profileToken', '==', token),
+          limit(1)
+        ));
+        console.log('Token result:', snap.size, 'docs');
+      } catch(e) { console.warn('Token query failed:', e); }
     }
 
-    // Priorité 2 : username exact
-    if (!snap || snap.empty) {
-      snap = await getDocs(query(
-        collection(db, 'users'),
-        where('username', '==', username),
-        limit(1)
-      ));
+    // Priorité 2 : username
+    if ((!snap || snap.empty) && username) {
+      console.log('Recherche par username:', username);
+      try {
+        snap = await getDocs(query(
+          collection(db, 'users'),
+          where('username', '==', username),
+          limit(1)
+        ));
+        console.log('Username result:', snap?.size, 'docs');
+      } catch(e) { console.warn('Username query failed:', e); }
     }
 
     // Priorité 3 : nameLower
-    if (snap.empty) {
-      snap = await getDocs(query(
-        collection(db, 'users'),
-        where('nameLower', '==', (username||'').replace(/-/g,' ').toLowerCase()),
-        limit(1)
-      ));
+    if ((!snap || snap.empty) && username) {
+      const nl = username.replace(/-/g, ' ').toLowerCase();
+      console.log('Recherche par nameLower:', nl);
+      try {
+        snap = await getDocs(query(
+          collection(db, 'users'),
+          where('nameLower', '==', nl),
+          limit(1)
+        ));
+        console.log('nameLower result:', snap?.size, 'docs');
+      } catch(e) { console.warn('nameLower query failed:', e); }
     }
 
-    if (snap.empty) { showError(); return; }
+    clearTimeout(timeout);
+
+    if (!snap || snap.empty) {
+      // Si le token ne trouve rien → le token n'est pas encore dans Firebase
+      // Afficher un message explicatif au lieu d'une erreur générique
+      if (token) {
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('error').innerHTML = `
+          <h2>Profil en cours d'activation</h2>
+          <p style="margin-bottom:8px">Ouvre l'app Kuabo une fois pour activer ton profil public.</p>
+          <p style="font-size:12px;opacity:0.5;margin-bottom:20px">Le lien sera actif dans quelques instants.</p>
+          <a href="https://kuabo.co">← kuabo.co</a>`;
+        document.getElementById('error').style.display = 'block';
+      } else {
+        showError();
+      }
+      return;
+    }
 
     const data = snap.docs[0].data();
 
-    // Vérifier que le profil est public (sauf accès par token)
+    // Vérifier profil public (sauf si accès par token)
     if (!token && data.profilePublic === 'false') {
       showPrivate(); return;
     }
@@ -293,7 +326,8 @@ async function loadProfile() {
     renderProfile(data, username || token || '');
 
   } catch(e) {
-    console.error(e);
+    clearTimeout(timeout);
+    console.error('loadProfile error:', e);
     showError();
   }
 }
