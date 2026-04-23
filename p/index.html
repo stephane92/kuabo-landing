@@ -3,39 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Open Graph — rempli dynamiquement par JS -->
-  <meta id="og-title"   property="og:title"       content="Kuabo — Global Mover">
-  <meta id="og-desc"    property="og:description" content="Rejoins-moi sur Kuabo !">
-  <meta id="og-image"   property="og:image"        content="https://kuabo.co/og-bird.png">
-  <meta                 property="og:type"         content="profile">
-  <meta id="og-url"     property="og:url"          content="https://kuabo.co/p/">
-  <meta                 name="twitter:card"        content="summary_large_image">
-
+  <meta id="og-title" property="og:title" content="Kuabo — Global Mover">
+  <meta id="og-desc"  property="og:description" content="Rejoins-moi sur Kuabo !">
+  <meta id="og-image" property="og:image" content="https://kuabo.co/og-bird.png">
+  <meta property="og:type" content="profile">
+  <meta id="og-url" property="og:url" content="https://kuabo.co/p/">
+  <meta name="twitter:card" content="summary_large_image">
   <title id="page-title">Kuabo — Profil</title>
-
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
-    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0b1526;color:#fff;min-height:100vh;}
-
-    /* ── Loading ── */
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b1526;color:#fff;min-height:100vh;}
     #loading{position:fixed;inset:0;background:#0b1526;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:999;}
-    .bird-load{width:60px;height:60px;animation:bob 1s ease-in-out infinite;}
+    .bird-load{font-size:48px;animation:bob 1s ease-in-out infinite;}
     @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
     #loading p{font-size:14px;color:rgba(255,255,255,0.4);font-weight:600;}
-
-    /* ── Error ── */
     #error{display:none;text-align:center;padding:60px 20px;}
     #error h2{font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;}
-    #error p{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;}
+    #error p{color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;line-height:1.6;}
     #error a{color:#e8b84b;font-weight:700;text-decoration:none;}
-
-    /* ── Hero ── */
+    #private{display:none;text-align:center;padding:60px 20px;}
     #profile{display:none;}
     .hero{background:linear-gradient(180deg,#0f1f3d 0%,#0b1526 100%);padding:60px 20px 0;display:flex;flex-direction:column;align-items:center;position:relative;overflow:hidden;}
-    .hero::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(232,184,75,0.05);}
-
-    /* ── Kuabo Bird ── */
     .bird-wrap{width:80px;height:80px;display:flex;align-items:center;justify-content:center;animation:bob 1.6s ease-in-out infinite;margin-bottom:14px;}
     .bird{width:72px;height:72px;position:relative;display:flex;align-items:center;justify-content:center;}
     .bd,.bh{position:absolute;background:#1a2744;border:2px solid rgba(255,255,255,0.12);border-radius:50%;}
@@ -52,26 +40,21 @@
     .eye{width:13px;height:13px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;}
     .pupil{width:7px;height:7px;background:#1a1a2e;border-radius:50%;}
     .smile{position:absolute;bottom:10px;background:#e8b84b;border-radius:10px;padding:2px 5px;font-size:6px;font-weight:900;color:#1a1a2e;}
-
     .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(232,184,75,0.12);border:1px solid rgba(232,184,75,0.35);border-radius:20px;padding:6px 14px;font-size:12px;font-weight:800;color:#e8b84b;margin-bottom:10px;}
     .uname{font-size:26px;font-weight:900;color:#fff;margin-bottom:4px;}
     .handle{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:4px;}
     .lvltitle{font-size:13px;color:rgba(232,184,75,0.7);font-weight:700;margin-bottom:18px;}
-
     .xp-bar-wrap{width:82%;margin-bottom:0;}
     .xp-labels{display:flex;justify-content:space-between;margin-bottom:5px;}
     .xp-labels span{font-size:11px;color:rgba(255,255,255,0.35);font-weight:600;}
     .xp-val{color:#e8b84b!important;font-weight:800!important;}
     .xp-track{height:7px;background:rgba(255,255,255,0.08);border-radius:6px;overflow:hidden;}
     .xp-fill{height:100%;background:#e8b84b;border-radius:6px;transition:width 1.4s ease-out;}
-
-    .stats-row{width:100%;display:flex;border-top:1px solid rgba(255,255,255,0.06);margin-top:0;}
+    .stats-row{width:100%;display:flex;border-top:1px solid rgba(255,255,255,0.06);}
     .stat{flex:1;padding:16px 6px;text-align:center;border-right:1px solid rgba(255,255,255,0.06);}
     .stat:last-child{border-right:none;}
     .stat-v{font-size:20px;font-weight:900;color:#fff;display:block;}
     .stat-l{font-size:9px;color:rgba(255,255,255,0.35);font-weight:700;margin-top:3px;display:block;}
-
-    /* ── Content ── */
     .content{max-width:480px;margin:0 auto;padding:16px;display:flex;flex-direction:column;gap:12px;}
     .card{background:rgba(255,255,255,0.04);border-radius:18px;padding:16px;border:1.5px solid rgba(255,255,255,0.08);}
     .card-title{font-size:11px;font-weight:900;color:rgba(255,255,255,0.35);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px;}
@@ -79,16 +62,13 @@
     .flag-chip{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,0.06);border-radius:12px;padding:10px;width:56px;border-top:1px solid rgba(255,255,255,0.1);border-bottom:2px solid rgba(0,0,0,0.3);}
     .flag-chip .ff{font-size:26px;}
     .flag-chip .fc{font-size:7px;color:rgba(255,255,255,0.35);font-weight:700;margin-top:4px;}
-
     .score-card{background:rgba(232,184,75,0.06);border:1.5px solid rgba(232,184,75,0.2);border-bottom:3px solid rgba(180,83,9,0.3);border-radius:16px;padding:16px;display:flex;align-items:center;justify-content:space-between;}
     .score-left{display:flex;align-items:center;gap:12px;}
     .score-label{font-size:10px;color:rgba(232,184,75,0.6);font-weight:800;letter-spacing:1px;display:block;}
     .score-val{font-size:24px;font-weight:900;color:#e8b84b;}
     .coins{background:rgba(255,255,255,0.06);border-radius:12px;padding:10px 14px;font-size:13px;font-weight:800;}
-
-    .btn-share{display:flex;align-items:center;justify-content:center;gap:8px;background:#e8b84b;border:none;border-radius:16px;padding:16px;border-top:1.5px solid #fcd34d;border-bottom:4px solid #b45309;font-size:15px;font-weight:900;color:#1a1a2e;cursor:pointer;width:100%;text-decoration:none;}
-    .btn-app{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-bottom:3px solid rgba(0,0,0,0.3);border-radius:16px;padding:14px;font-size:14px;font-weight:800;color:#fff;cursor:pointer;width:100%;text-decoration:none;}
-
+    .btn-share{display:flex;align-items:center;justify-content:center;gap:8px;background:#e8b84b;border:none;border-radius:16px;padding:16px;border-top:1.5px solid #fcd34d;border-bottom:4px solid #b45309;font-size:15px;font-weight:900;color:#1a1a2e;cursor:pointer;width:100%;}
+    .btn-app{display:flex;align-items:center;justify-content:center;gap:8px;background:rgba(255,255,255,0.07);border:1.5px solid rgba(255,255,255,0.12);border-bottom:3px solid rgba(0,0,0,0.3);border-radius:16px;padding:14px;font-size:14px;font-weight:800;color:#fff;width:100%;text-decoration:none;}
     .dl-banner{background:linear-gradient(135deg,#1a2744,#0f1f3d);border:1.5px solid rgba(232,184,75,0.2);border-radius:18px;padding:20px;text-align:center;}
     .dl-banner h3{font-size:16px;font-weight:900;margin-bottom:6px;}
     .dl-banner p{font-size:12px;color:rgba(255,255,255,0.5);margin-bottom:14px;line-height:1.6;}
@@ -101,34 +81,29 @@
 </head>
 <body>
 
-<!-- Loading -->
 <div id="loading">
   <div class="bird-load">🐦</div>
   <p>Chargement du profil...</p>
 </div>
 
-<!-- Erreur -->
 <div id="error">
   <h2>Profil introuvable</h2>
   <p>Ce profil Kuabo n'existe pas ou a été supprimé.</p>
   <a href="https://kuabo.co">← Retour à kuabo.co</a>
 </div>
 
-<!-- Profil privé -->
-<div id="private" style="display:none;text-align:center;padding:60px 20px;">
+<div id="private">
   <div style="font-size:48px;margin-bottom:16px;">🔒</div>
-  <h2 style="font-size:22px;font-weight:900;color:#fff;margin-bottom:8px;">Profil privé</h2>
+  <h2 style="font-size:22px;font-weight:900;margin-bottom:8px;">Profil privé</h2>
   <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;">Cet utilisateur a choisi de garder son profil privé.</p>
   <a href="https://kuabo.co" style="color:#e8b84b;font-weight:700;text-decoration:none;">← Découvrir Kuabo</a>
 </div>
 
-<!-- Profil -->
 <div id="profile">
   <div class="hero">
     <div class="bird-wrap">
       <div class="bird">
-        <div class="bd"></div>
-        <div class="bh"></div>
+        <div class="bd"></div><div class="bh"></div>
         <div class="crown"><i></i><i></i><i></i></div>
         <div class="gem"></div>
         <div class="eyes">
@@ -150,19 +125,17 @@
       <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
     </div>
     <div class="stats-row">
-      <div class="stat"><span class="stat-v" id="s-pays">—</span><span class="stat-l" id="s-pays-l">Pays</span></div>
+      <div class="stat"><span class="stat-v" id="s-pays">—</span><span class="stat-l">Pays</span></div>
       <div class="stat"><span class="stat-v" id="s-cont">—</span><span class="stat-l">Continents</span></div>
       <div class="stat"><span class="stat-v" id="s-streak">—</span><span class="stat-l">Streak</span></div>
       <div class="stat"><span class="stat-v" id="s-xp">—</span><span class="stat-l">XP</span></div>
     </div>
   </div>
-
   <div class="content">
-    <div class="card" id="passport-card">
+    <div class="card">
       <div class="card-title">🛂 Pays visités</div>
       <div class="flags" id="flags-wrap"></div>
     </div>
-
     <div class="score-card">
       <div class="score-left">
         <span style="font-size:24px">🏆</span>
@@ -173,10 +146,8 @@
       </div>
       <div class="coins" id="coins-val">🪙 —</div>
     </div>
-
     <button class="btn-share" id="btn-share">📤 Partager ce profil</button>
     <a class="btn-app" href="https://kuabo.co">🐦 Ouvrir Kuabo</a>
-
     <div class="dl-banner">
       <h3>🐦 Rejoins Kuabo !</h3>
       <p>Explore le monde, gagne des XP, construis ton passeport numérique. Gratuit.</p>
@@ -185,13 +156,9 @@
         <a class="dl-btn" href="https://kuabo.co">🤖 Android</a>
       </div>
     </div>
-
     <div class="formula">Score = XP×2 + Pays×50 + Streak×10 + Invitations×30</div>
   </div>
-
-  <div class="footer">
-    <a href="https://kuabo.co">kuabo.co</a> · Global Mover Platform · 2026
-  </div>
+  <div class="footer"><a href="https://kuabo.co">kuabo.co</a> · Global Mover Platform · 2026</div>
 </div>
 
 <script type="module">
@@ -200,136 +167,128 @@ import { getFirestore, collection, query, where, getDocs, limit }
   from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const db = getFirestore(initializeApp({
-  apiKey:            "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
-  authDomain:        "kuabo-42d9c.firebaseapp.com",
-  projectId:         "kuabo-42d9c",
-  storageBucket:     "kuabo-42d9c.firebasestorage.app",
-  messagingSenderId: "774805697",
-  appId:             "1:774805697:web:1fa1a94076fd8e7c8f5c40"
+  apiKey:"AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
+  authDomain:"kuabo-42d9c.firebaseapp.com",
+  projectId:"kuabo-42d9c",
+  storageBucket:"kuabo-42d9c.firebasestorage.app",
+  messagingSenderId:"774805697",
+  appId:"1:774805697:web:1fa1a94076fd8e7c8f5c40"
 }));
 
-// ── Données statiques ──────────────────────────────────────────
-const LEVELS = ['Nouveau Arrivant','Installé','Explorateur','Voyageur','Global Mover','Légende'];
-const AFRICA  = ['BJ','SN','CI','CM','GH','NG','MA','TG','ML','GN','CD','KE','ZA','ET','MG','RW','DZ','TN'];
+const LEVELS = ["Nouveau","Installé","Explorateur","Voyageur","Global Mover","Légende"];
 const CONT_MAP = {
-  BJ:'africa',SN:'africa',CI:'africa',CM:'africa',GH:'africa',NG:'africa',MA:'africa',
-  TG:'africa',ML:'africa',GN:'africa',CD:'africa',KE:'africa',ZA:'africa',ET:'africa',
-  FR:'europe',DE:'europe',GB:'europe',BE:'europe',ES:'europe',IT:'europe',PT:'europe',NL:'europe',CH:'europe',
-  US:'americas',CA:'americas',MX:'americas',BR:'americas',AR:'americas',
-  AE:'asia',JP:'asia',CN:'asia',IN:'asia',TR:'asia',
-  AU:'oceania',NZ:'oceania',
+  BJ:"africa",SN:"africa",CI:"africa",CM:"africa",GH:"africa",NG:"africa",MA:"africa",
+  TG:"africa",ML:"africa",GN:"africa",CD:"africa",KE:"africa",ZA:"africa",ET:"africa",
+  FR:"europe",DE:"europe",GB:"europe",BE:"europe",ES:"europe",IT:"europe",PT:"europe",
+  US:"americas",CA:"americas",BR:"americas",MX:"americas",
+  AE:"asia",JP:"asia",CN:"asia",IN:"asia",
+  AU:"oceania",NZ:"oceania"
 };
 
-function getLevel(xp) {
-  if (xp >= 5000) return 5;
-  if (xp >= 2000) return 4;
-  if (xp >= 1000) return 3;
-  if (xp >= 400)  return 2;
-  if (xp >= 100)  return 1;
-  return 0;
-}
-function xpForLevel(lv) { return [0,100,400,1000,2000,5000][lv] || 0; }
-function computeScore(u) {
-  return (u.xp||0)*2 + ((u.visitedCountries||[]).length)*50 + (u.streak||0)*10 + (u.totalInvites||0)*30;
-}
+function getLevel(xp){if(xp>=5000)return 5;if(xp>=2000)return 4;if(xp>=1000)return 3;if(xp>=400)return 2;if(xp>=100)return 1;return 0;}
+function xpForLevel(lv){return[0,100,400,1000,2000,5000][lv]||0;}
+function computeScore(u){return(u.xp||0)*2+((u.visitedCountries||[]).length)*50+(u.streak||0)*10+(u.totalInvites||0)*30;}
 
-// ── Lire le username dans l'URL ────────────────────────────────
-// URL: kuabo.co/p/?u=adannou-ingrid  OU  kuabo.co/p/adannou-ingrid
-function getParams() {
-  const params   = new URLSearchParams(window.location.search);
-  const token    = params.get('t') || null;
-  let   username = params.get('u') || null;
-  if (!username) {
-    const parts = window.location.pathname.split('/').filter(Boolean);
-    const idx   = parts.indexOf('p');
-    if (idx >= 0 && parts[idx+1]) username = parts[idx+1];
-  }
-  return { token, username };
+function showError(){document.getElementById("loading").style.display="none";document.getElementById("error").style.display="block";}
+function showPrivate(){document.getElementById("loading").style.display="none";document.getElementById("private").style.display="block";}
+
+function getParams(){
+  const p=new URLSearchParams(window.location.search);
+  const token=p.get("t")||null;
+  let username=p.get("u")||null;
+  if(!username){const parts=window.location.pathname.split("/").filter(Boolean);const idx=parts.indexOf("p");if(idx>=0&&parts[idx+1])username=parts[idx+1];}
+  return{token,username};
 }
 
-async function loadProfile() {
-  const { token, username } = getParams();
-  if (!token && !username) { showError(); return; }
+function renderProfile(u, slug){
+  const xp=u.xp||0, kuaboins=u.kuaboins||0, streak=u.streak||0;
+  const visited=u.visitedCountries||[], invites=u.totalInvites||0;
+  const level=getLevel(xp), lvlTitle=LEVELS[level]||"Global Mover";
+  const name=u.name||slug, handle="@"+(u.username||slug||"kuabonaute");
+  const score=computeScore(u);
+  const continents=new Set(visited.map(v=>CONT_MAP[v.code]||"other").filter(c=>c!=="other")).size;
+  const xpCur=xp-xpForLevel(level), xpNeed=xpForLevel(level+1)-xpForLevel(level);
+  const pct=xpNeed>0?Math.min(100,Math.round(xpCur/xpNeed*100)):100;
 
-  // Timeout de sécurité — si rien après 8s → erreur
-  const timeout = setTimeout(() => showError(), 8000);
+  // Meta OG
+  const flags=visited.slice(0,8).map(v=>v.flag).join(" ");
+  document.getElementById("og-title").content=name+" — Kuabo Global Mover";
+  document.getElementById("og-desc").content=lvlTitle+" · Niv."+level+" | 🌍 "+visited.length+" pays · "+continents+" continents | ⚡ "+xp+" XP";
+  document.getElementById("page-title").textContent=name+" — Kuabo";
 
-  try {
-    let snap = null;
+  // Remplir DOM
+  document.getElementById("uname").textContent=name;
+  document.getElementById("handle").textContent=handle;
+  document.getElementById("lvltitle").textContent=lvlTitle+" · Niv."+level;
+  document.getElementById("xp-label").textContent="XP → Niv."+(level+1);
+  document.getElementById("xp-val").textContent=xpCur.toLocaleString()+"/"+xpNeed.toLocaleString();
+  document.getElementById("s-pays").textContent=visited.length;
+  document.getElementById("s-cont").textContent=continents;
+  document.getElementById("s-streak").textContent=streak;
+  document.getElementById("s-xp").textContent=xp.toLocaleString();
+  document.getElementById("score-val").textContent=score.toLocaleString();
+  document.getElementById("coins-val").textContent="🪙 "+kuaboins;
 
-    // Priorité 1 : token secret
-    if (token) {
-      console.log('Recherche par token:', token);
-      try {
-        snap = await getDocs(query(
-          collection(db, 'users'),
-          where('profileToken', '==', token),
-          limit(1)
-        ));
-        console.log('Token result:', snap.size, 'docs');
-      } catch(e) { console.warn('Token query failed:', e); }
+  // Badge fondateur
+  if(!u.profileToken&&!u.promoUsed) document.getElementById("badge").style.display="none";
+
+  // Barre XP animée
+  setTimeout(()=>{document.getElementById("xp-fill").style.width=pct+"%";},200);
+
+  // Drapeaux
+  const fw=document.getElementById("flags-wrap");
+  if(visited.length===0){fw.innerHTML="<p style=\"color:rgba(255,255,255,0.3);font-size:13px;\">Aucun pays encore</p>";}
+  else{fw.innerHTML=visited.map(v=>`<div class=\"flag-chip\"><span class=\"ff\">${v.flag}</span><span class=\"fc\">${v.code}</span></div>`).join("");}
+
+  // Bouton partager
+  const url=window.location.href;
+  document.getElementById("btn-share").addEventListener("click",()=>{
+    const msg="Mon profil Kuabo 🐦\n\n"+handle+"\n"+lvlTitle+" · Niv."+level+"\n\n🌍 "+visited.length+" pays · "+continents+" continents\n"+flags+"\n\n⚡ "+xp.toLocaleString()+" XP · 🏆 "+score.toLocaleString()+" pts\n\n"+url;
+    if(navigator.share){navigator.share({title:name+" — Kuabo",text:msg,url});}
+    else{navigator.clipboard?.writeText(msg).then(()=>alert("✅ Copié !"));}
+  });
+
+  // Afficher
+  document.getElementById("loading").style.display="none";
+  document.getElementById("profile").style.display="block";
+}
+
+async function loadProfile(){
+  const{token,username}=getParams();
+  if(!token&&!username){showError();return;}
+  const timeout=setTimeout(()=>showError(),8000);
+  try{
+    let snap=null;
+
+    if(token){
+      try{snap=await getDocs(query(collection(db,"users"),where("profileToken","==",token),limit(1)));}
+      catch(e){console.warn("token err",e);}
     }
-
-    // Priorité 2 : username
-    if ((!snap || snap.empty) && username) {
-      console.log('Recherche par username:', username);
-      try {
-        snap = await getDocs(query(
-          collection(db, 'users'),
-          where('username', '==', username),
-          limit(1)
-        ));
-        console.log('Username result:', snap?.size, 'docs');
-      } catch(e) { console.warn('Username query failed:', e); }
+    if((!snap||snap.empty)&&username){
+      try{snap=await getDocs(query(collection(db,"users"),where("username","==",username),limit(1)));}
+      catch(e){console.warn("username err",e);}
     }
-
-    // Priorité 3 : nameLower
-    if ((!snap || snap.empty) && username) {
-      const nl = username.replace(/-/g, ' ').toLowerCase();
-      console.log('Recherche par nameLower:', nl);
-      try {
-        snap = await getDocs(query(
-          collection(db, 'users'),
-          where('nameLower', '==', nl),
-          limit(1)
-        ));
-        console.log('nameLower result:', snap?.size, 'docs');
-      } catch(e) { console.warn('nameLower query failed:', e); }
+    if((!snap||snap.empty)&&username){
+      try{snap=await getDocs(query(collection(db,"users"),where("nameLower","==",username.replace(/-/g," ").toLowerCase()),limit(1)));}
+      catch(e){console.warn("nameLower err",e);}
     }
 
     clearTimeout(timeout);
 
-    if (!snap || snap.empty) {
-      // Si le token ne trouve rien → le token n'est pas encore dans Firebase
-      // Afficher un message explicatif au lieu d'une erreur générique
-      if (token) {
-        document.getElementById('loading').style.display = 'none';
-        document.getElementById('error').innerHTML = `
-          <h2>Profil en cours d'activation</h2>
-          <p style="margin-bottom:8px">Ouvre l'app Kuabo une fois pour activer ton profil public.</p>
-          <p style="font-size:12px;opacity:0.5;margin-bottom:20px">Le lien sera actif dans quelques instants.</p>
-          <a href="https://kuabo.co">← kuabo.co</a>`;
-        document.getElementById('error').style.display = 'block';
-      } else {
-        showError();
-      }
+    if(!snap||snap.empty){
+      if(token){
+        document.getElementById("loading").style.display="none";
+        document.getElementById("error").innerHTML="<h2>Profil en cours d\'activation</h2><p>Ouvre l\'app Kuabo une fois pour activer ton profil public.</p><a href=\"https://kuabo.co\">← kuabo.co</a>";
+        document.getElementById("error").style.display="block";
+      }else{showError();}
       return;
     }
 
-    const data = snap.docs[0].data();
+    const data=snap.docs[0].data();
+    if(!token&&data.profilePublic==="false"){showPrivate();return;}
+    renderProfile(data,username||token||"");
 
-    // Vérifier profil public (sauf si accès par token)
-    if (!token && data.profilePublic === 'false') {
-      showPrivate(); return;
-    }
-
-    renderProfile(data, username || token || '');
-
-  } catch(e) {
-    clearTimeout(timeout);
-    console.error('loadProfile error:', e);
-    showError();
-  }
+  }catch(e){clearTimeout(timeout);console.error(e);showError();}
 }
 
 loadProfile();
