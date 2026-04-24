@@ -1,18 +1,24 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta id="og-title" property="og:title" content="Kuabo — Global Mover">
-  <meta id="og-desc"  property="og:description" content="Rejoins-moi sur Kuabo !">
+  <meta id="og-desc"  property="og:description" content="Join me on Kuabo!">
   <meta id="og-image" property="og:image" content="https://kuabo.co/og-bird.png">
   <meta property="og:type" content="profile">
   <meta id="og-url" property="og:url" content="https://kuabo.co/p/">
   <meta name="twitter:card" content="summary_large_image">
-  <title id="page-title">Kuabo — Profil</title>
+  <title id="page-title">Kuabo — Profile</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box;}
     body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b1526;color:#fff;min-height:100vh;}
+
+    /* Language switcher flottant */
+    .lang-switcher{position:fixed;top:16px;right:16px;display:flex;gap:4px;z-index:100;background:rgba(11,21,38,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);border-radius:100px;padding:3px;}
+    .lang-btn{background:transparent;border:none;color:rgba(255,255,255,0.5);font-size:11px;font-weight:800;padding:5px 9px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+    .lang-btn.on{background:#e8b84b;color:#1a1a2e;}
+
     #loading{position:fixed;inset:0;background:#0b1526;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;z-index:999;}
     .bird-load{font-size:48px;animation:bob 1s ease-in-out infinite;}
     @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-8px);}}
@@ -81,22 +87,29 @@
 </head>
 <body>
 
+<!-- Language switcher -->
+<div class="lang-switcher">
+  <button class="lang-btn on" data-lang="en" onclick="setL('en')">🇺🇸 EN</button>
+  <button class="lang-btn" data-lang="fr" onclick="setL('fr')">🇫🇷 FR</button>
+  <button class="lang-btn" data-lang="es" onclick="setL('es')">🇪🇸 ES</button>
+</div>
+
 <div id="loading">
   <div class="bird-load">🐦</div>
-  <p>Chargement du profil...</p>
+  <p id="t-loading">Loading profile...</p>
 </div>
 
 <div id="error">
-  <h2>Profil introuvable</h2>
-  <p>Ce profil Kuabo n'existe pas ou a été supprimé.</p>
-  <a href="https://kuabo.co">← Retour à kuabo.co</a>
+  <h2 id="t-err-title">Profile not found</h2>
+  <p id="t-err-sub">This Kuabo profile does not exist or has been deleted.</p>
+  <a href="https://kuabo.co" id="t-err-back">← Back to kuabo.co</a>
 </div>
 
 <div id="private">
   <div style="font-size:48px;margin-bottom:16px;">🔒</div>
-  <h2 style="font-size:22px;font-weight:900;margin-bottom:8px;">Profil privé</h2>
-  <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;">Cet utilisateur a choisi de garder son profil privé.</p>
-  <a href="https://kuabo.co" style="color:#e8b84b;font-weight:700;text-decoration:none;">← Découvrir Kuabo</a>
+  <h2 style="font-size:22px;font-weight:900;margin-bottom:8px;" id="t-priv-title">Private profile</h2>
+  <p style="color:rgba(255,255,255,0.5);font-size:14px;margin-bottom:20px;" id="t-priv-sub">This user has chosen to keep their profile private.</p>
+  <a href="https://kuabo.co" style="color:#e8b84b;font-weight:700;text-decoration:none;" id="t-priv-cta">← Discover Kuabo</a>
 </div>
 
 <div id="profile">
@@ -113,7 +126,7 @@
         <div class="smile">kuabo.co</div>
       </div>
     </div>
-    <div class="badge" id="badge">🐦 Fondateur Vérifié</div>
+    <div class="badge" id="badge">🐦 <span id="t-badge">Verified Founder</span></div>
     <div class="uname" id="uname">—</div>
     <div class="handle" id="handle">@—</div>
     <div class="lvltitle" id="lvltitle">—</div>
@@ -125,38 +138,38 @@
       <div class="xp-track"><div class="xp-fill" id="xp-fill" style="width:0%"></div></div>
     </div>
     <div class="stats-row">
-      <div class="stat"><span class="stat-v" id="s-pays">—</span><span class="stat-l">Pays</span></div>
-      <div class="stat"><span class="stat-v" id="s-cont">—</span><span class="stat-l">Continents</span></div>
-      <div class="stat"><span class="stat-v" id="s-streak">—</span><span class="stat-l">Streak</span></div>
+      <div class="stat"><span class="stat-v" id="s-pays">—</span><span class="stat-l" id="t-s-pays">Countries</span></div>
+      <div class="stat"><span class="stat-v" id="s-cont">—</span><span class="stat-l" id="t-s-cont">Continents</span></div>
+      <div class="stat"><span class="stat-v" id="s-streak">—</span><span class="stat-l" id="t-s-streak">Streak</span></div>
       <div class="stat"><span class="stat-v" id="s-xp">—</span><span class="stat-l">XP</span></div>
     </div>
   </div>
   <div class="content">
     <div class="card">
-      <div class="card-title">🛂 Pays visités</div>
+      <div class="card-title" id="t-flags-title">🛂 Countries visited</div>
       <div class="flags" id="flags-wrap"></div>
     </div>
     <div class="score-card">
       <div class="score-left">
         <span style="font-size:24px">🏆</span>
         <div>
-          <span class="score-label">SCORE GLOBAL</span>
+          <span class="score-label" id="t-score-label">GLOBAL SCORE</span>
           <span class="score-val" id="score-val">—</span>
         </div>
       </div>
       <div class="coins" id="coins-val">🪙 —</div>
     </div>
-    <button class="btn-share" id="btn-share">📤 Partager ce profil</button>
-    <a class="btn-app" href="https://kuabo.co">🐦 Ouvrir Kuabo</a>
+    <button class="btn-share" id="btn-share">📤 <span id="t-share">Share this profile</span></button>
+    <a class="btn-app" href="https://kuabo.co">🐦 <span id="t-open">Open Kuabo</span></a>
     <div class="dl-banner">
-      <h3>🐦 Rejoins Kuabo !</h3>
-      <p>Explore le monde, gagne des XP, construis ton passeport numérique. Gratuit.</p>
+      <h3 id="t-dl-title">🐦 Join Kuabo!</h3>
+      <p id="t-dl-sub">Explore the world, earn XP, build your digital passport. Free.</p>
       <div class="dl-btns">
         <a class="dl-btn" href="https://kuabo.co">📱 iOS</a>
         <a class="dl-btn" href="https://kuabo.co">🤖 Android</a>
       </div>
     </div>
-    <div class="formula">Score = XP×2 + Pays×50 + Streak×10 + Invitations×30</div>
+    <div class="formula" id="t-formula">Score = XP×2 + Countries×50 + Streak×10 + Invites×30</div>
   </div>
   <div class="footer"><a href="https://kuabo.co">kuabo.co</a> · Global Mover Platform · 2026</div>
 </div>
@@ -175,7 +188,112 @@ const db = getFirestore(initializeApp({
   appId:"1:774805697:web:1fa1a94076fd8e7c8f5c40"
 }));
 
-const LEVELS = ["Nouveau","Installé","Explorateur","Voyageur","Global Mover","Légende"];
+// ══════════════════════════════════════════════
+// TRADUCTIONS FR / EN / ES
+// ══════════════════════════════════════════════
+const T = {
+  en: {
+    loading:    'Loading profile...',
+    errTitle:   'Profile not found',
+    errSub:     'This Kuabo profile does not exist or has been deleted.',
+    errBack:    '← Back to kuabo.co',
+    errPending: 'Profile being activated',
+    errPendSub: 'Open the Kuabo app once to activate your public profile.',
+    privTitle:  'Private profile',
+    privSub:    'This user has chosen to keep their profile private.',
+    privCta:    '← Discover Kuabo',
+    badge:      'Verified Founder',
+    sPays:      'Countries',
+    sCont:      'Continents',
+    sStreak:    'Streak',
+    flagsTitle: '🛂 Countries visited',
+    scoreLabel: 'GLOBAL SCORE',
+    share:      'Share this profile',
+    open:       'Open Kuabo',
+    dlTitle:    '🐦 Join Kuabo!',
+    dlSub:      'Explore the world, earn XP, build your digital passport. Free.',
+    formula:    'Score = XP×2 + Countries×50 + Streak×10 + Invites×30',
+    noFlags:    'No countries yet',
+    levelLabel: 'Lv.',
+    copied:     '✅ Copied!',
+    pageTitle:  (name) => `${name} — Kuabo`,
+    ogDesc:     (title, lv, countries, conts, xp) => `${title} · Lv.${lv} | 🌍 ${countries} countries · ${conts} continents | ⚡ ${xp} XP`,
+    shareMsg:   (handle, title, lv, countries, conts, flags, xp, score, url) =>
+      `My Kuabo profile 🐦\n\n${handle}\n${title} · Lv.${lv}\n\n🌍 ${countries} countries · ${conts} continents\n${flags}\n\n⚡ ${xp.toLocaleString()} XP · 🏆 ${score.toLocaleString()} pts\n\n${url}`,
+    levels:     ["Newbie","Settled","Explorer","Traveler","Global Mover","Legend"],
+    htmlLang:   'en',
+    xpTo:       (lv) => `XP → Lv.${lv}`,
+  },
+  fr: {
+    loading:    'Chargement du profil...',
+    errTitle:   'Profil introuvable',
+    errSub:     "Ce profil Kuabo n'existe pas ou a été supprimé.",
+    errBack:    '← Retour à kuabo.co',
+    errPending: 'Profil en cours d\'activation',
+    errPendSub: "Ouvre l'app Kuabo une fois pour activer ton profil public.",
+    privTitle:  'Profil privé',
+    privSub:    'Cet utilisateur a choisi de garder son profil privé.',
+    privCta:    '← Découvrir Kuabo',
+    badge:      'Fondateur Vérifié',
+    sPays:      'Pays',
+    sCont:      'Continents',
+    sStreak:    'Streak',
+    flagsTitle: '🛂 Pays visités',
+    scoreLabel: 'SCORE GLOBAL',
+    share:      'Partager ce profil',
+    open:       'Ouvrir Kuabo',
+    dlTitle:    '🐦 Rejoins Kuabo !',
+    dlSub:      'Explore le monde, gagne des XP, construis ton passeport numérique. Gratuit.',
+    formula:    'Score = XP×2 + Pays×50 + Streak×10 + Invitations×30',
+    noFlags:    'Aucun pays encore',
+    levelLabel: 'Niv.',
+    copied:     '✅ Copié !',
+    pageTitle:  (name) => `${name} — Kuabo`,
+    ogDesc:     (title, lv, countries, conts, xp) => `${title} · Niv.${lv} | 🌍 ${countries} pays · ${conts} continents | ⚡ ${xp} XP`,
+    shareMsg:   (handle, title, lv, countries, conts, flags, xp, score, url) =>
+      `Mon profil Kuabo 🐦\n\n${handle}\n${title} · Niv.${lv}\n\n🌍 ${countries} pays · ${conts} continents\n${flags}\n\n⚡ ${xp.toLocaleString()} XP · 🏆 ${score.toLocaleString()} pts\n\n${url}`,
+    levels:     ["Nouveau","Installé","Explorateur","Voyageur","Global Mover","Légende"],
+    htmlLang:   'fr',
+    xpTo:       (lv) => `XP → Niv.${lv}`,
+  },
+  es: {
+    loading:    'Cargando perfil...',
+    errTitle:   'Perfil no encontrado',
+    errSub:     'Este perfil de Kuabo no existe o ha sido eliminado.',
+    errBack:    '← Volver a kuabo.co',
+    errPending: 'Perfil en activación',
+    errPendSub: 'Abre la app Kuabo una vez para activar tu perfil público.',
+    privTitle:  'Perfil privado',
+    privSub:    'Este usuario ha elegido mantener su perfil privado.',
+    privCta:    '← Descubrir Kuabo',
+    badge:      'Fundador Verificado',
+    sPays:      'Países',
+    sCont:      'Continentes',
+    sStreak:    'Racha',
+    flagsTitle: '🛂 Países visitados',
+    scoreLabel: 'PUNTAJE GLOBAL',
+    share:      'Compartir este perfil',
+    open:       'Abrir Kuabo',
+    dlTitle:    '🐦 ¡Únete a Kuabo!',
+    dlSub:      'Explora el mundo, gana XP, construye tu pasaporte digital. Gratis.',
+    formula:    'Puntaje = XP×2 + Países×50 + Racha×10 + Invitaciones×30',
+    noFlags:    'Aún sin países',
+    levelLabel: 'Niv.',
+    copied:     '✅ ¡Copiado!',
+    pageTitle:  (name) => `${name} — Kuabo`,
+    ogDesc:     (title, lv, countries, conts, xp) => `${title} · Niv.${lv} | 🌍 ${countries} países · ${conts} continentes | ⚡ ${xp} XP`,
+    shareMsg:   (handle, title, lv, countries, conts, flags, xp, score, url) =>
+      `Mi perfil Kuabo 🐦\n\n${handle}\n${title} · Niv.${lv}\n\n🌍 ${countries} países · ${conts} continentes\n${flags}\n\n⚡ ${xp.toLocaleString()} XP · 🏆 ${score.toLocaleString()} pts\n\n${url}`,
+    levels:     ["Nuevo","Instalado","Explorador","Viajero","Global Mover","Leyenda"],
+    htmlLang:   'es',
+    xpTo:       (lv) => `XP → Niv.${lv}`,
+  },
+};
+
+let currentLang = 'en';
+let cachedUser  = null;
+let cachedSlug  = '';
+
 const CONT_MAP = {
   BJ:"africa",SN:"africa",CI:"africa",CM:"africa",GH:"africa",NG:"africa",MA:"africa",
   TG:"africa",ML:"africa",GN:"africa",CD:"africa",KE:"africa",ZA:"africa",ET:"africa",
@@ -189,108 +307,215 @@ function getLevel(xp){if(xp>=5000)return 5;if(xp>=2000)return 4;if(xp>=1000)retu
 function xpForLevel(lv){return[0,100,400,1000,2000,5000][lv]||0;}
 function computeScore(u){return(u.xp||0)*2+((u.visitedCountries||[]).length)*50+(u.streak||0)*10+(u.totalInvites||0)*30;}
 
-function showError(){document.getElementById("loading").style.display="none";document.getElementById("error").style.display="block";}
-function showPrivate(){document.getElementById("loading").style.display="none";document.getElementById("private").style.display="block";}
+// ══════════════════════════════════════════════
+// Détection langue initiale
+// ══════════════════════════════════════════════
+function detectLang() {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if (urlLang && T[urlLang]) return urlLang;
+
+  try {
+    const stored = localStorage.getItem('kuabo_lang');
+    if (stored && T[stored]) return stored;
+  } catch {}
+
+  const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  if (T[nav]) return nav;
+
+  return 'en';
+}
+
+// ══════════════════════════════════════════════
+// Appliquer la langue
+// ══════════════════════════════════════════════
+window.setL = function(lang) {
+  if (!T[lang]) return;
+  currentLang = lang;
+  const t = T[lang];
+
+  // Loading
+  document.getElementById('t-loading').textContent = t.loading;
+
+  // Erreur
+  document.getElementById('t-err-title').textContent = t.errTitle;
+  document.getElementById('t-err-sub').textContent   = t.errSub;
+  document.getElementById('t-err-back').textContent  = t.errBack;
+
+  // Privé
+  document.getElementById('t-priv-title').textContent = t.privTitle;
+  document.getElementById('t-priv-sub').textContent   = t.privSub;
+  document.getElementById('t-priv-cta').textContent   = t.privCta;
+
+  // Profil
+  document.getElementById('t-badge').textContent       = t.badge;
+  document.getElementById('t-s-pays').textContent      = t.sPays;
+  document.getElementById('t-s-cont').textContent      = t.sCont;
+  document.getElementById('t-s-streak').textContent    = t.sStreak;
+  document.getElementById('t-flags-title').textContent = t.flagsTitle;
+  document.getElementById('t-score-label').textContent = t.scoreLabel;
+  document.getElementById('t-share').textContent       = t.share;
+  document.getElementById('t-open').textContent        = t.open;
+  document.getElementById('t-dl-title').textContent    = t.dlTitle;
+  document.getElementById('t-dl-sub').textContent      = t.dlSub;
+  document.getElementById('t-formula').textContent     = t.formula;
+
+  // HTML lang
+  document.documentElement.lang = t.htmlLang;
+
+  // Boutons langue
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.lang === lang);
+  });
+
+  // Stocker
+  try { localStorage.setItem('kuabo_lang', lang); } catch {}
+
+  // Re-render profil si chargé
+  if (cachedUser) renderProfile(cachedUser, cachedSlug);
+};
+
+function showError(pending=false){
+  const t = T[currentLang];
+  document.getElementById("loading").style.display="none";
+  const errDiv = document.getElementById("error");
+  if (pending) {
+    errDiv.innerHTML = `<h2>${t.errPending}</h2><p>${t.errPendSub}</p><a href="https://kuabo.co" style="color:#e8b84b;font-weight:700;text-decoration:none;">← kuabo.co</a>`;
+  }
+  errDiv.style.display="block";
+}
+function showPrivate(){
+  document.getElementById("loading").style.display="none";
+  document.getElementById("private").style.display="block";
+}
 
 function getParams(){
-  const p=new URLSearchParams(window.location.search);
-  const token=p.get("t")||null;
-  let username=p.get("u")||null;
-  if(!username){const parts=window.location.pathname.split("/").filter(Boolean);const idx=parts.indexOf("p");if(idx>=0&&parts[idx+1])username=parts[idx+1];}
-  return{token,username};
+  const p = new URLSearchParams(window.location.search);
+  const token = p.get("t") || null;
+  let username = p.get("u") || null;
+  if (!username) {
+    const parts = window.location.pathname.split("/").filter(Boolean);
+    const idx = parts.indexOf("p");
+    if (idx >= 0 && parts[idx+1]) username = parts[idx+1];
+  }
+  return { token, username };
 }
 
 function renderProfile(u, slug){
-  const xp=u.xp||0, kuaboins=u.kuaboins||0, streak=u.streak||0;
-  const visited=u.visitedCountries||[], invites=u.totalInvites||0;
-  const level=getLevel(xp), lvlTitle=LEVELS[level]||"Global Mover";
-  const name=u.name||slug, handle="@"+(u.username||slug||"kuabonaute");
-  const score=computeScore(u);
-  const continents=new Set(visited.map(v=>CONT_MAP[v.code]||"other").filter(c=>c!=="other")).size;
-  const xpCur=xp-xpForLevel(level), xpNeed=xpForLevel(level+1)-xpForLevel(level);
-  const pct=xpNeed>0?Math.min(100,Math.round(xpCur/xpNeed*100)):100;
+  cachedUser = u;
+  cachedSlug = slug;
+  const t = T[currentLang];
+
+  const xp = u.xp || 0;
+  const kuaboins = u.kuaboins || 0;
+  const streak = u.streak || 0;
+  const visited = u.visitedCountries || [];
+  const invites = u.totalInvites || 0;
+  const level = getLevel(xp);
+  const lvlTitle = t.levels[level] || t.levels[4];
+  const name = u.name || slug;
+  const handle = "@" + (u.username || slug || "kuabonaute");
+  const score = computeScore(u);
+  const continents = new Set(visited.map(v => CONT_MAP[v.code] || "other").filter(c => c !== "other")).size;
+  const xpCur = xp - xpForLevel(level);
+  const xpNeed = xpForLevel(level+1) - xpForLevel(level);
+  const pct = xpNeed > 0 ? Math.min(100, Math.round(xpCur / xpNeed * 100)) : 100;
 
   // Meta OG
-  const flags=visited.slice(0,8).map(v=>v.flag).join(" ");
-  document.getElementById("og-title").content=name+" — Kuabo Global Mover";
-  document.getElementById("og-desc").content=lvlTitle+" · Niv."+level+" | 🌍 "+visited.length+" pays · "+continents+" continents | ⚡ "+xp+" XP";
-  document.getElementById("page-title").textContent=name+" — Kuabo";
+  const flags = visited.slice(0, 8).map(v => v.flag).join(" ");
+  document.getElementById("og-title").content = name + " — Kuabo Global Mover";
+  document.getElementById("og-desc").content  = t.ogDesc(lvlTitle, level, visited.length, continents, xp);
+  document.getElementById("page-title").textContent = t.pageTitle(name);
 
   // Remplir DOM
-  document.getElementById("uname").textContent=name;
-  document.getElementById("handle").textContent=handle;
-  document.getElementById("lvltitle").textContent=lvlTitle+" · Niv."+level;
-  document.getElementById("xp-label").textContent="XP → Niv."+(level+1);
-  document.getElementById("xp-val").textContent=xpCur.toLocaleString()+"/"+xpNeed.toLocaleString();
-  document.getElementById("s-pays").textContent=visited.length;
-  document.getElementById("s-cont").textContent=continents;
-  document.getElementById("s-streak").textContent=streak;
-  document.getElementById("s-xp").textContent=xp.toLocaleString();
-  document.getElementById("score-val").textContent=score.toLocaleString();
-  document.getElementById("coins-val").textContent="🪙 "+kuaboins;
+  document.getElementById("uname").textContent    = name;
+  document.getElementById("handle").textContent   = handle;
+  document.getElementById("lvltitle").textContent = lvlTitle + " · " + t.levelLabel + level;
+  document.getElementById("xp-label").textContent = t.xpTo(level+1);
+  document.getElementById("xp-val").textContent   = xpCur.toLocaleString() + "/" + xpNeed.toLocaleString();
+  document.getElementById("s-pays").textContent   = visited.length;
+  document.getElementById("s-cont").textContent   = continents;
+  document.getElementById("s-streak").textContent = streak;
+  document.getElementById("s-xp").textContent     = xp.toLocaleString();
+  document.getElementById("score-val").textContent = score.toLocaleString();
+  document.getElementById("coins-val").textContent = "🪙 " + kuaboins;
 
   // Badge fondateur
-  if(!u.profileToken&&!u.promoUsed) document.getElementById("badge").style.display="none";
+  if (!u.profileToken && !u.promoUsed) document.getElementById("badge").style.display = "none";
 
   // Barre XP animée
-  setTimeout(()=>{document.getElementById("xp-fill").style.width=pct+"%";},200);
+  setTimeout(() => { document.getElementById("xp-fill").style.width = pct + "%"; }, 200);
 
   // Drapeaux
-  const fw=document.getElementById("flags-wrap");
-  if(visited.length===0){fw.innerHTML="<p style=\"color:rgba(255,255,255,0.3);font-size:13px;\">Aucun pays encore</p>";}
-  else{fw.innerHTML=visited.map(v=>`<div class=\"flag-chip\"><span class=\"ff\">${v.flag}</span><span class=\"fc\">${v.code}</span></div>`).join("");}
+  const fw = document.getElementById("flags-wrap");
+  if (visited.length === 0) {
+    fw.innerHTML = `<p style="color:rgba(255,255,255,0.3);font-size:13px;">${t.noFlags}</p>`;
+  } else {
+    fw.innerHTML = visited.map(v => `<div class="flag-chip"><span class="ff">${v.flag}</span><span class="fc">${v.code}</span></div>`).join("");
+  }
 
   // Bouton partager
-  const url=window.location.href;
-  document.getElementById("btn-share").addEventListener("click",()=>{
-    const msg="Mon profil Kuabo 🐦\n\n"+handle+"\n"+lvlTitle+" · Niv."+level+"\n\n🌍 "+visited.length+" pays · "+continents+" continents\n"+flags+"\n\n⚡ "+xp.toLocaleString()+" XP · 🏆 "+score.toLocaleString()+" pts\n\n"+url;
-    if(navigator.share){navigator.share({title:name+" — Kuabo",text:msg,url});}
-    else{navigator.clipboard?.writeText(msg).then(()=>alert("✅ Copié !"));}
+  const url = window.location.href;
+  const btnShare = document.getElementById("btn-share");
+  // Supprimer l'ancien listener et en mettre un nouveau
+  const newBtn = btnShare.cloneNode(true);
+  btnShare.parentNode.replaceChild(newBtn, btnShare);
+  newBtn.addEventListener("click", () => {
+    const msg = t.shareMsg(handle, lvlTitle, level, visited.length, continents, flags, xp, score, url);
+    if (navigator.share) {
+      navigator.share({ title: name + " — Kuabo", text: msg, url });
+    } else {
+      navigator.clipboard?.writeText(msg).then(() => alert(t.copied));
+    }
   });
 
   // Afficher
-  document.getElementById("loading").style.display="none";
-  document.getElementById("profile").style.display="block";
+  document.getElementById("loading").style.display = "none";
+  document.getElementById("profile").style.display = "block";
 }
 
 async function loadProfile(){
-  const{token,username}=getParams();
-  if(!token&&!username){showError();return;}
-  const timeout=setTimeout(()=>showError(),8000);
-  try{
-    let snap=null;
+  const { token, username } = getParams();
+  if (!token && !username) { showError(); return; }
+  const timeout = setTimeout(() => showError(), 8000);
+  try {
+    let snap = null;
 
-    if(token){
-      try{snap=await getDocs(query(collection(db,"users"),where("profileToken","==",token),limit(1)));}
-      catch(e){console.warn("token err",e);}
+    if (token) {
+      try { snap = await getDocs(query(collection(db, "users"), where("profileToken", "==", token), limit(1))); }
+      catch(e) { console.warn("token err", e); }
     }
-    if((!snap||snap.empty)&&username){
-      try{snap=await getDocs(query(collection(db,"users"),where("username","==",username),limit(1)));}
-      catch(e){console.warn("username err",e);}
+    if ((!snap || snap.empty) && username) {
+      try { snap = await getDocs(query(collection(db, "users"), where("username", "==", username), limit(1))); }
+      catch(e) { console.warn("username err", e); }
     }
-    if((!snap||snap.empty)&&username){
-      try{snap=await getDocs(query(collection(db,"users"),where("nameLower","==",username.replace(/-/g," ").toLowerCase()),limit(1)));}
-      catch(e){console.warn("nameLower err",e);}
+    if ((!snap || snap.empty) && username) {
+      try { snap = await getDocs(query(collection(db, "users"), where("nameLower", "==", username.replace(/-/g, " ").toLowerCase()), limit(1))); }
+      catch(e) { console.warn("nameLower err", e); }
     }
 
     clearTimeout(timeout);
 
-    if(!snap||snap.empty){
-      if(token){
-        document.getElementById("loading").style.display="none";
-        document.getElementById("error").innerHTML="<h2>Profil en cours d\'activation</h2><p>Ouvre l\'app Kuabo une fois pour activer ton profil public.</p><a href=\"https://kuabo.co\">← kuabo.co</a>";
-        document.getElementById("error").style.display="block";
-      }else{showError();}
+    if (!snap || snap.empty) {
+      if (token) { showError(true); } else { showError(); }
       return;
     }
 
-    const data=snap.docs[0].data();
-    if(!token&&data.profilePublic==="false"){showPrivate();return;}
-    renderProfile(data,username||token||"");
+    const data = snap.docs[0].data();
+    if (!token && data.profilePublic === "false") { showPrivate(); return; }
+    renderProfile(data, username || token || "");
 
-  }catch(e){clearTimeout(timeout);console.error(e);showError();}
+  } catch(e) {
+    clearTimeout(timeout);
+    console.error(e);
+    showError();
+  }
 }
 
+// ══════════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════════
+window.setL(detectLang());
 loadProfile();
 </script>
 </body>
