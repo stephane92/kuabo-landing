@@ -1,6 +1,8 @@
 {
   "rewrites": [
-    { "source": "/p/:username", "destination": "/p/index.html" },
-    { "source": "/p/",          "destination": "/p/index.html" }
+    { "source": "/p/:username",  "destination": "/p/index.html" },
+    { "source": "/p/",           "destination": "/p/index.html" },
+    { "source": "/join/:code",   "destination": "/join/index.html" },
+    { "source": "/join/",        "destination": "/join/index.html" }
   ]
 }
