@@ -1,1 +1,605 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Rejoins Kuabo — Invitation 🎁</title>
+<meta name="description" content="Tu as été invité sur Kuabo ! L'app des Global Movers pour explorer le monde et t'installer aux USA.">
+
+<!-- Open Graph pour WhatsApp/SMS preview -->
+<meta property="og:title" content="Rejoins-moi sur Kuabo 🌍">
+<meta property="og:description" content="L'app pour explorer le monde, gagner des XP et t'installer aux USA !">
+<meta property="og:image" content="https://kuabo.co/assets/og-bird.png">
+<meta property="og:url" content="https://kuabo.co">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:      #e8b84b;
+  --gold-dark: #92680e;
+  --green:     #22c55e;
+  --teal:      #2dd4bf;
+  --purple:    #a78bfa;
+  --orange:    #f97316;
+  --red:       #ef4444;
+  --pink:      #ec4899;
+  --bg:        #080c14;
+  --card:      #0f1623;
+  --card2:     #141e2e;
+  --border:    rgba(255,255,255,0.07);
+  --text:      #f0ece4;
+  --muted:     #5a6478;
+}
+
+body {
+  font-family: 'Syne', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Particules dorées */
+.particles { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float 18s infinite linear;
+}
+@keyframes float {
+  from { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.4; }
+  to   { transform: translateY(-20vh) translateX(80px); opacity: 0; }
+}
+
+/* Glow décoratif */
+.glow {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-gold { top: -100px; right: -100px; width: 400px; height: 400px; background: var(--gold); }
+.glow-teal { bottom: -100px; left: -100px; width: 400px; height: 400px; background: var(--teal); }
+
+.container {
+  max-width: 440px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+.card {
+  background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+  border: 1.5px solid var(--border);
+  border-radius: 28px;
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: slideUp 0.6s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════════════ */
+/* KUABO BIRD HTML pur — cohérent avec kuabo.co/p/ */
+/* ═══════════════════════════════════════════════ */
+.bird {
+  width: 90px; height: 90px;
+  margin: 0 auto 20px;
+  position: relative;
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.bd {
+  /* corps */
+  width: 78px; height: 72px;
+  background: #1a2744;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 39px;
+  position: absolute;
+  bottom: 0; left: 6px;
+}
+.bh {
+  /* tête */
+  width: 68px; height: 62px;
+  background: #1a2744;
+  border: 1.5px solid rgba(255,255,255,0.12);
+  border-radius: 34px;
+  position: absolute;
+  top: 0; left: 11px;
+}
+.crown {
+  position: absolute;
+  top: -10px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 2px;
+  align-items: flex-end;
+  z-index: 2;
+}
+.crown i {
+  background: var(--gold);
+  border-radius: 2px;
+  display: block;
+}
+.crown i:nth-child(1) { width: 9px; height: 13px; }
+.crown i:nth-child(2) { width: 9px; height: 18px; }
+.crown i:nth-child(3) { width: 7px; height: 11px; }
+
+.gem {
+  position: absolute;
+  top: -13px; left: 50%;
+  transform: translateX(-50%);
+  width: 11px; height: 11px;
+  background: var(--teal);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--teal);
+  z-index: 3;
+}
+
+.eyes {
+  position: absolute;
+  top: 22px; left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  animation: blink 4s infinite;
+}
+@keyframes blink {
+  0%, 92%, 100% { transform: translateX(-50%) scaleY(1); }
+  94%, 97%      { transform: translateX(-50%) scaleY(0.1); }
+}
+.eye {
+  width: 18px; height: 18px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pupil {
+  width: 9px; height: 9px;
+  background: #1a1a2e;
+  border-radius: 50%;
+}
+
+.smile {
+  position: absolute;
+  bottom: 12px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--gold);
+  color: #1a1a2e;
+  font-size: 8px;
+  font-weight: 800;
+  padding: 2px 5px;
+  border-radius: 4px;
+  font-family: 'Syne', sans-serif;
+}
+
+/* Badge invitation */
+.badge-invite {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(232,184,75,0.12);
+  border: 1.5px solid rgba(232,184,75,0.35);
+  color: var(--gold);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+.highlight { color: var(--gold); }
+
+.sub {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+/* Inviter info */
+.inviter-box {
+  background: rgba(232,184,75,0.06);
+  border: 1.5px solid rgba(232,184,75,0.25);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  animation: fadeIn 0.5s ease 0.3s both;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.inviter-avatar {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+  color: #1a1a2e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 18px;
+  flex-shrink: 0;
+  font-family: 'Syne', sans-serif;
+  box-shadow: 0 4px 12px rgba(232,184,75,0.3);
+}
+.inviter-info strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'Syne', sans-serif;
+}
+.inviter-info span {
+  font-size: 12px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+/* Bonus XP */
+.bonus-box {
+  background: linear-gradient(135deg, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.08) 100%);
+  border: 1.5px solid rgba(34,197,94,0.35);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bonus-icon { font-size: 26px; }
+.bonus-text { text-align: left; flex: 1; }
+.bonus-text strong {
+  display: block;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Syne', sans-serif;
+}
+.bonus-text span {
+  color: rgba(240,236,228,0.75);
+  font-size: 11px;
+}
+
+/* Features */
+.features {
+  text-align: left;
+  margin-bottom: 24px;
+  padding: 14px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 0;
+  font-size: 13px;
+  color: rgba(240,236,228,0.85);
+}
+.feature:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.feature-icon { font-size: 20px; flex-shrink: 0; width: 24px; text-align: center; }
+
+/* Buttons */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  border-radius: 16px;
+  border: none;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.2s;
+  margin-bottom: 10px;
+  font-family: 'Syne', sans-serif;
+}
+.btn:active { transform: scale(0.97); }
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, #fcd34d 100%);
+  color: #1a1a2e;
+  border-top: 1.5px solid rgba(255,255,255,0.3);
+  border-bottom: 4px solid var(--gold-dark);
+  box-shadow: 0 6px 20px rgba(232,184,75,0.25);
+}
+.btn-primary:hover { box-shadow: 0 8px 28px rgba(232,184,75,0.4); }
+
+.btn-secondary {
+  background: rgba(255,255,255,0.05);
+  color: var(--text);
+  border: 1.5px solid var(--border);
+  border-bottom: 3px solid rgba(0,0,0,0.4);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.error {
+  background: rgba(239,68,68,0.1);
+  border: 1px solid rgba(239,68,68,0.3);
+  color: var(--red);
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+/* Mobile ajustements */
+@media (max-width: 380px) {
+  .card { padding: 24px 18px; }
+  h1 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Glows décoratifs -->
+<div class="glow glow-gold"></div>
+<div class="glow glow-teal"></div>
+
+<!-- Particules dorées -->
+<div class="particles" id="particles"></div>
+
+<div class="container">
+  <div class="card">
+
+    <!-- Kuabo Bird -->
+    <div class="bird">
+      <div class="bd"></div>
+      <div class="bh"></div>
+      <div class="crown"><i></i><i></i><i></i></div>
+      <div class="gem"></div>
+      <div class="eyes">
+        <div class="eye"><div class="pupil"></div></div>
+        <div class="eye"><div class="pupil"></div></div>
+      </div>
+      <div class="smile">kuabo.co</div>
+    </div>
+
+    <!-- Badge invitation -->
+    <div class="badge-invite">🎁 Invitation personnelle</div>
+
+    <h1>Rejoins <span class="highlight">Kuabo</span></h1>
+    <p class="sub">L'app des Global Movers 🌍</p>
+
+    <!-- Info parrain (injectée par JS) -->
+    <div id="inviter-container"></div>
+
+    <!-- Bonus XP -->
+    <div class="bonus-box">
+      <div class="bonus-icon">🎁</div>
+      <div class="bonus-text">
+        <strong>+100 XP de bienvenue</strong>
+        <span>Offert grâce à ton parrain</span>
+      </div>
+    </div>
+
+    <!-- Features -->
+    <div class="features">
+      <div class="feature">
+        <span class="feature-icon">🌍</span>
+        <span>Explore le monde, collectionne les pays</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">⚡</span>
+        <span>Gagne des XP, grimpe les niveaux</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🇺🇸</span>
+        <span>Parcours complet pour t'installer aux USA</span>
+      </div>
+      <div class="feature">
+        <span class="feature-icon">🎖️</span>
+        <span>DV Lottery, Green Card, Army</span>
+      </div>
+    </div>
+
+    <!-- Boutons -->
+    <a href="#" id="btn-ios" class="btn btn-primary">📱 Télécharger sur iPhone</a>
+    <a href="#" id="btn-android" class="btn btn-primary">🤖 Télécharger sur Android</a>
+    <a href="https://kuabo.co" class="btn btn-secondary">🌐 Découvrir sur le web</a>
+
+    <p class="footer">Kuabo.co · Global Movers 🌍</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<!-- FIREBASE VANILLA JS (comme sur kuabo.co/p/)     -->
+<!-- ═══════════════════════════════════════════════ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, collection, query, where, getDocs, doc, getDoc }
+  from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Config identique au site kuabo.co
+const app = initializeApp({
+  apiKey:        "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
+  authDomain:    "kuabo-42d9c.firebaseapp.com",
+  projectId:     "kuabo-42d9c",
+  storageBucket: "kuabo-42d9c.firebasestorage.app",
+});
+const db = getFirestore(app);
+
+// ═══════════════════════════════════════════════
+// 1. Extraire le code depuis l'URL
+// Ex: /join/hope-doggy-FPT → inviteCode = "hope-doggy-FPT"
+// ═══════════════════════════════════════════════
+const pathParts = window.location.pathname.split('/').filter(Boolean);
+const inviteCode = pathParts[1] || '';
+console.log('📌 Code invitation détecté :', inviteCode);
+
+// ═══════════════════════════════════════════════
+// 2. Stocker le code (pour signup dans l'app)
+// ═══════════════════════════════════════════════
+if (inviteCode) {
+  try {
+    localStorage.setItem('kuabo_invite_code', inviteCode);
+    localStorage.setItem('kuabo_invite_date', new Date().toISOString());
+  } catch (e) {
+    console.warn('localStorage non disponible');
+  }
+}
+
+// ═══════════════════════════════════════════════
+// 3. Détection mobile pour adapter les boutons
+// ═══════════════════════════════════════════════
+const ua = navigator.userAgent.toLowerCase();
+const isIOS = /iphone|ipad|ipod/.test(ua);
+const isAndroid = /android/.test(ua);
+
+const btnIOS = document.getElementById('btn-ios');
+const btnAndroid = document.getElementById('btn-android');
+
+// ⚠️ Remplace par tes vrais liens stores quand publiés
+btnIOS.href = 'https://apps.apple.com/app/kuabo/id0000000';
+btnAndroid.href = 'https://play.google.com/store/apps/details?id=co.kuabo.native';
+
+if (isIOS)     btnAndroid.style.display = 'none';
+else if (isAndroid) btnIOS.style.display = 'none';
+
+// ═══════════════════════════════════════════════
+// 4. Récupérer les infos du parrain depuis Firebase
+// ═══════════════════════════════════════════════
+async function loadInviter() {
+  const container = document.getElementById('inviter-container');
+  if (!inviteCode) return;
+
+  // Parser : "hope-doggy-FPT" → slug="hope-doggy", uidPrefix="FPT"
+  const match = inviteCode.match(/^(.+)-([A-Z0-9]{3})$/i);
+  if (!match) {
+    console.warn('⚠️ Format de code invalide');
+    return;
+  }
+
+  const slug      = match[1].toLowerCase();
+  const uidPrefix = match[2].toLowerCase();
+
+  try {
+    const usersRef = collection(db, 'users');
+
+    // Chercher par username
+    let inviter = null;
+    const q1 = query(usersRef, where('username', '==', slug));
+    const snap1 = await getDocs(q1);
+    snap1.forEach(docSnap => {
+      if (docSnap.id.toLowerCase().startsWith(uidPrefix)) {
+        inviter = { id: docSnap.id, ...docSnap.data() };
+      }
+    });
+
+    // Fallback par nameLower
+    if (!inviter) {
+      const q2 = query(usersRef, where('nameLower', '==', slug));
+      const snap2 = await getDocs(q2);
+      snap2.forEach(docSnap => {
+        if (docSnap.id.toLowerCase().startsWith(uidPrefix)) {
+          inviter = { id: docSnap.id, ...docSnap.data() };
+        }
+      });
+    }
+
+    if (inviter) {
+      // Stocker l'UID complet du parrain
+      try {
+        localStorage.setItem('kuabo_inviter_uid',  inviter.id);
+        localStorage.setItem('kuabo_inviter_name', inviter.name || 'Global Mover');
+      } catch {}
+
+      const initials = (inviter.name || 'K')
+        .split(' ')
+        .map(n => n[0])
+        .join('')
+        .toUpperCase()
+        .slice(0, 2);
+
+      container.innerHTML = `
+        <div class="inviter-box">
+          <div class="inviter-avatar">${initials}</div>
+          <div class="inviter-info">
+            <strong>${inviter.name || 'Global Mover'} t'invite 🎉</strong>
+            <span>Niveau ${inviter.level || 1} · ${(inviter.xp || 0).toLocaleString()} XP</span>
+          </div>
+        </div>
+      `;
+    } else {
+      console.log('ℹ️ Parrain non trouvé pour', inviteCode);
+    }
+  } catch (err) {
+    console.error('❌ Erreur chargement parrain :', err);
+  }
+}
+
+loadInviter();
+
+// ═══════════════════════════════════════════════
+// 5. Particules dorées animées
+// ═══════════════════════════════════════════════
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 25; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 18 + 's';
+  p.style.animationDuration = (12 + Math.random() * 10) + 's';
+  particlesContainer.appendChild(p);
+}
+</script>
+</body>
+</html>
