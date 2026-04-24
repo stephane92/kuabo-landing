@@ -1,53 +1,56 @@
-
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<title>Rejoins Kuabo — Invitation 🎁</title>
-<meta name="description" content="Tu as été invité sur Kuabo ! L'app des Global Movers pour explorer le monde et t'installer aux USA.">
+<title>Join Kuabo — You're invited 🎁</title>
+<meta name="description" content="You've been invited to Kuabo! The app for Global Movers to settle anywhere in the world.">
 
-<!-- Open Graph pour WhatsApp/SMS preview -->
-<meta property="og:title" content="Rejoins-moi sur Kuabo 🌍">
-<meta property="og:description" content="L'app pour explorer le monde, gagner des XP et t'installer aux USA !">
+<!-- Open Graph -->
+<meta property="og:title" content="Join me on Kuabo 🌍">
+<meta property="og:description" content="The app to travel, settle and earn XP everywhere in the world!">
 <meta property="og:image" content="https://kuabo.co/assets/og-bird.png">
 <meta property="og:url" content="https://kuabo.co">
 <meta property="og:type" content="website">
 
-<!-- Google Fonts -->
+<!-- Google Fonts (identiques au site) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
   --gold:      #e8b84b;
+  --gold-dk:   #c9952a;
   --gold-dark: #92680e;
-  --green:     #22c55e;
   --teal:      #2dd4bf;
+  --teal-dk:   #0d9488;
+  --green:     #22c55e;
   --purple:    #a78bfa;
   --orange:    #f97316;
   --red:       #ef4444;
-  --pink:      #ec4899;
+  --blue:      #3b82f6;
+  --navy:      #0b1526;
   --bg:        #080c14;
   --card:      #0f1623;
   --card2:     #141e2e;
-  --border:    rgba(255,255,255,0.07);
+  --border:    rgba(255,255,255,0.08);
   --text:      #f0ece4;
   --muted:     #5a6478;
+  --r:         16px;
 }
 
 body {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   background: var(--bg);
   color: var(--text);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
   overflow-x: hidden;
   position: relative;
 }
@@ -69,7 +72,7 @@ body {
   to   { transform: translateY(-20vh) translateX(80px); opacity: 0; }
 }
 
-/* Glow décoratif */
+/* Glow déco */
 .glow {
   position: fixed;
   border-radius: 50%;
@@ -80,6 +83,37 @@ body {
 }
 .glow-gold { top: -100px; right: -100px; width: 400px; height: 400px; background: var(--gold); }
 .glow-teal { bottom: -100px; left: -100px; width: 400px; height: 400px; background: var(--teal); }
+
+/* Language switcher flottant */
+.lang-switcher {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+  z-index: 10;
+  background: rgba(15,22,35,0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px;
+}
+.lang-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: 'Nunito', sans-serif;
+  transition: all 0.2s;
+}
+.lang-btn.on {
+  background: var(--gold);
+  color: var(--navy);
+}
 
 .container {
   max-width: 440px;
@@ -102,104 +136,17 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-/* ═══════════════════════════════════════════════ */
-/* KUABO BIRD HTML pur — cohérent avec kuabo.co/p/ */
-/* ═══════════════════════════════════════════════ */
-.bird {
-  width: 90px; height: 90px;
-  margin: 0 auto 20px;
-  position: relative;
+/* Bird wrapper avec animation bob */
+.bird-wrap {
+  width: 90px;
+  height: 90px;
+  margin: 0 auto 18px;
   animation: bob 2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(232,184,75,0.3));
 }
 @keyframes bob {
   0%, 100% { transform: translateY(0); }
   50%      { transform: translateY(-8px); }
-}
-
-.bd {
-  /* corps */
-  width: 78px; height: 72px;
-  background: #1a2744;
-  border: 1.5px solid rgba(255,255,255,0.12);
-  border-radius: 39px;
-  position: absolute;
-  bottom: 0; left: 6px;
-}
-.bh {
-  /* tête */
-  width: 68px; height: 62px;
-  background: #1a2744;
-  border: 1.5px solid rgba(255,255,255,0.12);
-  border-radius: 34px;
-  position: absolute;
-  top: 0; left: 11px;
-}
-.crown {
-  position: absolute;
-  top: -10px; left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 2px;
-  align-items: flex-end;
-  z-index: 2;
-}
-.crown i {
-  background: var(--gold);
-  border-radius: 2px;
-  display: block;
-}
-.crown i:nth-child(1) { width: 9px; height: 13px; }
-.crown i:nth-child(2) { width: 9px; height: 18px; }
-.crown i:nth-child(3) { width: 7px; height: 11px; }
-
-.gem {
-  position: absolute;
-  top: -13px; left: 50%;
-  transform: translateX(-50%);
-  width: 11px; height: 11px;
-  background: var(--teal);
-  border-radius: 50%;
-  box-shadow: 0 0 12px var(--teal);
-  z-index: 3;
-}
-
-.eyes {
-  position: absolute;
-  top: 22px; left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 12px;
-  animation: blink 4s infinite;
-}
-@keyframes blink {
-  0%, 92%, 100% { transform: translateX(-50%) scaleY(1); }
-  94%, 97%      { transform: translateX(-50%) scaleY(0.1); }
-}
-.eye {
-  width: 18px; height: 18px;
-  background: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.pupil {
-  width: 9px; height: 9px;
-  background: #1a1a2e;
-  border-radius: 50%;
-}
-
-.smile {
-  position: absolute;
-  bottom: 12px; left: 50%;
-  transform: translateX(-50%);
-  background: var(--gold);
-  color: #1a1a2e;
-  font-size: 8px;
-  font-weight: 800;
-  padding: 2px 5px;
-  border-radius: 4px;
-  font-family: 'Syne', sans-serif;
 }
 
 /* Badge invitation */
@@ -216,13 +163,14 @@ body {
   font-weight: 800;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
+  font-family: 'Nunito', sans-serif;
 }
 
 h1 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   font-size: 28px;
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 8px;
   line-height: 1.2;
   letter-spacing: -0.5px;
@@ -230,13 +178,31 @@ h1 {
 .highlight { color: var(--gold); }
 
 .sub {
-  color: var(--muted);
+  color: rgba(255,255,255,0.6);
   font-size: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 16px;
   line-height: 1.5;
+  font-weight: 600;
 }
 
-/* Inviter info */
+/* Worldwide tag */
+.worldwide-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(45,212,191,0.1);
+  border: 1.5px solid rgba(45,212,191,0.3);
+  color: var(--teal);
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  margin-bottom: 22px;
+  font-family: 'Nunito', sans-serif;
+}
+
+/* Inviter box */
 .inviter-box {
   background: rgba(232,184,75,0.06);
   border: 1.5px solid rgba(232,184,75,0.25);
@@ -257,27 +223,27 @@ h1 {
   width: 48px; height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
-  color: #1a1a2e;
+  color: var(--navy);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 800;
+  font-weight: 900;
   font-size: 18px;
   flex-shrink: 0;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
   box-shadow: 0 4px 12px rgba(232,184,75,0.3);
 }
 .inviter-info strong {
   display: block;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text);
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 .inviter-info span {
   font-size: 12px;
-  color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
 }
 
 /* Bonus XP */
@@ -286,7 +252,7 @@ h1 {
   border: 1.5px solid rgba(34,197,94,0.35);
   border-radius: 14px;
   padding: 14px;
-  margin-bottom: 22px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   gap: 12px;
@@ -297,18 +263,38 @@ h1 {
   display: block;
   color: var(--green);
   font-size: 14px;
-  font-weight: 800;
-  font-family: 'Syne', sans-serif;
+  font-weight: 900;
+  font-family: 'Nunito', sans-serif;
 }
 .bonus-text span {
   color: rgba(240,236,228,0.75);
   font-size: 11px;
+  font-weight: 600;
+}
+
+/* Country pills */
+.countries {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+.cpill {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(240,236,228,0.75);
+  font-family: 'Nunito', sans-serif;
 }
 
 /* Features */
 .features {
   text-align: left;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   padding: 14px;
   background: rgba(255,255,255,0.02);
   border: 1px solid var(--border);
@@ -321,6 +307,7 @@ h1 {
   padding: 8px 0;
   font-size: 13px;
   color: rgba(240,236,228,0.85);
+  font-weight: 600;
 }
 .feature:not(:last-child) {
   border-bottom: 1px solid rgba(255,255,255,0.04);
@@ -335,26 +322,25 @@ h1 {
   gap: 8px;
   width: 100%;
   padding: 16px;
-  border-radius: 16px;
+  border-radius: var(--r);
   border: none;
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.1s, box-shadow 0.2s;
   margin-bottom: 10px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Nunito', sans-serif;
 }
 .btn:active { transform: scale(0.97); }
 
 .btn-primary {
   background: linear-gradient(135deg, var(--gold) 0%, #fcd34d 100%);
-  color: #1a1a2e;
+  color: var(--navy);
   border-top: 1.5px solid rgba(255,255,255,0.3);
   border-bottom: 4px solid var(--gold-dark);
   box-shadow: 0 6px 20px rgba(232,184,75,0.25);
 }
-.btn-primary:hover { box-shadow: 0 8px 28px rgba(232,184,75,0.4); }
 
 .btn-secondary {
   background: rgba(255,255,255,0.05);
@@ -368,107 +354,130 @@ h1 {
   margin-top: 20px;
   font-size: 11px;
   color: var(--muted);
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Nunito Sans', sans-serif;
 }
 
-.error {
-  background: rgba(239,68,68,0.1);
-  border: 1px solid rgba(239,68,68,0.3);
-  color: var(--red);
-  padding: 10px 14px;
-  border-radius: 10px;
-  font-size: 12px;
-  margin-bottom: 16px;
-}
-
-/* Mobile ajustements */
 @media (max-width: 380px) {
   .card { padding: 24px 18px; }
   h1 { font-size: 24px; }
+  .lang-switcher { top: 12px; right: 12px; }
 }
 </style>
 </head>
 <body>
 
-<!-- Glows décoratifs -->
+<!-- Glows + particules -->
 <div class="glow glow-gold"></div>
 <div class="glow glow-teal"></div>
-
-<!-- Particules dorées -->
 <div class="particles" id="particles"></div>
+
+<!-- Language switcher -->
+<div class="lang-switcher">
+  <button class="lang-btn on" data-lang="en" onclick="setL('en')">🇺🇸 EN</button>
+  <button class="lang-btn" data-lang="fr" onclick="setL('fr')">🇫🇷 FR</button>
+  <button class="lang-btn" data-lang="es" onclick="setL('es')">🇪🇸 ES</button>
+</div>
+
+<!-- Kuabo Bird SVG symbol (identique au site) -->
+<svg style="display:none">
+  <symbol id="bird" viewBox="0 0 80 80">
+    <ellipse cx="40" cy="47" rx="28" ry="26" fill="#0b1526"/>
+    <ellipse cx="40" cy="52" rx="16" ry="17" fill="#1a2d4a"/>
+    <ellipse cx="14" cy="50" rx="8" ry="13" fill="#0b1526" transform="rotate(-15 14 50)"/>
+    <ellipse cx="66" cy="50" rx="8" ry="13" fill="#0b1526" transform="rotate(15 66 50)"/>
+    <polygon points="24,27 28,14 32,23 40,10 48,23 52,14 56,27" fill="#e8b84b"/>
+    <polygon points="24,27 28,14 32,23 40,10 48,23 52,14 56,27" fill="none" stroke="#c9952a" stroke-width="1.5"/>
+    <circle cx="40" cy="15" r="4" fill="#2dd4bf"/>
+    <circle cx="29" cy="38" r="9" fill="white"/>
+    <circle cx="31" cy="40" r="5.5" fill="#0d1525"/>
+    <circle cx="33" cy="37" r="2.2" fill="white"/>
+    <circle cx="51" cy="38" r="9" fill="white"/>
+    <circle cx="53" cy="40" r="5.5" fill="#0d1525"/>
+    <circle cx="55" cy="37" r="2.2" fill="white"/>
+    <path d="M34 51 Q40 59 46 51 Q40 53 34 51Z" fill="#e8b84b"/>
+    <rect x="30" y="71" width="8" height="6" rx="3" fill="#e8b84b"/>
+    <rect x="42" y="71" width="8" height="6" rx="3" fill="#e8b84b"/>
+    <text x="40" y="58" font-family="Arial" font-size="4.5" fill="#e8b84b" text-anchor="middle" font-weight="bold">Kuabo.co</text>
+  </symbol>
+</svg>
 
 <div class="container">
   <div class="card">
 
     <!-- Kuabo Bird -->
-    <div class="bird">
-      <div class="bd"></div>
-      <div class="bh"></div>
-      <div class="crown"><i></i><i></i><i></i></div>
-      <div class="gem"></div>
-      <div class="eyes">
-        <div class="eye"><div class="pupil"></div></div>
-        <div class="eye"><div class="pupil"></div></div>
-      </div>
-      <div class="smile">kuabo.co</div>
+    <div class="bird-wrap">
+      <svg width="90" height="90" viewBox="0 0 80 80"><use href="#bird"/></svg>
     </div>
 
     <!-- Badge invitation -->
-    <div class="badge-invite">🎁 Invitation personnelle</div>
+    <div class="badge-invite"><span id="t-badge">🎁 Personal invitation</span></div>
 
-    <h1>Rejoins <span class="highlight">Kuabo</span></h1>
-    <p class="sub">L'app des Global Movers 🌍</p>
+    <h1><span id="t-title">Join</span> <span class="highlight">Kuabo</span></h1>
+    <p class="sub" id="t-sub">The app for Global Movers 🌍</p>
 
-    <!-- Info parrain (injectée par JS) -->
+    <!-- Worldwide tag -->
+    <div class="worldwide-tag">🌍 <span id="t-world">Worldwide — Not just the USA</span></div>
+
+    <!-- Info parrain (JS) -->
     <div id="inviter-container"></div>
 
     <!-- Bonus XP -->
     <div class="bonus-box">
       <div class="bonus-icon">🎁</div>
       <div class="bonus-text">
-        <strong>+100 XP de bienvenue</strong>
-        <span>Offert grâce à ton parrain</span>
+        <strong id="t-bonus-title">+100 XP welcome bonus</strong>
+        <span id="t-bonus-sub">Offered by your friend</span>
       </div>
+    </div>
+
+    <!-- Countries pills -->
+    <div class="countries">
+      <div class="cpill">🇺🇸 USA</div>
+      <div class="cpill">🇨🇦 Canada</div>
+      <div class="cpill">🇫🇷 France</div>
+      <div class="cpill">🇬🇧 UK</div>
+      <div class="cpill">🇲🇽 Mexico</div>
+      <div class="cpill">🇩🇪 Germany</div>
+      <div class="cpill">🌍 <span id="t-more">& more</span></div>
     </div>
 
     <!-- Features -->
     <div class="features">
       <div class="feature">
         <span class="feature-icon">🌍</span>
-        <span>Explore le monde, collectionne les pays</span>
+        <span id="t-f1">Explore the world, collect countries</span>
       </div>
       <div class="feature">
         <span class="feature-icon">⚡</span>
-        <span>Gagne des XP, grimpe les niveaux</span>
+        <span id="t-f2">Earn XP, level up</span>
       </div>
       <div class="feature">
-        <span class="feature-icon">🇺🇸</span>
-        <span>Parcours complet pour t'installer aux USA</span>
+        <span class="feature-icon">✈️</span>
+        <span id="t-f3">Settlement guide worldwide</span>
       </div>
       <div class="feature">
-        <span class="feature-icon">🎖️</span>
-        <span>DV Lottery, Green Card, Army</span>
+        <span class="feature-icon">🏆</span>
+        <span id="t-f4">World Cup 2026, DV Lottery, Army</span>
       </div>
     </div>
 
     <!-- Boutons -->
-    <a href="#" id="btn-ios" class="btn btn-primary">📱 Télécharger sur iPhone</a>
-    <a href="#" id="btn-android" class="btn btn-primary">🤖 Télécharger sur Android</a>
-    <a href="https://kuabo.co" class="btn btn-secondary">🌐 Découvrir sur le web</a>
+    <a href="#" id="btn-ios" class="btn btn-primary">📱 <span id="t-btn-ios">Download on iPhone</span></a>
+    <a href="#" id="btn-android" class="btn btn-primary">🤖 <span id="t-btn-android">Download on Android</span></a>
+    <a href="https://kuabo.co" class="btn btn-secondary">🌐 <span id="t-btn-web">Visit kuabo.co</span></a>
 
     <p class="footer">Kuabo.co · Global Movers 🌍</p>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════ -->
-<!-- FIREBASE VANILLA JS (comme sur kuabo.co/p/)     -->
-<!-- ═══════════════════════════════════════════════ -->
+<!-- ════════════════════════════════════ -->
+<!-- FIREBASE + LOGIQUE                   -->
+<!-- ════════════════════════════════════ -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, doc, getDoc }
+import { getFirestore, collection, query, where, getDocs }
   from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-// Config identique au site kuabo.co
 const app = initializeApp({
   apiKey:        "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
   authDomain:    "kuabo-42d9c.firebaseapp.com",
@@ -477,29 +486,158 @@ const app = initializeApp({
 });
 const db = getFirestore(app);
 
-// ═══════════════════════════════════════════════
-// 1. Extraire le code depuis l'URL
-// Ex: /join/hope-doggy-FPT → inviteCode = "hope-doggy-FPT"
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════
+// TRADUCTIONS FR / EN / ES
+// ════════════════════════════════════════
+const T = {
+  en: {
+    title:      'Join',
+    sub:        'The app for Global Movers 🌍',
+    badge:      '🎁 Personal invitation',
+    world:      'Worldwide — Not just the USA',
+    bonusTitle: '+100 XP welcome bonus',
+    bonusSub:   'Offered by your friend',
+    more:       '& more',
+    f1:         'Explore the world, collect countries',
+    f2:         'Earn XP, level up',
+    f3:         'Settlement guide worldwide',
+    f4:         'World Cup 2026, DV Lottery, Army',
+    btnIOS:     'Download on iPhone',
+    btnAndroid: 'Download on Android',
+    btnWeb:     'Visit kuabo.co',
+    invites:    (name) => `<strong>${name} invites you 🎉</strong>`,
+    levelXP:    (lvl, xp) => `Level ${lvl} · ${xp} XP`,
+    htmlLang:   'en',
+    pageTitle:  'Join Kuabo — You\'re invited 🎁',
+    shareMsg:   (link) => `🌍 Hey! Join me on Kuabo, the app for Global Movers!\n\n🎁 Use my invite link:\n${link}\n\nKuabo.co`,
+  },
+  fr: {
+    title:      'Rejoins',
+    sub:        'L\'app des Global Movers 🌍',
+    badge:      '🎁 Invitation personnelle',
+    world:      'Partout dans le monde — Pas que les USA',
+    bonusTitle: '+100 XP de bienvenue',
+    bonusSub:   'Offert grâce à ton parrain',
+    more:       '& plus',
+    f1:         'Explore le monde, collectionne les pays',
+    f2:         'Gagne des XP, grimpe les niveaux',
+    f3:         'Guide d\'installation partout dans le monde',
+    f4:         'Coupe du Monde 2026, DV Lottery, Army',
+    btnIOS:     'Télécharger sur iPhone',
+    btnAndroid: 'Télécharger sur Android',
+    btnWeb:     'Découvrir kuabo.co',
+    invites:    (name) => `<strong>${name} t'invite 🎉</strong>`,
+    levelXP:    (lvl, xp) => `Niveau ${lvl} · ${xp} XP`,
+    htmlLang:   'fr',
+    pageTitle:  'Rejoins Kuabo — Invitation 🎁',
+    shareMsg:   (link) => `🌍 Salut ! Rejoins-moi sur Kuabo, l'app des Global Movers !\n\n🎁 Utilise mon lien :\n${link}\n\nKuabo.co`,
+  },
+  es: {
+    title:      'Únete a',
+    sub:        'La app para Global Movers 🌍',
+    badge:      '🎁 Invitación personal',
+    world:      'En todo el mundo — No solo EE.UU.',
+    bonusTitle: '+100 XP de bienvenida',
+    bonusSub:   'Ofrecido por tu amigo',
+    more:       'y más',
+    f1:         'Explora el mundo, colecciona países',
+    f2:         'Gana XP, sube de nivel',
+    f3:         'Guía de instalación en todo el mundo',
+    f4:         'Mundial 2026, DV Lottery, Army',
+    btnIOS:     'Descargar en iPhone',
+    btnAndroid: 'Descargar en Android',
+    btnWeb:     'Descubrir kuabo.co',
+    invites:    (name) => `<strong>${name} te invita 🎉</strong>`,
+    levelXP:    (lvl, xp) => `Nivel ${lvl} · ${xp} XP`,
+    htmlLang:   'es',
+    pageTitle:  'Únete a Kuabo — Invitación 🎁',
+    shareMsg:   (link) => `🌍 ¡Hola! Únete a mí en Kuabo, ¡la app para Global Movers!\n\n🎁 Usa mi enlace:\n${link}\n\nKuabo.co`,
+  },
+};
+
+let currentLang = 'en';
+let inviterData = null;  // cache des infos parrain
+
+// ════════════════════════════════════════
+// Détection langue initiale
+// ════════════════════════════════════════
+function detectLang() {
+  // 1. URL param ?lang=fr
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if (urlLang && T[urlLang]) return urlLang;
+
+  // 2. localStorage
+  try {
+    const stored = localStorage.getItem('kuabo_lang');
+    if (stored && T[stored]) return stored;
+  } catch {}
+
+  // 3. navigator.language
+  const nav = (navigator.language || 'en').slice(0, 2).toLowerCase();
+  if (T[nav]) return nav;
+
+  return 'en';
+}
+
+// ════════════════════════════════════════
+// Appliquer la langue
+// ════════════════════════════════════════
+window.setL = function(lang) {
+  if (!T[lang]) return;
+  currentLang = lang;
+
+  const t = T[lang];
+
+  // Mise à jour textes
+  document.getElementById('t-title').textContent       = t.title;
+  document.getElementById('t-sub').textContent         = t.sub;
+  document.getElementById('t-badge').textContent       = t.badge;
+  document.getElementById('t-world').textContent       = t.world;
+  document.getElementById('t-bonus-title').textContent = t.bonusTitle;
+  document.getElementById('t-bonus-sub').textContent   = t.bonusSub;
+  document.getElementById('t-more').textContent        = t.more;
+  document.getElementById('t-f1').textContent          = t.f1;
+  document.getElementById('t-f2').textContent          = t.f2;
+  document.getElementById('t-f3').textContent          = t.f3;
+  document.getElementById('t-f4').textContent          = t.f4;
+  document.getElementById('t-btn-ios').textContent     = t.btnIOS;
+  document.getElementById('t-btn-android').textContent = t.btnAndroid;
+  document.getElementById('t-btn-web').textContent     = t.btnWeb;
+
+  // Mise à jour titre et lang attribute
+  document.documentElement.lang = t.htmlLang;
+  document.title = t.pageTitle;
+
+  // Mise à jour boutons langue
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('on', btn.dataset.lang === lang);
+  });
+
+  // Stocker la préférence
+  try { localStorage.setItem('kuabo_lang', lang); } catch {}
+
+  // Re-render parrain si chargé
+  if (inviterData) renderInviter(inviterData);
+};
+
+// ════════════════════════════════════════
+// Code invitation depuis URL
+// ════════════════════════════════════════
 const pathParts = window.location.pathname.split('/').filter(Boolean);
 const inviteCode = pathParts[1] || '';
-console.log('📌 Code invitation détecté :', inviteCode);
+console.log('📌 Code invitation :', inviteCode);
 
-// ═══════════════════════════════════════════════
-// 2. Stocker le code (pour signup dans l'app)
-// ═══════════════════════════════════════════════
 if (inviteCode) {
   try {
     localStorage.setItem('kuabo_invite_code', inviteCode);
     localStorage.setItem('kuabo_invite_date', new Date().toISOString());
-  } catch (e) {
-    console.warn('localStorage non disponible');
-  }
+  } catch {}
 }
 
-// ═══════════════════════════════════════════════
-// 3. Détection mobile pour adapter les boutons
-// ═══════════════════════════════════════════════
+// ════════════════════════════════════════
+// Détection iPhone/Android
+// ════════════════════════════════════════
 const ua = navigator.userAgent.toLowerCase();
 const isIOS = /iphone|ipad|ipod/.test(ua);
 const isAndroid = /android/.test(ua);
@@ -507,21 +645,43 @@ const isAndroid = /android/.test(ua);
 const btnIOS = document.getElementById('btn-ios');
 const btnAndroid = document.getElementById('btn-android');
 
-// ⚠️ Remplace par tes vrais liens stores quand publiés
 btnIOS.href = 'https://apps.apple.com/app/kuabo/id0000000';
 btnAndroid.href = 'https://play.google.com/store/apps/details?id=co.kuabo.native';
 
 if (isIOS)     btnAndroid.style.display = 'none';
 else if (isAndroid) btnIOS.style.display = 'none';
 
-// ═══════════════════════════════════════════════
-// 4. Récupérer les infos du parrain depuis Firebase
-// ═══════════════════════════════════════════════
-async function loadInviter() {
+// ════════════════════════════════════════
+// Rendre la box parrain
+// ════════════════════════════════════════
+function renderInviter(inviter) {
   const container = document.getElementById('inviter-container');
+  const t = T[currentLang];
+
+  const initials = (inviter.name || 'K')
+    .split(' ')
+    .map(n => n[0])
+    .join('')
+    .toUpperCase()
+    .slice(0, 2);
+
+  container.innerHTML = `
+    <div class="inviter-box">
+      <div class="inviter-avatar">${initials}</div>
+      <div class="inviter-info">
+        ${t.invites(inviter.name || 'Global Mover')}
+        <span>${t.levelXP(inviter.level || 1, (inviter.xp || 0).toLocaleString())}</span>
+      </div>
+    </div>
+  `;
+}
+
+// ════════════════════════════════════════
+// Charger le parrain depuis Firebase
+// ════════════════════════════════════════
+async function loadInviter() {
   if (!inviteCode) return;
 
-  // Parser : "hope-doggy-FPT" → slug="hope-doggy", uidPrefix="FPT"
   const match = inviteCode.match(/^(.+)-([A-Z0-9]{3})$/i);
   if (!match) {
     console.warn('⚠️ Format de code invalide');
@@ -534,7 +694,6 @@ async function loadInviter() {
   try {
     const usersRef = collection(db, 'users');
 
-    // Chercher par username
     let inviter = null;
     const q1 = query(usersRef, where('username', '==', slug));
     const snap1 = await getDocs(q1);
@@ -544,7 +703,6 @@ async function loadInviter() {
       }
     });
 
-    // Fallback par nameLower
     if (!inviter) {
       const q2 = query(usersRef, where('nameLower', '==', slug));
       const snap2 = await getDocs(q2);
@@ -556,28 +714,12 @@ async function loadInviter() {
     }
 
     if (inviter) {
-      // Stocker l'UID complet du parrain
       try {
         localStorage.setItem('kuabo_inviter_uid',  inviter.id);
         localStorage.setItem('kuabo_inviter_name', inviter.name || 'Global Mover');
       } catch {}
-
-      const initials = (inviter.name || 'K')
-        .split(' ')
-        .map(n => n[0])
-        .join('')
-        .toUpperCase()
-        .slice(0, 2);
-
-      container.innerHTML = `
-        <div class="inviter-box">
-          <div class="inviter-avatar">${initials}</div>
-          <div class="inviter-info">
-            <strong>${inviter.name || 'Global Mover'} t'invite 🎉</strong>
-            <span>Niveau ${inviter.level || 1} · ${(inviter.xp || 0).toLocaleString()} XP</span>
-          </div>
-        </div>
-      `;
+      inviterData = inviter;
+      renderInviter(inviter);
     } else {
       console.log('ℹ️ Parrain non trouvé pour', inviteCode);
     }
@@ -586,11 +728,13 @@ async function loadInviter() {
   }
 }
 
+// ════════════════════════════════════════
+// INIT
+// ════════════════════════════════════════
+window.setL(detectLang());
 loadInviter();
 
-// ═══════════════════════════════════════════════
-// 5. Particules dorées animées
-// ═══════════════════════════════════════════════
+// Particules
 const particlesContainer = document.getElementById('particles');
 for (let i = 0; i < 25; i++) {
   const p = document.createElement('div');
