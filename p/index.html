@@ -176,17 +176,19 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, collection, query, where, getDocs, limit }
-  from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-functions.js";
 
-const db = getFirestore(initializeApp({
+const app = initializeApp({
   apiKey:"AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
   authDomain:"kuabo-42d9c.firebaseapp.com",
   projectId:"kuabo-42d9c",
   storageBucket:"kuabo-42d9c.firebasestorage.app",
   messagingSenderId:"774805697",
   appId:"1:774805697:web:1fa1a94076fd8e7c8f5c40"
-}));
+});
+
+const functions = getFunctions(app, 'us-central1');
+const getPublicProfileFn = httpsCallable(functions, 'getPublicProfile');
 
 // ══════════════════════════════════════════════
 // TRADUCTIONS FR / EN / ES
@@ -441,7 +443,7 @@ function renderProfile(u, slug){
   document.getElementById("coins-val").textContent = "🪙 " + kuaboins;
 
   // Badge fondateur
-  if (!u.profileToken && !u.promoUsed) document.getElementById("badge").style.display = "none";
+  if (!u.isFounder && !u.profileToken && !u.promoUsed) document.getElementById("badge").style.display = "none";
 
   // Barre XP animée
   setTimeout(() => { document.getElementById("xp-fill").style.width = pct + "%"; }, 200);
@@ -474,41 +476,58 @@ function renderProfile(u, slug){
   document.getElementById("profile").style.display = "block";
 }
 
+// ══════════════════════════════════════════════
+// 🆕 NOUVELLE LOGIQUE : appel Cloud Function
+// ══════════════════════════════════════════════
 async function loadProfile(){
   const { token, username } = getParams();
   if (!token && !username) { showError(); return; }
-  const timeout = setTimeout(() => showError(), 8000);
+  
+  const timeout = setTimeout(() => showError(), 10000);
+  
   try {
-    let snap = null;
-
-    if (token) {
-      try { snap = await getDocs(query(collection(db, "users"), where("profileToken", "==", token), limit(1))); }
-      catch(e) { console.warn("token err", e); }
-    }
-    if ((!snap || snap.empty) && username) {
-      try { snap = await getDocs(query(collection(db, "users"), where("username", "==", username), limit(1))); }
-      catch(e) { console.warn("username err", e); }
-    }
-    if ((!snap || snap.empty) && username) {
-      try { snap = await getDocs(query(collection(db, "users"), where("nameLower", "==", username.replace(/-/g, " ").toLowerCase()), limit(1))); }
-      catch(e) { console.warn("nameLower err", e); }
-    }
-
+    // 🛡️ Appeler la Cloud Function getPublicProfile (sécurisé)
+    const result = await getPublicProfileFn({ token, username });
     clearTimeout(timeout);
-
-    if (!snap || snap.empty) {
-      if (token) { showError(true); } else { showError(); }
+    
+    const data = result.data;
+    
+    if (!data) {
+      showError();
       return;
     }
-
-    const data = snap.docs[0].data();
-    if (!token && data.profilePublic === "false") { showPrivate(); return; }
+    
     renderProfile(data, username || token || "");
-
+    
   } catch(e) {
     clearTimeout(timeout);
-    console.error(e);
-    showError();
+    console.error("[loadProfile]", e);
+    
+    // Gérer les erreurs spécifiques
+    const errCode = e?.code || '';
+    const errMsg = e?.message || '';
+    
+    if (errCode === 'functions/not-found' || errMsg.includes('not found')) {
+      // Profil pas trouvé → Probablement profil pas encore activé
+      if (token) {
+        showError(true); // pending mode
+      } else {
+        showError();
+      }
+    } else if (errCode === 'functions/permission-denied' || errMsg.includes('private')) {
+      // Profil privé
+      showPrivate();
+    } else if (errCode === 'functions/resource-exhausted') {
+      // Rate limit
+      const t = T[currentLang];
+      document.getElementById("loading").style.display = "none";
+      const errDiv = document.getElementById("error");
+      errDiv.innerHTML = `<h2>⏱ Rate limit</h2><p>Trop de requêtes. Réessayez dans quelques minutes.</p><a href="https://kuabo.co" style="color:#e8b84b;font-weight:700;text-decoration:none;">← kuabo.co</a>`;
+      errDiv.style.display = "block";
+    } else {
+      // Erreur générique
+      showError();
+    }
   }
 }
 
