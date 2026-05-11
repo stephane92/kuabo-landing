@@ -4,9 +4,12 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Terms of Service — Kuabo</title>
-<meta name="description" content="Kuabo's terms of service. Read before using our website and app."/>
+<meta name="description" content="Kuabo's terms of service. Available in EN, FR, ES."/>
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://kuabo.co/terms"/>
+<link rel="alternate" hreflang="en" href="https://kuabo.co/terms"/>
+<link rel="alternate" hreflang="fr" href="https://kuabo.co/terms"/>
+<link rel="alternate" hreflang="es" href="https://kuabo.co/terms"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png"/>
 <meta name="theme-color" content="#e8b84b"/>
@@ -15,8 +18,13 @@
   * { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--navy); color:var(--text); font-family:-apple-system,'Nunito Sans','Helvetica Neue',Arial,sans-serif; line-height:1.65; padding:60px 24px; }
   .wrap { max-width:780px; margin:0 auto; }
-  a.back { display:inline-flex; align-items:center; gap:6px; color:var(--gold); text-decoration:none; font-weight:700; margin-bottom:32px; font-size:14px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; flex-wrap:wrap; gap:16px; }
+  a.back { display:inline-flex; align-items:center; gap:6px; color:var(--gold); text-decoration:none; font-weight:700; font-size:14px; }
   a.back:hover { text-decoration:underline; }
+  .langs { display:flex; gap:6px; }
+  .lb { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text); padding:6px 12px; border-radius:8px; font-size:13px; font-weight:700; cursor:pointer; transition:all .15s; }
+  .lb:hover { background:rgba(232,184,75,.1); border-color:rgba(232,184,75,.4); }
+  .lb.on { background:rgba(232,184,75,.18); border-color:rgba(232,184,75,.6); color:var(--gold); }
   h1 { font-family:'Nunito',sans-serif; font-size:42px; font-weight:900; line-height:1.15; margin-bottom:12px; letter-spacing:-1px; }
   .h1-sub { color:var(--muted); font-size:15px; margin-bottom:48px; }
   h2 { font-family:'Nunito',sans-serif; font-size:22px; font-weight:800; margin:36px 0 12px; color:var(--gold); }
@@ -26,7 +34,6 @@
   li { margin-bottom:6px; color:var(--text); font-size:15px; }
   strong { color:#fff; }
   a { color:var(--teal); text-decoration:underline; }
-  hr { border:none; border-top:1px solid rgba(255,255,255,.1); margin:48px 0; }
   .toc { background:rgba(232,184,75,.05); border:1px solid rgba(232,184,75,.2); border-radius:12px; padding:18px 22px; margin:24px 0 36px; }
   .toc-title { font-weight:800; color:var(--gold); font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:10px; }
   .toc ol { margin-left:20px; font-size:14px; }
@@ -35,143 +42,240 @@
   footer { margin-top:60px; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); color:var(--muted); font-size:13px; text-align:center; }
   footer a { color:var(--gold); margin:0 8px; }
   .warn { background:rgba(239,68,68,.08); border:1px solid rgba(239,68,68,.3); border-radius:10px; padding:14px 18px; margin:14px 0; color:#fca5a5; font-size:14px; }
+  [data-lang]:not(.show) { display:none; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="/">← Back to Kuabo</a>
-  <h1>Terms of Service</h1>
-  <p class="h1-sub">Last updated: May 11, 2026 · Effective immediately</p>
-
-  <div class="toc">
-    <div class="toc-title">Table of contents</div>
-    <ol>
-      <li><a href="#acceptance">Acceptance</a></li>
-      <li><a href="#service">What Kuabo is (and isn't)</a></li>
-      <li><a href="#account">Your account</a></li>
-      <li><a href="#use">Acceptable use</a></li>
-      <li><a href="#akwe">Akwɛ rewards & in-app economy</a></li>
-      <li><a href="#subscription">Subscriptions & payments</a></li>
-      <li><a href="#content">Your content</a></li>
-      <li><a href="#ip">Intellectual property</a></li>
-      <li><a href="#disclaimer">Disclaimer & no professional advice</a></li>
-      <li><a href="#liability">Limitation of liability</a></li>
-      <li><a href="#termination">Termination</a></li>
-      <li><a href="#changes">Changes to terms</a></li>
-      <li><a href="#law">Governing law</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ol>
+  <div class="topbar">
+    <a class="back" href="/" data-lang="en">← Back to Kuabo</a>
+    <a class="back" href="/" data-lang="fr">← Retour à Kuabo</a>
+    <a class="back" href="/" data-lang="es">← Volver a Kuabo</a>
+    <div class="langs">
+      <button class="lb" onclick="setL('en')" id="lb-en">🇺🇸 EN</button>
+      <button class="lb" onclick="setL('fr')" id="lb-fr">🇫🇷 FR</button>
+      <button class="lb" onclick="setL('es')" id="lb-es">🇪🇸 ES</button>
+    </div>
   </div>
 
-  <h2 id="acceptance">1. Acceptance of these terms</h2>
-  <p>By visiting <a href="https://kuabo.co">kuabo.co</a>, joining our waitlist, or using the Kuabo app, you agree to be bound by these Terms of Service ("Terms"). If you don't agree, please don't use Kuabo.</p>
-
-  <h2 id="service">2. What Kuabo is (and isn't)</h2>
-  <p><strong>Kuabo is</strong> an app and platform that guides Global Movers — migrants, expats, travelers, nomads — step by step after their visa. We provide:</p>
-  <ul>
-    <li>Educational guides (visas, banking, housing, jobs, daily life)</li>
-    <li>Community features</li>
-    <li>AI-powered chat assistance</li>
-    <li>Gamified rewards (Akwɛ tokens, badges, levels)</li>
-  </ul>
-  <div class="warn">
-    <strong>⚠️ Kuabo is NOT:</strong>
-    <ul style="margin-top:6px;">
-      <li>A visa lottery service</li>
-      <li>An immigration lawyer or attorney</li>
-      <li>A bank, money transfer service, or financial institution</li>
-      <li>A government agency</li>
-    </ul>
-    <p style="margin-top:8px;">We provide <strong>educational information only</strong>. For legal, financial, or immigration decisions, consult a licensed professional.</p>
+  <!-- ============= ENGLISH ============= -->
+  <div data-lang="en">
+    <h1>Terms of Service</h1>
+    <p class="h1-sub">Last updated: May 11, 2026 · Effective immediately</p>
+    <div class="toc">
+      <div class="toc-title">Table of contents</div>
+      <ol>
+        <li><a href="#en-accept">Acceptance</a></li>
+        <li><a href="#en-service">What Kuabo is (and isn't)</a></li>
+        <li><a href="#en-account">Your account</a></li>
+        <li><a href="#en-use">Acceptable use</a></li>
+        <li><a href="#en-akwe">Akwɛ rewards & in-app economy</a></li>
+        <li><a href="#en-sub">Subscriptions & payments</a></li>
+        <li><a href="#en-content">Your content</a></li>
+        <li><a href="#en-ip">Intellectual property</a></li>
+        <li><a href="#en-disc">Disclaimer & no professional advice</a></li>
+        <li><a href="#en-liab">Limitation of liability</a></li>
+        <li><a href="#en-term">Termination</a></li>
+        <li><a href="#en-changes">Changes to terms</a></li>
+        <li><a href="#en-law">Governing law</a></li>
+        <li><a href="#en-contact">Contact</a></li>
+      </ol>
+    </div>
+    <h2 id="en-accept">1. Acceptance of these terms</h2>
+    <p>By visiting <a href="https://kuabo.co">kuabo.co</a>, joining our waitlist, or using the Kuabo app, you agree to be bound by these Terms of Service ("Terms"). If you don't agree, please don't use Kuabo.</p>
+    <h2 id="en-service">2. What Kuabo is (and isn't)</h2>
+    <p><strong>Kuabo is</strong> an app and platform that guides Global Movers — migrants, expats, travelers, nomads — step by step after their visa. We provide:</p>
+    <ul><li>Educational guides (visas, banking, housing, jobs, daily life)</li><li>Community features</li><li>AI-powered chat assistance</li><li>Gamified rewards (Akwɛ tokens, badges, levels)</li></ul>
+    <div class="warn"><strong>⚠️ Kuabo is NOT:</strong><ul style="margin-top:6px;"><li>A visa lottery service</li><li>An immigration lawyer or attorney</li><li>A bank, money transfer service, or financial institution</li><li>A government agency</li></ul><p style="margin-top:8px;">We provide <strong>educational information only</strong>. For legal, financial, or immigration decisions, consult a licensed professional.</p></div>
+    <h2 id="en-account">3. Your account</h2>
+    <p>To use most features, you need an account. You agree to:</p>
+    <ul><li>Provide accurate, current information</li><li>Keep your password and PIN confidential</li><li>Notify us immediately of any unauthorized access</li><li>Be responsible for all activity under your account</li><li>Be at least 13 years old (or the minimum age required in your country)</li></ul>
+    <p>One person, one account. Multiple accounts to abuse rewards or referrals are prohibited.</p>
+    <h2 id="en-use">4. Acceptable use</h2>
+    <p>You agree NOT to:</p>
+    <ul><li>Use Kuabo for illegal purposes</li><li>Harass, abuse, or harm other users</li><li>Post false, misleading, or fraudulent content</li><li>Attempt to hack, reverse-engineer, or disrupt the service</li><li>Scrape, copy, or redistribute our content without permission</li><li>Use bots, scripts, or automated systems to abuse rewards</li><li>Impersonate others or misrepresent your identity</li><li>Violate applicable laws or regulations</li></ul>
+    <p>Violations may result in immediate account suspension or termination.</p>
+    <h2 id="en-akwe">5. Akwɛ rewards & in-app economy</h2>
+    <p><strong>Akwɛ</strong> are in-app utility tokens you earn by completing actions. Akwɛ are:</p>
+    <ul><li><strong>NOT convertible to real money</strong> (no cash-out, no transfers)</li><li><strong>NOT a cryptocurrency</strong> or financial instrument</li><li><strong>NOT investment vehicles</strong> — they have no real-world monetary value</li><li><strong>Subject to expiration</strong> if your account is inactive for 12+ months</li><li><strong>Cannot be sold</strong> or transferred between users</li></ul>
+    <p>We reserve the right to adjust Akwɛ values, limits, and rewards at any time. We may revoke Akwɛ earned through fraud, exploits, or abuse.</p>
+    <h2 id="en-sub">6. Subscriptions & payments (post-launch)</h2>
+    <p>Kuabo offers a <strong>free tier forever</strong>. Optional premium tiers are billed via Stripe.</p>
+    <ul><li>Subscriptions auto-renew unless cancelled</li><li>You can cancel anytime in your account settings</li><li>Refunds: 14-day money-back guarantee for first-time subscribers (EU)</li><li>Prices may change with 30 days' notice</li></ul>
+    <h2 id="en-content">7. Your content</h2>
+    <p>You retain ownership of content you post. By posting, you grant Kuabo a worldwide, non-exclusive, royalty-free license to display and use your content to operate the service.</p>
+    <p>You are responsible for your content. Don't post anything you don't own or have rights to.</p>
+    <h2 id="en-ip">8. Intellectual property</h2>
+    <p>The Kuabo brand, logo, mascot Kua 🦉, app design, code, and all original content are owned by Kuabo and protected by copyright, trademark, and other laws.</p>
+    <h2 id="en-disc">9. Disclaimer & no professional advice</h2>
+    <p>Kuabo provides general educational information. <strong>This is NOT legal, financial, immigration, medical, or professional advice.</strong></p>
+    <p>Information may be inaccurate, outdated, or inapplicable to your specific situation. Laws and visa requirements change frequently. Always verify with official sources before acting.</p>
+    <p>Kuabo provides the service "AS IS" without warranties of any kind.</p>
+    <h2 id="en-liab">10. Limitation of liability</h2>
+    <ul><li>Kuabo is NOT liable for indirect, incidental, consequential, or punitive damages</li><li>Kuabo is NOT liable for visa denials, financial losses, or immigration outcomes based on our content</li><li>Our total liability shall not exceed the amount you paid us in the past 12 months (or $100 if free tier)</li></ul>
+    <h2 id="en-term">11. Termination</h2>
+    <p>You can delete your account anytime via account settings or by emailing <a href="mailto:support@kuabo.co">support@kuabo.co</a>.</p>
+    <p>We may suspend or terminate your account if you violate these Terms, abuse the service, or commit fraud.</p>
+    <h2 id="en-changes">12. Changes to these Terms</h2>
+    <p>We may update these Terms as Kuabo evolves. We will notify you of material changes. Continued use after changes = acceptance of the new Terms.</p>
+    <h2 id="en-law">13. Governing law</h2>
+    <p>These Terms are governed by the laws of Maryland, USA. For EU users, this does not affect your statutory consumer protection rights under EU law.</p>
+    <h2 id="en-contact">14. Contact</h2>
+    <ul><li>📧 Email: <a href="mailto:support@kuabo.co">support@kuabo.co</a></li><li>🔒 Security: <a href="mailto:security@kuabo.co">security@kuabo.co</a></li><li>🌐 Website: <a href="https://kuabo.co">kuabo.co</a></li></ul>
   </div>
 
-  <h2 id="account">3. Your account</h2>
-  <p>To use most features, you need an account. You agree to:</p>
-  <ul>
-    <li>Provide accurate, current information</li>
-    <li>Keep your password and PIN confidential</li>
-    <li>Notify us immediately of any unauthorized access</li>
-    <li>Be responsible for all activity under your account</li>
-    <li>Be at least 13 years old (or the minimum age required in your country)</li>
-  </ul>
-  <p>One person, one account. Multiple accounts to abuse rewards or referrals are prohibited.</p>
+  <!-- ============= FRANÇAIS ============= -->
+  <div data-lang="fr">
+    <h1>Conditions d'utilisation</h1>
+    <p class="h1-sub">Dernière mise à jour : 11 mai 2026 · Entrée en vigueur immédiate</p>
+    <div class="toc">
+      <div class="toc-title">Sommaire</div>
+      <ol>
+        <li><a href="#fr-accept">Acceptation</a></li>
+        <li><a href="#fr-service">Ce que Kuabo est (et n'est pas)</a></li>
+        <li><a href="#fr-account">Votre compte</a></li>
+        <li><a href="#fr-use">Usage acceptable</a></li>
+        <li><a href="#fr-akwe">Récompenses Akwɛ & économie in-app</a></li>
+        <li><a href="#fr-sub">Abonnements & paiements</a></li>
+        <li><a href="#fr-content">Vos contenus</a></li>
+        <li><a href="#fr-ip">Propriété intellectuelle</a></li>
+        <li><a href="#fr-disc">Avertissement & pas de conseil professionnel</a></li>
+        <li><a href="#fr-liab">Limitation de responsabilité</a></li>
+        <li><a href="#fr-term">Résiliation</a></li>
+        <li><a href="#fr-changes">Modifications</a></li>
+        <li><a href="#fr-law">Loi applicable</a></li>
+        <li><a href="#fr-contact">Contact</a></li>
+      </ol>
+    </div>
+    <h2 id="fr-accept">1. Acceptation de ces conditions</h2>
+    <p>En visitant <a href="https://kuabo.co">kuabo.co</a>, en rejoignant notre liste d'attente ou en utilisant l'app Kuabo, vous acceptez ces Conditions d'utilisation. Si vous n'êtes pas d'accord, n'utilisez pas Kuabo.</p>
+    <h2 id="fr-service">2. Ce que Kuabo est (et n'est pas)</h2>
+    <p><strong>Kuabo est</strong> une app et plateforme qui guide les Global Movers — migrants, expatriés, voyageurs, nomades — pas à pas après leur visa. Nous offrons :</p>
+    <ul><li>Guides éducatifs (visas, banque, logement, emploi, vie quotidienne)</li><li>Fonctionnalités communautaires</li><li>Assistance chat IA</li><li>Récompenses gamifiées (jetons Akwɛ, badges, niveaux)</li></ul>
+    <div class="warn"><strong>⚠️ Kuabo n'est PAS :</strong><ul style="margin-top:6px;"><li>Un service de loterie visa</li><li>Un avocat ou conseiller en immigration</li><li>Une banque, service de transfert d'argent ou institution financière</li><li>Une agence gouvernementale</li></ul><p style="margin-top:8px;">Nous fournissons <strong>uniquement de l'information éducative</strong>. Pour les décisions légales, financières ou d'immigration, consultez un professionnel agréé.</p></div>
+    <h2 id="fr-account">3. Votre compte</h2>
+    <p>Pour utiliser la plupart des fonctionnalités, vous avez besoin d'un compte. Vous acceptez de :</p>
+    <ul><li>Fournir des informations exactes et à jour</li><li>Garder votre mot de passe et PIN confidentiels</li><li>Nous notifier immédiatement de tout accès non autorisé</li><li>Être responsable de toute activité sous votre compte</li><li>Avoir au moins 13 ans (ou l'âge minimum requis dans votre pays)</li></ul>
+    <p>Une personne, un compte. Les comptes multiples pour abuser des récompenses sont interdits.</p>
+    <h2 id="fr-use">4. Usage acceptable</h2>
+    <p>Vous acceptez de NE PAS :</p>
+    <ul><li>Utiliser Kuabo à des fins illégales</li><li>Harceler, abuser ou nuire à d'autres utilisateurs</li><li>Publier du contenu faux, trompeur ou frauduleux</li><li>Tenter de pirater, rétro-ingénierer ou perturber le service</li><li>Scraper, copier ou redistribuer notre contenu sans permission</li><li>Utiliser des bots, scripts ou systèmes automatisés pour abuser des récompenses</li><li>Usurper l'identité d'autrui</li><li>Violer les lois ou réglementations applicables</li></ul>
+    <p>Les violations peuvent entraîner la suspension ou résiliation immédiate du compte.</p>
+    <h2 id="fr-akwe">5. Récompenses Akwɛ & économie in-app</h2>
+    <p><strong>Les Akwɛ</strong> sont des jetons utilitaires in-app que vous gagnez en complétant des actions. Les Akwɛ :</p>
+    <ul><li><strong>NE SONT PAS convertibles en argent réel</strong> (pas de retrait, pas de transferts)</li><li><strong>NE SONT PAS une cryptomonnaie</strong> ni un instrument financier</li><li><strong>NE SONT PAS des véhicules d'investissement</strong> — aucune valeur monétaire réelle</li><li><strong>Peuvent expirer</strong> si votre compte est inactif pendant 12+ mois</li><li><strong>Ne peuvent être vendus</strong> ni transférés entre utilisateurs</li></ul>
+    <p>Nous nous réservons le droit d'ajuster les valeurs, limites et récompenses Akwɛ à tout moment. Nous pouvons révoquer les Akwɛ gagnés par fraude ou abus.</p>
+    <h2 id="fr-sub">6. Abonnements & paiements (post-lancement)</h2>
+    <p>Kuabo offre un <strong>palier gratuit pour toujours</strong>. Les paliers premium sont facturés via Stripe.</p>
+    <ul><li>Les abonnements se renouvellent automatiquement sauf annulation</li><li>Vous pouvez annuler à tout moment dans les paramètres</li><li>Remboursements : garantie 14 jours pour les premiers abonnés (UE)</li><li>Les prix peuvent changer avec préavis de 30 jours</li></ul>
+    <h2 id="fr-content">7. Vos contenus</h2>
+    <p>Vous gardez la propriété de votre contenu. En publiant, vous accordez à Kuabo une licence mondiale, non-exclusive, gratuite pour afficher et utiliser votre contenu afin de faire fonctionner le service.</p>
+    <p>Vous êtes responsable de votre contenu. Ne publiez rien que vous ne possédez pas.</p>
+    <h2 id="fr-ip">8. Propriété intellectuelle</h2>
+    <p>La marque Kuabo, le logo, la mascotte Kua 🦉, le design de l'app, le code et tout contenu original appartiennent à Kuabo et sont protégés par les lois sur le droit d'auteur, les marques et autres.</p>
+    <h2 id="fr-disc">9. Avertissement & pas de conseil professionnel</h2>
+    <p>Kuabo fournit de l'information éducative générale. <strong>Ce n'est PAS du conseil légal, financier, d'immigration, médical ou professionnel.</strong></p>
+    <p>Les informations peuvent être inexactes, périmées ou inapplicables à votre situation. Les lois et exigences visa changent fréquemment. Vérifiez toujours auprès des sources officielles avant d'agir.</p>
+    <p>Kuabo fournit le service "EN L'ÉTAT" sans aucune garantie.</p>
+    <h2 id="fr-liab">10. Limitation de responsabilité</h2>
+    <ul><li>Kuabo n'est PAS responsable des dommages indirects, accessoires, consécutifs ou punitifs</li><li>Kuabo n'est PAS responsable des refus de visa, pertes financières ou conséquences d'immigration basées sur notre contenu</li><li>Notre responsabilité totale n'excède pas le montant que vous nous avez payé sur les 12 derniers mois (ou 100$ si palier gratuit)</li></ul>
+    <h2 id="fr-term">11. Résiliation</h2>
+    <p>Vous pouvez supprimer votre compte à tout moment via les paramètres ou en écrivant à <a href="mailto:support@kuabo.co">support@kuabo.co</a>.</p>
+    <p>Nous pouvons suspendre ou résilier votre compte en cas de violation de ces Conditions, d'abus du service ou de fraude.</p>
+    <h2 id="fr-changes">12. Modifications de ces Conditions</h2>
+    <p>Nous pouvons mettre à jour ces Conditions. Nous vous notifierons des changements importants. L'utilisation continue après changement = acceptation des nouvelles Conditions.</p>
+    <h2 id="fr-law">13. Loi applicable</h2>
+    <p>Ces Conditions sont régies par les lois du Maryland, USA. Pour les utilisateurs UE, cela n'affecte pas vos droits statutaires de protection des consommateurs selon la loi UE.</p>
+    <h2 id="fr-contact">14. Contact</h2>
+    <ul><li>📧 Email : <a href="mailto:support@kuabo.co">support@kuabo.co</a></li><li>🔒 Sécurité : <a href="mailto:security@kuabo.co">security@kuabo.co</a></li><li>🌐 Site : <a href="https://kuabo.co">kuabo.co</a></li></ul>
+  </div>
 
-  <h2 id="use">4. Acceptable use</h2>
-  <p>You agree NOT to:</p>
-  <ul>
-    <li>Use Kuabo for illegal purposes</li>
-    <li>Harass, abuse, or harm other users</li>
-    <li>Post false, misleading, or fraudulent content</li>
-    <li>Attempt to hack, reverse-engineer, or disrupt the service</li>
-    <li>Scrape, copy, or redistribute our content without permission</li>
-    <li>Use bots, scripts, or automated systems to abuse rewards</li>
-    <li>Impersonate others or misrepresent your identity</li>
-    <li>Violate applicable laws or regulations</li>
-  </ul>
-  <p>Violations may result in immediate account suspension or termination.</p>
-
-  <h2 id="akwe">5. Akwɛ rewards & in-app economy</h2>
-  <p><strong>Akwɛ</strong> are in-app utility tokens you earn by completing actions (daily check-ins, guides, mini-games). Akwɛ are:</p>
-  <ul>
-    <li><strong>NOT convertible to real money</strong> (no cash-out, no transfers)</li>
-    <li><strong>NOT a cryptocurrency</strong> or financial instrument</li>
-    <li><strong>NOT investment vehicles</strong> — they have no real-world monetary value</li>
-    <li><strong>Subject to expiration</strong> if your account is inactive for 12+ months</li>
-    <li><strong>Cannot be sold</strong> or transferred between users</li>
-  </ul>
-  <p>We reserve the right to adjust Akwɛ values, limits, and rewards at any time. We may revoke Akwɛ earned through fraud, exploits, or abuse.</p>
-
-  <h2 id="subscription">6. Subscriptions & payments (post-launch)</h2>
-  <p>Kuabo offers a <strong>free tier forever</strong>. Optional premium tiers (Explorer, Premium, Black) are billed via Stripe.</p>
-  <ul>
-    <li>Subscriptions auto-renew unless cancelled</li>
-    <li>You can cancel anytime in your account settings</li>
-    <li>Refunds: 14-day money-back guarantee for first-time subscribers (EU)</li>
-    <li>Prices may change with 30 days' notice</li>
-  </ul>
-
-  <h2 id="content">7. Your content</h2>
-  <p>You retain ownership of content you post (photos, comments, reviews). By posting, you grant Kuabo a worldwide, non-exclusive, royalty-free license to display and use your content to operate the service.</p>
-  <p>You are responsible for your content. Don't post anything you don't own or have rights to.</p>
-
-  <h2 id="ip">8. Intellectual property</h2>
-  <p>The Kuabo brand, logo, mascot Kua 🦉, app design, code, and all original content are owned by Kuabo and protected by copyright, trademark, and other laws. You may not copy, modify, or redistribute any part without our written permission.</p>
-
-  <h2 id="disclaimer">9. Disclaimer & no professional advice</h2>
-  <p>Kuabo provides general educational information about immigration, banking, housing, and related topics. <strong>This is NOT legal, financial, immigration, medical, or professional advice.</strong></p>
-  <p>Information may be inaccurate, outdated, or inapplicable to your specific situation. Laws, visa requirements, and policies change frequently. Always verify with official sources (government websites, licensed professionals) before acting.</p>
-  <p>Kuabo provides the service "AS IS" without warranties of any kind, express or implied.</p>
-
-  <h2 id="liability">10. Limitation of liability</h2>
-  <p>To the maximum extent permitted by law:</p>
-  <ul>
-    <li>Kuabo is NOT liable for any indirect, incidental, consequential, or punitive damages</li>
-    <li>Kuabo is NOT liable for visa denials, financial losses, immigration outcomes, or third-party actions based on our content</li>
-    <li>Our total liability shall not exceed the amount you paid us in the past 12 months (or $100 if you used the free tier)</li>
-  </ul>
-
-  <h2 id="termination">11. Termination</h2>
-  <p>You can delete your account anytime via account settings or by emailing <a href="mailto:support@kuabo.co">support@kuabo.co</a>.</p>
-  <p>We may suspend or terminate your account if you violate these Terms, abuse the service, or commit fraud. We will give you reasonable notice unless immediate action is required for safety, legal, or security reasons.</p>
-
-  <h2 id="changes">12. Changes to these Terms</h2>
-  <p>We may update these Terms as Kuabo evolves. We will notify you of material changes via email or in-app notice. Continued use after changes = acceptance of the new Terms.</p>
-
-  <h2 id="law">13. Governing law</h2>
-  <p>These Terms are governed by the laws of the State of Maryland, USA, without regard to conflict of law principles. For EU users, this does not affect your statutory consumer protection rights under EU law.</p>
-  <p>Any dispute shall first be resolved through informal negotiation. If unresolved, disputes shall be settled in the courts of Maryland, USA.</p>
-
-  <h2 id="contact">14. Contact</h2>
-  <ul>
-    <li>📧 Email: <a href="mailto:support@kuabo.co">support@kuabo.co</a></li>
-    <li>🔒 Security: <a href="mailto:security@kuabo.co">security@kuabo.co</a></li>
-    <li>🌐 Website: <a href="https://kuabo.co">kuabo.co</a></li>
-  </ul>
+  <!-- ============= ESPAÑOL ============= -->
+  <div data-lang="es">
+    <h1>Términos del servicio</h1>
+    <p class="h1-sub">Última actualización: 11 de mayo de 2026 · Efectivos inmediatamente</p>
+    <div class="toc">
+      <div class="toc-title">Índice</div>
+      <ol>
+        <li><a href="#es-accept">Aceptación</a></li>
+        <li><a href="#es-service">Qué es Kuabo (y qué no es)</a></li>
+        <li><a href="#es-account">Tu cuenta</a></li>
+        <li><a href="#es-use">Uso aceptable</a></li>
+        <li><a href="#es-akwe">Recompensas Akwɛ & economía in-app</a></li>
+        <li><a href="#es-sub">Suscripciones & pagos</a></li>
+        <li><a href="#es-content">Tu contenido</a></li>
+        <li><a href="#es-ip">Propiedad intelectual</a></li>
+        <li><a href="#es-disc">Aviso & no asesoramiento profesional</a></li>
+        <li><a href="#es-liab">Limitación de responsabilidad</a></li>
+        <li><a href="#es-term">Terminación</a></li>
+        <li><a href="#es-changes">Cambios</a></li>
+        <li><a href="#es-law">Ley aplicable</a></li>
+        <li><a href="#es-contact">Contacto</a></li>
+      </ol>
+    </div>
+    <h2 id="es-accept">1. Aceptación de estos términos</h2>
+    <p>Al visitar <a href="https://kuabo.co">kuabo.co</a>, unirte a nuestra lista de espera o usar la app Kuabo, aceptas estos Términos del Servicio. Si no estás de acuerdo, no uses Kuabo.</p>
+    <h2 id="es-service">2. Qué es Kuabo (y qué no es)</h2>
+    <p><strong>Kuabo es</strong> una app y plataforma que guía a los Global Movers — migrantes, expatriados, viajeros, nómadas — paso a paso después de su visa. Ofrecemos:</p>
+    <ul><li>Guías educativas (visas, banca, vivienda, empleo, vida diaria)</li><li>Funciones comunitarias</li><li>Asistencia con chat IA</li><li>Recompensas gamificadas (tokens Akwɛ, insignias, niveles)</li></ul>
+    <div class="warn"><strong>⚠️ Kuabo NO es:</strong><ul style="margin-top:6px;"><li>Un servicio de lotería de visas</li><li>Un abogado o asesor de inmigración</li><li>Un banco, servicio de transferencia de dinero o institución financiera</li><li>Una agencia gubernamental</li></ul><p style="margin-top:8px;">Proveemos <strong>solo información educativa</strong>. Para decisiones legales, financieras o migratorias, consulta a un profesional licenciado.</p></div>
+    <h2 id="es-account">3. Tu cuenta</h2>
+    <p>Para usar la mayoría de funciones, necesitas una cuenta. Aceptas:</p>
+    <ul><li>Proporcionar información exacta y actual</li><li>Mantener tu contraseña y PIN confidenciales</li><li>Notificarnos inmediatamente de accesos no autorizados</li><li>Ser responsable de toda actividad bajo tu cuenta</li><li>Tener al menos 13 años (o la edad mínima en tu país)</li></ul>
+    <p>Una persona, una cuenta. Las cuentas múltiples para abusar de recompensas están prohibidas.</p>
+    <h2 id="es-use">4. Uso aceptable</h2>
+    <p>NO aceptas:</p>
+    <ul><li>Usar Kuabo para fines ilegales</li><li>Acosar, abusar o dañar a otros usuarios</li><li>Publicar contenido falso, engañoso o fraudulento</li><li>Intentar hackear, hacer ingeniería inversa o interrumpir el servicio</li><li>Scrapear, copiar o redistribuir nuestro contenido sin permiso</li><li>Usar bots, scripts o sistemas automatizados para abusar de recompensas</li><li>Suplantar a otros o tergiversar tu identidad</li><li>Violar leyes o reglamentos aplicables</li></ul>
+    <p>Las violaciones pueden resultar en suspensión o terminación inmediata de la cuenta.</p>
+    <h2 id="es-akwe">5. Recompensas Akwɛ & economía in-app</h2>
+    <p><strong>Los Akwɛ</strong> son tokens utilitarios in-app que ganas al completar acciones. Los Akwɛ:</p>
+    <ul><li><strong>NO son convertibles en dinero real</strong> (sin retiro, sin transferencias)</li><li><strong>NO son criptomoneda</strong> ni instrumento financiero</li><li><strong>NO son vehículos de inversión</strong> — no tienen valor monetario real</li><li><strong>Pueden expirar</strong> si tu cuenta está inactiva 12+ meses</li><li><strong>No pueden venderse</strong> ni transferirse entre usuarios</li></ul>
+    <p>Nos reservamos el derecho de ajustar valores, límites y recompensas Akwɛ en cualquier momento. Podemos revocar Akwɛ ganados por fraude o abuso.</p>
+    <h2 id="es-sub">6. Suscripciones & pagos (post-lanzamiento)</h2>
+    <p>Kuabo ofrece un <strong>nivel gratis para siempre</strong>. Los niveles premium se cobran vía Stripe.</p>
+    <ul><li>Las suscripciones se renuevan automáticamente salvo cancelación</li><li>Puedes cancelar en cualquier momento en la configuración</li><li>Reembolsos: garantía de 14 días para nuevos suscriptores (UE)</li><li>Los precios pueden cambiar con 30 días de aviso</li></ul>
+    <h2 id="es-content">7. Tu contenido</h2>
+    <p>Conservas la propiedad de tu contenido. Al publicar, otorgas a Kuabo una licencia mundial, no exclusiva y libre de regalías para mostrar y usar tu contenido para operar el servicio.</p>
+    <p>Eres responsable de tu contenido. No publiques nada que no poseas.</p>
+    <h2 id="es-ip">8. Propiedad intelectual</h2>
+    <p>La marca Kuabo, logo, mascota Kua 🦉, diseño de la app, código y todo contenido original son propiedad de Kuabo y están protegidos por leyes de copyright, marcas y otras.</p>
+    <h2 id="es-disc">9. Aviso & no asesoramiento profesional</h2>
+    <p>Kuabo provee información educativa general. <strong>Esto NO es asesoramiento legal, financiero, migratorio, médico o profesional.</strong></p>
+    <p>La información puede ser inexacta, desactualizada o inaplicable a tu situación. Las leyes y requisitos de visa cambian frecuentemente. Siempre verifica con fuentes oficiales antes de actuar.</p>
+    <p>Kuabo provee el servicio "TAL CUAL" sin garantías de ningún tipo.</p>
+    <h2 id="es-liab">10. Limitación de responsabilidad</h2>
+    <ul><li>Kuabo NO es responsable de daños indirectos, incidentales, consecuentes o punitivos</li><li>Kuabo NO es responsable de denegaciones de visa, pérdidas financieras o resultados migratorios basados en nuestro contenido</li><li>Nuestra responsabilidad total no excederá lo que nos pagaste en los últimos 12 meses (o $100 si nivel gratis)</li></ul>
+    <h2 id="es-term">11. Terminación</h2>
+    <p>Puedes eliminar tu cuenta en cualquier momento vía configuración o escribiendo a <a href="mailto:support@kuabo.co">support@kuabo.co</a>.</p>
+    <p>Podemos suspender o terminar tu cuenta si violas estos Términos, abusas del servicio o cometes fraude.</p>
+    <h2 id="es-changes">12. Cambios a estos Términos</h2>
+    <p>Podemos actualizar estos Términos. Te notificaremos cambios importantes. El uso continuado tras cambios = aceptación de los nuevos Términos.</p>
+    <h2 id="es-law">13. Ley aplicable</h2>
+    <p>Estos Términos se rigen por las leyes de Maryland, USA. Para usuarios UE, esto no afecta tus derechos estatutarios de protección al consumidor bajo la ley UE.</p>
+    <h2 id="es-contact">14. Contacto</h2>
+    <ul><li>📧 Email: <a href="mailto:support@kuabo.co">support@kuabo.co</a></li><li>🔒 Seguridad: <a href="mailto:security@kuabo.co">security@kuabo.co</a></li><li>🌐 Sitio: <a href="https://kuabo.co">kuabo.co</a></li></ul>
+  </div>
 
   <footer>
     <a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
-    <p style="margin-top:12px;">© 2026 Kuabo. Made for those brave enough to move. 🌍</p>
+    <p style="margin-top:12px;">© 2026 Kuabo. <span data-lang="en">Made for those brave enough to move. 🌍</span><span data-lang="fr">Fait pour ceux qui osent bouger. 🌍</span><span data-lang="es">Hecho para quienes se atreven a moverse. 🌍</span></p>
   </footer>
 </div>
+<script>
+  function setL(lang) {
+    localStorage.setItem('kuabo_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('show', el.dataset.lang === lang);
+    });
+    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+    document.getElementById('lb-' + lang).classList.add('on');
+    document.title = ({en:'Terms of Service — Kuabo', fr:"Conditions d'utilisation — Kuabo", es:'Términos del servicio — Kuabo'})[lang];
+  }
+  const stored = localStorage.getItem('kuabo_lang');
+  const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
+  const initial = stored || (['fr','es','en'].includes(browser) ? browser : 'en');
+  setL(initial);
+</script>
 </body>
 </html>

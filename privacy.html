@@ -2,11 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/> 
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Privacy Policy — Kuabo</title>
-<meta name="description" content="Kuabo's privacy policy. We respect your data. GDPR + CCPA compliant."/>
+<meta name="description" content="Kuabo's privacy policy. We respect your data. GDPR + CCPA compliant. Available in EN, FR, ES."/>
 <meta name="robots" content="index,follow"/>
 <link rel="canonical" href="https://kuabo.co/privacy"/>
+<link rel="alternate" hreflang="en" href="https://kuabo.co/privacy"/>
+<link rel="alternate" hreflang="fr" href="https://kuabo.co/privacy"/>
+<link rel="alternate" hreflang="es" href="https://kuabo.co/privacy"/>
 <link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png"/>
 <link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png"/>
 <meta name="theme-color" content="#e8b84b"/>
@@ -15,8 +18,13 @@
   * { box-sizing:border-box; margin:0; padding:0; }
   body { background:var(--navy); color:var(--text); font-family:-apple-system,'Nunito Sans','Helvetica Neue',Arial,sans-serif; line-height:1.65; padding:60px 24px; }
   .wrap { max-width:780px; margin:0 auto; }
-  a.back { display:inline-flex; align-items:center; gap:6px; color:var(--gold); text-decoration:none; font-weight:700; margin-bottom:32px; font-size:14px; }
+  .topbar { display:flex; justify-content:space-between; align-items:center; margin-bottom:32px; flex-wrap:wrap; gap:16px; }
+  a.back { display:inline-flex; align-items:center; gap:6px; color:var(--gold); text-decoration:none; font-weight:700; font-size:14px; }
   a.back:hover { text-decoration:underline; }
+  .langs { display:flex; gap:6px; }
+  .lb { background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--text); padding:6px 12px; border-radius:8px; font-size:13px; font-weight:700; cursor:pointer; transition:all .15s; }
+  .lb:hover { background:rgba(232,184,75,.1); border-color:rgba(232,184,75,.4); }
+  .lb.on { background:rgba(232,184,75,.18); border-color:rgba(232,184,75,.6); color:var(--gold); }
   h1 { font-family:'Nunito',sans-serif; font-size:42px; font-weight:900; line-height:1.15; margin-bottom:12px; letter-spacing:-1px; }
   .h1-sub { color:var(--muted); font-size:15px; margin-bottom:48px; }
   h2 { font-family:'Nunito',sans-serif; font-size:22px; font-weight:800; margin:36px 0 12px; color:var(--gold); }
@@ -26,7 +34,6 @@
   li { margin-bottom:6px; color:var(--text); font-size:15px; }
   strong { color:#fff; }
   a { color:var(--teal); text-decoration:underline; }
-  hr { border:none; border-top:1px solid rgba(255,255,255,.1); margin:48px 0; }
   .toc { background:rgba(232,184,75,.05); border:1px solid rgba(232,184,75,.2); border-radius:12px; padding:18px 22px; margin:24px 0 36px; }
   .toc-title { font-weight:800; color:var(--gold); font-size:13px; letter-spacing:.06em; text-transform:uppercase; margin-bottom:10px; }
   .toc ol { margin-left:20px; font-size:14px; }
@@ -34,134 +41,223 @@
   .toc a:hover { color:var(--gold); }
   footer { margin-top:60px; padding-top:24px; border-top:1px solid rgba(255,255,255,.1); color:var(--muted); font-size:13px; text-align:center; }
   footer a { color:var(--gold); margin:0 8px; }
+  [data-lang]:not(.show) { display:none; }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <a class="back" href="/">← Back to Kuabo</a>
-  <h1>Privacy Policy</h1>
-  <p class="h1-sub">Last updated: May 11, 2026 · Effective immediately</p>
-
-  <div class="toc">
-    <div class="toc-title">Table of contents</div>
-    <ol>
-      <li><a href="#who-we-are">Who we are</a></li>
-      <li><a href="#data-collected">Data we collect</a></li>
-      <li><a href="#how-we-use">How we use your data</a></li>
-      <li><a href="#sharing">Sharing & third parties</a></li>
-      <li><a href="#cookies">Cookies & tracking</a></li>
-      <li><a href="#your-rights">Your rights (GDPR & CCPA)</a></li>
-      <li><a href="#data-retention">Data retention</a></li>
-      <li><a href="#security">Security</a></li>
-      <li><a href="#children">Children</a></li>
-      <li><a href="#changes">Changes to this policy</a></li>
-      <li><a href="#contact">Contact us</a></li>
-    </ol>
+  <div class="topbar">
+    <a class="back" href="/" data-lang="en" >← Back to Kuabo</a>
+    <a class="back" href="/" data-lang="fr">← Retour à Kuabo</a>
+    <a class="back" href="/" data-lang="es">← Volver a Kuabo</a>
+    <div class="langs">
+      <button class="lb" onclick="setL('en')" id="lb-en">🇺🇸 EN</button>
+      <button class="lb" onclick="setL('fr')" id="lb-fr">🇫🇷 FR</button>
+      <button class="lb" onclick="setL('es')" id="lb-es">🇪🇸 ES</button>
+    </div>
   </div>
 
-  <h2 id="who-we-are">1. Who we are</h2>
-  <p>Kuabo ("we", "us", "our") is an application and platform that guides Global Movers — migrants, expats, travelers, nomads — step by step after their visa. Kuabo is operated by its founder, currently based in Maryland, USA. Our website is <a href="https://kuabo.co">kuabo.co</a>.</p>
-  <p>This privacy policy explains how we collect, use, store, and protect your personal data when you visit our website, join our waitlist, or use our app.</p>
+  <!-- ============= ENGLISH ============= -->
+  <div data-lang="en">
+    <h1>Privacy Policy</h1>
+    <p class="h1-sub">Last updated: May 11, 2026 · Effective immediately</p>
+    <div class="toc">
+      <div class="toc-title">Table of contents</div>
+      <ol>
+        <li><a href="#en-who">Who we are</a></li>
+        <li><a href="#en-data">Data we collect</a></li>
+        <li><a href="#en-use">How we use your data</a></li>
+        <li><a href="#en-share">Sharing & third parties</a></li>
+        <li><a href="#en-cookies">Cookies & tracking</a></li>
+        <li><a href="#en-rights">Your rights (GDPR & CCPA)</a></li>
+        <li><a href="#en-retain">Data retention</a></li>
+        <li><a href="#en-sec">Security</a></li>
+        <li><a href="#en-child">Children</a></li>
+        <li><a href="#en-change">Changes to this policy</a></li>
+        <li><a href="#en-contact">Contact us</a></li>
+      </ol>
+    </div>
+    <h2 id="en-who">1. Who we are</h2>
+    <p>Kuabo ("we", "us", "our") is an application and platform that guides Global Movers — migrants, expats, travelers, nomads — step by step after their visa. Kuabo is operated by its founder, currently based in Maryland, USA. Our website is <a href="https://kuabo.co">kuabo.co</a>.</p>
+    <p>This privacy policy explains how we collect, use, store, and protect your personal data when you visit our website, join our waitlist, or use our app.</p>
+    <h2 id="en-data">2. Data we collect</h2>
+    <h3>2.1 Waitlist & contact</h3>
+    <ul><li><strong>Email address</strong> — when you sign up to our waitlist or contact us</li><li><strong>Language preference</strong> — EN, FR, or ES</li><li><strong>Country / region</strong> (optional) — to tailor your experience</li></ul>
+    <h3>2.2 App usage (post-launch)</h3>
+    <ul><li><strong>Account data</strong> — username, password (hashed), profile info you provide</li><li><strong>App activity</strong> — features used, badges earned, in-app actions (Akwɛ rewards, check-ins)</li><li><strong>Device info</strong> — device type, OS version, language, timezone</li></ul>
+    <h3>2.3 Automatic</h3>
+    <ul><li><strong>Analytics</strong> — aggregated, anonymized usage stats (via privacy-first tools)</li><li><strong>Server logs</strong> — IP address (truncated), browser type, request times (for security)</li></ul>
+    <h2 id="en-use">3. How we use your data</h2>
+    <ul><li>To <strong>send you the launch announcement</strong> and product updates</li><li>To <strong>provide the Kuabo service</strong> (guides, AI chat, community)</li><li>To <strong>improve our product</strong> using anonymized analytics</li><li>To <strong>communicate with you</strong> about your account or important changes</li><li>To <strong>protect against fraud</strong> and ensure platform security</li><li>To <strong>comply with legal obligations</strong></li></ul>
+    <p>We <strong>never sell your data</strong>. Period.</p>
+    <h2 id="en-share">4. Sharing & third parties</h2>
+    <p>We share data only with trusted infrastructure providers required to deliver our service:</p>
+    <ul><li><strong>Vercel</strong> (website hosting, USA) — server logs only</li><li><strong>Google Firebase</strong> (app backend, USA/EU) — account data, app activity</li><li><strong>Resend</strong> (transactional email, USA) — your email when we send you updates</li><li><strong>Stripe</strong> (post-launch payments, USA) — billing data if you subscribe to premium tiers</li><li><strong>Plausible Analytics</strong> (EU-hosted) — anonymized website usage stats</li></ul>
+    <p>All providers are bound by data processing agreements (DPAs) and meet GDPR standards.</p>
+    <h2 id="en-cookies">5. Cookies & tracking</h2>
+    <p>We use <strong>minimal cookies</strong>:</p>
+    <ul><li><strong>Essential cookies</strong> — language preference, session (no consent required)</li><li><strong>Analytics cookies</strong> — Plausible Analytics is cookie-free and GDPR-compliant by design</li></ul>
+    <p>We do <strong>not use</strong> Facebook Pixel, Google Ads tracking, or third-party advertising cookies.</p>
+    <h2 id="en-rights">6. Your rights</h2>
+    <p>Under <strong>GDPR</strong> (EU), <strong>CCPA</strong> (California), and similar laws, you have the right to:</p>
+    <ul><li><strong>Access</strong> — request a copy of your personal data</li><li><strong>Rectify</strong> — correct inaccurate data</li><li><strong>Delete</strong> — ask us to erase your data ("right to be forgotten")</li><li><strong>Portability</strong> — receive your data in a machine-readable format</li><li><strong>Object</strong> — refuse certain processing (e.g., marketing)</li><li><strong>Withdraw consent</strong> — opt out of waitlist or app at any time</li></ul>
+    <p>To exercise any right, email <a href="mailto:support@kuabo.co">support@kuabo.co</a>. We respond within 30 days.</p>
+    <h2 id="en-retain">7. Data retention</h2>
+    <ul><li><strong>Waitlist email</strong> — kept until launch + 12 months, then deleted if no account created</li><li><strong>Account data</strong> — kept while your account is active; deleted within 30 days of account closure</li><li><strong>Audit logs</strong> — kept for 24 months for security compliance, then anonymized</li></ul>
+    <h2 id="en-sec">8. Security</h2>
+    <p>We take security seriously. We implement bank-grade measures including:</p>
+    <ul><li>HTTPS encryption everywhere (TLS 1.3)</li><li>Passwords hashed with bcrypt + salt</li><li>Two-factor authentication available</li><li>Rate limiting on sensitive endpoints</li><li>Anti-fraud scoring system</li><li>Real-time security monitoring</li><li>Comprehensive audit logging</li></ul>
+    <p>If you discover a vulnerability, please report it responsibly to <a href="mailto:security@kuabo.co">security@kuabo.co</a>.</p>
+    <h2 id="en-child">9. Children</h2>
+    <p>Kuabo is intended for users aged <strong>13 and over</strong> (or the minimum age required by your country). We do not knowingly collect data from children under 13. If you believe we have, contact us and we will delete it.</p>
+    <h2 id="en-change">10. Changes to this policy</h2>
+    <p>We may update this policy as Kuabo evolves. We will notify you of material changes via email or in-app notice. The "Last updated" date at the top reflects the most recent revision.</p>
+    <h2 id="en-contact">11. Contact us</h2>
+    <p>Questions, requests, or concerns?</p>
+    <ul><li>📧 Email: <a href="mailto:support@kuabo.co">support@kuabo.co</a></li><li>🔒 Security: <a href="mailto:security@kuabo.co">security@kuabo.co</a></li><li>🌐 Website: <a href="https://kuabo.co">kuabo.co</a></li></ul>
+  </div>
 
-  <h2 id="data-collected">2. Data we collect</h2>
-  <h3>2.1 Waitlist & contact</h3>
-  <ul>
-    <li><strong>Email address</strong> — when you sign up to our waitlist or contact us</li>
-    <li><strong>Language preference</strong> — EN, FR, or ES</li>
-    <li><strong>Country / region</strong> (optional) — to tailor your experience</li>
-  </ul>
-  <h3>2.2 App usage (post-launch)</h3>
-  <ul>
-    <li><strong>Account data</strong> — username, password (hashed), profile info you provide</li>
-    <li><strong>App activity</strong> — features used, badges earned, in-app actions (Akwɛ rewards, check-ins)</li>
-    <li><strong>Device info</strong> — device type, OS version, language, timezone</li>
-  </ul>
-  <h3>2.3 Automatic</h3>
-  <ul>
-    <li><strong>Analytics</strong> — aggregated, anonymized usage stats (via privacy-first tools)</li>
-    <li><strong>Server logs</strong> — IP address (truncated), browser type, request times (for security)</li>
-  </ul>
+  <!-- ============= FRANÇAIS ============= -->
+  <div data-lang="fr">
+    <h1>Politique de confidentialité</h1>
+    <p class="h1-sub">Dernière mise à jour : 11 mai 2026 · Entrée en vigueur immédiate</p>
+    <div class="toc">
+      <div class="toc-title">Sommaire</div>
+      <ol>
+        <li><a href="#fr-who">Qui sommes-nous</a></li>
+        <li><a href="#fr-data">Données collectées</a></li>
+        <li><a href="#fr-use">Comment nous utilisons vos données</a></li>
+        <li><a href="#fr-share">Partage & tiers</a></li>
+        <li><a href="#fr-cookies">Cookies & traçage</a></li>
+        <li><a href="#fr-rights">Vos droits (RGPD & CCPA)</a></li>
+        <li><a href="#fr-retain">Conservation des données</a></li>
+        <li><a href="#fr-sec">Sécurité</a></li>
+        <li><a href="#fr-child">Mineurs</a></li>
+        <li><a href="#fr-change">Modifications de cette politique</a></li>
+        <li><a href="#fr-contact">Nous contacter</a></li>
+      </ol>
+    </div>
+    <h2 id="fr-who">1. Qui sommes-nous</h2>
+    <p>Kuabo (« nous ») est une application et une plateforme qui guide les Global Movers — migrants, expatriés, voyageurs, nomades — pas à pas après l'obtention de leur visa. Kuabo est exploitée par son fondateur, actuellement basé dans le Maryland, USA. Notre site web est <a href="https://kuabo.co">kuabo.co</a>.</p>
+    <p>Cette politique explique comment nous collectons, utilisons, stockons et protégeons vos données personnelles lorsque vous visitez notre site, rejoignez notre liste d'attente ou utilisez notre application.</p>
+    <h2 id="fr-data">2. Données collectées</h2>
+    <h3>2.1 Liste d'attente & contact</h3>
+    <ul><li><strong>Adresse email</strong> — quand vous vous inscrivez ou nous contactez</li><li><strong>Langue préférée</strong> — EN, FR ou ES</li><li><strong>Pays / région</strong> (optionnel) — pour personnaliser votre expérience</li></ul>
+    <h3>2.2 Usage de l'app (post-lancement)</h3>
+    <ul><li><strong>Données de compte</strong> — pseudo, mot de passe (haché), infos de profil</li><li><strong>Activité dans l'app</strong> — fonctionnalités utilisées, badges, actions (récompenses Akwɛ, check-ins)</li><li><strong>Infos appareil</strong> — type, OS, langue, fuseau horaire</li></ul>
+    <h3>2.3 Automatique</h3>
+    <ul><li><strong>Analytique</strong> — stats d'usage agrégées, anonymisées (outils respectueux de la vie privée)</li><li><strong>Logs serveur</strong> — IP (tronquée), navigateur, horodatages (pour la sécurité)</li></ul>
+    <h2 id="fr-use">3. Comment nous utilisons vos données</h2>
+    <ul><li>Pour <strong>vous annoncer le lancement</strong> et les mises à jour produit</li><li>Pour <strong>fournir le service Kuabo</strong> (guides, IA, communauté)</li><li>Pour <strong>améliorer notre produit</strong> via des analytiques anonymisées</li><li>Pour <strong>communiquer avec vous</strong> sur votre compte ou les changements importants</li><li>Pour <strong>lutter contre la fraude</strong> et assurer la sécurité</li><li>Pour <strong>respecter nos obligations légales</strong></li></ul>
+    <p>Nous <strong>ne vendons jamais vos données</strong>. Point.</p>
+    <h2 id="fr-share">4. Partage & tiers</h2>
+    <p>Nous partageons uniquement avec les prestataires d'infrastructure nécessaires :</p>
+    <ul><li><strong>Vercel</strong> (hébergement site, USA) — logs serveur uniquement</li><li><strong>Google Firebase</strong> (backend app, USA/UE) — données de compte, activité</li><li><strong>Resend</strong> (emails transactionnels, USA) — votre email pour vous écrire</li><li><strong>Stripe</strong> (paiements post-lancement, USA) — facturation si vous prenez un abonnement</li><li><strong>Plausible Analytics</strong> (hébergé UE) — stats anonymisées du site</li></ul>
+    <p>Tous les prestataires sont liés par des contrats de traitement (DPA) et conformes au RGPD.</p>
+    <h2 id="fr-cookies">5. Cookies & traçage</h2>
+    <p>Nous utilisons <strong>très peu de cookies</strong> :</p>
+    <ul><li><strong>Cookies essentiels</strong> — préférence de langue, session (pas de consentement requis)</li><li><strong>Cookies d'analytique</strong> — Plausible est sans cookies et conforme RGPD par conception</li></ul>
+    <p>Nous <strong>n'utilisons PAS</strong> Facebook Pixel, Google Ads, ni aucun cookie publicitaire tiers.</p>
+    <h2 id="fr-rights">6. Vos droits</h2>
+    <p>Selon le <strong>RGPD</strong> (UE), la <strong>CCPA</strong> (Californie) et lois similaires, vous avez le droit de :</p>
+    <ul><li><strong>Accéder</strong> — demander une copie de vos données</li><li><strong>Rectifier</strong> — corriger les données inexactes</li><li><strong>Supprimer</strong> — nous demander d'effacer vos données (« droit à l'oubli »)</li><li><strong>Portabilité</strong> — recevoir vos données dans un format lisible par machine</li><li><strong>Vous opposer</strong> — refuser certains traitements (ex. marketing)</li><li><strong>Retirer votre consentement</strong> — quitter la liste d'attente ou l'app à tout moment</li></ul>
+    <p>Pour exercer vos droits, écrivez à <a href="mailto:support@kuabo.co">support@kuabo.co</a>. Nous répondons sous 30 jours.</p>
+    <h2 id="fr-retain">7. Conservation des données</h2>
+    <ul><li><strong>Email waitlist</strong> — gardé jusqu'au lancement + 12 mois, puis supprimé si aucun compte créé</li><li><strong>Données de compte</strong> — gardées tant que le compte est actif ; supprimées sous 30 jours après fermeture</li><li><strong>Logs d'audit</strong> — conservés 24 mois pour conformité sécurité, puis anonymisés</li></ul>
+    <h2 id="fr-sec">8. Sécurité</h2>
+    <p>Nous prenons la sécurité très au sérieux. Mesures de niveau bancaire :</p>
+    <ul><li>Chiffrement HTTPS partout (TLS 1.3)</li><li>Mots de passe hachés (bcrypt + sel)</li><li>Authentification à deux facteurs disponible</li><li>Limitation de débit sur endpoints sensibles</li><li>Système de scoring anti-fraude</li><li>Monitoring sécurité en temps réel</li><li>Journaux d'audit complets</li></ul>
+    <p>Si vous découvrez une faille, signalez-la responsablement à <a href="mailto:security@kuabo.co">security@kuabo.co</a>.</p>
+    <h2 id="fr-child">9. Mineurs</h2>
+    <p>Kuabo est destiné aux utilisateurs de <strong>13 ans et plus</strong> (ou l'âge minimum requis dans votre pays). Nous ne collectons pas sciemment de données d'enfants de moins de 13 ans. Si vous pensez que c'est le cas, contactez-nous et nous supprimerons.</p>
+    <h2 id="fr-change">10. Modifications de cette politique</h2>
+    <p>Nous pouvons mettre à jour cette politique au fil de l'évolution de Kuabo. Nous vous informerons des changements importants par email ou notification in-app. La date « Dernière mise à jour » en haut reflète la dernière révision.</p>
+    <h2 id="fr-contact">11. Nous contacter</h2>
+    <p>Questions, demandes, préoccupations ?</p>
+    <ul><li>📧 Email : <a href="mailto:support@kuabo.co">support@kuabo.co</a></li><li>🔒 Sécurité : <a href="mailto:security@kuabo.co">security@kuabo.co</a></li><li>🌐 Site : <a href="https://kuabo.co">kuabo.co</a></li></ul>
+  </div>
 
-  <h2 id="how-we-use">3. How we use your data</h2>
-  <ul>
-    <li>To <strong>send you the launch announcement</strong> and product updates</li>
-    <li>To <strong>provide the Kuabo service</strong> (guides, AI chat, community)</li>
-    <li>To <strong>improve our product</strong> using anonymized analytics</li>
-    <li>To <strong>communicate with you</strong> about your account or important changes</li>
-    <li>To <strong>protect against fraud</strong> and ensure platform security</li>
-    <li>To <strong>comply with legal obligations</strong></li>
-  </ul>
-  <p>We <strong>never sell your data</strong>. Period.</p>
-
-  <h2 id="sharing">4. Sharing & third parties</h2>
-  <p>We share data only with trusted infrastructure providers required to deliver our service:</p>
-  <ul>
-    <li><strong>Vercel</strong> (website hosting, USA) — server logs only</li>
-    <li><strong>Google Firebase</strong> (app backend, USA/EU) — account data, app activity</li>
-    <li><strong>Resend</strong> (transactional email, USA) — your email when we send you updates</li>
-    <li><strong>Stripe</strong> (post-launch payments, USA) — billing data if you subscribe to premium tiers</li>
-    <li><strong>Plausible Analytics</strong> (EU-hosted) — anonymized website usage stats</li>
-  </ul>
-  <p>All providers are bound by data processing agreements (DPAs) and meet GDPR standards.</p>
-
-  <h2 id="cookies">5. Cookies & tracking</h2>
-  <p>We use <strong>minimal cookies</strong>:</p>
-  <ul>
-    <li><strong>Essential cookies</strong> — language preference, session (no consent required)</li>
-    <li><strong>Analytics cookies</strong> — Plausible Analytics is cookie-free and GDPR-compliant by design</li>
-  </ul>
-  <p>We do <strong>not use</strong> Facebook Pixel, Google Ads tracking, or third-party advertising cookies.</p>
-
-  <h2 id="your-rights">6. Your rights</h2>
-  <p>Under <strong>GDPR</strong> (EU), <strong>CCPA</strong> (California), and similar laws, you have the right to:</p>
-  <ul>
-    <li><strong>Access</strong> — request a copy of your personal data</li>
-    <li><strong>Rectify</strong> — correct inaccurate data</li>
-    <li><strong>Delete</strong> — ask us to erase your data ("right to be forgotten")</li>
-    <li><strong>Portability</strong> — receive your data in a machine-readable format</li>
-    <li><strong>Object</strong> — refuse certain processing (e.g., marketing)</li>
-    <li><strong>Withdraw consent</strong> — opt out of waitlist or app at any time</li>
-  </ul>
-  <p>To exercise any right, email <a href="mailto:support@kuabo.co">support@kuabo.co</a>. We respond within 30 days.</p>
-
-  <h2 id="data-retention">7. Data retention</h2>
-  <ul>
-    <li><strong>Waitlist email</strong> — kept until launch + 12 months, then deleted if no account created</li>
-    <li><strong>Account data</strong> — kept while your account is active; deleted within 30 days of account closure</li>
-    <li><strong>Audit logs</strong> — kept for 24 months for security compliance, then anonymized</li>
-  </ul>
-
-  <h2 id="security">8. Security</h2>
-  <p>We take security seriously. We implement bank-grade measures including:</p>
-  <ul>
-    <li>HTTPS encryption everywhere (TLS 1.3)</li>
-    <li>Passwords hashed with bcrypt + salt</li>
-    <li>Two-factor authentication available</li>
-    <li>Rate limiting on sensitive endpoints</li>
-    <li>Anti-fraud scoring system</li>
-    <li>Real-time security monitoring</li>
-    <li>Comprehensive audit logging</li>
-  </ul>
-  <p>If you discover a vulnerability, please report it responsibly to <a href="mailto:security@kuabo.co">security@kuabo.co</a>.</p>
-
-  <h2 id="children">9. Children</h2>
-  <p>Kuabo is intended for users aged <strong>13 and over</strong> (or the minimum age required by your country). We do not knowingly collect data from children under 13. If you believe we have, contact us and we will delete it.</p>
-
-  <h2 id="changes">10. Changes to this policy</h2>
-  <p>We may update this policy as Kuabo evolves. We will notify you of material changes via email or in-app notice. The "Last updated" date at the top reflects the most recent revision.</p>
-
-  <h2 id="contact">11. Contact us</h2>
-  <p>Questions, requests, or concerns?</p>
-  <ul>
-    <li>📧 Email: <a href="mailto:support@kuabo.co">support@kuabo.co</a></li>
-    <li>🔒 Security: <a href="mailto:security@kuabo.co">security@kuabo.co</a></li>
-    <li>🌐 Website: <a href="https://kuabo.co">kuabo.co</a></li>
-  </ul>
+  <!-- ============= ESPAÑOL ============= -->
+  <div data-lang="es">
+    <h1>Política de privacidad</h1>
+    <p class="h1-sub">Última actualización: 11 de mayo de 2026 · Efectiva inmediatamente</p>
+    <div class="toc">
+      <div class="toc-title">Índice</div>
+      <ol>
+        <li><a href="#es-who">Quiénes somos</a></li>
+        <li><a href="#es-data">Datos que recopilamos</a></li>
+        <li><a href="#es-use">Cómo usamos tus datos</a></li>
+        <li><a href="#es-share">Compartir & terceros</a></li>
+        <li><a href="#es-cookies">Cookies & seguimiento</a></li>
+        <li><a href="#es-rights">Tus derechos (RGPD & CCPA)</a></li>
+        <li><a href="#es-retain">Retención de datos</a></li>
+        <li><a href="#es-sec">Seguridad</a></li>
+        <li><a href="#es-child">Menores</a></li>
+        <li><a href="#es-change">Cambios a esta política</a></li>
+        <li><a href="#es-contact">Contáctanos</a></li>
+      </ol>
+    </div>
+    <h2 id="es-who">1. Quiénes somos</h2>
+    <p>Kuabo ("nosotros") es una aplicación y plataforma que guía a los Global Movers — migrantes, expatriados, viajeros, nómadas — paso a paso después de su visa. Kuabo es operado por su fundador, actualmente basado en Maryland, USA. Nuestro sitio web es <a href="https://kuabo.co">kuabo.co</a>.</p>
+    <p>Esta política explica cómo recopilamos, usamos, almacenamos y protegemos tus datos personales cuando visitas nuestro sitio, te unes a la lista de espera o usas nuestra app.</p>
+    <h2 id="es-data">2. Datos que recopilamos</h2>
+    <h3>2.1 Lista de espera & contacto</h3>
+    <ul><li><strong>Email</strong> — cuando te suscribes o nos contactas</li><li><strong>Idioma preferido</strong> — EN, FR o ES</li><li><strong>País / región</strong> (opcional) — para personalizar tu experiencia</li></ul>
+    <h3>2.2 Uso de la app (post-lanzamiento)</h3>
+    <ul><li><strong>Datos de cuenta</strong> — usuario, contraseña (hash), info de perfil</li><li><strong>Actividad en la app</strong> — funciones usadas, insignias, acciones (recompensas Akwɛ, check-ins)</li><li><strong>Info del dispositivo</strong> — tipo, OS, idioma, zona horaria</li></ul>
+    <h3>2.3 Automático</h3>
+    <ul><li><strong>Analítica</strong> — estadísticas agregadas y anónimas (herramientas pro-privacidad)</li><li><strong>Logs del servidor</strong> — IP (truncada), navegador, tiempos (para seguridad)</li></ul>
+    <h2 id="es-use">3. Cómo usamos tus datos</h2>
+    <ul><li>Para <strong>anunciarte el lanzamiento</strong> y actualizaciones del producto</li><li>Para <strong>brindar el servicio Kuabo</strong> (guías, IA, comunidad)</li><li>Para <strong>mejorar el producto</strong> con analítica anónima</li><li>Para <strong>comunicarnos contigo</strong> sobre tu cuenta o cambios importantes</li><li>Para <strong>proteger contra fraude</strong> y garantizar la seguridad</li><li>Para <strong>cumplir con obligaciones legales</strong></li></ul>
+    <p><strong>Nunca vendemos tus datos</strong>. Punto.</p>
+    <h2 id="es-share">4. Compartir & terceros</h2>
+    <p>Compartimos solo con proveedores de infraestructura necesarios:</p>
+    <ul><li><strong>Vercel</strong> (hosting web, USA) — solo logs del servidor</li><li><strong>Google Firebase</strong> (backend app, USA/UE) — datos de cuenta, actividad</li><li><strong>Resend</strong> (emails transaccionales, USA) — tu email para escribirte</li><li><strong>Stripe</strong> (pagos post-lanzamiento, USA) — facturación si te suscribes</li><li><strong>Plausible Analytics</strong> (alojado UE) — estadísticas web anónimas</li></ul>
+    <p>Todos los proveedores cumplen RGPD vía acuerdos de procesamiento (DPA).</p>
+    <h2 id="es-cookies">5. Cookies & seguimiento</h2>
+    <p>Usamos <strong>muy pocas cookies</strong>:</p>
+    <ul><li><strong>Cookies esenciales</strong> — preferencia de idioma, sesión (no requiere consentimiento)</li><li><strong>Cookies de analítica</strong> — Plausible no usa cookies y cumple RGPD por diseño</li></ul>
+    <p><strong>NO usamos</strong> Facebook Pixel, Google Ads ni cookies publicitarias de terceros.</p>
+    <h2 id="es-rights">6. Tus derechos</h2>
+    <p>Bajo <strong>RGPD</strong> (UE), <strong>CCPA</strong> (California) y leyes similares, tienes derecho a:</p>
+    <ul><li><strong>Acceder</strong> — solicitar una copia de tus datos</li><li><strong>Rectificar</strong> — corregir datos inexactos</li><li><strong>Eliminar</strong> — pedirnos borrar tus datos ("derecho al olvido")</li><li><strong>Portabilidad</strong> — recibir tus datos en formato legible por máquina</li><li><strong>Oponerte</strong> — rechazar ciertos procesamientos (ej. marketing)</li><li><strong>Retirar consentimiento</strong> — salir de la lista o app en cualquier momento</li></ul>
+    <p>Para ejercer tus derechos, escribe a <a href="mailto:support@kuabo.co">support@kuabo.co</a>. Respondemos en 30 días.</p>
+    <h2 id="es-retain">7. Retención de datos</h2>
+    <ul><li><strong>Email waitlist</strong> — guardado hasta lanzamiento + 12 meses, luego eliminado si no se creó cuenta</li><li><strong>Datos de cuenta</strong> — guardados mientras la cuenta esté activa; eliminados en 30 días tras cierre</li><li><strong>Logs de auditoría</strong> — guardados 24 meses por cumplimiento, luego anonimizados</li></ul>
+    <h2 id="es-sec">8. Seguridad</h2>
+    <p>La seguridad es prioritaria. Medidas nivel bancario:</p>
+    <ul><li>Cifrado HTTPS en todas partes (TLS 1.3)</li><li>Contraseñas con hash bcrypt + sal</li><li>Autenticación de dos factores disponible</li><li>Límite de tasa en endpoints sensibles</li><li>Sistema de puntuación anti-fraude</li><li>Monitorización de seguridad en tiempo real</li><li>Logs de auditoría completos</li></ul>
+    <p>Si descubres una vulnerabilidad, repórtala responsablemente a <a href="mailto:security@kuabo.co">security@kuabo.co</a>.</p>
+    <h2 id="es-child">9. Menores</h2>
+    <p>Kuabo está destinado a usuarios de <strong>13 años o más</strong> (o la edad mínima de tu país). No recopilamos a sabiendas datos de menores de 13. Si crees que sí, contáctanos y los eliminaremos.</p>
+    <h2 id="es-change">10. Cambios a esta política</h2>
+    <p>Podemos actualizar esta política a medida que Kuabo evolucione. Te notificaremos cambios importantes por email o aviso in-app. La fecha "Última actualización" arriba refleja la última revisión.</p>
+    <h2 id="es-contact">11. Contáctanos</h2>
+    <p>¿Preguntas, solicitudes, preocupaciones?</p>
+    <ul><li>📧 Email: <a href="mailto:support@kuabo.co">support@kuabo.co</a></li><li>🔒 Seguridad: <a href="mailto:security@kuabo.co">security@kuabo.co</a></li><li>🌐 Sitio: <a href="https://kuabo.co">kuabo.co</a></li></ul>
+  </div>
 
   <footer>
     <a href="/">Home</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
-    <p style="margin-top:12px;">© 2026 Kuabo. Made for those brave enough to move. 🌍</p>
+    <p style="margin-top:12px;">© 2026 Kuabo. <span data-lang="en">Made for those brave enough to move. 🌍</span><span data-lang="fr">Fait pour ceux qui osent bouger. 🌍</span><span data-lang="es">Hecho para quienes se atreven a moverse. 🌍</span></p>
   </footer>
 </div>
+<script>
+  function setL(lang) {
+    localStorage.setItem('kuabo_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang]').forEach(el => {
+      el.classList.toggle('show', el.dataset.lang === lang);
+    });
+    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+    document.getElementById('lb-' + lang).classList.add('on');
+    document.title = ({en:'Privacy Policy — Kuabo', fr:'Politique de confidentialité — Kuabo', es:'Política de privacidad — Kuabo'})[lang];
+  }
+  // Init : langue stockée OU langue navigateur OU EN par défaut
+  const stored = localStorage.getItem('kuabo_lang');
+  const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
+  const initial = stored || (['fr','es','en'].includes(browser) ? browser : 'en');
+  setL(initial);
+</script>
 </body>
 </html>
