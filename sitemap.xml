@@ -2,13 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://kuabo.co/</loc>
+    <loc>https://www.kuabo.co/</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://kuabo.co/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://kuabo.co/"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://kuabo.co/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://kuabo.co/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.kuabo.co/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.kuabo.co/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://www.kuabo.co/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.kuabo.co/"/>
+  </url>
+  <url>
+    <loc>https://www.kuabo.co/privacy</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.kuabo.co/terms</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

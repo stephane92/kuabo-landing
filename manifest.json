@@ -2,6 +2,7 @@
   "name": "Kuabo — #1 App for Global Movers",
   "short_name": "Kuabo",
   "description": "The #1 app to guide your travel & settlement worldwide. Free forever.",
+  "id": "/?source=pwa",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
