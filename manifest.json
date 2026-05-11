@@ -1,0 +1,49 @@
+{
+  "name": "Kuabo — #1 App for Global Movers",
+  "short_name": "Kuabo",
+  "description": "The #1 app to guide your travel & settlement worldwide. Free forever.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#0b1526",
+  "theme_color": "#e8b84b",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["travel", "lifestyle", "social", "education"],
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.jpg",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Kuabo — The #1 app for Global Movers worldwide"
+    }
+  ]
+}

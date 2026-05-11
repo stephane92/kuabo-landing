@@ -3,12 +3,26 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<link rel="icon" type="image/png" sizes="32x32" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAACO0lEQVR42r1XvWobQRD+dk+qZEgRbAfcWTmbFHYhjP0IKewqZcD4CVSqyBOkSF4gZTgIqEkVFyFFaofgwi6M7ZyrBPxDikAEAke3aW7F3tzs30nJwLF7NzfzfTM7+yfASGdxTeEfyOjuQtBv4n8Au4jIWcGH/XG0jYklZ438xbO3jew0ppwl2tXPbyptk4zI0Og5xy/fH1TaWBKdxTUVlYGt7Q0M+2PkWSqG/TG2tjfw6ftrAKh8i8pAaPQxjjXRuRGgzr9+OVUmIe6bzorPn/DVQJNpRgiL7v6lakSgjEABwOrzsyOqv3r3ZGc6I+x6AQA2Ei0PuNV56RQAoCZ/jjzDXORZymaCzQAZOwUAy08/1DwvLK1P+79vz2v6m497AJAAKAzSylmEBFwCSEzwzsNuDdQEN/WGnbQVpoyZIdq5CfLg0WOn3oflnIbd/cuJ+c/oZ15pa7scoy99hE1DIz2SGnJjvLK5O+3/ODl01kiepUnZLcxakI7Irc4oOPdO/7dlohWzqCwsrSPPUgDA8SvBVn1voPDr+tt89wJTegOF3kBZdbHSarrENgGbSwbmLdKyDCc2A9/42vQ2n5JUqs5roQ3yLG2HggSAF3Q5dg5BaViEkODA8yxtu7LpI1BQZxwJ/XDgLn8xu6E02nu6FRs25mubgFp3Q2G7F5jLctlObOcBAq4lodFT8NHdhRCuiwmTiQkTpZZ7BtwaeYVAJIlQ8YIHX06Z021w8brAawRcREKO2EyNKN/1/C+LuCOznxj8NQAAAABJRU5ErkJggg=="/>
+<!-- Favicons (Kua mascotte) -->
+<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png"/>
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/icon-180.png"/>
+<link rel="mask-icon" href="/icon-512.png" color="#e8b84b"/>
+
+<!-- PWA manifest -->
+<link rel="manifest" href="/manifest.json"/>
+
+<!-- PWA & mobile chrome -->
 <meta name="theme-color" content="#e8b84b"/>
+<meta name="msapplication-TileColor" content="#0b1526"/>
+<meta name="msapplication-TileImage" content="/icon-192.png"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
-  <meta name="mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 <meta name="apple-mobile-web-app-title" content="Kuabo"/>
+<meta name="application-name" content="Kuabo"/>
+<meta name="format-detection" content="telephone=no"/>
 
 <!-- Primary SEO -->
 <title>Kuabo — #1 App for Global Movers | Worldwide</title>
@@ -30,7 +44,8 @@
 <meta property="og:url" content="https://kuabo.co"/>
 <meta property="og:title" content="Kuabo — #1 App for Global Movers"/>
 <meta property="og:description" content="Settle anywhere in the world — USA, Canada, France or anywhere. Free forever. FR EN ES."/>
-<meta property="og:image" content="https://kuabo.co/og-image.png"/>
+<meta property="og:image" content="https://kuabo.co/og-image.jpg"/>
+<meta property="og:image:type" content="image/jpeg"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
 <meta property="og:image:alt" content="Kuabo — The #1 app for Global Movers worldwide"/>
@@ -44,8 +59,119 @@
 <meta name="twitter:creator" content="@kuabo_app"/>
 <meta name="twitter:title" content="Kuabo — #1 App for Global Movers"/>
 <meta name="twitter:description" content="Settle anywhere in the world — USA, Canada, France or anywhere. Free forever."/>
-<meta name="twitter:image" content="https://kuabo.co/og-image.png"/>
+<meta name="twitter:image" content="https://kuabo.co/og-image.jpg"/>
 <meta name="twitter:image:alt" content="Kuabo — The #1 app for Global Movers worldwide"/>
+
+<!-- Schema.org JSON-LD : Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Kuabo",
+  "alternateName": "Kuabo App",
+  "url": "https://kuabo.co",
+  "logo": "https://kuabo.co/og-image.jpg",
+  "image": "https://kuabo.co/og-image.jpg",
+  "description": "Kuabo is the #1 app guiding Global Movers — migrants, expats, travelers, nomads — step by step after their visa. Documents, housing, jobs, community. Free. Available in English, French and Spanish.",
+  "foundingDate": "2024",
+  "founder": {
+    "@type": "Person",
+    "name": "Stéphane Adannou",
+    "jobTitle": "Founder & CEO",
+    "nationality": "Beninese"
+  },
+  "knowsLanguage": ["en", "fr", "es"],
+  "areaServed": {
+    "@type": "Place",
+    "name": "Worldwide"
+  },
+  "sameAs": [
+    "https://www.instagram.com/kuabo_app",
+    "https://twitter.com/kuabo_app",
+    "https://www.tiktok.com/@kuabo_app"
+  ],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "support@kuabo.co",
+    "contactType": "customer support",
+    "availableLanguage": ["English", "French", "Spanish"]
+  }
+}
+</script>
+
+<!-- Schema.org JSON-LD : Mobile Application -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Kuabo",
+  "operatingSystem": ["iOS", "Android"],
+  "applicationCategory": "TravelApplication",
+  "applicationSubCategory": "Immigration & Settlement",
+  "description": "The #1 app to guide your travel & settlement worldwide. Move to the USA, Canada, France or anywhere — Kuabo guides you step by step after your visa.",
+  "url": "https://kuabo.co",
+  "image": "https://kuabo.co/og-image.jpg",
+  "screenshot": "https://kuabo.co/og-image.jpg",
+  "softwareVersion": "1.0",
+  "datePublished": "2026-05",
+  "inLanguage": ["en", "fr", "es"],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "availability": "https://schema.org/PreOrder"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kuabo",
+    "url": "https://kuabo.co"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": "1",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+}
+</script>
+
+<!-- Schema.org JSON-LD : WebSite (sitelinks search box) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Kuabo",
+  "url": "https://kuabo.co",
+  "inLanguage": ["en", "fr", "es"],
+  "publisher": {
+    "@type": "Organization",
+    "name": "Kuabo"
+  }
+}
+</script>
+
+<!--
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 📊 ANALYTICS — À ACTIVER QUAND COMPTE PLAUSIBLE CRÉÉ         │
+  │ Voir guide : SEO_NEXT_STEPS.md section "Plausible Analytics" │
+  │ 1) Créer compte sur https://plausible.io ($9/mois)          │
+  │ 2) Décommenter la ligne ci-dessous                          │
+  │ 3) Push, déploy auto Vercel                                  │
+  └─────────────────────────────────────────────────────────────┘
+-->
+<!-- <script defer data-domain="kuabo.co" src="https://plausible.io/js/script.outbound-links.js"></script> -->
+
+<!--
+  ┌─────────────────────────────────────────────────────────────┐
+  │ 📊 ALTERNATIVE GRATUITE — Google Analytics 4                 │
+  │ 1) Créer property GA4 sur https://analytics.google.com      │
+  │ 2) Remplacer G-XXXXXXXXXX par ton Measurement ID            │
+  │ 3) Décommenter les 2 lignes ci-dessous                       │
+  └─────────────────────────────────────────────────────────────┘
+-->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
 
 <!-- Styles -->
 <link rel="stylesheet" href="styles.css"/>
