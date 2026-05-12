@@ -76,6 +76,28 @@ window.kuaboSubmit = async function(id) {
       const data = snap.data();
       if (data.promoCode) {
         promoCode = data.promoCode;
+        // 🔧 AUTO-HEAL orphan : check si le doc promo_codes/{code} existe,
+        // sinon on le crée. Avant le fix firestore.rules 2026-05-12, le
+        // setDoc promo_codes était bloqué → tous les anciens inscrits ont
+        // un waitlist doc avec promoCode mais aucun promo_codes correspondant.
+        // Au prochain submit de leur email (ici), on répare silencieusement.
+        // Si l'auto-heal fail (network, etc.), on continue à afficher le code
+        // pour ne pas bloquer l'UX.
+        try {
+          const pcRef = doc(db, "promo_codes", promoCode);
+          const pcSnap = await getDoc(pcRef);
+          if (!pcSnap.exists()) {
+            await setDoc(pcRef, {
+              email,
+              createdAt: data.promoAt || new Date().toISOString(),
+              used: false,
+              reward: 70,
+              source: "waitlist"
+            });
+          }
+        } catch (healErr) {
+          console.warn("[auto-heal] promo_codes create failed (non-blocking):", healErr);
+        }
       } else {
         promoCode = genCode();
         isNew = true;
