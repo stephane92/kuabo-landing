@@ -76,27 +76,27 @@ window.kuaboSubmit = async function(id) {
       const data = snap.data();
       if (data.promoCode) {
         promoCode = data.promoCode;
-        // 🔧 AUTO-HEAL orphan : check si le doc promo_codes/{code} existe,
-        // sinon on le crée. Avant le fix firestore.rules 2026-05-12, le
-        // setDoc promo_codes était bloqué → tous les anciens inscrits ont
-        // un waitlist doc avec promoCode mais aucun promo_codes correspondant.
-        // Au prochain submit de leur email (ici), on répare silencieusement.
-        // Si l'auto-heal fail (network, etc.), on continue à afficher le code
-        // pour ne pas bloquer l'UX.
+        // 🔧 AUTO-HEAL orphan : tentative directe de setDoc sur promo_codes/{code}.
+        // Avant le fix firestore.rules 2026-05-12, le setDoc promo_codes était
+        // bloqué → tous les anciens inscrits ont un waitlist doc avec promoCode
+        // mais aucun promo_codes correspondant.
+        //
+        // Pas de getDoc préalable car la rule /promo_codes a `read: if false`
+        // (anti-exposition publique des codes). On tente le setDoc direct :
+        //   - Si doc absent (orphan) → rule `create` → autorisé → fix ✅
+        //   - Si doc existe (healthy) → rule `update` → bloqué → erreur silencieuse
+        // → c'est OK car ça veut juste dire que c'était pas un orphan.
         try {
-          const pcRef = doc(db, "promo_codes", promoCode);
-          const pcSnap = await getDoc(pcRef);
-          if (!pcSnap.exists()) {
-            await setDoc(pcRef, {
-              email,
-              createdAt: data.promoAt || new Date().toISOString(),
-              used: false,
-              reward: 70,
-              source: "waitlist"
-            });
-          }
+          await setDoc(doc(db, "promo_codes", promoCode), {
+            email,
+            createdAt: data.promoAt || new Date().toISOString(),
+            used: false,
+            reward: 70,
+            source: "waitlist"
+          });
         } catch (healErr) {
-          console.warn("[auto-heal] promo_codes create failed (non-blocking):", healErr);
+          // Permission denied attendu si le doc existe déjà (cas healthy)
+          // — on ignore silencieusement.
         }
       } else {
         promoCode = genCode();
