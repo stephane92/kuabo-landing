@@ -411,7 +411,9 @@ function renderProfile(u, slug){
   const xp = u.xp || 0;
   const kuaboins = u.kuaboins || 0;
   const streak = u.streak || 0;
-  const visited = u.visitedCountries || [];
+  // 🛡️ Filtre les entrées invalides (objets vides ou avec champs undefined
+  // qui causaient l'affichage "undefined undefined" dans la grille des pays)
+  const visited = (u.visitedCountries || []).filter(v => v && v.flag && v.code);
   const invites = u.totalInvites || 0;
   const level = getLevel(xp);
   const lvlTitle = t.levels[level] || t.levels[4];
