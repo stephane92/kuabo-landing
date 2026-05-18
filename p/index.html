@@ -157,7 +157,9 @@
           <span class="score-val" id="score-val">—</span>
         </div>
       </div>
-      <div class="coins" id="coins-val">🪙 —</div>
+      <!-- Kuaboins (Akwɛ) retiré du profile public — info privée (wallet) -->
+      <!-- <div class="coins" id="coins-val">🪙 —</div> -->
+
     </div>
     <button class="btn-share" id="btn-share">📤 <span id="t-share">Share this profile</span></button>
     <a class="btn-app" href="https://kuabo.co">🐦 <span id="t-open">Open Kuabo</span></a>
@@ -442,7 +444,7 @@ function renderProfile(u, slug){
   document.getElementById("s-streak").textContent = streak;
   document.getElementById("s-xp").textContent     = xp.toLocaleString();
   document.getElementById("score-val").textContent = score.toLocaleString();
-  document.getElementById("coins-val").textContent = "🪙 " + kuaboins;
+  // coins-val retiré du profile public — info privée (wallet)
 
   // Badge fondateur
   if (!u.isFounder && !u.profileToken && !u.promoUsed) document.getElementById("badge").style.display = "none";
