@@ -537,6 +537,16 @@ window.setL = function(l) {
   s('s1',t.s1); s('s2',t.s2); s('s3',t.s3); s('s4',t.s4);
   ['s1l','s2l','s3l','s4l'].forEach(id => s(id, t.s1l || 'Coming soon on'));
   s('ftag',t.ftag); s('fh2',t.fh2); s('fsub',t.fsub);
+  // Section Ressources (Guides & Travel)
+  s('resTag',({en:'📚 Free resources',fr:'📚 Ressources gratuites',es:'📚 Recursos gratis'})[l]);
+  s('resH2',({en:'Guides & Travel — explore Kuabo',fr:'Guides & Voyage — explore Kuabo',es:'Guías & Viajes — explora Kuabo'})[l]);
+  s('resSub',({en:'Real, practical content to prepare your journey — free, in 3 languages.',fr:'Du contenu concret pour préparer ton parcours — gratuit, en 3 langues.',es:'Contenido práctico para preparar tu viaje — gratis, en 3 idiomas.'})[l]);
+  s('resGt',({en:'Guides',fr:'Guides',es:'Guías'})[l]);
+  s('resGd',({en:'Step-by-step guides: visa, bank, housing, flights, money and more.',fr:'Des guides pas à pas : visa, banque, logement, vols, argent et plus.',es:'Guías paso a paso: visa, banco, vivienda, vuelos, dinero y más.'})[l]);
+  s('resGc',({en:'Read the guides →',fr:'Lire les guides →',es:'Leer las guías →'})[l]);
+  s('resTt',({en:'Travel',fr:'Voyage',es:'Viajes'})[l]);
+  s('resTd',({en:'Flights, hotels, eSIM, car & more — plan and book your whole trip.',fr:'Vols, hôtels, eSIM, voiture & plus — prépare et réserve tout ton voyage.',es:'Vuelos, hoteles, eSIM, coche y más — planea y reserva todo tu viaje.'})[l]);
+  s('resTc',({en:'Discover travel →',fr:'Découvrir le voyage →',es:'Descubrir viajes →'})[l]);
   for (let i = 1; i <= 6; i++) { s('c'+i+'t',t['c'+i+'t'],true); s('c'+i+'d',t['c'+i+'d']); }
   if (document.getElementById('pos-h2')) { s('pos-h2',t.posh2); s('pos-sub',t.possub); }
   s('btag',t.btag); s('bh2',t.bh2); s('bsub',t.bsub);

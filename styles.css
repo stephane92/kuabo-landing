@@ -102,6 +102,15 @@ h2{font-family:'Nunito',sans-serif;font-size:clamp(24px,3.2vw,40px);font-weight:
 
 /* ── FEATURES ── */
 .feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1040px;margin:0 auto;}
+/* Resources (Guides & Travel) */
+.res-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:860px;margin:0 auto;}
+.res-card{display:block;text-decoration:none;background:#fff;border:2px solid var(--border);border-bottom-width:6px;border-radius:20px;padding:32px 28px;text-align:left;transition:transform .18s,border-color .18s,box-shadow .18s;box-shadow:0 2px 0 var(--border);}
+.res-card:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 14px 34px rgba(11,21,38,.1);}
+.res-ico{font-size:42px;display:block;margin-bottom:14px;}
+.res-card h3{font-family:'Nunito',sans-serif;font-size:24px;font-weight:900;color:var(--navy);margin-bottom:8px;}
+.res-card p{font-size:15px;color:var(--muted);margin-bottom:14px;line-height:1.6;}
+.res-cta{font-weight:800;color:var(--teal-dk);font-size:15px;}
+@media(max-width:600px){.res-grid{grid-template-columns:1fr;}}
 .feat-card{background:#fff;border:2px solid var(--border);border-radius:22px;overflow:hidden;box-shadow:0 4px 0 var(--border);transition:transform .25s,box-shadow .25s,border-color .25s;cursor:pointer;text-align:left;}
 .feat-card:hover{transform:translateY(-6px);box-shadow:0 10px 0 rgba(232,184,75,.18);border-color:rgba(232,184,75,.4);}
 .feat-screen{height:190px;position:relative;overflow:hidden;}
