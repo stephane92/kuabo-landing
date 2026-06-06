@@ -526,6 +526,7 @@ const TX = {
 function s(id, v, html) { const el = document.getElementById(id); if (el) { if (html) el.innerHTML = v; else el.textContent = v; } }
 
 window.setL = function(l) {
+  try { localStorage.setItem('kuabo_lang', l); } catch(e){}
   document.documentElement.lang = l;
   document.querySelectorAll('.lb').forEach(b => b.classList.toggle('on', b.textContent.includes(l==='en'?'EN':l==='fr'?'FR':'ES')));
   const t = TX[l];
@@ -584,3 +585,14 @@ window.setL = function(l) {
 // INIT
 // ═══════════════════════════════════════════════════════════
 window.addEventListener("load", loadCount);
+
+// Langue partagée avec /guides, /privacy, /terms (clé kuabo_lang).
+// Applique la langue choisie ailleurs sur le site ; sinon EN par défaut (inchangé).
+document.addEventListener('DOMContentLoaded', function () {
+  try {
+    var saved = localStorage.getItem('kuabo_lang');
+    if (saved && ['en','fr','es'].indexOf(saved) !== -1 && saved !== 'en' && window.setL) {
+      window.setL(saved);
+    }
+  } catch (e) {}
+});
