@@ -166,13 +166,12 @@ section.s.alt{background:var(--bg2);}
 
 /* ---- Hero art : vrai Kua + globe ---- */
 .hero-globe{position:absolute;width:118%;max-width:none;opacity:.45;z-index:0;pointer-events:none;}
-.kua-main-img{position:relative;z-index:2;width:min(360px,82%);filter:drop-shadow(0 28px 46px rgba(11,21,38,.22));animation:bob 4.5s ease-in-out infinite;}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-1.5deg)}50%{transform:translateY(-16px) rotate(1.5deg)}}
+.kua-main-img{position:relative;z-index:2;width:min(360px,82%);filter:drop-shadow(0 28px 46px rgba(11,21,38,.22));}
 
 /* ---- Meet Kua ---- */
 .meet{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center;}
 .meet-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:360px;background:radial-gradient(circle at 50% 45%,rgba(232,184,75,.18),transparent 62%);}
-.meet-art img{width:min(330px,86%);filter:drop-shadow(0 26px 44px rgba(11,21,38,.2));animation:bob 5.5s ease-in-out infinite;}
+.meet-art img{width:min(330px,86%);filter:drop-shadow(0 26px 44px rgba(11,21,38,.2));}
 .meet-art lottie-player{position:absolute;width:84px;height:84px;}
 .meet-art .ma1{top:6%;right:10%;}
 .meet-art .ma2{bottom:8%;left:4%;}
@@ -198,6 +197,7 @@ section.s.alt{background:var(--bg2);}
 .kg{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 22px;box-shadow:0 6px 18px rgba(11,21,38,.05);transition:transform .16s,border-color .16s;}
 .kg:hover{transform:translateY(-3px);border-color:var(--gold);}
 .kg .e{font-size:36px;display:block;margin-bottom:10px;}
+.kg lottie-player{width:66px;height:66px;display:block;margin-bottom:8px;}
 .kg h4{font-size:17.5px;font-weight:900;margin-bottom:6px;}
 .kg p{font-size:14px;color:var(--muted);font-weight:600;}
 @media(max-width:780px){.kgrid{grid-template-columns:1fr 1fr;}}
