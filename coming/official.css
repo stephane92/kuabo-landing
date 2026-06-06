@@ -65,7 +65,7 @@ img,lottie-player{max-width:100%;}
 .hero h1 .g{background:linear-gradient(120deg,var(--gold-dk),var(--teal-dk));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
 .hero p.sub{font-size:19px;color:var(--muted);max-width:520px;margin-bottom:28px;font-weight:600;}
 .hero-cta{display:flex;flex-direction:column;gap:16px;align-items:flex-start;}
-.hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:380px;}
+.hero-art{position:relative;display:flex;align-items:center;justify-content:center;min-height:460px;}
 .hero-art .kua-main{width:min(420px,90%);filter:drop-shadow(0 30px 50px rgba(11,21,38,.18));}
 .float{position:absolute;z-index:5;background:#fff;border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow);padding:10px 14px;display:flex;align-items:center;gap:9px;font-weight:800;font-size:13px;animation:floaty 5s ease-in-out infinite;}
 .float lottie-player{width:34px;height:34px;}
@@ -167,7 +167,7 @@ section.s.alt{background:var(--bg2);}
 /* ---- Hero art : vrai Kua + globe ---- */
 .hero-globe{position:absolute;width:118%;max-width:none;opacity:.45;z-index:0;pointer-events:none;}
 .kua-main-img{position:relative;z-index:2;width:min(360px,82%);filter:drop-shadow(0 28px 46px rgba(11,21,38,.22));}
-.hero-people{position:relative;z-index:1;width:min(540px,100%);}
+.hero-people{position:relative;z-index:1;width:min(680px,112%);}
 
 /* ---- Meet Kua ---- */
 .meet{display:grid;grid-template-columns:.85fr 1.15fr;gap:50px;align-items:center;}
