@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Partenaire Kuabo — Utilise tes Akwɛ 🪙</title>
+<meta name="description" content="Ce commerce accepte les Akwɛ Kuabo. Ouvre l'app Kuabo pour débloquer ton avantage.">
+
+<!-- Open Graph -->
+<meta property="og:title" content="Partenaire Kuabo 🪙">
+<meta property="og:description" content="Utilise tes Akwɛ ici. Ouvre l'app Kuabo pour profiter de l'offre.">
+<meta property="og:image" content="https://kuabo.co/assets/og-bird.png">
+<meta property="og:url" content="https://kuabo.co">
+<meta property="og:type" content="website">
+
+<!-- Google Fonts (identiques au site) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold:      #e8b84b;
+  --gold-dk:   #c9952a;
+  --gold-dark: #92680e;
+  --teal:      #2dd4bf;
+  --teal-dk:   #0d9488;
+  --green:     #22c55e;
+  --navy:      #0b1526;
+  --bg:        #080c14;
+  --card:      #0f1623;
+  --card2:     #141e2e;
+  --border:    rgba(255,255,255,0.08);
+  --text:      #f0ece4;
+  --muted:     #5a6478;
+  --r:         16px;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Particules dorées */
+.particles { position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+.particle {
+  position: absolute;
+  width: 3px; height: 3px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: float 18s infinite linear;
+}
+@keyframes float {
+  from { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10%  { opacity: 0.4; }
+  90%  { opacity: 0.4; }
+  to   { transform: translateY(-20vh) translateX(80px); opacity: 0; }
+}
+
+/* Glow déco */
+.glow { position: fixed; border-radius: 50%; filter: blur(100px); opacity: 0.15; pointer-events: none; z-index: 0; }
+.glow-gold { top: -100px; right: -100px; width: 400px; height: 400px; background: var(--gold); }
+.glow-teal { bottom: -100px; left: -100px; width: 400px; height: 400px; background: var(--teal); }
+
+/* Language switcher flottant */
+.lang-switcher {
+  position: fixed; top: 20px; right: 20px;
+  display: flex; gap: 6px; z-index: 10;
+  background: rgba(15,22,35,0.9); backdrop-filter: blur(10px);
+  border: 1px solid var(--border); border-radius: 100px; padding: 4px;
+}
+.lang-btn {
+  background: transparent; border: none; color: rgba(255,255,255,0.5);
+  font-size: 12px; font-weight: 800; padding: 6px 10px; border-radius: 100px;
+  cursor: pointer; font-family: 'Nunito', sans-serif; transition: all 0.2s;
+}
+.lang-btn.on { background: var(--gold); color: var(--navy); }
+
+.container { max-width: 440px; width: 100%; position: relative; z-index: 1; }
+
+.card {
+  background: linear-gradient(180deg, var(--card) 0%, var(--card2) 100%);
+  border: 1.5px solid var(--border); border-radius: 28px;
+  padding: 32px 24px; text-align: center;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  animation: slideUp 0.6s ease;
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.bird-wrap {
+  width: 90px; height: 90px; margin: 0 auto 18px;
+  animation: bob 2s ease-in-out infinite;
+  filter: drop-shadow(0 8px 20px rgba(232,184,75,0.3));
+}
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.badge-partner {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(232,184,75,0.12); border: 1.5px solid rgba(232,184,75,0.35);
+  color: var(--gold); padding: 6px 14px; border-radius: 20px;
+  font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+  margin-bottom: 16px; font-family: 'Nunito', sans-serif;
+}
+
+h1 {
+  font-family: 'Nunito', sans-serif; font-size: 27px; font-weight: 900;
+  margin-bottom: 8px; line-height: 1.2; letter-spacing: -0.5px;
+}
+.highlight { color: var(--gold); }
+
+.sub {
+  color: rgba(255,255,255,0.6); font-size: 14px; margin-bottom: 22px;
+  line-height: 1.5; font-weight: 600;
+}
+
+/* Code partenaire */
+.code-box {
+  background: rgba(232,184,75,0.06); border: 1.5px dashed rgba(232,184,75,0.4);
+  border-radius: 16px; padding: 16px; margin-bottom: 22px;
+}
+.code-label {
+  font-size: 10px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+  color: rgba(255,255,255,0.5); margin-bottom: 8px; font-family: 'Nunito', sans-serif;
+}
+.code-val {
+  font-family: 'Nunito', sans-serif; font-size: 30px; font-weight: 900;
+  color: var(--gold); letter-spacing: 4px;
+}
+
+/* Akwɛ ≠ argent */
+.akwe-note {
+  display: flex; align-items: center; gap: 10px; text-align: left;
+  background: rgba(45,212,191,0.08); border: 1.5px solid rgba(45,212,191,0.25);
+  border-radius: 14px; padding: 12px 14px; margin-bottom: 22px;
+}
+.akwe-note .ic { font-size: 20px; }
+.akwe-note span { font-size: 12px; font-weight: 600; color: rgba(240,236,228,0.8); line-height: 1.45; }
+
+/* Étapes */
+.steps { text-align: left; margin-bottom: 22px; padding: 14px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 14px; }
+.step { display: flex; align-items: center; gap: 12px; padding: 9px 0; font-size: 13px; color: rgba(240,236,228,0.88); font-weight: 600; }
+.step:not(:last-child) { border-bottom: 1px solid rgba(255,255,255,0.04); }
+.step-num {
+  flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(232,184,75,0.15); color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 900; font-size: 13px; font-family: 'Nunito', sans-serif;
+}
+
+/* Buttons */
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%; padding: 16px; border-radius: var(--r); border: none;
+  font-size: 15px; font-weight: 800; cursor: pointer; text-decoration: none;
+  transition: transform 0.1s, box-shadow 0.2s; margin-bottom: 10px;
+  font-family: 'Nunito', sans-serif;
+}
+.btn:active { transform: scale(0.97); }
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold) 0%, #fcd34d 100%); color: var(--navy);
+  border-top: 1.5px solid rgba(255,255,255,0.3); border-bottom: 4px solid var(--gold-dark);
+  box-shadow: 0 6px 20px rgba(232,184,75,0.25);
+}
+.btn-secondary {
+  background: rgba(255,255,255,0.05); color: var(--text);
+  border: 1.5px solid var(--border); border-bottom: 3px solid rgba(0,0,0,0.4);
+}
+
+.footer { text-align: center; margin-top: 20px; font-size: 11px; color: var(--muted); font-family: 'Nunito Sans', sans-serif; }
+
+@media (max-width: 380px) {
+  .card { padding: 24px 18px; }
+  h1 { font-size: 23px; }
+  .code-val { font-size: 26px; }
+  .lang-switcher { top: 12px; right: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="glow glow-gold"></div>
+<div class="glow glow-teal"></div>
+<div class="particles" id="particles"></div>
+
+<!-- Language switcher -->
+<div class="lang-switcher">
+  <button class="lang-btn" data-lang="en" onclick="setL('en')">🇺🇸 EN</button>
+  <button class="lang-btn on" data-lang="fr" onclick="setL('fr')">🇫🇷 FR</button>
+  <button class="lang-btn" data-lang="es" onclick="setL('es')">🇪🇸 ES</button>
+</div>
+
+<!-- Kuabo Bird SVG symbol (identique au site) -->
+<svg style="display:none">
+  <symbol id="bird" viewBox="0 0 80 80">
+    <ellipse cx="40" cy="47" rx="28" ry="26" fill="#0b1526"/>
+    <ellipse cx="40" cy="52" rx="16" ry="17" fill="#1a2d4a"/>
+    <ellipse cx="14" cy="50" rx="8" ry="13" fill="#0b1526" transform="rotate(-15 14 50)"/>
+    <ellipse cx="66" cy="50" rx="8" ry="13" fill="#0b1526" transform="rotate(15 66 50)"/>
+    <polygon points="24,27 28,14 32,23 40,10 48,23 52,14 56,27" fill="#e8b84b"/>
+    <polygon points="24,27 28,14 32,23 40,10 48,23 52,14 56,27" fill="none" stroke="#c9952a" stroke-width="1.5"/>
+    <circle cx="40" cy="15" r="4" fill="#2dd4bf"/>
+    <circle cx="29" cy="38" r="9" fill="white"/>
+    <circle cx="31" cy="40" r="5.5" fill="#0d1525"/>
+    <circle cx="33" cy="37" r="2.2" fill="white"/>
+    <circle cx="51" cy="38" r="9" fill="white"/>
+    <circle cx="53" cy="40" r="5.5" fill="#0d1525"/>
+    <circle cx="55" cy="37" r="2.2" fill="white"/>
+    <path d="M34 51 Q40 59 46 51 Q40 53 34 51Z" fill="#e8b84b"/>
+    <rect x="30" y="71" width="8" height="6" rx="3" fill="#e8b84b"/>
+    <rect x="42" y="71" width="8" height="6" rx="3" fill="#e8b84b"/>
+    <text x="40" y="58" font-family="Arial" font-size="4.5" fill="#e8b84b" text-anchor="middle" font-weight="bold">Kuabo.co</text>
+  </symbol>
+</svg>
+
+<div class="container">
+  <div class="card">
+
+    <div class="bird-wrap">
+      <svg width="90" height="90" viewBox="0 0 80 80"><use href="#bird"/></svg>
+    </div>
+
+    <div class="badge-partner"><span id="t-badge">🏪 Partenaire Kuabo</span></div>
+
+    <h1><span id="t-title">Utilise tes</span> <span class="highlight">Akwɛ</span> <span id="t-title2">ici</span></h1>
+    <p class="sub" id="t-sub">Ce commerce accepte les Akwɛ Kuabo 🪙</p>
+
+    <!-- Code partenaire (depuis l'URL) -->
+    <div class="code-box">
+      <div class="code-label" id="t-code-label">Code du partenaire</div>
+      <div class="code-val" id="code-val">—</div>
+    </div>
+
+    <!-- Akwɛ ≠ argent -->
+    <div class="akwe-note">
+      <span class="ic">💡</span>
+      <span id="t-akwe">Les Akwɛ ne sont pas de l'argent : ils débloquent l'avantage que ce commerce propose.</span>
+    </div>
+
+    <!-- Comment faire -->
+    <div class="steps">
+      <div class="step"><span class="step-num">1</span><span id="t-s1">Ouvre l'app Kuabo</span></div>
+      <div class="step"><span class="step-num">2</span><span id="t-s2">Wallet → « Utiliser chez un partenaire »</span></div>
+      <div class="step"><span class="step-num">3</span><span id="t-s3">Scanne le QR ou entre ce code</span></div>
+    </div>
+
+    <!-- Boutons -->
+    <a href="#" id="btn-ios" class="btn btn-primary">📱 <span id="t-btn-ios">Télécharger sur iPhone</span></a>
+    <a href="#" id="btn-android" class="btn btn-primary">🤖 <span id="t-btn-android">Télécharger sur Android</span></a>
+    <a href="https://kuabo.co" class="btn btn-secondary">🌐 <span id="t-btn-web">Découvrir Kuabo</span></a>
+
+    <p class="footer">Kuabo.co · Global Movers 🌍</p>
+  </div>
+</div>
+
+<script>
+// ════════════════════════════════════════
+// TRADUCTIONS FR / EN / ES
+// ════════════════════════════════════════
+const T = {
+  en: {
+    badge: '🏪 Kuabo Partner',
+    title: 'Use your', title2: 'here',
+    sub: 'This business accepts Kuabo Akwɛ 🪙',
+    codeLabel: 'Partner code',
+    akwe: 'Akwɛ is not money: it unlocks the perk this business offers.',
+    s1: 'Open the Kuabo app',
+    s2: 'Wallet → "Use at a partner"',
+    s3: 'Scan the QR or enter this code',
+    btnIOS: 'Download on iPhone', btnAndroid: 'Download on Android', btnWeb: 'Discover Kuabo',
+    htmlLang: 'en', pageTitle: 'Kuabo Partner — Use your Akwɛ 🪙',
+  },
+  fr: {
+    badge: '🏪 Partenaire Kuabo',
+    title: 'Utilise tes', title2: 'ici',
+    sub: 'Ce commerce accepte les Akwɛ Kuabo 🪙',
+    codeLabel: 'Code du partenaire',
+    akwe: "Les Akwɛ ne sont pas de l'argent : ils débloquent l'avantage que ce commerce propose.",
+    s1: "Ouvre l'app Kuabo",
+    s2: 'Wallet → « Utiliser chez un partenaire »',
+    s3: 'Scanne le QR ou entre ce code',
+    btnIOS: 'Télécharger sur iPhone', btnAndroid: 'Télécharger sur Android', btnWeb: 'Découvrir Kuabo',
+    htmlLang: 'fr', pageTitle: 'Partenaire Kuabo — Utilise tes Akwɛ 🪙',
+  },
+  es: {
+    badge: '🏪 Socio Kuabo',
+    title: 'Usa tus', title2: 'aquí',
+    sub: 'Este comercio acepta los Akwɛ de Kuabo 🪙',
+    codeLabel: 'Código del socio',
+    akwe: 'Los Akwɛ no son dinero: desbloquean la ventaja que ofrece este comercio.',
+    s1: 'Abre la app Kuabo',
+    s2: 'Wallet → "Usar con un socio"',
+    s3: 'Escanea el QR o ingresa este código',
+    btnIOS: 'Descargar en iPhone', btnAndroid: 'Descargar en Android', btnWeb: 'Descubrir Kuabo',
+    htmlLang: 'es', pageTitle: 'Socio Kuabo — Usa tus Akwɛ 🪙',
+  },
+};
+
+function detectLang() {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if (urlLang && T[urlLang]) return urlLang;
+  try { const s = localStorage.getItem('kuabo_lang'); if (s && T[s]) return s; } catch {}
+  const nav = (navigator.language || 'fr').slice(0, 2).toLowerCase();
+  if (T[nav]) return nav;
+  return 'fr';
+}
+
+window.setL = function(lang) {
+  if (!T[lang]) return;
+  const t = T[lang];
+  document.getElementById('t-badge').textContent       = t.badge;
+  document.getElementById('t-title').textContent       = t.title;
+  document.getElementById('t-title2').textContent      = t.title2;
+  document.getElementById('t-sub').textContent         = t.sub;
+  document.getElementById('t-code-label').textContent  = t.codeLabel;
+  document.getElementById('t-akwe').textContent        = t.akwe;
+  document.getElementById('t-s1').textContent          = t.s1;
+  document.getElementById('t-s2').textContent          = t.s2;
+  document.getElementById('t-s3').textContent          = t.s3;
+  document.getElementById('t-btn-ios').textContent     = t.btnIOS;
+  document.getElementById('t-btn-android').textContent = t.btnAndroid;
+  document.getElementById('t-btn-web').textContent     = t.btnWeb;
+  document.documentElement.lang = t.htmlLang;
+  document.title = t.pageTitle;
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.toggle('on', btn.dataset.lang === lang));
+  try { localStorage.setItem('kuabo_lang', lang); } catch {}
+};
+
+// ════════════════════════════════════════
+// Code partenaire depuis l'URL : /pro/FANO-7K2P
+// ════════════════════════════════════════
+const pathParts = window.location.pathname.split('/').filter(Boolean);
+let partnerCode = (pathParts[1] || '').toUpperCase().replace(/[^A-Z0-9-]/g, '').slice(0, 20);
+document.getElementById('code-val').textContent = partnerCode || '—';
+if (partnerCode) {
+  try { localStorage.setItem('kuabo_partner_code', partnerCode); } catch {}
+}
+
+// Détection iPhone/Android pour les boutons store
+const ua = navigator.userAgent.toLowerCase();
+const isIOS = /iphone|ipad|ipod/.test(ua);
+const isAndroid = /android/.test(ua);
+const btnIOS = document.getElementById('btn-ios');
+const btnAndroid = document.getElementById('btn-android');
+btnIOS.href = 'https://apps.apple.com/app/kuabo/id0000000';
+btnAndroid.href = 'https://play.google.com/store/apps/details?id=co.kuabo.native';
+if (isIOS) btnAndroid.style.display = 'none';
+else if (isAndroid) btnIOS.style.display = 'none';
+
+// INIT
+window.setL(detectLang());
+
+// Particules
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 25; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 18 + 's';
+  p.style.animationDuration = (12 + Math.random() * 10) + 's';
+  particlesContainer.appendChild(p);
+}
+</script>
+</body>
+</html>
