@@ -7,7 +7,8 @@
     { "source": "/join/:code",   "destination": "/join/index.html" },
     { "source": "/join/",        "destination": "/join/index.html" },
     { "source": "/privacy",      "destination": "/privacy.html" },
-    { "source": "/terms",        "destination": "/terms.html" }
+    { "source": "/terms",        "destination": "/terms.html" },
+    { "source": "/delete-account", "destination": "/delete-account.html" }
   ],
   "headers": [
     {
