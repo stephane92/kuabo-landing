@@ -4,106 +4,115 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Delete your account — Kuabo</title>
-<meta name="description" content="How to delete your Kuabo account and associated data. Available in EN / FR."/>
+<meta name="description" content="How to delete your Kuabo account and associated data. EN / FR / ES."/>
 <link rel="canonical" href="https://www.kuabo.co/delete-account"/>
 <style>
   :root{ --navy:#0b1526; --gold:#e8b84b; --ink:#1f2a3d; --muted:#5b6b82; }
   *{box-sizing:border-box;}
   body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;background:#0b1526;color:#1f2a3d;line-height:1.6;}
-  .wrap{max-width:720px;margin:0 auto;padding:40px 20px;}
+  .wrap{max-width:720px;margin:0 auto;padding:28px 18px 50px;}
+  .topbar{display:flex;justify-content:flex-end;align-items:center;margin-bottom:18px;}
+  .langs{display:flex;gap:8px;}
+  .lb{background:rgba(255,255,255,.08);color:#cbd5e1;border:1px solid rgba(255,255,255,.15);border-radius:999px;padding:7px 13px;font-size:13px;font-weight:700;cursor:pointer;}
+  .lb.on{background:var(--gold);color:var(--navy);border-color:var(--gold);}
   .card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3);}
-  .head{background:linear-gradient(135deg,#0b1526,#1a2744);padding:32px;text-align:center;}
+  .head{background:linear-gradient(135deg,#0b1526,#1a2744);padding:30px;text-align:center;}
   .head .logo{font-size:34px;font-weight:900;color:var(--gold);letter-spacing:-1px;}
   .head .tag{color:#94a3b8;font-size:13px;margin-top:6px;font-style:italic;}
   .body{padding:34px 30px;}
   h1{font-size:24px;color:var(--navy);margin:0 0 6px;}
-  h2{font-size:17px;color:var(--navy);margin:28px 0 8px;}
+  h2{font-size:17px;color:var(--navy);margin:26px 0 8px;}
   p,li{font-size:15px;color:var(--ink);}
   .muted{color:var(--muted);font-size:13.5px;}
   a{color:#1a73e8;}
   .step{background:#f6f8fb;border:1px solid #e2e8f0;border-radius:12px;padding:16px 18px;margin:12px 0;}
-  .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;text-decoration:none;padding:12px 22px;border-radius:10px;margin-top:6px;}
-  .lang{font-size:13px;color:#94a3b8;text-align:center;padding:14px;}
-  .lang a{color:var(--gold);text-decoration:none;font-weight:700;}
-  hr{border:0;border-top:1px solid #e2e8f0;margin:30px 0;}
+  .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:800;text-decoration:none;padding:12px 22px;border-radius:10px;margin-top:8px;}
+  .foot{color:#94a3b8;font-size:13px;text-align:center;padding:16px;}
+  .foot a{color:var(--gold);text-decoration:none;font-weight:700;}
+  [data-lang]:not(.show){display:none;}
 </style>
 </head>
 <body>
   <div class="wrap">
+    <div class="topbar">
+      <div class="langs">
+        <button class="lb" onclick="setL('en')" id="lb-en">🇺🇸 EN</button>
+        <button class="lb" onclick="setL('fr')" id="lb-fr">🇫🇷 FR</button>
+        <button class="lb" onclick="setL('es')" id="lb-es">🇪🇸 ES</button>
+      </div>
+    </div>
+
     <div class="card">
       <div class="head">
         <div class="logo">KUABO</div>
-        <div class="tag">For those who dare to move</div>
+        <div class="tag" data-lang="en">For those who dare to move</div>
+        <div class="tag" data-lang="fr">Pour ceux qui osent bouger</div>
+        <div class="tag" data-lang="es">Para quienes se atreven a moverse</div>
       </div>
       <div class="body">
 
-        <!-- ENGLISH -->
-        <section id="en">
+        <!-- ============= ENGLISH ============= -->
+        <div data-lang="en">
           <h1>Delete your Kuabo account</h1>
-          <p>You can permanently delete your Kuabo account and the data associated with it at any time. There are two ways:</p>
-
+          <p>You can permanently delete your Kuabo account and its associated data at any time. Two ways:</p>
           <h2>Option 1 — In the app (instant)</h2>
-          <div class="step">
-            Open <b>Kuabo</b> → <b>Profile</b> → scroll down → <b>Delete my account</b> → confirm.<br>
-            Your account and data are removed right away.
-          </div>
-
+          <div class="step">Open <b>Kuabo</b> → <b>Profile</b> → scroll down → <b>Delete my account</b> → confirm.<br>Your account and data are removed right away.</div>
           <h2>Option 2 — By email</h2>
-          <div class="step">
-            Send an email to <a href="mailto:support@kuabo.co?subject=Delete%20my%20account">support@kuabo.co</a>
-            with the subject <b>"Delete my account"</b>, from the email address linked to your account.<br>
-            <a class="btn" href="mailto:support@kuabo.co?subject=Delete%20my%20account">Request deletion by email</a>
-          </div>
-
+          <div class="step">Email <a href="mailto:support@kuabo.co?subject=Delete%20my%20account">support@kuabo.co</a> with the subject <b>"Delete my account"</b>, from the address linked to your account.<br><a class="btn" href="mailto:support@kuabo.co?subject=Delete%20my%20account">Request deletion by email</a></div>
           <h2>What is deleted</h2>
-          <ul>
-            <li>Your profile (name, email), login credentials</li>
-            <li>Your progress: XP, level, streak, Akwɛ balance, countries & travel data</li>
-            <li>Your preferences and in-app activity</li>
-          </ul>
-
+          <ul><li>Your profile (name, email) and login credentials</li><li>Your progress: XP, level, streak, Akwɛ balance, countries & travel data</li><li>Your preferences and in-app activity</li></ul>
           <h2>What may be kept temporarily</h2>
           <p class="muted">For security, fraud prevention and legal compliance, a minimal set of records (e.g. security/audit logs) may be retained for up to <b>90 days</b>, then permanently deleted. We never sell your data.</p>
-
           <p class="muted">Email requests are processed within <b>30 days</b>. Questions: <a href="mailto:support@kuabo.co">support@kuabo.co</a> · <a href="https://www.kuabo.co/privacy">Privacy Policy</a></p>
-        </section>
+        </div>
 
-        <hr>
-
-        <!-- FRANÇAIS -->
-        <section id="fr">
+        <!-- ============= FRANÇAIS ============= -->
+        <div data-lang="fr">
           <h1>Supprimer ton compte Kuabo</h1>
           <p>Tu peux supprimer définitivement ton compte Kuabo et les données associées à tout moment. Deux façons :</p>
-
           <h2>Option 1 — Dans l'app (immédiat)</h2>
-          <div class="step">
-            Ouvre <b>Kuabo</b> → <b>Profil</b> → descends → <b>Supprimer mon compte</b> → confirme.<br>
-            Ton compte et tes données sont supprimés aussitôt.
-          </div>
-
+          <div class="step">Ouvre <b>Kuabo</b> → <b>Profil</b> → descends → <b>Supprimer mon compte</b> → confirme.<br>Ton compte et tes données sont supprimés aussitôt.</div>
           <h2>Option 2 — Par email</h2>
-          <div class="step">
-            Envoie un email à <a href="mailto:support@kuabo.co?subject=Supprimer%20mon%20compte">support@kuabo.co</a>
-            avec l'objet <b>« Supprimer mon compte »</b>, depuis l'adresse email liée à ton compte.<br>
-            <a class="btn" href="mailto:support@kuabo.co?subject=Supprimer%20mon%20compte">Demander la suppression par email</a>
-          </div>
-
+          <div class="step">Écris à <a href="mailto:support@kuabo.co?subject=Supprimer%20mon%20compte">support@kuabo.co</a> avec l'objet <b>« Supprimer mon compte »</b>, depuis l'adresse liée à ton compte.<br><a class="btn" href="mailto:support@kuabo.co?subject=Supprimer%20mon%20compte">Demander la suppression par email</a></div>
           <h2>Ce qui est supprimé</h2>
-          <ul>
-            <li>Ton profil (nom, email), tes identifiants de connexion</li>
-            <li>Ta progression : XP, niveau, streak, solde Akwɛ, pays & données de voyage</li>
-            <li>Tes préférences et ton activité dans l'app</li>
-          </ul>
-
+          <ul><li>Ton profil (nom, email) et tes identifiants</li><li>Ta progression : XP, niveau, streak, solde Akwɛ, pays & données de voyage</li><li>Tes préférences et ton activité dans l'app</li></ul>
           <h2>Ce qui peut être conservé temporairement</h2>
           <p class="muted">Pour la sécurité, la prévention de la fraude et les obligations légales, un minimum d'enregistrements (ex. journaux de sécurité/audit) peut être conservé jusqu'à <b>90 jours</b>, puis supprimé définitivement. Nous ne vendons jamais tes données.</p>
-
           <p class="muted">Les demandes par email sont traitées sous <b>30 jours</b>. Questions : <a href="mailto:support@kuabo.co">support@kuabo.co</a> · <a href="https://www.kuabo.co/privacy">Politique de confidentialité</a></p>
-        </section>
+        </div>
+
+        <!-- ============= ESPAÑOL ============= -->
+        <div data-lang="es">
+          <h1>Eliminar tu cuenta Kuabo</h1>
+          <p>Puedes eliminar permanentemente tu cuenta Kuabo y sus datos asociados en cualquier momento. Dos formas:</p>
+          <h2>Opción 1 — En la app (instantáneo)</h2>
+          <div class="step">Abre <b>Kuabo</b> → <b>Perfil</b> → baja → <b>Eliminar mi cuenta</b> → confirma.<br>Tu cuenta y tus datos se eliminan de inmediato.</div>
+          <h2>Opción 2 — Por email</h2>
+          <div class="step">Escribe a <a href="mailto:support@kuabo.co?subject=Eliminar%20mi%20cuenta">support@kuabo.co</a> con el asunto <b>«Eliminar mi cuenta»</b>, desde la dirección vinculada a tu cuenta.<br><a class="btn" href="mailto:support@kuabo.co?subject=Eliminar%20mi%20cuenta">Solicitar eliminación por email</a></div>
+          <h2>Qué se elimina</h2>
+          <ul><li>Tu perfil (nombre, email) y tus credenciales</li><li>Tu progreso: XP, nivel, racha, saldo Akwɛ, países y datos de viaje</li><li>Tus preferencias y tu actividad en la app</li></ul>
+          <h2>Qué puede conservarse temporalmente</h2>
+          <p class="muted">Por seguridad, prevención de fraude y obligaciones legales, un mínimo de registros (p. ej. registros de seguridad/auditoría) puede conservarse hasta <b>90 días</b>, y luego se elimina permanentemente. Nunca vendemos tus datos.</p>
+          <p class="muted">Las solicitudes por email se procesan en <b>30 días</b>. Preguntas: <a href="mailto:support@kuabo.co">support@kuabo.co</a> · <a href="https://www.kuabo.co/privacy">Política de privacidad</a></p>
+        </div>
 
       </div>
-      <div class="lang">🌍 <a href="https://www.kuabo.co">kuabo.co</a></div>
+      <div class="foot">🌍 <a href="https://www.kuabo.co">kuabo.co</a></div>
     </div>
   </div>
+
+<script>
+  function setL(lang){
+    localStorage.setItem('kuabo_lang', lang);
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-lang]').forEach(el => el.classList.toggle('show', el.dataset.lang === lang));
+    document.querySelectorAll('.lb').forEach(b => b.classList.remove('on'));
+    document.getElementById('lb-' + lang).classList.add('on');
+    document.title = ({en:'Delete your account — Kuabo', fr:'Supprimer ton compte — Kuabo', es:'Eliminar tu cuenta — Kuabo'})[lang];
+  }
+  const stored = localStorage.getItem('kuabo_lang');
+  const browser = (navigator.language || 'en').slice(0,2).toLowerCase();
+  setL(stored || (['fr','es','en'].includes(browser) ? browser : 'en'));
+</script>
 </body>
 </html>
