@@ -458,7 +458,8 @@ function renderProfile(u, slug){
   if (visited.length === 0) {
     fw.innerHTML = `<p style="color:rgba(255,255,255,0.3);font-size:13px;">${t.noFlags}</p>`;
   } else {
-    fw.innerHTML = visited.map(v => `<div class="flag-chip"><span class="ff">${v.flag}</span><span class="fc">${v.code}</span></div>`).join("");
+    const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    fw.innerHTML = visited.map(v => `<div class="flag-chip"><span class="ff">${esc(v.flag)}</span><span class="fc">${esc(v.code)}</span></div>`).join("");
   }
 
   // Bouton partager

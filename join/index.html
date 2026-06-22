@@ -659,18 +659,24 @@ function renderInviter(inviter) {
   const container = document.getElementById('inviter-container');
   const t = T[currentLang];
 
-  const initials = (inviter.name || 'K')
+  // 🔒 Échappement anti-XSS : inviter.name est saisi par l'utilisateur
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const rawName = inviter.name || 'Global Mover';
+  const safeName = esc(rawName);
+
+  const initials = (rawName.replace(/[^a-zA-ZÀ-ſ ]/g, '') || 'K')
     .split(' ')
+    .filter(Boolean)
     .map(n => n[0])
     .join('')
     .toUpperCase()
-    .slice(0, 2);
+    .slice(0, 2) || 'K';
 
   container.innerHTML = `
     <div class="inviter-box">
-      <div class="inviter-avatar">${initials}</div>
+      <div class="inviter-avatar">${esc(initials)}</div>
       <div class="inviter-info">
-        ${t.invites(inviter.name || 'Global Mover')}
+        ${t.invites(safeName)}
         <span>${t.levelXP(inviter.level || 1, (inviter.xp || 0).toLocaleString())}</span>
       </div>
     </div>
