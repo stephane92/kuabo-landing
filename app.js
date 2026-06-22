@@ -19,6 +19,16 @@ const db = getFirestore(initializeApp({
 }));
 
 // ═══════════════════════════════════════════════════════════
+// STORES — liens officiels. Passe `live:true` quand l'app est PUBLIQUE
+// (iOS = quand approuvé+publié ; Android = après le test fermé 14j).
+// Tant que live:false → on garde la modal « Coming soon ».
+// ═══════════════════════════════════════════════════════════
+const STORES = {
+  ios:     { url: "https://apps.apple.com/app/id6782158717",                    live: false },
+  android: { url: "https://play.google.com/store/apps/details?id=co.kuabo.app", live: false },
+};
+
+// ═══════════════════════════════════════════════════════════
 // FIREBASE — WAITLIST + CODES PROMO
 // ═══════════════════════════════════════════════════════════
 
@@ -328,7 +338,13 @@ function showDs(n) {
 // STORE MODAL
 // ═══════════════════════════════════════════════════════════
 
-window.openStore = function() { document.getElementById('stmo').classList.add('on'); document.body.style.overflow = 'hidden'; };
+window.openStore = function(platform) {
+  // Si le store demandé est LIVE → on ouvre directement la fiche store.
+  const s = platform && STORES[platform];
+  if (s && s.live) { window.open(s.url, "_blank", "noopener"); return; }
+  // Sinon → modal « Coming soon » (comportement actuel).
+  document.getElementById('stmo').classList.add('on'); document.body.style.overflow = 'hidden';
+};
 window.closeStore = function() { document.getElementById('stmo').classList.remove('on'); document.body.style.overflow = ''; };
 
 // ═══════════════════════════════════════════════════════════
