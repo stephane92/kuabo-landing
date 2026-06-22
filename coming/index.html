@@ -352,14 +352,35 @@
   <div class="wrap">
     <img class="reveal" src="/kua.png" alt="Kua, the Kuabo mascot" style="width:130px;height:130px;object-fit:contain;margin:0 auto 10px;display:block;"/>
     <div class="reveal">
-      <div data-lang="en"><h2>Be first to get Kuabo</h2><p>The app launches very soon on iOS & Android. Join the waitlist and we'll tell you the moment it's live.</p></div>
-      <div data-lang="fr"><h2>Sois parmi les premiers à avoir Kuabo</h2><p>L'app sort très bientôt sur iOS & Android. Rejoins la waitlist et on te prévient dès que c'est en ligne.</p></div>
-      <div data-lang="es"><h2>Sé de los primeros en tener Kuabo</h2><p>La app sale muy pronto en iOS & Android. Únete a la lista y te avisamos en cuanto esté disponible.</p></div>
+      <div data-lang="en"><h2>Get Kuabo + your welcome gift 🎁</h2><p>Enter your email to get a unique code worth <b>70 Akwɛ</b>. Download Kuabo, sign up, and enter your code in the app.</p></div>
+      <div data-lang="fr"><h2>Obtiens Kuabo + ton cadeau de bienvenue 🎁</h2><p>Entre ton email pour recevoir un code unique de <b>70 Akwɛ</b>. Télécharge Kuabo, crée ton compte, et entre ton code dans l'app.</p></div>
+      <div data-lang="es"><h2>Obtén Kuabo + tu regalo de bienvenida 🎁</h2><p>Ingresa tu email para recibir un código único de <b>70 Akwɛ</b>. Descarga Kuabo, crea tu cuenta e ingresa tu código en la app.</p></div>
     </div>
-    <div class="stores reveal">
-      <a class="store" href="#"><span class="ic"></span><span><small>Download on the</small>App Store</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
-      <a class="store" href="#"><span class="ic">▶</span><span><small>Get it on</small>Google Play</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
-      <a class="btn" href="/"><span data-lang="en">Join the waitlist</span><span data-lang="fr">Rejoindre la waitlist</span><span data-lang="es">Unirse a la lista</span></a>
+
+    <!-- CODE PROMO -->
+    <div class="reveal" style="max-width:440px;margin:18px auto 0;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="email" id="kc-email" placeholder="your@email.com" style="flex:1;min-width:200px;padding:14px 16px;border:2px solid rgba(0,0,0,.12);border-radius:14px;font-size:15px;font-family:inherit;outline:none;"/>
+        <button class="btn" id="kc-btn" onclick="kuaboGetCode()">
+          <span data-lang="en">Get my code 🎁</span><span data-lang="fr">Obtenir mon code 🎁</span><span data-lang="es">Obtener mi código 🎁</span>
+        </button>
+      </div>
+      <div id="kc-msg" style="font-size:13px;min-height:18px;margin-top:8px;font-weight:700;"></div>
+      <!-- Résultat code -->
+      <div id="kc-result" style="display:none;margin-top:12px;background:#0b1526;border:2px solid #e8b84b;border-radius:16px;padding:18px;text-align:center;">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="en">Your welcome code</div>
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="fr">Ton code de bienvenue</div>
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="es">Tu código de bienvenida</div>
+        <div id="kc-code" style="font-size:26px;font-weight:900;color:#e8b84b;letter-spacing:2px;margin:6px 0 4px;font-family:'Nunito',sans-serif;">—</div>
+        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="en">= 70 Akwɛ. Enter it in the app at sign-up. 🎉</div>
+        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="fr">= 70 Akwɛ. Entre-le dans l'app à l'inscription. 🎉</div>
+        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="es">= 70 Akwɛ. Ingrésalo en la app al registrarte. 🎉</div>
+      </div>
+    </div>
+
+    <div class="stores reveal" style="margin-top:18px;">
+      <a class="store" data-store="ios" href="#"><span class="ic"></span><span><small>Download on the</small>App Store</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
+      <a class="store" data-store="android" href="#"><span class="ic">▶</span><span><small>Get it on</small>Google Play</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
     </div>
   </div>
 </section>
@@ -420,6 +441,11 @@
           <a href="mailto:support@kuabo.co">support@kuabo.co</a>
         </div>
         <div class="foot-col">
+          <h4 data-lang="en">Company</h4><h4 data-lang="fr">Entreprise</h4><h4 data-lang="es">Empresa</h4>
+          <a href="https://partners.kuabo.co" target="_blank"><span data-lang="en">For businesses</span><span data-lang="fr">Pour les commerces</span><span data-lang="es">Para comercios</span></a>
+          <a href="https://careers.kuabo.co" target="_blank"><span data-lang="en">Careers</span><span data-lang="fr">Carrières</span><span data-lang="es">Empleo</span></a>
+        </div>
+        <div class="foot-col">
           <h4 data-lang="en">Follow</h4><h4 data-lang="fr">Suivre</h4><h4 data-lang="es">Seguir</h4>
           <a href="https://instagram.com/kuabo_app" target="_blank">Instagram</a>
           <a href="https://tiktok.com/@kuabo_app" target="_blank">TikTok</a>
@@ -432,5 +458,89 @@
 </footer>
 
 <script src="/coming/official.js"></script>
+
+<!-- ═══ CODE PROMO + LIENS STORES (basculer live:true au lancement) ═══ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+const db = getFirestore(initializeApp({
+  apiKey: "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
+  authDomain: "kuabo-42d9c.firebaseapp.com",
+  projectId: "kuabo-42d9c",
+  storageBucket: "kuabo-42d9c.firebasestorage.app",
+  messagingSenderId: "774805697",
+  appId: "1:774805697:web:1fa1a94076fd8e7c8f5c40"
+}));
+
+// 🚀 STORES — passe live:true quand l'app est PUBLIQUE (iOS approuvé / Android après 14j)
+const STORES = {
+  ios:     { url: "https://apps.apple.com/app/id6782158717",                    live: false },
+  android: { url: "https://play.google.com/store/apps/details?id=co.kuabo.app", live: false },
+};
+document.querySelectorAll('a.store[data-store]').forEach(a => {
+  const s = STORES[a.dataset.store];
+  if (s && s.live) {
+    a.href = s.url; a.target = "_blank"; a.rel = "noopener";
+    a.querySelectorAll('.soon').forEach(el => el.remove());
+  }
+});
+
+function genCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "KUABO-";
+  for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+window.kuaboGetCode = async function() {
+  const lang = (document.documentElement.lang || 'en');
+  const T = {
+    en: { empty:"Enter your email", bad:"Invalid email", ok:"🎉 Here's your code!", err:"Error. Try again.", wait:"⏳" },
+    fr: { empty:"Entre ton email", bad:"Email invalide", ok:"🎉 Voici ton code !", err:"Erreur. Réessaie.", wait:"⏳" },
+    es: { empty:"Ingresa tu email", bad:"Email inválido", ok:"🎉 ¡Aquí está tu código!", err:"Error.", wait:"⏳" },
+  };
+  const t = T[lang] || T.en;
+  const inp = document.getElementById('kc-email');
+  const btn = document.getElementById('kc-btn');
+  const msg = document.getElementById('kc-msg');
+  const email = (inp.value || "").trim().toLowerCase();
+  const flash = (txt, ok) => { msg.textContent = txt; msg.style.color = ok ? "#16a34a" : "#ef4444"; };
+
+  if (!email) { flash(t.empty, 0); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { flash(t.bad, 0); return; }
+  const old = btn.innerHTML; btn.disabled = true; btn.textContent = t.wait;
+
+  try {
+    const emailKey = email.replace(/\./g, "_dot_").replace(/@/, "_at_");
+    const waitRef = doc(db, "waitlist", emailKey);
+    const snap = await getDoc(waitRef);
+    let promoCode;
+
+    if (snap.exists() && snap.data().promoCode) {
+      promoCode = snap.data().promoCode;
+      try {
+        await setDoc(doc(db, "promo_codes", promoCode), {
+          email, createdAt: snap.data().promoAt || new Date().toISOString(), used: false, reward: 70, source: "coming"
+        });
+      } catch (e) { /* existe déjà = OK */ }
+    } else {
+      promoCode = genCode();
+      await setDoc(waitRef, { email, lang, at: new Date().toISOString(), promoCode, promoAt: new Date().toISOString() }, { merge: true });
+      await setDoc(doc(db, "promo_codes", promoCode), {
+        email, createdAt: new Date().toISOString(), used: false, reward: 70, source: "coming"
+      });
+    }
+
+    flash(t.ok, 1);
+    document.getElementById('kc-code').textContent = promoCode;
+    document.getElementById('kc-result').style.display = 'block';
+    inp.value = "";
+  } catch (e) {
+    console.error(e); flash(t.err, 0);
+  }
+  btn.disabled = false; btn.innerHTML = old;
+};
+</script>
 </body>
 </html>
