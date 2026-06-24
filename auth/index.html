@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Kuabo — Vérification</title>
+<link rel="icon" href="/icon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  :root{
+    --gold:#e8b84b; --gold-dk:#c9952a; --teal:#2dd4bf; --green:#22c55e;
+    --red:#ef4444; --navy:#0b1526; --bg:#080c14; --card:#0f1623;
+    --border:rgba(255,255,255,0.08); --text:#f0ece4; --muted:#8a97ad;
+  }
+  body{
+    font-family:'Nunito Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:var(--bg); color:var(--text); min-height:100vh;
+    display:flex; align-items:center; justify-content:center; padding:20px;
+  }
+  .card{
+    width:100%; max-width:440px; background:var(--card);
+    border:1px solid var(--border); border-radius:24px; overflow:hidden;
+    box-shadow:0 24px 60px rgba(0,0,0,.45);
+  }
+  .head{ background:var(--navy); padding:32px 24px; text-align:center; }
+  .owl{ font-size:46px; line-height:1; margin-bottom:8px; }
+  .brand{ font-family:'Nunito',sans-serif; color:var(--gold); font-size:30px; font-weight:900; letter-spacing:-.5px; }
+  .body{ padding:34px 28px 30px; text-align:center; }
+  h1{ font-family:'Nunito',sans-serif; font-size:22px; font-weight:900; margin-bottom:12px; color:#fff; }
+  p{ font-size:15px; line-height:1.6; color:#c7d0de; margin-bottom:8px; }
+  .muted{ color:var(--muted); font-size:13px; }
+  .icon{ font-size:54px; line-height:1; margin-bottom:14px; }
+  .spinner{
+    width:42px; height:42px; margin:6px auto 18px; border-radius:50%;
+    border:4px solid rgba(255,255,255,.12); border-top-color:var(--gold);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+  .field{ text-align:left; margin:16px 0 4px; }
+  label{ display:block; font-size:13px; font-weight:700; color:var(--muted); margin-bottom:6px; }
+  input{
+    width:100%; padding:14px 16px; border-radius:12px; border:1px solid var(--border);
+    background:#0a111d; color:#fff; font-size:16px; font-family:inherit;
+  }
+  input:focus{ outline:none; border-color:var(--gold); }
+  .btn{
+    display:inline-block; width:100%; margin-top:20px; padding:15px 20px;
+    background:var(--gold); color:var(--navy); font-family:'Nunito',sans-serif;
+    font-weight:900; font-size:16px; border:none; border-radius:14px; cursor:pointer;
+  }
+  .btn:disabled{ opacity:.5; cursor:not-allowed; }
+  .err{ color:var(--red); font-size:13px; margin-top:10px; min-height:16px; }
+  .foot{ background:#0a0f19; padding:16px; text-align:center; border-top:1px solid var(--border); }
+  .foot p{ font-size:12px; color:var(--muted); margin:0; }
+  .hidden{ display:none; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <div class="owl">🦉</div>
+      <div class="brand">KUABO</div>
+    </div>
+    <div class="body">
+
+      <!-- LOADING -->
+      <div id="loading">
+        <div class="spinner"></div>
+        <p id="t-loading">Vérification en cours…</p>
+      </div>
+
+      <!-- VERIFY SUCCESS -->
+      <div id="verify-ok" class="hidden">
+        <div class="icon">✅</div>
+        <h1 id="t-vok-title">Email confirmé !</h1>
+        <p id="t-vok-body">Ton compte est activé. Retourne dans l'app Kuabo et connecte-toi.</p>
+      </div>
+
+      <!-- RESET FORM -->
+      <div id="reset-form" class="hidden">
+        <div class="icon">🔑</div>
+        <h1 id="t-rf-title">Nouveau mot de passe</h1>
+        <p id="t-rf-body" class="muted"></p>
+        <div class="field">
+          <label id="t-rf-label">Nouveau mot de passe</label>
+          <input id="pw" type="password" autocomplete="new-password" minlength="6">
+        </div>
+        <div class="field">
+          <label id="t-rf-label2">Confirme le mot de passe</label>
+          <input id="pw2" type="password" autocomplete="new-password" minlength="6">
+        </div>
+        <div class="err" id="rf-err"></div>
+        <button class="btn" id="rf-btn">Réinitialiser</button>
+      </div>
+
+      <!-- RESET SUCCESS -->
+      <div id="reset-ok" class="hidden">
+        <div class="icon">✅</div>
+        <h1 id="t-rok-title">Mot de passe modifié !</h1>
+        <p id="t-rok-body">Retourne dans l'app Kuabo et connecte-toi avec ton nouveau mot de passe.</p>
+      </div>
+
+      <!-- ERROR -->
+      <div id="error" class="hidden">
+        <div class="icon">⚠️</div>
+        <h1 id="t-e-title">Lien invalide ou expiré</h1>
+        <p id="t-e-body">Ce lien n'est plus valable. Ouvre l'app Kuabo et demande un nouvel email.</p>
+      </div>
+
+    </div>
+    <div class="foot">
+      <p>Kuabo · Pour ceux qui osent bouger 🌍</p>
+    </div>
+  </div>
+
+<script>
+(function(){
+  "use strict";
+  var API_KEY = "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ"; // clé web publique Firebase (kuabo-42d9c)
+  var EP = "https://identitytoolkit.googleapis.com/v1/accounts:";
+
+  // ── i18n ──────────────────────────────────────────────
+  var I18N = {
+    fr: {
+      loading:"Vérification en cours…",
+      vokTitle:"Email confirmé !", vokBody:"Ton compte est activé. Retourne dans l'app Kuabo et connecte-toi.",
+      rfTitle:"Nouveau mot de passe", rfBody:function(e){return "Pour le compte "+e;},
+      rfLabel:"Nouveau mot de passe", rfLabel2:"Confirme le mot de passe", rfBtn:"Réinitialiser",
+      rokTitle:"Mot de passe modifié !", rokBody:"Retourne dans l'app Kuabo et connecte-toi avec ton nouveau mot de passe.",
+      eTitle:"Lien invalide ou expiré", eBody:"Ce lien n'est plus valable. Ouvre l'app Kuabo et demande un nouvel email.",
+      errShort:"6 caractères minimum.", errMatch:"Les mots de passe ne correspondent pas.", working:"…"
+    },
+    en: {
+      loading:"Verifying…",
+      vokTitle:"Email confirmed!", vokBody:"Your account is active. Go back to the Kuabo app and sign in.",
+      rfTitle:"New password", rfBody:function(e){return "For the account "+e;},
+      rfLabel:"New password", rfLabel2:"Confirm password", rfBtn:"Reset password",
+      rokTitle:"Password changed!", rokBody:"Go back to the Kuabo app and sign in with your new password.",
+      eTitle:"Invalid or expired link", eBody:"This link is no longer valid. Open the Kuabo app and request a new email.",
+      errShort:"At least 6 characters.", errMatch:"Passwords don't match.", working:"…"
+    },
+    es: {
+      loading:"Verificando…",
+      vokTitle:"¡Email confirmado!", vokBody:"Tu cuenta está activada. Vuelve a la app Kuabo e inicia sesión.",
+      rfTitle:"Nueva contraseña", rfBody:function(e){return "Para la cuenta "+e;},
+      rfLabel:"Nueva contraseña", rfLabel2:"Confirma la contraseña", rfBtn:"Restablecer",
+      rokTitle:"¡Contraseña cambiada!", rokBody:"Vuelve a la app Kuabo e inicia sesión con tu nueva contraseña.",
+      eTitle:"Enlace inválido o expirado", eBody:"Este enlace ya no es válido. Abre la app Kuabo y pide un nuevo email.",
+      errShort:"Mínimo 6 caracteres.", errMatch:"Las contraseñas no coinciden.", working:"…"
+    }
+  };
+
+  function qp(name){ return new URLSearchParams(window.location.search).get(name); }
+  function show(id){ ["loading","verify-ok","reset-form","reset-ok","error"].forEach(function(x){
+    document.getElementById(x).classList.toggle("hidden", x !== id);
+  }); }
+  function txt(id,v){ var el=document.getElementById(id); if(el) el.textContent=v; }
+
+  var lang = (qp("lang")||"").slice(0,2).toLowerCase();
+  if(!I18N[lang]) lang = (navigator.language||"fr").slice(0,2).toLowerCase();
+  if(!I18N[lang]) lang = "fr";
+  var L = I18N[lang];
+  document.documentElement.lang = lang;
+
+  // Pré-remplir les libellés
+  txt("t-loading", L.loading);
+  txt("t-vok-title", L.vokTitle);  txt("t-vok-body", L.vokBody);
+  txt("t-rf-title", L.rfTitle);    txt("t-rf-label", L.rfLabel);
+  txt("t-rf-label2", L.rfLabel2);  document.getElementById("rf-btn").textContent = L.rfBtn;
+  txt("t-rok-title", L.rokTitle);  txt("t-rok-body", L.rokBody);
+  txt("t-e-title", L.eTitle);      txt("t-e-body", L.eBody);
+
+  var mode = qp("mode");
+  var oob  = qp("oobCode");
+
+  if(!oob){ show("error"); return; }
+
+  // ── VERIFY EMAIL ──────────────────────────────────────
+  if(mode === "verifyEmail"){
+    fetch(EP+"update?key="+API_KEY, {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ oobCode: oob })
+    }).then(function(r){ return r.json(); })
+      .then(function(d){ if(d.error) show("error"); else show("verify-ok"); })
+      .catch(function(){ show("error"); });
+    return;
+  }
+
+  // ── RESET PASSWORD ────────────────────────────────────
+  if(mode === "resetPassword"){
+    // 1) Vérifier le code et récupérer l'email
+    fetch(EP+"resetPassword?key="+API_KEY, {
+      method:"POST", headers:{"Content-Type":"application/json"},
+      body: JSON.stringify({ oobCode: oob })
+    }).then(function(r){ return r.json(); })
+      .then(function(d){
+        if(d.error){ show("error"); return; }
+        txt("t-rf-body", L.rfBody(d.email||""));
+        show("reset-form");
+        var btn=document.getElementById("rf-btn");
+        var errEl=document.getElementById("rf-err");
+        btn.addEventListener("click", function(){
+          var pw=document.getElementById("pw").value;
+          var pw2=document.getElementById("pw2").value;
+          errEl.textContent="";
+          if(pw.length<6){ errEl.textContent=L.errShort; return; }
+          if(pw!==pw2){ errEl.textContent=L.errMatch; return; }
+          btn.disabled=true; btn.textContent=L.working;
+          fetch(EP+"resetPassword?key="+API_KEY, {
+            method:"POST", headers:{"Content-Type":"application/json"},
+            body: JSON.stringify({ oobCode: oob, newPassword: pw })
+          }).then(function(r){ return r.json(); })
+            .then(function(d2){
+              if(d2.error){ btn.disabled=false; btn.textContent=L.rfBtn; show("error"); }
+              else show("reset-ok");
+            })
+            .catch(function(){ btn.disabled=false; btn.textContent=L.rfBtn; show("error"); });
+        });
+      })
+      .catch(function(){ show("error"); });
+    return;
+  }
+
+  // Mode inconnu
+  show("error");
+})();
+</script>
+</body>
+</html>
