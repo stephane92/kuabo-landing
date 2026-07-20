@@ -5,8 +5,8 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
 import {
-  getFirestore, collection, doc,
-  setDoc, getDoc, getCountFromServer
+  getFirestore, doc,
+  setDoc, getDoc
 } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 const db = getFirestore(initializeApp({
@@ -32,10 +32,15 @@ const STORES = {
 // FIREBASE — WAITLIST + CODES PROMO
 // ═══════════════════════════════════════════════════════════
 
+// Le nombre d'inscrits vient de stats/waitlist, un document public qui ne
+// contient qu'un compteur (tenu à jour par la Cloud Function onWaitlistCreated).
+// Avant, on faisait getCountFromServer sur la collection waitlist — ce qui
+// exigeait le droit de la LISTER, et permettait donc à n'importe qui d'aspirer
+// tous les emails et codes promo. Ce droit est désormais fermé.
 async function loadCount() {
   try {
-    const snap = await getCountFromServer(collection(db, "waitlist"));
-    const n = snap.data().count || 0;
+    const snap = await getDoc(doc(db, "stats", "waitlist"));
+    const n = snap.exists() ? (snap.data().count || 0) : 0;
     if (n > 0) {
       document.querySelectorAll(".cnum").forEach(el => {
         let c = 0;
