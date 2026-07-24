@@ -584,6 +584,11 @@ window.setL = function(l) {
   s('cpN4s',({en:'Uber ~$35 · or shuttle',fr:'Uber ~35$ · ou navette',es:'Uber ~35$ · o traslado'})[l]);
   s('cpCta',({en:'Join the waitlist →',fr:'Rejoindre la liste d\'attente →',es:'Unirse a la lista de espera →'})[l]);
   s('cpNote',({en:'Get notified the moment it hits the App Store.',fr:'Sois prévenu dès l\'arrivée sur l\'App Store.',es:'Recibe aviso en cuanto llegue a la App Store.'})[l]);
+  // Encart fondateur
+  s('fsEyebrow',({en:'Behind Kuabo',fr:'Derrière Kuabo',es:'Detrás de Kuabo'})[l]);
+  s('fsH2',({en:'One founder. A mission for 281M movers.',fr:'Un fondateur. Une mission pour 281M de movers.',es:'Un fundador. Una misión para 281M de movers.'})[l]);
+  s('fsP',({en:'From Bénin to the US — Stéphane Adannou built Kuabo alone, from the first line of code to an app approved by Apple.',fr:'Du Bénin aux USA — Stéphane Adannou a bâti Kuabo seul, de la première ligne de code à une app approuvée par Apple.',es:'De Benín a EE.UU. — Stéphane Adannou construyó Kuabo solo, desde la primera línea de código hasta una app aprobada por Apple.'})[l]);
+  s('fsLink',({en:'Meet the founder →',fr:'Découvrir le fondateur →',es:'Conoce al fundador →'})[l]);
   for (let i = 1; i <= 6; i++) { s('c'+i+'t',t['c'+i+'t'],true); s('c'+i+'d',t['c'+i+'d']); }
   if (document.getElementById('pos-h2')) { s('pos-h2',t.posh2); s('pos-sub',t.possub); }
   s('btag',t.btag); s('bh2',t.bh2); s('bsub',t.bsub);
