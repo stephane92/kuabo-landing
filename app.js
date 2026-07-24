@@ -568,6 +568,27 @@ window.setL = function(l) {
   s('resTt',({en:'Travel',fr:'Voyage',es:'Viajes'})[l]);
   s('resTd',({en:'Flights, hotels, eSIM, car & more — plan and book your whole trip.',fr:'Vols, hôtels, eSIM, voiture & plus — prépare et réserve tout ton voyage.',es:'Vuelos, hoteles, eSIM, coche y más — planea y reserva todo tu viaje.'})[l]);
   s('resTc',({en:'Discover travel →',fr:'Découvrir le voyage →',es:'Descubrir viajes →'})[l]);
+  // Section Kua Copilot (guidage du voyage)
+  s('cpEyebrow',({en:'The technology · Powered by Kua Copilot™',fr:'La technologie · Propulsé par Kua Copilot™',es:'La tecnología · Con tecnología Kua Copilot™'})[l]);
+  s('cpH2',({en:'Your <span class="t">copilot</span> for the big <span class="g">journey</span>.',fr:'Ton <span class="t">copilote</span> pour le grand <span class="g">voyage</span>.',es:'Tu <span class="t">copiloto</span> para el gran <span class="g">viaje</span>.'})[l],true);
+  s('cpLead',({en:'Moving abroad is intimidating. <b>Kua Copilot™</b> is the technology that guides you across <b>your whole trip</b> — from packing to your first steps in the country. Like a copilot who already knows the way.',fr:'Partir vivre à l\'étranger, c\'est intimidant. <b>Kua Copilot™</b> est la technologie qui te guide sur <b>tout ton trajet</b> — de la préparation du départ jusqu\'à tes premiers pas dans le pays. Comme un copilote qui connaît déjà le chemin.',es:'Mudarse al extranjero intimida. <b>Kua Copilot™</b> es la tecnología que te guía en <b>todo tu trayecto</b> — desde preparar la salida hasta tus primeros pasos en el país. Como un copiloto que ya conoce el camino.'})[l],true);
+  s('cpS1t',({en:'Before departure',fr:'Avant le départ',es:'Antes de salir'})[l]);
+  s('cpS1d',({en:'Travel documents, luggage, everything ready for boarding and customs. No more guessing before you leave.',fr:'Documents de voyage, bagages, ce qu\'il faut avoir prêt pour l\'embarquement et la douane. Tu ne pars plus dans le flou.',es:'Documentos de viaje, equipaje, todo listo para el embarque y la aduana. Ya no sales a ciegas.'})[l]);
+  s('cpS2t',({en:'During the trip',fr:'Pendant le trajet',es:'Durante el trayecto'})[l]);
+  s('cpS2d',({en:'Airport, connections, customs and immigration: what to show, what to say, where to go. Copilot walks you through each step.',fr:'Aéroport, correspondances, douane et immigration : quoi présenter, quoi dire, où aller. Copilot te souffle chaque étape.',es:'Aeropuerto, conexiones, aduana e inmigración: qué mostrar, qué decir, adónde ir. Copilot te guía en cada paso.'})[l]);
+  s('cpS3t',({en:'On arrival',fr:'À l\'arrivée',es:'Al llegar'})[l]);
+  s('cpS3d',({en:'From landing: transport, eSIM, first direction. Then Kuabo takes over for your whole settlement.',fr:'Dès l\'atterrissage : transport, eSIM, première direction. Puis Kuabo prend le relais pour toute ton installation.',es:'Desde el aterrizaje: transporte, eSIM, primera dirección. Luego Kuabo toma el relevo para toda tu instalación.'})[l]);
+  s('cpQ',({en:'First time in a US airport 😰 What do I do at customs?',fr:'Première fois dans un aéroport américain 😰 Qu\'est-ce que je fais à la douane ?',es:'Primera vez en un aeropuerto de EE. UU. 😰 ¿Qué hago en la aduana?'})[l]);
+  s('cpN1l',({en:'Boarding',fr:'Embarquement',es:'Embarque'})[l]);
+  s('cpN1s',({en:'Flight · Gate B12 · done',fr:'Vol · Porte B12 · fait',es:'Vuelo · Puerta B12 · hecho'})[l]);
+  s('cpN2l',({en:'US customs & immigration',fr:'Douane & immigration US',es:'Aduana e inmigración EE.UU.'})[l]);
+  s('cpN2s',({en:'Now · passport + visa ready 🛂',fr:'Maintenant · passeport + visa prêts 🛂',es:'Ahora · pasaporte + visa listos 🛂'})[l]);
+  s('cpN3l',({en:'Collect your luggage',fr:'Récupérer tes bagages',es:'Recoger tu equipaje'})[l]);
+  s('cpN3s',({en:'Belt 4',fr:'Tapis 4',es:'Cinta 4'})[l]);
+  s('cpN4l',({en:'Airport → city',fr:'Aéroport → ville',es:'Aeropuerto → ciudad'})[l]);
+  s('cpN4s',({en:'Uber ~$35 · or shuttle',fr:'Uber ~35$ · ou navette',es:'Uber ~35$ · o traslado'})[l]);
+  s('cpCta',({en:'Join the waitlist →',fr:'Rejoindre la liste d\'attente →',es:'Unirse a la lista de espera →'})[l]);
+  s('cpNote',({en:'Get notified the moment it hits the App Store.',fr:'Sois prévenu dès l\'arrivée sur l\'App Store.',es:'Recibe aviso en cuanto llegue a la App Store.'})[l]);
   for (let i = 1; i <= 6; i++) { s('c'+i+'t',t['c'+i+'t'],true); s('c'+i+'d',t['c'+i+'d']); }
   if (document.getElementById('pos-h2')) { s('pos-h2',t.posh2); s('pos-sub',t.possub); }
   s('btag',t.btag); s('bh2',t.bh2); s('bsub',t.bsub);
