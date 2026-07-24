@@ -589,6 +589,26 @@ window.setL = function(l) {
   s('fsH2',({en:'One founder. A mission for 281M movers.',fr:'Un fondateur. Une mission pour 281M de movers.',es:'Un fundador. Una misión para 281M de movers.'})[l]);
   s('fsP',({en:'From Bénin to the US — Stéphane Adannou built Kuabo alone, from the first line of code to an app approved by Apple.',fr:'Du Bénin aux USA — Stéphane Adannou a bâti Kuabo seul, de la première ligne de code à une app approuvée par Apple.',es:'De Benín a EE.UU. — Stéphane Adannou construyó Kuabo solo, desde la primera línea de código hasta una app aprobada por Apple.'})[l]);
   s('fsLink',({en:'Meet the founder →',fr:'Découvrir le fondateur →',es:'Conoce al fundador →'})[l]);
+  // Section Partenaires
+  s('ptTag',({en:'🤝 Kuabo for Business',fr:'🤝 Kuabo for Business',es:'🤝 Kuabo for Business'})[l]);
+  s('ptH2',({en:'A network that <span class="g">welcomes</span> you, wherever you go.',fr:'Un réseau qui t\'<span class="g">accueille</span>, où que tu ailles.',es:'Una red que te <span class="g">recibe</span>, vayas donde vayas.'})[l],true);
+  s('ptP',({en:'Kuabo connects Global Movers with local businesses — restaurants, salons, shops, services. Show your Kuabo, get <b>exclusive perks</b> the moment you arrive.',fr:'Kuabo connecte les Global Movers aux commerces locaux — restaurants, salons, boutiques, services. Montre ton Kuabo, profite d\'<b>offres exclusives</b> dès ton arrivée.',es:'Kuabo conecta a los Global Movers con comercios locales — restaurantes, salones, tiendas, servicios. Muestra tu Kuabo y obtén <b>ventajas exclusivas</b> al llegar.'})[l],true);
+  s('ptBadge',({en:'⭐ First partner',fr:'⭐ Premier partenaire',es:'⭐ Primer socio'})[l]);
+  s('ptMeta',({en:'🇺🇸 Maryland, United States',fr:'🇺🇸 Maryland, États-Unis',es:'🇺🇸 Maryland, Estados Unidos'})[l]);
+  s('ptCat',({en:'🍽️ Restaurant',fr:'🍽️ Restaurant',es:'🍽️ Restaurante'})[l]);
+  s('ptPerk',({en:'The first business to join Kuabo and <b>welcome new arrivals</b> with perks. And it\'s only the beginning.',fr:'Le premier commerce à rejoindre Kuabo pour <b>accueillir les nouveaux arrivants</b> avec des avantages. Et ce n\'est que le début.',es:'El primer comercio en unirse a Kuabo para <b>recibir a los recién llegados</b> con ventajas. Y esto es solo el principio.'})[l],true);
+  s('ptTypesH',({en:'Coming soon near you',fr:'Bientôt près de chez toi',es:'Pronto cerca de ti'})[l]);
+  s('ptTypesSub',({en:'The businesses that welcome Global Movers',fr:'Les commerces qui accueillent les Global Movers',es:'Los comercios que reciben a los Global Movers'})[l]);
+  s('ptC1',({en:'Restaurants',fr:'Restaurants',es:'Restaurantes'})[l]);
+  s('ptC2',({en:'Salons & beauty',fr:'Salons & beauté',es:'Salones y belleza'})[l]);
+  s('ptC3',({en:'Shops',fr:'Boutiques',es:'Tiendas'})[l]);
+  s('ptC4',({en:'Transport',fr:'Transport',es:'Transporte'})[l]);
+  s('ptC5',({en:'Health',fr:'Santé',es:'Salud'})[l]);
+  s('ptC6',({en:'Services',fr:'Services',es:'Servicios'})[l]);
+  s('ptSoon',({en:'From Cotonou to Dallas — the network grows every week 🌍',fr:'De Cotonou à Dallas — le réseau grandit chaque semaine 🌍',es:'De Cotonú a Dallas — la red crece cada semana 🌍'})[l]);
+  s('ptCtaH',({en:'Got a business? 🏪',fr:'Tu as un commerce ? 🏪',es:'¿Tienes un comercio? 🏪'})[l]);
+  s('ptCtaP',({en:'Join Kuabo for Business and reach the Global Movers community.',fr:'Rejoins Kuabo for Business et touche la communauté des Global Movers.',es:'Únete a Kuabo for Business y llega a la comunidad de Global Movers.'})[l]);
+  s('ptBtn',({en:'Become a partner →',fr:'Devenir partenaire →',es:'Conviértete en socio →'})[l]);
   for (let i = 1; i <= 6; i++) { s('c'+i+'t',t['c'+i+'t'],true); s('c'+i+'d',t['c'+i+'d']); }
   if (document.getElementById('pos-h2')) { s('pos-h2',t.posh2); s('pos-sub',t.possub); }
   s('btag',t.btag); s('bh2',t.bh2); s('bsub',t.bsub);
