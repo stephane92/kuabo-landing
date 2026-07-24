@@ -432,3 +432,35 @@ input[type="email"],input[type="text"],input,textarea{font-size:16px !important;
 .fs-link{display:inline-block;margin-top:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--gold-dk);text-decoration:none;}
 .fs-link:hover{color:var(--gold);}
 @media(max-width:640px){.fs-inner{flex-direction:column;text-align:center;gap:22px;}.fs-p{margin-left:auto;margin-right:auto;}.fs-photo{width:130px;height:130px;}}
+
+/* ═══════════ PARTENAIRES (Kuabo for Business) ═══════════ */
+.partners{background:var(--bg2);padding:78px 20px;}
+.pt-inner{max-width:1040px;margin:0 auto;}
+.pt-head{text-align:center;max-width:640px;margin:0 auto 44px;}
+.pt-tag{display:inline-block;background:rgba(45,212,191,.12);color:var(--teal-dk);font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;letter-spacing:.09em;text-transform:uppercase;padding:7px 16px;border-radius:100px;margin-bottom:16px;}
+.pt-head h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(28px,4.6vw,44px);line-height:1.06;letter-spacing:-1.2px;color:var(--navy);margin-bottom:0;}
+.pt-head h2 .g{color:var(--gold);}
+.pt-head p{font-size:17px;color:var(--muted);margin-top:16px;line-height:1.6;font-weight:600;}
+.pt-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;}
+.pt-first{background:#fff;border:2.5px solid #fde68a;border-radius:22px;padding:26px;box-shadow:0 4px 0 #fde68a;display:flex;flex-direction:column;}
+.pt-badge{align-self:flex-start;background:var(--gold);color:#fff;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;letter-spacing:.05em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:18px;}
+.pt-firstrow{display:flex;align-items:center;gap:16px;}
+.pt-logo{width:64px;height:64px;flex:none;border-radius:18px;background:linear-gradient(135deg,#fff5d6,#ffe8a3);display:grid;place-items:center;font-size:32px;border:2px solid #fde68a;}
+.pt-name{font-family:'Nunito',sans-serif;font-weight:900;font-size:22px;color:var(--navy);}
+.pt-meta{font-size:13.5px;color:var(--muted);font-weight:700;margin-top:2px;}
+.pt-cat{display:inline-block;margin-top:10px;background:rgba(232,184,75,.14);color:var(--gold-dk);font-weight:800;font-size:12px;padding:4px 12px;border-radius:100px;}
+.pt-perk{margin-top:18px;padding-top:16px;border-top:1px dashed var(--border);font-size:14.5px;color:var(--text);font-weight:600;line-height:1.55;}
+.pt-perk b{color:var(--teal-dk);}
+.pt-types{background:var(--navy);border-radius:22px;padding:26px;color:#fff;}
+.pt-types h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;margin-bottom:4px;color:#fff;}
+.pt-types .sub{font-size:13px;color:rgba(255,255,255,.55);font-weight:600;margin-bottom:18px;}
+.pt-cats{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.pt-catitem{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:13px;padding:11px 13px;font-size:13.5px;font-weight:700;color:#fff;}
+.pt-catitem .e{font-size:20px;}
+.pt-soon{margin-top:16px;font-size:12.5px;color:rgba(255,255,255,.5);font-weight:600;text-align:center;}
+.pt-cta{margin-top:26px;background:linear-gradient(135deg,#0b1526,#122744);border-radius:22px;padding:30px 26px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;}
+.pt-cta .l h3{font-family:'Nunito',sans-serif;font-weight:900;font-size:21px;color:#fff;}
+.pt-cta .l p{color:rgba(255,255,255,.6);font-size:14.5px;margin-top:5px;font-weight:600;}
+.pt-btn{display:inline-block;background:linear-gradient(180deg,var(--gold2),var(--gold));color:#3a2c07;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;padding:14px 26px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:.16s;}
+.pt-btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -12px rgba(232,184,75,.7);}
+@media(max-width:760px){.pt-grid{grid-template-columns:1fr;}.pt-cta{flex-direction:column;text-align:center;align-items:center;}}
