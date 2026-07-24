@@ -135,10 +135,23 @@
   footer{margin-top:48px;text-align:center;color:var(--faint);font-size:12.5px;}
   footer a{color:var(--muted);font-weight:700;}
 
-  @media(max-width:760px){
-    .hero{grid-template-columns:1fr;gap:26px;}
+  @media(max-width:880px){
+    .hero{grid-template-columns:1fr;gap:24px;text-align:center;}
     .photo-wrap{margin:0 auto;}
+    .tagline{margin-left:auto;margin-right:auto;}
+    .socials{justify-content:center;}
     .story{grid-template-columns:1fr;}
+    .tech{padding:24px;}
+  }
+  @media(max-width:520px){
+    .wrap{padding:18px 16px 56px;}
+    .stats{grid-template-columns:1fr;gap:10px;}
+    .stat{display:flex;align-items:center;justify-content:center;gap:10px;text-align:left;padding:14px 18px;}
+    .stat .l{margin-top:0;}
+    h1{font-size:clamp(30px,9vw,40px);}
+    .card,.tech{padding:22px 20px;}
+    .top{gap:10px;}
+    .back{display:none;}
   }
 </style>
 </head>
