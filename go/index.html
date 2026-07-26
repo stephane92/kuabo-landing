@@ -99,8 +99,12 @@
     } catch (e) { return false; }
   }
 
+  // ⚠️ URLSearchParams.get() décode DÉJÀ la valeur. Un decodeURIComponent
+  // supplémentaire décodait une seconde fois : sur une URL contenant un « % »
+  // (une destination avec espace, par exemple), il levait une URIError et la
+  // page restait bloquée sur « On t'emmène chez notre partenaire… ».
   var raw = q.get('u');
-  var target = LINKS[key] || (raw && allowed(decodeURIComponent(raw)) ? decodeURIComponent(raw) : null);
+  var target = LINKS[key] || (raw && allowed(raw) ? raw : null);
 
   if (!target) { location.replace('/travel'); return; }
 
