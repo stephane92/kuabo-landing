@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Kuabo — redirection</title>
+<!--
+  PASSERELLE D'AFFILIATION
+  ────────────────────────
+  L'app et le site ouvrent kuabo.co/go/<service> au lieu du lien partenaire.
+  Trois raisons, dans l'ordre d'importance :
+
+  1. On peut changer un lien SANS republier l'app. Le marker 536397 était figé
+     dans le binaire : il a fallu un correctif de code pour une valeur qui
+     aurait dû être une donnée. Ça n'arrivera plus.
+  2. Le partenaire voit kuabo.co comme origine du trafic — c'est ce que
+     Travelpayouts inspecte pour ouvrir les programmes hôteliers.
+  3. On mesure nos propres clics, par service.
+
+  ⚠️ Ce ne sont PAS des visites gonflées : ce sont de vraies personnes qui
+  traversent la page pour aller chez le partenaire. Fabriquer du trafic serait
+  de la fraude et ferait fermer le compte.
+-->
+<style>
+  html,body{height:100%;margin:0;background:#0b1526;color:#fff;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    display:flex;align-items:center;justify-content:center;text-align:center}
+  .b{padding:28px;max-width:420px}
+  .o{font-size:44px;line-height:1}
+  h1{font-size:19px;font-weight:800;margin:14px 0 6px;letter-spacing:-.3px}
+  p{font-size:13.5px;color:#9aa8bd;margin:0 0 18px;line-height:1.5}
+  a{display:inline-block;background:#e8b84b;color:#3a2c07;text-decoration:none;
+    font-weight:800;font-size:14px;padding:13px 22px;border-radius:999px}
+  .s{margin-top:16px;font-size:11.5px;color:#6d7c93;line-height:1.5}
+  .dots{margin-top:14px;color:#e8b84b;font-size:20px;letter-spacing:4px}
+</style>
+</head>
+<body>
+<div class="b">
+  <div class="o">🦉</div>
+  <h1 id="t">On t'emmène chez notre partenaire…</h1>
+  <p id="d">Encore une seconde.</p>
+  <div class="dots">•••</div>
+  <p style="margin-top:18px"><a id="go" href="https://kuabo.co">Continuer</a></p>
+  <div class="s" id="fine">
+    Kuabo touche une commission sur les réservations passées par ce lien.
+    Le prix que tu paies est identique.
+  </div>
+</div>
+
+<script>
+(function () {
+  // ── Table des services. UNE SEULE source de vérité pour les liens. ──
+  // Pour changer un partenaire : on modifie ici, l'app suit sans mise à jour.
+  var LINKS = {
+    esim:      'https://airalo.tpx.gr/pHrX1DgI',
+    transfer:  'https://kiwitaxi.tpx.gr/4wxPUS6z',
+    car:       'https://getrentacar.tpx.gr/qCDQzBVR',
+    insurance: 'https://ektatraveling.tpx.gr/c51IE1ym',
+    activities:'https://tiqets.tpx.gr/4ez2Zx5r',
+    airhelp:   'https://airhelp.tpx.gr/VJbKBxaC',
+    esim_alt:  'https://yesim.tpx.gr/fmEKjBxi'
+  };
+
+  var TXT = {
+    fr: { t: "On t'emmène chez notre partenaire…", d: 'Encore une seconde.',
+          go: 'Continuer',
+          fine: 'Kuabo touche une commission sur les réservations passées par ce lien. Le prix que tu paies est identique.' },
+    en: { t: 'Taking you to our partner…', d: 'One more second.',
+          go: 'Continue',
+          fine: 'Kuabo earns a commission on bookings made through this link. The price you pay is the same.' },
+    es: { t: 'Te llevamos con nuestro socio…', d: 'Un segundo más.',
+          go: 'Continuar',
+          fine: 'Kuabo recibe una comisión por las reservas hechas con este enlace. El precio que pagas es el mismo.' }
+  };
+
+  var q = new URLSearchParams(location.search);
+  var seg = location.pathname.replace(/^\/go\/?/, '').replace(/\/$/, '');
+  var key = (seg || q.get('s') || '').toLowerCase();
+
+  var lang = (q.get('lang') || (navigator.language || 'fr').slice(0, 2)).toLowerCase();
+  var T = TXT[lang] || TXT.fr;
+  document.documentElement.lang = lang;
+  document.getElementById('t').textContent = T.t;
+  document.getElementById('d').textContent = T.d;
+  document.getElementById('go').textContent = T.go;
+  document.getElementById('fine').textContent = T.fine;
+
+  // `u` permet de passer une URL déjà construite (vols et hôtels, qui portent
+  // des dates et une destination). On n'accepte QUE nos domaines partenaires :
+  // sans cette liste blanche, la passerelle deviendrait un redirecteur ouvert,
+  // utilisable pour du hameçonnage sous le nom de kuabo.co.
+  var ALLOW = ['aviasales.com', 'booking.com', 'tpx.gr', 'tp.media', 'kiwitaxi.com', 'agoda.com'];
+  function allowed(u) {
+    try {
+      var h = new URL(u).hostname.toLowerCase();
+      return ALLOW.some(function (d) { return h === d || h.endsWith('.' + d); });
+    } catch (e) { return false; }
+  }
+
+  var raw = q.get('u');
+  var target = LINKS[key] || (raw && allowed(decodeURIComponent(raw)) ? decodeURIComponent(raw) : null);
+
+  if (!target) { location.replace('/travel'); return; }
+
+  document.getElementById('go').href = target;
+  // Le remplacement évite d'empiler une entrée d'historique : le retour du
+  // navigateur ramène à Kuabo, pas à cette page de transit.
+  setTimeout(function () { location.replace(target); }, 450);
+})();
+</script>
+</body>
+</html>
