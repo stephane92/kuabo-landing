@@ -91,7 +91,19 @@
   // des dates et une destination). On n'accepte QUE nos domaines partenaires :
   // sans cette liste blanche, la passerelle deviendrait un redirecteur ouvert,
   // utilisable pour du hameçonnage sous le nom de kuabo.co.
-  var ALLOW = ['aviasales.com', 'booking.com', 'tpx.gr', 'tp.media', 'kiwitaxi.com', 'agoda.com'];
+  // Liste blanche : la passerelle ne redirige QUE vers ces domaines. Sans elle,
+  // n'importe qui forgerait kuabo.co/go?u=<site piégé> et se servirait de notre
+  // nom pour paraître digne de confiance.
+  var ALLOW = [
+    'aviasales.com', 'booking.com', 'tpx.gr', 'tp.media', 'kiwitaxi.com', 'agoda.com',
+    // services du quotidien — argent, banque, téléphone, papiers
+    'wise.com', 'remitly.com', 'taptapsend.com', 'sendwave.com',
+    'zolve.com', 'firstcard.app',
+    'airalo.com', 'yesim.net', 'mintmobile.com',
+    'preply.com', 'italki.com',
+    'sprintax.com', 'rushtranslate.com',
+    'visitorscoverage.com', 'airhelp.com'
+  ];
   function allowed(u) {
     try {
       var h = new URL(u).hostname.toLowerCase();
@@ -107,6 +119,26 @@
   var target = LINKS[key] || (raw && allowed(raw) ? raw : null);
 
   if (!target) { location.replace('/travel'); return; }
+
+  // ── sub_id : QUI a cliqué ────────────────────────────────────────────
+  // Travelpayouts renvoie cette valeur dans ses rapports de réservation. Elle
+  // permettra de créditer les Akwɛ au bon membre — et seulement sur une
+  // réservation CONFIRMÉE, jamais sur un clic.
+  // Ce n'est pas l'identifiant Firebase : c'est un code court et aléatoire,
+  // sans lien mathématique avec lui. Un partenaire ne peut rien en déduire.
+  var sub = (q.get('s') || '').replace(/[^a-z0-9]/gi, '').slice(0, 24);
+  if (sub) {
+    try {
+      var t = new URL(target);
+      // Aviasales : la convention Travelpayouts est marker=<id>.<sub_id>
+      if (t.hostname.endsWith('aviasales.com') && t.searchParams.get('marker')) {
+        t.searchParams.set('marker', t.searchParams.get('marker').split('.')[0] + '.' + sub);
+      } else {
+        t.searchParams.set('sub_id', sub);
+      }
+      target = t.toString();
+    } catch (e) { /* URL exotique : on part sans sub_id plutôt que de casser */ }
+  }
 
   document.getElementById('go').href = target;
   // Le remplacement évite d'empiler une entrée d'historique : le retour du
