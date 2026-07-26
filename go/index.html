@@ -102,7 +102,10 @@
     'airalo.com', 'yesim.net', 'mintmobile.com',
     'preply.com', 'italki.com',
     'sprintax.com', 'rushtranslate.com',
-    'visitorscoverage.com', 'airhelp.com'
+    'visitorscoverage.com', 'airhelp.com',
+    // Partnerize : le réseau de Wise. Les liens ont la forme
+    // prf.hn/click/camref:<publisherId>/destination:<url>
+    'prf.hn', 'partnerize.com'
   ];
   function allowed(u) {
     try {
@@ -130,6 +133,22 @@
   if (sub) {
     try {
       var t = new URL(target);
+      // Partnerize (Wise) n'utilise NI sub_id NI un paramètre de requête :
+      // l'identifiant du partenaire se glisse dans le CHEMIN, sous la forme
+      // /pubref:<valeur>/, juste après le camref. Poser un ?sub_id= ici ne
+      // servirait à rien — le lien partirait sans identifiant et on ne saurait
+      // jamais à qui créditer les Akwɛ.
+      if (t.hostname === 'prf.hn' || t.hostname.endsWith('.prf.hn')) {
+        if (/\/pubref:[^/]*/.test(t.pathname)) {
+          t.pathname = t.pathname.replace(/\/pubref:[^/]*/, '/pubref:' + sub);
+        } else {
+          // On insère APRÈS le camref : l'ordre des segments compte pour eux.
+          t.pathname = t.pathname.replace(/(\/camref:[^/]+)/, '$1/pubref:' + sub);
+        }
+        location.replace(t.toString());
+        return;
+      }
+
       // Aviasales : la convention Travelpayouts est marker=<id>.<sub_id>
       if (t.hostname.endsWith('aviasales.com') && t.searchParams.get('marker')) {
         t.searchParams.set('marker', t.searchParams.get('marker').split('.')[0] + '.' + sub);
