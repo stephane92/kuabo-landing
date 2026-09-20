@@ -202,6 +202,9 @@ const T = {
     errTitle:   'Profile not found',
     errSub:     'This Kuabo profile does not exist or has been deleted.',
     errBack:    '← Back to kuabo.co',
+    partnerTitle: '🏪 This is a partner business QR code',
+    partnerSub:   'To use your offers here, scan this code from inside the Kuabo app — open « My coupons » and tap scan. Scanning from your camera cannot apply your benefit.',
+    partnerCta:   'Discover Kuabo →',
     errPending: 'Profile being activated',
     errPendSub: 'Open the Kuabo app once to activate your public profile.',
     privTitle:  'Private profile',
@@ -234,6 +237,9 @@ const T = {
     errTitle:   'Profil introuvable',
     errSub:     "Ce profil Kuabo n'existe pas ou a été supprimé.",
     errBack:    '← Retour à kuabo.co',
+    partnerTitle: '🏪 Ceci est le QR d\'un commerce partenaire',
+    partnerSub:   'Pour utiliser vos offres ici, scannez ce code depuis l\'application Kuabo — ouvrez « Mes coupons » puis le scan. Un scan fait avec l\'appareil photo ne peut pas appliquer votre avantage.',
+    partnerCta:   'Découvrir Kuabo →',
     errPending: 'Profil en cours d\'activation',
     errPendSub: "Ouvre l'app Kuabo une fois pour activer ton profil public.",
     privTitle:  'Profil privé',
@@ -266,6 +272,9 @@ const T = {
     errTitle:   'Perfil no encontrado',
     errSub:     'Este perfil de Kuabo no existe o ha sido eliminado.',
     errBack:    '← Volver a kuabo.co',
+    partnerTitle: '🏪 Este es el QR de un negocio asociado',
+    partnerSub:   'Para usar sus ofertas aquí, escanee este código desde la aplicación Kuabo — abra « Mis cupones » y pulse escanear. Un escaneo con la cámara no puede aplicar su beneficio.',
+    partnerCta:   'Descubrir Kuabo →',
     errPending: 'Perfil en activación',
     errPendSub: 'Abre la app Kuabo una vez para activar tu perfil público.',
     privTitle:  'Perfil privado',
@@ -389,6 +398,25 @@ function showError(pending=false){
   }
   errDiv.style.display="block";
 }
+// Le QR d'un commerce encode kuabo.co/p/SON-CODE. L'app sait le lire
+// (parsePartnerCode), mais l'appareil photo du téléphone, lui, ouvre
+// simplement cette page — et on affichait « Profil introuvable » à quelqu'un
+// qui se tenait devant la vitrine, sans lui dire quoi faire.
+function showPartnerQR(){
+  const t = T[currentLang];
+  document.getElementById("loading").style.display="none";
+  const d = document.getElementById("error");
+  d.innerHTML = `<h2 style="font-size:21px;font-weight:900;margin-bottom:10px;">${t.partnerTitle}</h2>
+    <p style="color:rgba(255,255,255,0.62);font-size:14.5px;line-height:1.6;margin-bottom:20px;">${t.partnerSub}</p>
+    <a href="https://kuabo.co" style="color:#e8b84b;font-weight:800;text-decoration:none;">${t.partnerCta}</a>`;
+  d.style.display="block";
+}
+
+// Forme d'un code partenaire (getPartnerQR) : 2 à 8 signes, un tiret, 4 signes.
+function ressembleAUnCodePartenaire(v){
+  return /^[A-Z0-9]{2,8}-[A-Z0-9]{4}$/i.test((v || "").trim());
+}
+
 function showPrivate(){
   document.getElementById("loading").style.display="none";
   document.getElementById("private").style.display="block";
@@ -514,8 +542,13 @@ async function loadProfile(){
     const errMsg = e?.message || '';
     
     if (errCode === 'functions/not-found' || errMsg.includes('not found')) {
-      // Profil pas trouvé → Probablement profil pas encore activé
-      if (token) {
+      // Aucun profil sous ce nom. Si le texte a la forme d'un code de commerce,
+      // c'est un QR de vitrine scanné avec l'appareil photo : on explique au
+      // lieu d'afficher « profil introuvable ». On ne le fait qu'ICI, après
+      // l'échec, pour ne jamais détourner le profil d'un membre.
+      if (!token && ressembleAUnCodePartenaire(username)) {
+        showPartnerQR();
+      } else if (token) {
         showError(true); // pending mode
       } else {
         showError();
