@@ -407,7 +407,7 @@ function showPartnerQR(){
   document.getElementById("loading").style.display="none";
   const d = document.getElementById("error");
   // max-width + padding : sur un telephone etroit, le titre debordait a droite.
-  d.innerHTML = `<div style="max-width:380px;margin:0 auto;padding:0 20px;box-sizing:border-box;">
+  d.innerHTML = `<div style="width:100%;max-width:340px;margin:0 auto;box-sizing:border-box;">
       <div style="font-size:42px;margin-bottom:14px;">🏪</div>
       <h2 style="font-size:19px;font-weight:900;line-height:1.3;margin-bottom:12px;overflow-wrap:break-word;">${t.partnerTitle}</h2>
       <p style="color:rgba(255,255,255,0.62);font-size:14.5px;line-height:1.65;margin-bottom:22px;">${t.partnerSub}</p>
