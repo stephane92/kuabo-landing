@@ -575,9 +575,9 @@ window.setL = function(l) {
   s('fsLink',({en:'Meet the founder →',fr:'Découvrir le fondateur →',es:'Conoce al fundador →'})[l]);
   // Bandeau + section Kua (agent IA) + Partenaires (Kuabo Partner) — 30/09/2026
   s('kxNv',({en:'NEW',fr:'NOUVEAU',es:'NUEVO'})[l]);
-  s('kxBand',({en:'Kua, your AI agent, is now on iPhone.',fr:'Kua, votre agent IA, est disponible sur iPhone.',es:'Kua, tu agente de IA, ya está en iPhone.'})[l]);
-  s('kxBandGo',({en:'Download →',fr:'Télécharger →',es:'Descargar →'})[l]);
-  s('kxKick',({en:'New · now on iPhone',fr:'Nouveau · disponible sur iPhone',es:'Nuevo · ya en iPhone'})[l]);
+  s('kxBand',({en:'Kua, your AI agent, is coming soon to iPhone.',fr:'Kua, votre agent IA, arrive bientôt sur iPhone.',es:'Kua, tu agente de IA, llega muy pronto a iPhone.'})[l]);
+  s('kxBandGo',({en:'Discover →',fr:'Découvrir →',es:'Descubrir →'})[l]);
+  s('kxKick',({en:'New · coming soon to iPhone',fr:'Nouveau · bientôt sur iPhone',es:'Nuevo · muy pronto en iPhone'})[l]);
   s('kxH2',({en:'Kua, your <em>AI agent</em>.',fr:'Kua, votre <em>agent IA</em>.',es:'Kua, tu <em>agente de IA</em>.'})[l],true);
   s('kxQ1',({en:'Smart',fr:'Intelligent',es:'Inteligente'})[l]);
   s('kxQ2',({en:'Autonomous',fr:'Autonome',es:'Autónomo'})[l]);
@@ -597,7 +597,7 @@ window.setL = function(l) {
   s('kxPlus',({en:'+ and much more…',fr:'+ et bien plus encore…',es:'+ y mucho más…'})[l]);
   s('kxEns',({en:'<b>Kua and Kuabo, together:</b> your Akwɛ, passport and offers stay in Kuabo — and Kua knows when to take you there.',fr:'<b>Kua et Kuabo, ensemble :</b> vos Akwɛ, votre passeport et vos offres restent dans Kuabo — et Kua sait vous y emmener au bon moment.',es:'<b>Kua y Kuabo, juntos:</b> tus Akwɛ, tu pasaporte y tus ofertas siguen en Kuabo — y Kua sabe llevarte allí en el momento justo.'})[l],true);
   s('kxSite',({en:'See Kua\'s website →',fr:'Voir le site de Kua →',es:'Ver el sitio de Kua →'})[l]);
-  s('kxPetit',({en:'iPhone · FR · EN · ES · free download',fr:'iPhone · FR · EN · ES · téléchargement gratuit',es:'iPhone · FR · EN · ES · descarga gratuita'})[l]);
+  s('kxPetit',({en:'iPhone · FR · EN · ES · coming soon',fr:'iPhone · FR · EN · ES · bientôt disponible',es:'iPhone · FR · EN · ES · muy pronto'})[l]);
   s('kxS1q',({en:'next 70 bus?',fr:'le prochain bus 70 ?',es:'¿el próximo bus 70?'})[l]);
   s('kxLive',({en:'live',fr:'en direct',es:'en directo'})[l]);
   s('kxS1b',({en:'the next one',fr:'le suivant',es:'el siguiente'})[l]);
