@@ -946,14 +946,14 @@ window.kuaboGetCode = async function() {
       promoCode = snap.data().promoCode;
       try {
         await setDoc(doc(db, "promo_codes", promoCode), {
-          email, createdAt: snap.data().promoAt || new Date().toISOString(), used: false, reward: 70, source: "coming"
+          email, createdAt: snap.data().promoAt || new Date().toISOString(), used: false, reward: 70, source: "waitlist"
         });
       } catch (e) { /* existe déjà = OK */ }
     } else {
       promoCode = genCode();
       await setDoc(waitRef, { email, lang, at: new Date().toISOString(), promoCode, promoAt: new Date().toISOString() }, { merge: true });
       await setDoc(doc(db, "promo_codes", promoCode), {
-        email, createdAt: new Date().toISOString(), used: false, reward: 70, source: "coming"
+        email, createdAt: new Date().toISOString(), used: false, reward: 70, source: "waitlist"
       });
     }
 
