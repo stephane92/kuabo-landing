@@ -24,7 +24,7 @@ const db = getFirestore(initializeApp({
 // Tant que live:false → on garde la modal « Coming soon ».
 // ═══════════════════════════════════════════════════════════
 const STORES = {
-  ios:     { url: "https://apps.apple.com/app/id6782158717",                    live: false },
+  ios:     { url: "https://apps.apple.com/app/id6782158717",                    live: true },
   android: { url: "https://play.google.com/store/apps/details?id=co.kuabo.app", live: false },
 };
 
@@ -546,6 +546,15 @@ const TX = {
 
 function s(id, v, html) { const el = document.getElementById(id); if (el) { if (html) el.innerHTML = v; else el.textContent = v; } }
 
+// Boutons stores : « Télécharger » quand le store est en ligne, sinon « Bientôt ».
+function setStoreLabels(l) {
+  const stLbl = (k) => STORES[k].live
+    ? ({en:'Download on the',fr:'Télécharger dans l’',es:'Descárgalo en el'})[l]
+    : ({en:'Coming soon on',fr:'Bientôt sur',es:'Próximamente en'})[l];
+  s('s1l', stLbl('ios')); s('s3l', stLbl('ios'));
+  s('s2l', stLbl('android')); s('s4l', stLbl('android'));
+}
+
 window.setL = function(l) {
   try { localStorage.setItem('kuabo_lang', l); } catch(e){}
   document.documentElement.lang = l;
@@ -556,7 +565,7 @@ window.setL = function(l) {
   s('clt',t.clt);
   const nc = document.getElementById('nav-cta'); if (nc) nc.textContent = t.nvcta;
   s('s1',t.s1); s('s2',t.s2); s('s3',t.s3); s('s4',t.s4);
-  ['s1l','s2l','s3l','s4l'].forEach(id => s(id, t.s1l || 'Coming soon on'));
+  setStoreLabels(l);
   s('ftag',t.ftag); s('fh2',t.fh2); s('fsub',t.fsub);
   // Section Ressources (Guides & Travel)
   s('resTag',({en:'📚 Free resources',fr:'📚 Ressources gratuites',es:'📚 Recursos gratis'})[l]);
@@ -691,6 +700,7 @@ window.addEventListener("load", loadCount);
 // Langue partagée avec /guides, /privacy, /terms (clé kuabo_lang).
 // Applique la langue choisie ailleurs sur le site ; sinon EN par défaut (inchangé).
 document.addEventListener('DOMContentLoaded', function () {
+  setStoreLabels('en');
   try {
     var saved = localStorage.getItem('kuabo_lang');
     if (saved && ['en','fr','es'].indexOf(saved) !== -1 && saved !== 'en' && window.setL) {
