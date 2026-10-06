@@ -147,13 +147,6 @@
     "@type": "Organization",
     "name": "Kuabo",
     "url": "https://www.kuabo.co"
-  },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5",
-    "reviewCount": "1",
-    "bestRating": "5",
-    "worstRating": "1"
   }
 }
 </script>
@@ -196,378 +189,582 @@
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script> -->
 
 <!-- Styles -->
-<link rel="stylesheet" href="styles.css?v=20260930k"/>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet"/>
+<script src="https://unpkg.com/@lottiefiles/lottie-player@2.0.8/dist/lottie-player.js"></script>
+<link rel="stylesheet" href="/coming/official.css?v=20261005"/>
+<style>
+/* Blocs repris de l'ancienne page : Kua agent IA, Kuabo Partner, Fondateur */
+.kx{background:var(--navy);color:#fff;padding:84px 20px;overflow:hidden;}
+.kx-in{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center;}
+.kx-kick{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:#7ea6db;}
+.kx h2{color:#fff;font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(36px,5vw,54px);line-height:1.04;margin:12px 0 14px;}
+.kx h2 em{font-style:normal;color:#7ea6db;}
+.kx-qual{display:inline-flex;gap:8px;align-items:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);border:1.5px solid rgba(232,184,75,.5);border-radius:99px;padding:6px 14px;}
+.kx-qual i{width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.kx-lead{font-size:18px;line-height:1.55;color:#cbd5e1;margin:18px 0 26px;max-width:540px;}
+.kx-six{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.kx-c{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:14px 16px;display:flex;gap:12px;}
+.kx-c .e{font-size:24px;line-height:1.1;}
+.kx-c b{display:block;font-family:'Nunito',sans-serif;font-size:16px;color:#fff;}
+.kx-c span{font-size:14px;color:#94a3b8;line-height:1.35;}
+.kx-plus{grid-column:1/-1;text-align:center;border:1px dashed rgba(255,255,255,.18);border-radius:16px;padding:12px;font-family:'Nunito',sans-serif;font-weight:900;font-size:17px;color:#7ea6db;}
+.kx-ens{margin-top:22px;border-left:3px solid var(--gold);padding:4px 0 4px 16px;font-size:15.5px;line-height:1.5;color:#e2e8f0;}
+.kx-ens b{color:var(--gold);}
+.kx-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;align-items:center;}
+.kx-store img{height:54px;display:block;}
+.kx-site{display:inline-block;border-radius:99px;padding:14px 24px;font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;text-decoration:none;color:#fff;border:1.5px solid rgba(255,255,255,.35);}
+.kx-site:hover{border-color:#fff;}
+.kx-petit{font-size:13.5px;color:#94a3b8;margin-top:12px;}
+.kx-scene{position:relative;height:600px;}
+.kx-ph{position:absolute;width:262px;background:#0e1a30;border-radius:40px;padding:10px;box-shadow:0 40px 80px rgba(0,0,0,.5),inset 0 0 0 2px #2a3a5a;}
+.kx-ph.p1{right:10px;top:40px;z-index:2;}
+.kx-ph.p2{left:10px;top:0;transform:rotate(-6deg);}
+.kx-ec{background:#fff;border-radius:31px;height:500px;overflow:hidden;display:flex;flex-direction:column;}
+.kx-top{display:flex;align-items:center;gap:8px;padding:14px 14px 10px;border-bottom:1px solid #e6ecf3;}
+.kx-top img{width:28px;height:28px;border-radius:50%;background:#fff8e6;object-fit:cover;}
+.kx-top b{font-family:'Nunito',sans-serif;font-size:13px;color:#0b1526;}
+.kx-top span{display:block;font-size:10.5px;color:#5b6a82;font-weight:700;}
+.kx-body{padding:10px 11px;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden;}
+.kx-m{border-radius:15px;padding:8px 11px;font-size:12px;line-height:1.4;max-width:86%;}
+.kx-m.moi{background:#22324f;color:#fff;align-self:flex-end;border-bottom-right-radius:5px;}
+.kx-m.k{background:#f4f7fb;color:#1a2744;border-bottom-left-radius:5px;}
+.kx-card{border:1.5px solid #e6ecf3;border-radius:14px;padding:9px 10px;font-size:11.5px;background:#fff;color:#1a2744;}
+.kx-card .t{font-weight:800;color:#0b1526;font-size:12px;}
+.kx-card .s{color:#5b6a82;font-weight:600;font-size:11px;margin-top:2px;}
+.kx-btns{display:flex;gap:5px;margin-top:7px;}
+.kx-btns span{flex:1;text-align:center;border-radius:999px;font-weight:800;font-size:10.5px;padding:5px 0;border:1.5px solid #e6ecf3;color:#0b1526;}
+.kx-btns span.ok{background:#22324f;color:#fff;border-color:#22324f;}
+.kx-vol{display:flex;align-items:center;gap:6px;margin:6px 0;}
+.kx-vol b{font-family:'Nunito',sans-serif;font-weight:800;font-size:16px;color:#0b1526;}
+.kx-vol .l{flex:1;height:3px;background:#e6ecf3;border-radius:3px;position:relative;}
+.kx-vol .l i{position:absolute;left:0;top:0;height:3px;width:64%;background:var(--gold);border-radius:3px;}
+.kx-tag{display:inline-block;font-weight:800;font-size:10px;color:#c79a31;background:#fff8e6;border-radius:999px;padding:2px 7px;}
+.kx-row{display:flex;justify-content:space-between;align-items:center;font-size:11.5px;padding:5px 0;border-top:1px solid #e6ecf3;}
+.kx-row:first-of-type{border-top:0;}
+.kx-row .min{font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:#0b1526;}
+.kx-notif{position:absolute;left:-50px;top:470px;z-index:4;background:rgba(255,255,255,.97);color:#1a2744;border-radius:18px;padding:11px 14px;width:230px;box-shadow:0 20px 40px rgba(0,0,0,.4);font-size:13px;line-height:1.4;}
+.kx-notif .h{display:flex;align-items:center;gap:7px;font-family:'Nunito',sans-serif;font-weight:800;font-size:11px;color:#5b6a82;text-transform:uppercase;letter-spacing:.6px;margin-bottom:4px;}
+.kx-notif .h img{width:18px;height:18px;border-radius:5px;}
+.kx-notif b{color:#0b1526;}
+.kx-notif .nb{display:flex;gap:6px;margin-top:8px;}
+.kx-notif .nb span{flex:1;text-align:center;border-radius:10px;background:#f1f4f9;font-weight:800;font-size:12px;padding:6px 0;color:#0b1526;}
+.kx-rond{position:absolute;right:-20px;bottom:-40px;width:190px;height:190px;border-radius:50%;background:#fbf6ea;z-index:3;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.4);}
+.kx-rond img{width:100%;margin-top:6px;mix-blend-mode:multiply;}
+@media(max-width:860px){.kx-in{grid-template-columns:1fr;gap:40px;}.kx-six{grid-template-columns:1fr;}.kx{padding:60px 18px;}.kx-scene{height:620px;max-width:380px;width:100%;margin:0 auto;}.kx-ph.p2{display:none;}.kx-ph.p1{left:50%;right:auto;top:0;transform:translateX(-50%);}.kx-notif{left:0;top:auto;bottom:20px;}.kx-rond{right:0;bottom:0;width:150px;height:150px;}}
+@media(max-width:860px){.kp-et,.kp-duo{grid-template-columns:1fr;}.kp{padding:60px 18px;}}
+.kp{background:#fff;padding:84px 20px;}
+.kp-in{max-width:1120px;margin:0 auto;}
+.kp-kick{font-family:'Nunito',sans-serif;font-weight:900;font-size:13px;letter-spacing:2.5px;text-transform:uppercase;color:#b45309;}
+.kp h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(30px,4vw,44px);line-height:1.08;color:var(--navy);margin:10px 0 12px;max-width:720px;}
+.kp-lead{font-size:18px;color:var(--muted);line-height:1.55;max-width:680px;}
+.kp-et{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:34px 0;}
+.kp-e{border:1.5px solid var(--border);border-radius:18px;padding:22px;}
+.kp-e .n{width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;display:flex;align-items:center;justify-content:center;margin-bottom:12px;}
+.kp-e b{display:block;font-family:'Nunito',sans-serif;font-size:18px;color:var(--navy);margin-bottom:6px;}
+.kp-e span{font-size:15px;color:var(--muted);line-height:1.45;}
+.kp-duo{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;}
+.kp-bleu{background:var(--navy);color:#fff;border-radius:20px;padding:26px;}
+.kp-bleu h3{font-family:'Nunito',sans-serif;font-size:22px;margin-bottom:14px;}
+.kp-bleu li{list-style:none;display:flex;gap:10px;font-size:15.5px;line-height:1.45;margin-bottom:10px;color:#e2e8f0;}
+.kp-bleu li b{color:#fff;}
+.kp-cats{background:var(--bg2);border-radius:20px;padding:26px;}
+.kp-cats h3{font-family:'Nunito',sans-serif;font-size:18px;color:var(--navy);margin-bottom:12px;}
+.kp-chips{display:flex;flex-wrap:wrap;gap:8px;}
+.kp-chips span{background:#fff;border:1px solid var(--border);border-radius:99px;padding:7px 12px;font-weight:700;font-size:14px;}
+.kp-benin{margin-top:16px;font-family:'Nunito',sans-serif;font-weight:800;color:var(--navy);font-size:15px;}
+.kp-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px;}
+.kp-b1,.kp-b2{display:inline-block;border-radius:99px;padding:14px 24px;font-family:'Nunito',sans-serif;font-weight:900;font-size:16px;text-decoration:none;}
+.kp-b1{background:var(--gold);color:var(--navy);}
+.kp-b2{color:var(--navy);border:1.5px solid var(--navy);}
+.kp-b1:hover,.kp-b2:hover{transform:translateY(-2px);}
+.founder-strip{background:#fff;padding:64px 20px;}
+.fs-inner{max-width:920px;margin:0 auto;display:flex;align-items:center;gap:36px;}
+.fs-photo{width:150px;height:150px;display:block;border-radius:22px;object-fit:cover;object-position:50% 15%;border:3px solid var(--border);box-shadow:0 6px 0 var(--border);transition:transform .16s;}
+.fs-photo:hover{transform:translateY(-3px);}
+.fs-eyebrow{font-family:'Nunito',sans-serif;font-weight:800;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dk);margin-bottom:10px;}
+.fs-h2{font-family:'Nunito',sans-serif;font-weight:900;font-size:clamp(22px,3.4vw,32px);color:var(--navy);line-height:1.1;letter-spacing:-.8px;}
+.fs-p{font-size:15.5px;color:var(--muted);margin-top:12px;line-height:1.6;font-weight:600;max-width:52ch;}
+.fs-link{display:inline-block;margin-top:16px;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;color:var(--gold-dk);text-decoration:none;}
+.fs-link:hover{color:var(--gold);}
+@media(max-width:640px){.fs-inner{flex-direction:column;text-align:center;gap:22px;}.fs-p{margin-left:auto;margin-right:auto;}.fs-photo{width:130px;height:130px;}}
+
+.kx h2,.kp h2,.fs-h2{letter-spacing:-.5px;}
+.kp-bleu h3{color:#fff;}
+.kp-chips > span > span{all:unset;}
+/* les <span data-lang> ajoutés prennent le style de leur parent */
+.kx [data-lang].show,.kp [data-lang].show,.founder-strip [data-lang].show{all:unset;}
+
+.shots{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.shot{margin:0;text-align:center;}
+.shot img{width:100%;height:auto;display:block;border-radius:22px;box-shadow:0 14px 40px rgba(11,21,38,.18);background:#0b1526;}
+.shot figcaption{margin-top:10px;font-family:'Nunito',sans-serif;font-weight:800;font-size:14px;color:var(--navy);line-height:1.3;}
+@media(max-width:900px){.shots{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:58%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;}.shot{scroll-snap-align:start;}}
+.kgrid.k4{grid-template-columns:repeat(4,1fr);}
+@media(max-width:980px){.kgrid.k4{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.kgrid.k4{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
 
-<svg style="display:none">
-  <symbol id="bird" viewBox="0 0 80 80">
-    <ellipse cx="40" cy="47" rx="28" ry="26" fill="#0b1526"/>
-    <ellipse cx="40" cy="52" rx="16" ry="17" fill="#1a2d4a"/>
-    <ellipse cx="14" cy="50" rx="8" ry="13" fill="#0b1526" transform="rotate(-15 14 50)"/>
-    <ellipse cx="66" cy="50" rx="8" ry="13" fill="#0b1526" transform="rotate(15 66 50)"/>
-    <polygon points="24,27 28,14 32,23 40,10 48,23 52,14 56,27" fill="#e8b84b"/>
-    <polygon points="24,27 28,14 32,23 40,10 48,23 52,14 56,27" fill="none" stroke="#c9952a" stroke-width="1.5"/>
-    <circle cx="40" cy="15" r="4" fill="#2dd4bf"/>
-    <circle cx="29" cy="38" r="9" fill="white"/>
-    <circle cx="31" cy="40" r="5.5" fill="#0d1525"/>
-    <circle cx="33" cy="37" r="2.2" fill="white"/>
-    <circle cx="51" cy="38" r="9" fill="white"/>
-    <circle cx="53" cy="40" r="5.5" fill="#0d1525"/>
-    <circle cx="55" cy="37" r="2.2" fill="white"/>
-    <path d="M34 51 Q40 59 46 51 Q40 53 34 51Z" fill="#e8b84b"/>
-    <rect x="30" y="71" width="8" height="6" rx="3" fill="#e8b84b"/>
-    <rect x="42" y="71" width="8" height="6" rx="3" fill="#e8b84b"/>
-    <text x="40" y="58" font-family="Arial" font-size="4.5" fill="#e8b84b" text-anchor="middle" font-weight="bold">Kuabo.co</text>
-  </symbol>
-</svg>
-
-<div id="pbar"></div>
-
 <!-- NAV -->
-<nav>
-  <a class="logo" href="#"><div class="logo-bird"><img src="/kua.png" width="42" height="42" alt="Kua, the Kuabo mascot"/></div><span class="logo-name"><b>Ku</b>abo</span></a>
-  <div class="nav-r">
-    <button class="nav-btn-outline" onclick="openDemo()">Log in</button>
-    <button class="btn-gold" onclick="openDemo()" id="nav-cta">Get started</button>
-    <div class="langs">
-      <button class="lb on" onclick="setL('en')">🇺🇸 EN</button>
-      <button class="lb" onclick="setL('fr')">🇫🇷 FR</button>
-      <button class="lb" onclick="setL('es')">🇪🇸 ES</button>
+<header class="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="/coming"><img src="/kua.png" alt="Kua"/><b>K<i>u</i>abo</b></a>
+    <nav class="nav-links">
+      <a href="#how"><span data-lang="en">How it works</span><span data-lang="fr">Comment ça marche</span><span data-lang="es">Cómo funciona</span></a>
+      <a href="#features"><span data-lang="en">Features</span><span data-lang="fr">Fonctionnalités</span><span data-lang="es">Funciones</span></a>
+      <a href="#dashboards"><span data-lang="en">Dashboards</span><span data-lang="fr">Tableaux de bord</span><span data-lang="es">Paneles</span></a>
+      <a href="/guides"><span data-lang="en">Guides</span><span data-lang="fr">Guides</span><span data-lang="es">Guías</span></a>
+      <a href="/travel"><span data-lang="en">Travel</span><span data-lang="fr">Voyage</span><span data-lang="es">Viajes</span></a>
+      <a href="#kua-agent">Kua</a>
+      <a href="#partners"><span data-lang="en">Partners</span><span data-lang="fr">Partenaires</span><span data-lang="es">Socios</span></a>
+    </nav>
+    <div class="nav-right">
+      <div class="langs">
+        <button class="lb" id="lb-en" onclick="setL('en')">🇺🇸 EN</button>
+        <button class="lb" id="lb-fr" onclick="setL('fr')">🇫🇷 FR</button>
+        <button class="lb" id="lb-es" onclick="setL('es')">🇪🇸 ES</button>
+      </div>
+      <a class="btn" href="#download"><span data-lang="en">Get the app</span><span data-lang="fr">Avoir l'app</span><span data-lang="es">Obtener la app</span></a>
     </div>
   </div>
-</nav>
+</header>
 
 <!-- HERO -->
-<!-- BANDEAU KUA -->
-<a class="kx-band" href="https://kua.kuabo.co" target="_blank" rel="noopener"><span class="nv" id="kxNv">NEW</span><span id="kxBand">Kua, your AI agent, is coming soon to iPhone.</span><span class="go" id="kxBandGo">Discover →</span></a>
-
-<section class="hero" id="waitlist">
-  <div class="hero-left">
-    <div class="hero-eyebrow"><span class="edot"></span><span id="etxt">🌍 Worldwide — Not just the USA</span></div>
-    <h1 class="hero-h1" id="h1">The #1 app to guide your<br/><span class="highlight">travel &amp; settlement</span></h1>
-    <p class="hero-sub" id="hsub">Move to the USA, Canada, France or anywhere in the world — Kuabo guides you step by step after your visa. Documents, housing, jobs, community. Free.</p>
-    <div class="chips">
-      <div class="chip cwc">🏆 <span class="c-wc">World Cup 2026</span></div>
-      <div class="chip cdv">🎲 <span class="c-dv">DV Lottery</span></div>
-      <div class="chip cto">✈️ <span class="c-to">Tourism</span></div>
-      <div class="chip cwk">💼 <span class="c-wk">Work visa</span></div>
-      <div class="chip car">🎖 <span class="c-ar">US Army</span></div>
-      <div class="chip cst">🎓 <span class="c-st">Student</span></div>
-    </div>
-    <div class="stores" style="margin-bottom:16px">
-      <a class="sbtn" onclick="openStore('ios')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div><span class="sbtn-lbl" id="s1l">Coming soon on</span><span class="sbtn-nm">App Store</span></div></a>
-      <a class="sbtn" onclick="openStore('android')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.96.08L13.64 12 3.04.17c-.29.1-.53.31-.66.62-.14.31-.14.66.01.97L8.82 12l-5.64 10.76c-.15.31-.16.67 0 1zm4.14-9.42l1.95 1.95-8.43 4.75 6.48-6.7zm1.95-4.68L7.32 11.6.84 4.9l8.43 4.76zm9.7-3.94l-3.98-2.27-2.2 2.2 2.2 2.2 4-2.13zM15.08 12l-3.05 3.05L8.98 12l3.05-3.05L15.08 12z"/></svg><div><span class="sbtn-lbl" id="s2l">Coming soon on</span><span class="sbtn-nm">Google Play</span></div></a>
-    </div>
-    <div class="hero-form-wrap">
-      <div class="hero-form">
-        <input type="email" id="ei-hero" placeholder="Your email address" onkeydown="if(event.key==='Enter')kuaboSubmit('hero')"/>
-        <button class="send-btn" id="eb-hero" onclick="kuaboSubmit('hero')">Android? Notify me</button>
+<section class="hero">
+  <div class="wrap hero-in">
+    <div class="hero-txt">
+      <span class="eyebrow">🌍 <span data-lang="en">For 281M Global Movers</span><span data-lang="fr">Pour 281M de Global Movers</span><span data-lang="es">Para 281M de Global Movers</span></span>
+      <div data-lang="en"><h1>The app that <span class="g">guides your move</span> — after the visa.</h1><p class="sub">Documents, housing, jobs, travel, community. Kuabo walks with you step by step, wherever you settle in the world. Free.</p></div>
+      <div data-lang="fr"><h1>L'app qui <span class="g">guide ton installation</span> — après le visa.</h1><p class="sub">Documents, logement, emploi, voyage, communauté. Kuabo t'accompagne pas à pas, où que tu t'installes dans le monde. Gratuit.</p></div>
+      <div data-lang="es"><h1>La app que <span class="g">guía tu mudanza</span> — después de la visa.</h1><p class="sub">Documentos, vivienda, empleo, viajes, comunidad. Kuabo te acompaña paso a paso, donde sea que te instales. Gratis.</p></div>
+      <div class="rating">
+        <span><b>#1</b> <span data-lang="en">app for Global Movers</span><span data-lang="fr">app pour les Global Movers</span><span data-lang="es">app para Global Movers</span></span>
       </div>
-      <div class="hero-emsg" id="em-hero"></div>
-      <div class="cline hidden"><span class="cnum">0</span> <span id="clt">people already signed up</span></div>
+      <div class="hero-cta">
+        <div class="stores">
+          <a class="store" data-store="ios" href="#download"><span class="ic"></span><span><small>Download on the</small>App Store</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
+          <a class="store" href="#download"><span class="ic">▶</span><span><small>Get it on</small>Google Play</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
+        </div>
+        <a class="btn-ghost btn" href="#how"><span data-lang="en">See how it works →</span><span data-lang="fr">Voir comment ça marche →</span><span data-lang="es">Ver cómo funciona →</span></a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <lottie-player class="hero-people" src="/lottie/people-communicating.json" autoplay loop></lottie-player>
+      <div class="float f1"><lottie-player src="/lottie/airplane-fly.json" autoplay loop></lottie-player><span data-lang="en">Trip ready</span><span data-lang="fr">Voyage prêt</span><span data-lang="es">Viaje listo</span></div>
+      <div class="float f2"><lottie-player src="/lottie/akwe-coin.json" autoplay loop></lottie-player><span>+50 Akwɛ</span></div>
+      <div class="float f3"><lottie-player src="/lottie/success-check.json" autoplay loop></lottie-player><span data-lang="en">SSN done</span><span data-lang="fr">SSN fait</span><span data-lang="es">SSN hecho</span></div>
     </div>
   </div>
-  <div class="hero-right">
-    <div class="app1-pill">🏆 #1 App for Global Movers</div>
-    <div class="duo-char char-a"><div class="duo-speech" style="border-color:rgba(232,184,75,.5);color:var(--gold-dk);">🇺🇸 In Dallas now!</div><div class="duo-char-body"><svg width="64" height="110" viewBox="0 0 64 110" fill="none"><circle cx="32" cy="22" r="16" fill="#3d2a0a"/><circle cx="26" cy="20" r="3" fill="white"/><circle cx="27" cy="21" r="1.8" fill="#1a1a1a"/><circle cx="38" cy="20" r="3" fill="white"/><circle cx="39" cy="21" r="1.8" fill="#1a1a1a"/><path d="M26 28 Q32 33 38 28" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><rect x="18" y="38" width="28" height="38" rx="8" fill="#0b1526"/><text x="32" y="60" font-family="Arial" font-size="4" fill="#e8b84b" text-anchor="middle" font-weight="bold">Kuabo.co</text><rect x="6" y="40" width="14" height="8" rx="4" fill="#3d2a0a" transform="rotate(-15 13 44)"/><rect x="44" y="40" width="14" height="8" rx="4" fill="#3d2a0a" transform="rotate(15 51 44)"/><rect x="21" y="74" width="9" height="26" rx="4" fill="#1e293b"/><rect x="34" y="74" width="9" height="26" rx="4" fill="#1e293b"/><rect x="18" y="97" width="14" height="7" rx="3" fill="#0b1526"/><rect x="32" y="97" width="14" height="7" rx="3" fill="#0b1526"/></svg></div></div>
-    <div class="duo-char char-b"><div class="duo-speech" style="border-color:rgba(45,212,191,.5);color:var(--teal-dk);">🇫🇷 Paris! Kuabo ❤</div><div class="duo-char-body"><svg width="58" height="100" viewBox="0 0 58 100" fill="none"><circle cx="29" cy="20" r="14" fill="#f5c8a0"/><ellipse cx="29" cy="10" rx="16" ry="10" fill="#1a0a00"/><ellipse cx="24" cy="20" r="2.5" fill="#1a1a1a"/><ellipse cx="34" cy="20" r="2.5" fill="#1a1a1a"/><path d="M24 26 Q29 30 34 26" stroke="#c9952a" stroke-width="1.8" stroke-linecap="round" fill="none"/><rect x="16" y="34" width="26" height="34" rx="7" fill="#2dd4bf"/><text x="29" y="54" font-family="Arial" font-size="4" fill="white" text-anchor="middle" font-weight="bold">Kuabo.co</text><rect x="17" y="66" width="24" height="8" rx="4" fill="#0d9488"/><rect x="19" y="72" width="8" height="20" rx="4" fill="#f5c8a0"/><rect x="31" y="72" width="8" height="20" rx="4" fill="#f5c8a0"/><rect x="16" y="90" width="13" height="6" rx="3" fill="#0b1526"/><rect x="29" y="90" width="13" height="6" rx="3" fill="#0b1526"/></svg></div></div>
-    <div class="duo-char char-c"><div class="duo-speech" style="border-color:rgba(34,197,94,.5);color:#16a34a;">🇨🇦 Score 850! 🎉</div><div class="duo-char-body"><svg width="60" height="108" viewBox="0 0 60 108" fill="none"><circle cx="30" cy="21" r="15" fill="#f8d0a0"/><ellipse cx="30" cy="11" rx="17" ry="9" fill="#5c3d11"/><circle cx="25" cy="21" r="2.8" fill="#1a1a1a"/><circle cx="35" cy="21" r="2.8" fill="#1a1a1a"/><path d="M24 28 Q30 24 36 28" stroke="#333" stroke-width="1.5" stroke-linecap="round" fill="none"/><rect x="17" y="36" width="26" height="36" rx="7" fill="#7c3aed"/><text x="30" y="57" font-family="Arial" font-size="4" fill="#e8b84b" text-anchor="middle" font-weight="bold">Kuabo.co</text><rect x="20" y="70" width="8" height="28" rx="4" fill="#374151"/><rect x="32" y="70" width="8" height="28" rx="4" fill="#374151"/><rect x="17" y="96" width="13" height="6" rx="3" fill="#0b1526"/><rect x="30" y="96" width="13" height="6" rx="3" fill="#0b1526"/></svg></div></div>
-    <div class="duo-char char-d"><div class="duo-speech" style="border-color:rgba(249,115,22,.5);color:#c2410c;">🇲🇽 New life! ✨</div><div class="duo-char-body"><svg width="56" height="98" viewBox="0 0 56 98" fill="none"><circle cx="28" cy="19" r="13" fill="#d4864a"/><ellipse cx="28" cy="9" rx="16" ry="11" fill="#1a0a00"/><circle cx="16" cy="14" r="5" fill="#1a0a00"/><circle cx="40" cy="14" r="5" fill="#1a0a00"/><ellipse cx="24" cy="19" r="2.3" fill="#1a1a1a"/><ellipse cx="32" cy="19" r="2.3" fill="#1a1a1a"/><path d="M22 25 Q28 30 34 25" stroke="white" stroke-width="2" stroke-linecap="round" fill="none"/><rect x="15" y="32" width="26" height="32" rx="7" fill="#f97316"/><text x="28" y="51" font-family="Arial" font-size="4" fill="white" text-anchor="middle" font-weight="bold">Kuabo.co</text><rect x="17" y="62" width="8" height="26" rx="4" fill="#d4864a"/><rect x="31" y="62" width="8" height="26" rx="4" fill="#d4864a"/><rect x="14" y="86" width="13" height="6" rx="3" fill="#0b1526"/><rect x="29" y="86" width="13" height="6" rx="3" fill="#0b1526"/></svg></div></div>
-    <div class="mascot-wrap"><div class="mascot-svg-wrap"><svg width="110" height="110" viewBox="0 0 80 80"><use href="#bird"/></svg></div><div class="mascot-bubble" id="mascotBubble">Hey! I'm Kuabi 👋</div></div>
-    <div class="phone-wrap"><div class="phone-outer"><div class="phone-notch"></div><div class="phone-appicon"><svg width="30" height="30" viewBox="0 0 80 80"><use href="#bird"/></svg></div><div class="phone-screen">
-      <div class="slide active" id="ps0"><div style="font-size:5px;color:rgba(255,255,255,.35);font-weight:700;margin-bottom:4px;letter-spacing:.05em;">KUABO DASHBOARD</div><div style="background:rgba(232,184,75,.07);border:1px solid rgba(232,184,75,.18);border-radius:7px;padding:5px;margin-bottom:4px;"><div style="font-size:5.5px;color:#e8b84b;font-weight:800;margin-bottom:2px;">🚀 PHASE 1 — LANDING</div><div style="height:3px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin-bottom:2px;"><div style="width:71%;height:100%;background:linear-gradient(90deg,#e8b84b,#2dd4bf);"></div></div><div style="display:flex;justify-content:space-between;font-size:4.5px;color:rgba(255,255,255,.3);"><span>71% done</span><span>⭐ 450 pts</span></div></div><div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.17);border-radius:7px;padding:5px;margin-bottom:3px;display:flex;align-items:center;gap:4px;"><span style="font-size:14px;">🪪</span><div><div style="font-size:5px;font-weight:700;color:#fff;">SSN Application</div><div style="font-size:13px;font-weight:900;color:#ef4444;line-height:1;font-family:'Nunito',sans-serif;">4</div><div style="font-size:4.5px;color:rgba(255,255,255,.3);">days left</div></div></div><div style="display:flex;flex-direction:column;gap:2px;"><div style="display:flex;align-items:center;gap:3px;background:rgba(34,197,94,.05);border-radius:4px;padding:3px 4px;"><span style="font-size:6px;color:#2dd4bf;">✓</span><span style="font-size:5px;color:rgba(255,255,255,.6);font-weight:600;">Bank opened</span></div><div style="display:flex;align-items:center;gap:3px;background:rgba(34,197,94,.05);border-radius:4px;padding:3px 4px;"><span style="font-size:6px;color:#2dd4bf;">✓</span><span style="font-size:5px;color:rgba(255,255,255,.6);font-weight:600;">SIM activated</span></div><div style="display:flex;align-items:center;gap:3px;background:rgba(255,255,255,.02);border-radius:4px;padding:3px 4px;"><span style="font-size:6px;color:rgba(255,255,255,.15);">○</span><span style="font-size:5px;color:rgba(255,255,255,.25);font-weight:600;">Driver's license</span></div></div></div>
-      <div class="slide" id="ps1"><div style="text-align:center;"><div style="font-size:5.5px;color:#e8b84b;font-weight:800;margin-bottom:5px;letter-spacing:.06em;">🎉 BADGE UNLOCKED!</div><div style="font-size:32px;margin-bottom:4px;">😌</div><div style="width:44px;height:44px;border-radius:50%;background:rgba(232,184,75,.11);border:2px solid #e8b84b;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:20px;animation:bpulse 2s ease-in-out infinite;">🪪</div><div style="font-size:8px;font-weight:900;color:#fff;font-family:'Nunito',sans-serif;">SSN Master</div><div style="font-size:5.5px;color:#e8b84b;margin-bottom:5px;">+200 pts — What a relief! 😌</div><div style="height:3px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden;margin:0 4px 3px;"><div style="width:82%;height:100%;background:linear-gradient(90deg,#e8b84b,#2dd4bf);"></div></div><div style="font-size:4.5px;color:rgba(255,255,255,.3);">450/1000</div></div></div>
-      <div class="slide" id="ps2"><div style="font-size:5.5px;color:#a78bfa;font-weight:800;margin-bottom:4px;">🤖 KUABO AI</div><div style="display:flex;flex-direction:column;gap:3.5px;"><div style="background:rgba(255,255,255,.06);border-radius:6px 6px 6px 2px;padding:5px 7px;font-size:6px;color:rgba(255,255,255,.72);font-weight:600;max-width:80%;">When do I apply for SSN?</div><div style="background:rgba(232,184,75,.11);border:1px solid rgba(232,184,75,.17);border-radius:6px 6px 2px 6px;padding:5px 7px;font-size:6px;color:rgba(255,255,255,.82);font-weight:600;margin-left:auto;max-width:92%;">After <strong style="color:#e8b84b;">10 days</strong>. Jan 24 🪪</div><div style="background:rgba(255,255,255,.06);border-radius:6px 6px 6px 2px;padding:5px 7px;font-size:6px;color:rgba(255,255,255,.72);font-weight:600;max-width:80%;">Best bank no SSN?</div><div style="background:rgba(232,184,75,.11);border:1px solid rgba(232,184,75,.17);border-radius:6px 6px 2px 6px;padding:5px 7px;font-size:6px;color:rgba(255,255,255,.72);font-weight:600;margin-left:auto;max-width:92%;opacity:.8;">Chase — passport only…</div></div></div>
-      <div class="slide" id="ps3"><div style="text-align:center;padding-top:4px;"><div style="font-size:26px;margin-bottom:4px;">😌</div><div style="font-size:6px;color:rgba(255,255,255,.45);font-weight:700;margin-bottom:4px;letter-spacing:.05em;">YOUR SCORE</div><div style="font-size:38px;font-weight:900;color:#e8b84b;line-height:1;font-family:'Nunito',sans-serif;">450</div><div style="font-size:5.5px;color:rgba(255,255,255,.35);margin-bottom:6px;">/ 1000 — Explorer 🌍</div><div style="height:5px;background:rgba(255,255,255,.08);border-radius:5px;overflow:hidden;margin:0 6px 8px;"><div style="width:45%;height:100%;background:linear-gradient(90deg,#e8b84b,#2dd4bf);"></div></div><div style="display:flex;justify-content:space-around;"><div style="text-align:center;"><div style="font-size:14px;">🪪</div><div style="font-size:5px;color:#e8b84b;font-weight:700;">SSN</div></div><div style="text-align:center;"><div style="font-size:14px;">🏦</div><div style="font-size:5px;color:#22c55e;font-weight:700;">Bank</div></div><div style="text-align:center;opacity:.35;"><div style="font-size:14px;">🔒</div><div style="font-size:5px;color:rgba(255,255,255,.3);font-weight:700;">DMV</div></div></div></div></div>
-    </div></div></div>
-    <div class="float-badge fb-score">⭐ Score 450</div>
-    <div class="float-badge fb-ai">🤖 AI 24/7</div>
-    <div class="float-badge fb-free">💰 Free forever</div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="wrap trust-in">
+    <div class="t"><b>170+</b> <span data-lang="en">countries</span><span data-lang="fr">pays</span><span data-lang="es">países</span></div>
+    <div class="t"><b>3</b> <span data-lang="en">languages · FR EN ES</span><span data-lang="fr">langues · FR EN ES</span><span data-lang="es">idiomas · FR EN ES</span></div>
+    <div class="t"><b>📱</b> <span data-lang="en">on the App Store</span><span data-lang="fr">sur l'App Store</span><span data-lang="es">en el App Store</span></div>
+    <div class="t"><b>100%</b> <span data-lang="en">free</span><span data-lang="fr">gratuit</span><span data-lang="es">gratis</span></div>
+  </div>
+</div>
+
+<!-- MEET KUA -->
+<section class="s" id="kua">
+  <div class="wrap">
+    <div class="meet">
+      <div class="meet-art reveal">
+        <img src="/kua.png" alt="Kua, the Kuabo mascot"/>
+        <lottie-player class="ma1" src="/lottie/akwe-coin.json" autoplay loop></lottie-player>
+        <lottie-player class="ma2" src="/lottie/success-check.json" autoplay loop></lottie-player>
+      </div>
+      <div class="meet-txt reveal">
+        <span class="s-tag" data-lang="en">Meet Kua</span><span class="s-tag" data-lang="fr">Voici Kua</span><span class="s-tag" data-lang="es">Te presentamos a Kua</span>
+        <div data-lang="en">
+          <h2>Say hi to <span class="g">Kua</span>, your guide 🦉</h2>
+          <p style="font-size:17px;color:var(--muted);font-weight:600;">Kua is the wise owl who walks every step with you — the friend who never sleeps. Kua knows your visa, your dates and your country, and turns the chaos of moving into a clear, calm path.</p>
+          <ul class="meet-feats">
+            <li><span class="e">⏰</span><span>Wakes you up for every deadline — SSN, bank, taxes, ID — at the right time, in your timezone.</span></li>
+            <li><span class="e">🔔</span><span>Sends smart notifications &amp; emails so you never miss a critical step.</span></li>
+            <li><span class="e">🤖</span><span>Answers any question 24/7 in your language — like a friend who's done it before.</span></li>
+            <li><span class="e">🎁</span><span>Celebrates your wins and rewards you with Akwɛ along the way.</span></li>
+          </ul>
+          <div class="kua-says">"You're not alone anymore. Tell me where you're going — I'll prepare everything." — Kua</div>
+        </div>
+        <div data-lang="fr">
+          <h2>Dis bonjour à <span class="g">Kua</span>, ton guide 🦉</h2>
+          <p style="font-size:17px;color:var(--muted);font-weight:600;">Kua, c'est le hibou sage qui t'accompagne à chaque étape — l'ami qui ne dort jamais. Kua connaît ton visa, tes dates et ton pays, et transforme le chaos du départ en un chemin clair et serein.</p>
+          <ul class="meet-feats">
+            <li><span class="e">⏰</span><span>Te réveille pour chaque deadline — SSN, banque, impôts, papiers — au bon moment, dans ton fuseau horaire.</span></li>
+            <li><span class="e">🔔</span><span>Envoie des notifications &amp; emails intelligents pour ne jamais rater une étape clé.</span></li>
+            <li><span class="e">🤖</span><span>Répond à toutes tes questions 24h/24 dans ta langue — comme un ami qui est déjà passé par là.</span></li>
+            <li><span class="e">🎁</span><span>Célèbre tes victoires et te récompense en Akwɛ au fil du parcours.</span></li>
+          </ul>
+          <div class="kua-says">« Tu n'es plus seul. Dis-moi où tu vas — je prépare tout. » — Kua</div>
+        </div>
+        <div data-lang="es">
+          <h2>Saluda a <span class="g">Kua</span>, tu guía 🦉</h2>
+          <p style="font-size:17px;color:var(--muted);font-weight:600;">Kua es el búho sabio que te acompaña en cada paso — el amigo que nunca duerme. Kua conoce tu visa, tus fechas y tu país, y convierte el caos de mudarte en un camino claro y tranquilo.</p>
+          <ul class="meet-feats">
+            <li><span class="e">⏰</span><span>Te avisa de cada plazo — SSN, banco, impuestos, documentos — en el momento justo, en tu zona horaria.</span></li>
+            <li><span class="e">🔔</span><span>Envía notificaciones y correos inteligentes para que nunca pierdas un paso clave.</span></li>
+            <li><span class="e">🤖</span><span>Responde cualquier pregunta 24/7 en tu idioma — como un amigo que ya pasó por esto.</span></li>
+            <li><span class="e">🎁</span><span>Celebra tus logros y te recompensa con Akwɛ en el camino.</span></li>
+          </ul>
+          <div class="kua-says">«Ya no estás solo. Dime adónde vas — yo lo preparo todo.» — Kua</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="s alt" id="how">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">How it works</span><span class="s-tag" data-lang="fr">Comment ça marche</span><span class="s-tag" data-lang="es">Cómo funciona</span>
+      <div data-lang="en"><h2>3 steps, everything becomes simple</h2><p>Tell Kua about you once — your roadmap builds itself.</p></div>
+      <div data-lang="fr"><h2>3 étapes, tout devient simple</h2><p>Parle de toi à Kua une fois — ta feuille de route se construit toute seule.</p></div>
+      <div data-lang="es"><h2>3 pasos, todo se vuelve simple</h2><p>Cuéntale a Kua sobre ti una vez — tu hoja de ruta se construye sola.</p></div>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><lottie-player src="/lottie/passport-open.json" autoplay loop></lottie-player><span class="n" data-lang="en">STEP 1</span><span class="n" data-lang="fr">ÉTAPE 1</span><span class="n" data-lang="es">PASO 1</span>
+        <div data-lang="en"><h3>Create your profile</h3><p>Visa type, arrival date, country. Kuabo calculates everything automatically.</p></div>
+        <div data-lang="fr"><h3>Crée ton profil</h3><p>Type de visa, date d'arrivée, pays. Kuabo calcule tout automatiquement.</p></div>
+        <div data-lang="es"><h3>Crea tu perfil</h3><p>Tipo de visa, fecha de llegada, país. Kuabo lo calcula todo automáticamente.</p></div>
+      </div>
+      <div class="step reveal"><lottie-player src="/lottie/success-check.json" autoplay loop></lottie-player><span class="n" data-lang="en">STEP 2</span><span class="n" data-lang="fr">ÉTAPE 2</span><span class="n" data-lang="es">PASO 2</span>
+        <div data-lang="en"><h3>Your roadmap activates</h3><p>Steps organized by priority. Check them off and earn badges.</p></div>
+        <div data-lang="fr"><h3>Ta feuille de route s'active</h3><p>Étapes par priorité. Tu coches et tu gagnes des badges.</p></div>
+        <div data-lang="es"><h3>Tu hoja de ruta se activa</h3><p>Pasos por prioridad. Márcalos y gana insignias.</p></div>
+      </div>
+      <div class="step reveal"><lottie-player src="/lottie/akwe-coin.json" autoplay loop></lottie-player><span class="n" data-lang="en">STEP 3</span><span class="n" data-lang="fr">ÉTAPE 3</span><span class="n" data-lang="es">PASO 3</span>
+        <div data-lang="en"><h3>Advance, guided</h3><p>AI, services map, community — you're never alone, wherever you go.</p></div>
+        <div data-lang="fr"><h3>Avance, guidé</h3><p>IA, carte des services, communauté — plus jamais seul, où que tu sois.</p></div>
+        <div data-lang="es"><h3>Avanza, guiado</h3><p>IA, mapa de servicios, comunidad — nunca más solo, donde sea.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="s" id="features">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">Inside Kuabo</span><span class="s-tag" data-lang="fr">Dans Kuabo</span><span class="s-tag" data-lang="es">Dentro de Kuabo</span>
+      <div data-lang="en"><h2>Everything you need, every day</h2><p>Built for real Global Movers — not a generic to-do app.</p></div>
+      <div data-lang="fr"><h2>Tout ce qu'il te faut, chaque jour</h2><p>Fait pour de vrais Global Movers — pas une app de to-do générique.</p></div>
+      <div data-lang="es"><h2>Todo lo que necesitas, cada día</h2><p>Hecho para Global Movers reales — no una app de tareas genérica.</p></div>
+    </div>
+
+    <div class="frow reveal">
+      <div class="fr-art"><lottie-player src="/lottie/success-check.json" autoplay loop></lottie-player></div>
+      <div class="fr-txt">
+        <div data-lang="en"><span class="pill">⏱ Smart deadlines</span><h3>Never miss a deadline again</h3><p>Kuabo auto-calculates every deadline from your arrival date — SSN, bank, taxes, ID.</p><ul><li>Countdown for every critical step</li><li>Local-time reminders</li><li>Adapts to your visa & country</li></ul></div>
+        <div data-lang="fr"><span class="pill">⏱ Deadlines intelligentes</span><h3>Ne rate plus jamais une échéance</h3><p>Kuabo calcule chaque deadline depuis ta date d'arrivée — SSN, banque, impôts, papiers.</p><ul><li>Compte à rebours pour chaque étape clé</li><li>Rappels à l'heure locale</li><li>S'adapte à ton visa & ton pays</li></ul></div>
+        <div data-lang="es"><span class="pill">⏱ Plazos inteligentes</span><h3>Nunca más pierdas un plazo</h3><p>Kuabo calcula cada plazo desde tu fecha de llegada — SSN, banco, impuestos, documentos.</p><ul><li>Cuenta atrás para cada paso clave</li><li>Recordatorios en hora local</li><li>Se adapta a tu visa y país</li></ul></div>
+      </div>
+    </div>
+
+    <div class="frow rev reveal">
+      <div class="fr-art"><span class="emoji">🔔</span></div>
+      <div class="fr-txt">
+        <div data-lang="en"><span class="pill">🔔 Reminders & notifications</span><h3>The friend who never sleeps</h3><p>Kua counts down to your trip and your deadlines — and pings you at the right local time so nothing slips.</p><ul><li>Countdown notifications from D-45 to arrival</li><li>Milestone emails: welcome, D-30, D-7, D-1</li><li>Right local time — helpful, never spammy</li></ul></div>
+        <div data-lang="fr"><span class="pill">🔔 Rappels & notifications</span><h3>L'ami qui ne dort jamais</h3><p>Kua fait le compte à rebours jusqu'à ton voyage et tes échéances — et te pingue à la bonne heure locale pour que rien ne passe à la trappe.</p><ul><li>Notifications compte à rebours de J-45 à l'arrivée</li><li>Emails à chaque jalon : bienvenue, J-30, J-7, J-1</li><li>À la bonne heure locale — utile, jamais spam</li></ul></div>
+        <div data-lang="es"><span class="pill">🔔 Recordatorios & notificaciones</span><h3>El amigo que nunca duerme</h3><p>Kua cuenta atrás hasta tu viaje y tus plazos — y te avisa a la hora local correcta para que nada se escape.</p><ul><li>Notificaciones cuenta atrás de D-45 a la llegada</li><li>Correos por hito: bienvenida, D-30, D-7, D-1</li><li>En tu hora local — útil, nunca spam</li></ul></div>
+      </div>
+    </div>
+
+    <div class="frow reveal">
+      <div class="fr-art"><lottie-player src="/lottie/globe-rotate.json" autoplay loop></lottie-player></div>
+      <div class="fr-txt">
+        <div data-lang="en"><span class="pill">🤖 Kua AI</span><h3>Ask anything, anytime</h3><p>Your 24/7 guide in your language. SSN, bank, housing, taxes — an instant answer tailored to you.</p><ul><li>Available 24/7 in FR · EN · ES</li><li>Answers based on your situation</li><li>No more lost in admin</li></ul></div>
+        <div data-lang="fr"><span class="pill">🤖 Kua IA</span><h3>Demande tout, à tout moment</h3><p>Ton guide 24h/24 dans ta langue. SSN, banque, logement, impôts — une réponse instantanée adaptée à toi.</p><ul><li>Disponible 24h/24 en FR · EN · ES</li><li>Réponses selon ta situation</li><li>Fini la galère administrative</li></ul></div>
+        <div data-lang="es"><span class="pill">🤖 Kua IA</span><h3>Pregunta lo que sea, cuando sea</h3><p>Tu guía 24/7 en tu idioma. SSN, banco, vivienda, impuestos — respuesta instantánea adaptada a ti.</p><ul><li>Disponible 24/7 en FR · EN · ES</li><li>Respuestas según tu situación</li><li>Adiós al caos administrativo</li></ul></div>
+      </div>
+    </div>
+
+    <div class="frow rev reveal">
+      <div class="fr-art"><lottie-player src="/lottie/akwe-coin.json" autoplay loop></lottie-player></div>
+      <div class="fr-txt">
+        <div data-lang="en"><span class="pill">⭐ Score, badges & rewards</span><h3>Your journey becomes a game</h3><p>Every step earns points, unlocks badges and rewards you with Akwɛ — motivating, not stressful.</p><ul><li>Score from 0 to 1000</li><li>Badges for every milestone</li><li>Akwɛ rewards you can spend</li></ul></div>
+        <div data-lang="fr"><span class="pill">⭐ Score, badges & récompenses</span><h3>Ton parcours devient un jeu</h3><p>Chaque étape rapporte des points, débloque des badges et te récompense en Akwɛ — motivant, pas stressant.</p><ul><li>Score de 0 à 1000</li><li>Des badges pour chaque jalon</li><li>Des Akwɛ à dépenser</li></ul></div>
+        <div data-lang="es"><span class="pill">⭐ Score, insignias & recompensas</span><h3>Tu camino se vuelve un juego</h3><p>Cada paso da puntos, desbloquea insignias y te recompensa con Akwɛ — motivador, no estresante.</p><ul><li>Score de 0 a 1000</li><li>Insignias por cada hito</li><li>Akwɛ para gastar</li></ul></div>
+      </div>
+    </div>
+
+    <div class="frow reveal">
+      <div class="fr-art"><span class="emoji">📍</span></div>
+      <div class="fr-txt">
+        <div data-lang="en"><span class="pill">📍 Services map & budget</span><h3>Everything near you, in your budget</h3><p>SSA, DMV, banks, clinics around you in real time — plus a monthly budget tailored to your city.</p><ul><li>Real-time services map worldwide</li><li>Budget by city & income</li><li>Store & money-saving guides</li></ul></div>
+        <div data-lang="fr"><span class="pill">📍 Carte des services & budget</span><h3>Tout près de toi, dans ton budget</h3><p>SSA, DMV, banques, cliniques autour de toi en temps réel — plus un budget mensuel adapté à ta ville.</p><ul><li>Carte des services en temps réel, partout</li><li>Budget par ville & revenu</li><li>Guides magasins & économies</li></ul></div>
+        <div data-lang="es"><span class="pill">📍 Mapa de servicios & presupuesto</span><h3>Todo cerca de ti, en tu presupuesto</h3><p>SSA, DMV, bancos, clínicas a tu alrededor en tiempo real — más un presupuesto mensual para tu ciudad.</p><ul><li>Mapa de servicios en tiempo real</li><li>Presupuesto por ciudad e ingresos</li><li>Guías de tiendas y ahorro</li></ul></div>
+      </div>
+    </div>
+    <div class="frow rev reveal">
+      <div class="fr-art"><lottie-player src="/lottie/travel.json" autoplay loop></lottie-player></div>
+      <div class="fr-txt">
+        <div data-lang="en"><span class="pill">✈️ Travel</span><h3>Your trip, from departure to return</h3><p>Visiting the USA or France for tourism, a holiday or family? Kuabo opens a travel dashboard that follows your trip: before, during and after.</p><ul><li>Countdown to departure</li><li>Getting ready: visa or ESTA, eSIM, packing</li><li>On site: the right habits and the guides — booking is coming soon</li></ul></div>
+        <div data-lang="fr"><span class="pill">✈️ Voyage</span><h3>Ton voyage, du départ au retour</h3><p>Tu visites les USA ou la France pour le tourisme, les vacances ou la famille ? Kuabo ouvre un tableau de bord voyage qui suit ton séjour : avant, pendant et après.</p><ul><li>Compte à rebours jusqu'au départ</li><li>Préparatifs : visa ou ESTA, eSIM, valise</li><li>Sur place : les bons réflexes et les guides — la réservation arrive bientôt</li></ul></div>
+        <div data-lang="es"><span class="pill">✈️ Viajes</span><h3>Tu viaje, de la salida al regreso</h3><p>¿Visitas EE. UU. o Francia por turismo, vacaciones o familia? Kuabo abre un panel de viaje que sigue tu estancia: antes, durante y después.</p><ul><li>Cuenta atrás hasta la salida</li><li>Preparativos: visa o ESTA, eSIM, maleta</li><li>Allí: los buenos hábitos y las guías — la reserva llega pronto</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COUNTRIES -->
+<section class="s" id="dashboards">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">Your dashboard</span><span class="s-tag" data-lang="fr">Ton tableau de bord</span><span class="s-tag" data-lang="es">Tu panel</span>
+      <div data-lang="en"><h2>A dashboard made for your project</h2><p>Tell Kuabo why you're moving. It opens the dashboard that fits you, with your steps, your dates and your guides.</p></div>
+      <div data-lang="fr"><h2>Un tableau de bord fait pour ton projet</h2><p>Dis à Kuabo pourquoi tu pars. Il ouvre le tableau de bord qui te correspond, avec tes étapes, tes dates et tes guides.</p></div>
+      <div data-lang="es"><h2>Un panel hecho para tu proyecto</h2><p>Dile a Kuabo por qué te mudas. Abre el panel que te corresponde, con tus pasos, tus fechas y tus guías.</p></div>
+    </div>
+    <div class="kgrid k4">
+      <div class="kg reveal"><span class="e">🇺🇸</span>
+        <div data-lang="en"><h4>Moving to the USA</h4><p>DV lottery, work, study, family or refugee: countdown to arrival, what to do now, your steps with their guides, 5 stages, services and budget, your member card.</p></div>
+        <div data-lang="fr"><h4>Vivre aux USA</h4><p>Loterie DV, travail, études, famille ou réfugié : compte à rebours de l'arrivée, ce qu'il faut faire maintenant, tes démarches avec leurs guides, 5 escales, services et budget, ta carte de membre.</p></div>
+        <div data-lang="es"><h4>Vivir en EE. UU.</h4><p>Lotería DV, trabajo, estudios, familia o refugiado: cuenta atrás de la llegada, qué hacer ahora, tus trámites con sus guías, 5 etapas, servicios y presupuesto, tu tarjeta de miembro.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">🇫🇷</span>
+        <div data-lang="en"><h4>Studying in France</h4><p>The Campus France path step by step, documents, a student budget, student jobs (964 hours a year) and your city.</p></div>
+        <div data-lang="fr"><h4>Étudier en France</h4><p>Le parcours Campus France étape par étape, les documents, un budget étudiant, les jobs étudiants (964 h par an) et ta ville.</p></div>
+        <div data-lang="es"><h4>Estudiar en Francia</h4><p>El camino Campus France paso a paso, los documentos, un presupuesto de estudiante, trabajos para estudiantes (964 h al año) y tu ciudad.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">✈️</span>
+        <div data-lang="en"><h4>Visiting the USA or France</h4><p>Tourism, holidays or visiting family: countdown, getting ready (visa or ESTA, eSIM, packing), on site, guides.</p></div>
+        <div data-lang="fr"><h4>Visiter les USA ou la France</h4><p>Tourisme, vacances ou visite de la famille : compte à rebours, préparatifs (visa ou ESTA, eSIM, valise), sur place, guides.</p></div>
+        <div data-lang="es"><h4>Visitar EE. UU. o Francia</h4><p>Turismo, vacaciones o visita familiar: cuenta atrás, preparativos (visa o ESTA, eSIM, maleta), allí, guías.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">🎖️</span>
+        <div data-lang="en"><h4>US Army</h4><p>If the Army interests you: the branches, recruiter, ASVAB, boot camp and the path to citizenship.</p></div>
+        <div data-lang="fr"><h4>US Army</h4><p>Si l'Army t'intéresse : les branches, le recruteur, l'ASVAB, le Boot Camp et le chemin vers la nationalité.</p></div>
+        <div data-lang="es"><h4>US Army</h4><p>Si el Army te interesa: las ramas, el reclutador, el ASVAB, el Boot Camp y el camino a la ciudadanía.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s alt" id="in-app">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">In the app</span><span class="s-tag" data-lang="fr">Dans l'appli</span><span class="s-tag" data-lang="es">En la app</span>
+      <div data-lang="en"><h2>See Kuabo for real</h2><p>Real screens from the app on the App Store.</p></div>
+      <div data-lang="fr"><h2>Kuabo, en vrai</h2><p>De vrais écrans de l'appli disponible sur l'App Store.</p></div>
+      <div data-lang="es"><h2>Kuabo, de verdad</h2><p>Pantallas reales de la app disponible en la App Store.</p></div>
+    </div>
+    <div class="shots">
+      <figure class="shot reveal"><img src="/app-shots/0-accueil.jpg" alt="Kuabo — Your day, rewarded" width="300" height="652" loading="lazy"/><figcaption><span data-lang="en">Your day, rewarded</span><span data-lang="fr">Ta journée, récompensée</span><span data-lang="es">Tu día, recompensado</span></figcaption></figure>
+      <figure class="shot reveal"><img src="/app-shots/1-carte-postale.jpg" alt="Kuabo — Your trip, on a postcard" width="300" height="652" loading="lazy"/><figcaption><span data-lang="en">Your trip, on a postcard</span><span data-lang="fr">Ton voyage, sur une carte postale</span><span data-lang="es">Tu viaje, en una postal</span></figcaption></figure>
+      <figure class="shot reveal"><img src="/app-shots/2-pochette.jpg" alt="Kuabo — Everything for the border" width="300" height="652" loading="lazy"/><figcaption><span data-lang="en">Everything for the border</span><span data-lang="fr">Tout pour la frontière</span><span data-lang="es">Todo para la frontera</span></figcaption></figure>
+      <figure class="shot reveal"><img src="/app-shots/3-guide.jpg" alt="Kuabo — Guides that tell the truth" width="300" height="652" loading="lazy"/><figcaption><span data-lang="en">Guides that tell the truth</span><span data-lang="fr">Des guides qui disent vrai</span><span data-lang="es">Guías que dicen la verdad</span></figcaption></figure>
+      <figure class="shot reveal"><img src="/app-shots/4-roue.jpg" alt="Kuabo — A little reward every day" width="300" height="652" loading="lazy"/><figcaption><span data-lang="en">A little reward every day</span><span data-lang="fr">Une petite récompense chaque jour</span><span data-lang="es">Una pequeña recompensa cada día</span></figcaption></figure>
+      <figure class="shot reveal"><img src="/app-shots/5-profil.jpg" alt="Kuabo — Your progress, your way" width="300" height="652" loading="lazy"/><figcaption><span data-lang="en">Your progress, your way</span><span data-lang="fr">Ta progression, à ta façon</span><span data-lang="es">Tu progreso, a tu manera</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section class="s alt" id="countries">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">Worldwide</span><span class="s-tag" data-lang="fr">Dans le monde entier</span><span class="s-tag" data-lang="es">En todo el mundo</span>
+      <div data-lang="en"><h2>Not just the USA — Kuabo goes <span style="color:var(--gold-dk)">wherever you go</span></h2><p>From New York to Paris, Toronto to Mexico City — Kuabo guides Global Movers across the world, with more destinations rolling out.</p></div>
+      <div data-lang="fr"><h2>Pas que les USA — Kuabo va <span style="color:var(--gold-dk)">là où tu vas</span></h2><p>De New York à Paris, de Toronto à Mexico — Kuabo guide les Global Movers partout dans le monde, avec d'autres destinations qui arrivent.</p></div>
+      <div data-lang="es"><h2>No solo EE.UU. — Kuabo va <span style="color:var(--gold-dk)">donde tú vas</span></h2><p>De Nueva York a París, de Toronto a Ciudad de México — Kuabo guía a Global Movers por todo el mundo, con más destinos en camino.</p></div>
+    </div>
+    <div class="flags reveal">
+      <span class="flag"><span class="fx">🇺🇸</span> USA</span>
+      <span class="flag"><span class="fx">🇨🇦</span> Canada</span>
+      <span class="flag"><span class="fx">🇫🇷</span> France</span>
+      <span class="flag"><span class="fx">🇲🇽</span> <span data-lang="en">Mexico</span><span data-lang="fr">Mexique</span><span data-lang="es">México</span></span>
+      <span class="flag"><span class="fx">🇬🇧</span> <span data-lang="en">UK</span><span data-lang="fr">Royaume-Uni</span><span data-lang="es">Reino Unido</span></span>
+      <span class="flag"><span class="fx">🇩🇪</span> <span data-lang="en">Germany</span><span data-lang="fr">Allemagne</span><span data-lang="es">Alemania</span></span>
+      <span class="flag"><span class="fx">🇪🇸</span> <span data-lang="en">Spain</span><span data-lang="fr">Espagne</span><span data-lang="es">España</span></span>
+      <span class="flag"><span class="fx">🇧🇪</span> <span data-lang="en">Belgium</span><span data-lang="fr">Belgique</span><span data-lang="es">Bélgica</span></span>
+      <span class="flag"><span class="fx">🇨🇭</span> <span data-lang="en">Switzerland</span><span data-lang="fr">Suisse</span><span data-lang="es">Suiza</span></span>
+      <span class="flag"><span class="fx">🇦🇪</span> <span data-lang="en">UAE</span><span data-lang="fr">Émirats</span><span data-lang="es">EAU</span></span>
+      <span class="flag more"><span class="fx">🌍</span> <span data-lang="en">+160 more</span><span data-lang="fr">+160 autres</span><span data-lang="es">+160 más</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- EVERYTHING KUABO DOES -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">All-in-one</span><span class="s-tag" data-lang="fr">Tout-en-un</span><span class="s-tag" data-lang="es">Todo en uno</span>
+      <div data-lang="en"><h2>And so much more</h2><p>Everything a Global Mover needs — in a single app.</p></div>
+      <div data-lang="fr"><h2>Et bien plus encore</h2><p>Tout ce dont un Global Mover a besoin — dans une seule app.</p></div>
+      <div data-lang="es"><h2>Y mucho más</h2><p>Todo lo que un Global Mover necesita — en una sola app.</p></div>
+    </div>
+    <div class="kgrid">
+      <div class="kg reveal"><span class="e">💳</span>
+        <div data-lang="en"><h4>Your member card</h4><p>Your Kuabo member number, ready in Apple Wallet.</p></div>
+        <div data-lang="fr"><h4>Ta carte de membre</h4><p>Ton numéro de membre Kuabo, prêt dans Apple Wallet.</p></div>
+        <div data-lang="es"><h4>Tu tarjeta de miembro</h4><p>Tu número de miembro Kuabo, listo en Apple Wallet.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">🎁</span>
+        <div data-lang="en"><h4>Partner offers</h4><p>Use your Akwɛ at partner businesses: a perk at the counter, in one scan.</p></div>
+        <div data-lang="fr"><h4>Offres partenaires</h4><p>Utilise tes Akwɛ chez les commerces partenaires : un avantage au comptoir, en un scan.</p></div>
+        <div data-lang="es"><h4>Ofertas de socios</h4><p>Usa tus Akwɛ en los negocios socios: una ventaja en el mostrador, con un escaneo.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">🌍</span>
+        <div data-lang="en"><h4>FR · EN · ES</h4><p>The whole app in French, English and Spanish.</p></div>
+        <div data-lang="fr"><h4>FR · EN · ES</h4><p>Toute l'appli en français, en anglais et en espagnol.</p></div>
+        <div data-lang="es"><h4>FR · EN · ES</h4><p>Toda la app en francés, inglés y español.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">📚</span>
+        <div data-lang="en"><h4>Step-by-step guides</h4><p>Visa, SSN, bank, housing, phone: clear guides, in 3 languages.</p></div>
+        <div data-lang="fr"><h4>Guides pas à pas</h4><p>Visa, SSN, banque, logement, téléphone : des guides clairs, en 3 langues.</p></div>
+        <div data-lang="es"><h4>Guías paso a paso</h4><p>Visa, SSN, banco, vivienda, teléfono: guías claras, en 3 idiomas.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">🎮</span>
+        <div data-lang="en"><h4>Games & daily wheel</h4><p>Play, spin the wheel and win Akwɛ — stay motivated every single day.</p></div>
+        <div data-lang="fr"><h4>Jeux & roue quotidienne</h4><p>Joue, tourne la roue et gagne des Akwɛ — reste motivé chaque jour.</p></div>
+        <div data-lang="es"><h4>Juegos & ruleta diaria</h4><p>Juega, gira la ruleta y gana Akwɛ — mantente motivado cada día.</p></div>
+      </div>
+      <div class="kg reveal"><span class="e">🔒</span>
+        <div data-lang="en"><h4>Bank-grade security</h4><p>Your data protected with bank-level security — 2FA, encryption, audit logs.</p></div>
+        <div data-lang="fr"><h4>Sécurité bancaire</h4><p>Tes données protégées par une sécurité niveau bancaire — 2FA, chiffrement, audit.</p></div>
+        <div data-lang="es"><h4>Seguridad bancaria</h4><p>Tus datos protegidos con seguridad de nivel bancario — 2FA, cifrado, auditoría.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESOURCES -->
+<section class="s">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">Free resources</span><span class="s-tag" data-lang="fr">Ressources gratuites</span><span class="s-tag" data-lang="es">Recursos gratis</span>
+      <div data-lang="en"><h2>Guides & Travel, ready before you arrive</h2><p>Real, practical content — explore it free, right now.</p></div>
+      <div data-lang="fr"><h2>Guides & Voyage, prêts avant ton arrivée</h2><p>Du contenu concret et utile — explore-le gratuitement, maintenant.</p></div>
+      <div data-lang="es"><h2>Guías & Viajes, listos antes de llegar</h2><p>Contenido práctico y real — explóralo gratis, ahora.</p></div>
+    </div>
+    <div class="rcards">
+      <a class="rcard reveal" href="/guides" style="--accent:#e8b84b">
+        <span class="emoji">📖</span>
+        <div data-lang="en"><h3>Guides</h3><p>Step-by-step: visa, bank, housing, flights, money and more — in 3 languages.</p><span class="go">Read the guides →</span></div>
+        <div data-lang="fr"><h3>Guides</h3><p>Pas à pas : visa, banque, logement, vols, argent et plus — en 3 langues.</p><span class="go">Lire les guides →</span></div>
+        <div data-lang="es"><h3>Guías</h3><p>Paso a paso: visa, banco, vivienda, vuelos, dinero y más — en 3 idiomas.</p><span class="go">Leer las guías →</span></div>
+      </a>
+      <a class="rcard reveal" href="/travel" style="--accent:#2dd4bf">
+        <span class="emoji">✈️</span>
+        <div data-lang="en"><h3>Travel</h3><p>Destinations, eSIM, flights and tips — get your trip ready. Booking is coming soon in the app.</p><span class="go">Discover travel →</span></div>
+        <div data-lang="fr"><h3>Voyage</h3><p>Destinations, eSIM, vols et conseils — prépare ton voyage. La réservation arrive bientôt dans l'app.</p><span class="go">Découvrir le voyage →</span></div>
+        <div data-lang="es"><h3>Viajes</h3><p>Destinos, eSIM, vuelos y consejos — prepara tu viaje. La reserva llega pronto a la app.</p><span class="go">Descubrir viajes →</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- AKWE -->
+<section class="s alt">
+  <div class="wrap">
+    <div class="akwe reveal">
+      <div class="art"><lottie-player src="/lottie/akwe-coin.json" autoplay loop></lottie-player></div>
+      <div>
+        <div data-lang="en"><h2>Earn <span class="g">Akwɛ</span> as you go</h2><p>Akwɛ are Kuabo's reward points. Complete steps, read guides, travel — and earn Akwɛ to enjoy offers from our partners. Kuabo rewards you for moving forward.</p></div>
+        <div data-lang="fr"><h2>Gagne des <span class="g">Akwɛ</span> en avançant</h2><p>Les Akwɛ sont les points de récompense de Kuabo. Complète des étapes, lis des guides, voyage — et gagne des Akwɛ pour profiter des offres de nos partenaires. Kuabo te récompense quand tu avances.</p></div>
+        <div data-lang="es"><h2>Gana <span class="g">Akwɛ</span> mientras avanzas</h2><p>Los Akwɛ son los puntos de recompensa de Kuabo. Completa pasos, lee guías, viaja — y gana Akwɛ para disfrutar de las ofertas de nuestros socios. Kuabo te recompensa cuando avanzas.</p></div>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- STATS -->
-<div class="stats-bar rev">
-  <div class="stats-inner">
-    <div class="stat-item"><span class="stat-n">5</span><span class="stat-l" id="s1">Settlement phases</span></div>
-    <div class="stat-item"><span class="stat-n">3</span><span class="stat-l" id="s2">Languages — FR·EN·ES</span></div>
-    <div class="stat-item"><span class="stat-n">24/7</span><span class="stat-l" id="s3">Kuabo AI</span></div>
-    <div class="stat-item"><span class="stat-n">100%</span><span class="stat-l" id="s4">Free forever</span></div>
-  </div>
-</div>
-
-<!-- FEATURES -->
-<section class="sect" style="background:var(--bg2);">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag" id="ftag">🔍 Inside Kuabo</div><h2 id="fh2">Everything you need, every day</h2><p class="ssub" id="fsub">Built for real Global Movers — documents, deadlines, AI, community.</p></div>
-    <div class="feat-grid rev">
-      <div class="feat-card" onclick="openDemo()"><div class="feat-screen" style="background:linear-gradient(135deg,#fff5f5,#ffe8e8);padding:15px;"><div style="font-size:8px;color:#ef4444;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">⏱ Smart Deadlines</div><div style="background:#fff;border:2px solid #fdd4d4;border-radius:11px;padding:10px;margin-bottom:7px;display:flex;align-items:center;gap:9px;box-shadow:0 2px 0 #fdd4d4;"><span style="font-size:22px;">🪪</span><div><div style="font-size:9px;font-weight:800;color:#333;">Social Security #</div><div style="font-size:22px;font-weight:900;color:#ef4444;line-height:1;font-family:'Nunito',sans-serif;">4</div><div style="font-size:8px;color:#999;font-weight:600;">days left</div></div></div><div style="background:#fff;border:2px solid #ffecd4;border-radius:9px;padding:8px;display:flex;justify-content:space-between;box-shadow:0 2px 0 #ffecd4;"><span style="font-size:10px;color:#666;font-weight:600;">🏦 Bank account</span><span style="font-size:10px;font-weight:800;color:var(--orange);">14d →</span></div><div class="feat-badge" style="color:#ef4444;border-color:#fdd4d4;">Auto-calc ✓</div></div><div class="feat-info"><div class="feat-title" id="c1t">⏱ Smart Deadlines</div><div class="feat-desc" id="c1d">Kuabo auto-calculates every deadline from your arrival date. SSN in 10 days, bank in 14, taxes in 90. Never miss anything.</div></div></div>
-      <div class="feat-card" onclick="openDemo()"><div class="feat-screen" style="background:linear-gradient(135deg,#fffbee,#fff3c0);padding:15px;"><div style="font-size:8px;color:var(--gold-dk);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">⭐ Score &amp; Badges</div><div style="background:#fff;border:2px solid #fde68a;border-radius:11px;padding:10px;text-align:center;margin-bottom:7px;box-shadow:0 2px 0 #fde68a;"><div style="font-size:36px;font-weight:900;color:var(--gold);line-height:1;font-family:'Nunito',sans-serif;">450</div><div style="font-size:8px;color:#999;margin-bottom:5px;font-weight:600;">/ 1000 pts</div><div style="height:5px;background:#e0e0e0;border-radius:5px;overflow:hidden;"><div style="width:45%;height:100%;background:linear-gradient(90deg,var(--gold),var(--teal));"></div></div></div><div style="display:flex;gap:5px;flex-wrap:wrap;"><span style="background:#fff;border:2px solid #fde68a;border-radius:100px;padding:3px 9px;font-size:8px;color:var(--gold-dk);font-weight:800;">🪪 SSN</span><span style="background:#fff;border:2px solid #c3f0a0;border-radius:100px;padding:3px 9px;font-size:8px;color:#16a34a;font-weight:800;">🏦 Banker</span></div><div class="feat-badge" style="color:var(--gold-dk);border-color:#fde68a;">Gamification 🎮</div></div><div class="feat-info"><div class="feat-title" id="c2t">⭐ Score &amp; Badges</div><div class="feat-desc" id="c2d">Every step earns points and unlocks badges. Your Global Mover journey becomes a personal challenge — motivating, not stressful.</div></div></div>
-      <div class="feat-card" onclick="openDemo()"><div class="feat-screen" style="background:linear-gradient(135deg,#f0f9ff,#dbeafe);padding:15px;"><div style="font-size:8px;color:var(--blue);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">🤖 Kuabo AI</div><div style="display:flex;flex-direction:column;gap:6px;"><div style="background:#f0f0f0;border-radius:10px 10px 10px 3px;padding:8px 10px;font-size:9px;font-weight:600;max-width:78%;color:#333;">When do I apply for SSN?</div><div style="background:var(--navy);border-radius:10px 10px 3px 10px;padding:8px 10px;font-size:9px;font-weight:600;margin-left:auto;max-width:90%;color:#fff;">After <strong style="color:var(--gold);">10 days</strong> — Deadline: <strong style="color:#ef4444;">Jan 24</strong></div><div style="background:#f0f0f0;border-radius:10px 10px 10px 3px;padding:8px 10px;font-size:9px;font-weight:600;max-width:78%;color:#333;">Best bank option?</div><div style="background:var(--navy);border-radius:10px 10px 3px 10px;padding:8px 10px;font-size:9px;font-weight:600;margin-left:auto;max-width:90%;color:#fff;opacity:.7;">Chase accepts passport only…</div></div><div class="feat-badge" style="color:var(--blue);border-color:#bfdbfe;">24/7 · FR EN ES</div></div><div class="feat-info"><div class="feat-title" id="c4t">🤖 Kuabo AI</div><div class="feat-desc" id="c4d">Ask anything, get an instant answer tailored to your situation. SSN, bank, housing, taxes — 24/7 in 3 languages.</div></div></div>
-      <div class="feat-card" onclick="openDemo()"><div class="feat-screen" style="background:linear-gradient(135deg,#f0fff4,#d1fae5);padding:15px;"><div style="font-size:8px;color:#16a34a;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">💰 Budget &amp; Stores</div><div style="background:#fff;border:2px solid #a7f3d0;border-radius:11px;padding:9px;margin-bottom:7px;box-shadow:0 2px 0 #a7f3d0;"><div style="font-size:8px;color:#999;margin-bottom:4px;font-weight:600;">Salary $3,500 · Texas</div><div style="display:flex;justify-content:space-between;font-size:9px;margin-bottom:3px;font-weight:700;"><span style="color:#666;">🏠 Rent</span><span style="color:#ef4444;">$1,400</span></div><div style="display:flex;justify-content:space-between;font-size:9px;margin-bottom:3px;font-weight:700;"><span style="color:#666;">🛒 Food</span><span style="color:var(--orange);">$420</span></div><div style="display:flex;justify-content:space-between;font-size:9px;font-weight:700;"><span style="color:#666;">💰 Savings</span><span style="color:#16a34a;">+$780</span></div></div><div class="feat-badge" style="color:#16a34a;border-color:#a7f3d0;">Save $150/mo</div></div><div class="feat-info"><div class="feat-title" id="c3t">💰 Budget &amp; Stores</div><div class="feat-desc" id="c3d">Monthly budget by state/country + store guide. Everything to spend smart from day one.</div></div></div>
-      <div class="feat-card" onclick="openDemo()"><div class="feat-screen" style="background:linear-gradient(135deg,#f0fff4,#c6f6d5);padding:15px;"><div style="font-size:8px;color:#16a34a;font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">🎖 US Army Guide</div><div style="background:#fff;border:2px solid #c6f6d5;border-radius:11px;padding:9px;margin-bottom:7px;box-shadow:0 2px 0 #c6f6d5;"><div style="font-size:9px;font-weight:900;color:#16a34a;margin-bottom:4px;">DV Lottery + Army = 🔥</div><div style="font-size:8px;color:#555;line-height:1.6;font-weight:600;">Naturalization in <strong style="color:#16a34a;">1 year</strong> instead of 5.</div></div><div class="feat-badge" style="color:#16a34a;border-color:#c6f6d5;">Army + DV</div></div><div class="feat-info"><div class="feat-title" id="c5t">🎖 US Army Guide</div><div class="feat-desc" id="c5d">For DV holders thinking about the Army — naturalization in 1 year, base finder, ASVAB guide.</div></div></div>
-      <div class="feat-card" onclick="openDemo()"><div class="feat-screen" style="background:linear-gradient(135deg,#eef9ff,#dbeafe);padding:15px;"><div style="font-size:8px;color:var(--blue);font-weight:800;letter-spacing:.07em;text-transform:uppercase;margin-bottom:8px;">📍 Services near you</div><div style="display:flex;flex-direction:column;gap:4px;"><div style="background:#fff;border:2px solid #bfdbfe;border-radius:9px;padding:7px;display:flex;justify-content:space-between;box-shadow:0 1px 0 #bfdbfe;"><div><div style="font-size:8px;font-weight:800;">SSA Office — Dallas</div><div style="font-size:7px;color:#16a34a;font-weight:600;">Open · 0.8 mi</div></div><span>→</span></div><div style="background:#fff;border:2px solid #bfdbfe;border-radius:9px;padding:7px;display:flex;justify-content:space-between;box-shadow:0 1px 0 #bfdbfe;"><div><div style="font-size:8px;font-weight:800;">Chase Bank</div><div style="font-size:7px;color:#16a34a;font-weight:600;">Open · 1.2 mi</div></div><span>→</span></div></div><div class="feat-badge" style="color:var(--blue);border-color:#bfdbfe;">GPS Real-time</div></div><div class="feat-info"><div class="feat-title" id="c6t">📍 Services Map</div><div class="feat-desc" id="c6d">SSA, DMV, USCIS, banks, clinics — all near you in real time. Worldwide coverage.</div></div></div>
+<section class="s">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat reveal"><b>281M</b><span data-lang="en">Global Movers worldwide</span><span data-lang="fr">Global Movers dans le monde</span><span data-lang="es">Global Movers en el mundo</span></div>
+      <div class="stat reveal"><b>170+</b><span data-lang="en">countries covered</span><span data-lang="fr">pays couverts</span><span data-lang="es">países cubiertos</span></div>
+      <div class="stat reveal"><b>3</b><span data-lang="en">languages · FR EN ES</span><span data-lang="fr">langues · FR EN ES</span><span data-lang="es">idiomas · FR EN ES</span></div>
+      <div class="stat reveal"><b>$0</b><span data-lang="en">forever free</span><span data-lang="fr">gratuit pour toujours</span><span data-lang="es">gratis para siempre</span></div>
     </div>
   </div>
 </section>
 
-<!-- RESOURCES: GUIDES & TRAVEL -->
-<section class="sect" style="background:var(--bg);">
-  <div class="sect-inner">
-    <div class="stag" id="resTag">📚 Free resources</div>
-    <h2 id="resH2">Guides &amp; Travel — explore Kuabo</h2>
-    <p class="ssub" id="resSub">Real, practical content to prepare your journey — free, in 3 languages.</p>
-    <div class="res-grid">
-      <a class="res-card" href="/guides">
-        <span class="res-ico">📖</span>
-        <h3 id="resGt">Guides</h3>
-        <p id="resGd">Step-by-step guides: visa, bank, housing, flights, money and more.</p>
-        <span class="res-cta" id="resGc">Read the guides →</span>
-      </a>
-      <a class="res-card" href="/travel">
-        <span class="res-ico">✈️</span>
-        <h3 id="resTt">Travel</h3>
-        <p id="resTd">Flights, hotels, eSIM, car &amp; more — plan and book your whole trip.</p>
-        <span class="res-cta" id="resTc">Discover travel →</span>
-      </a>
+<!-- DOWNLOAD -->
+<section class="s download" id="download">
+  <div class="wrap">
+    <img class="reveal" src="/kua.png" alt="Kua, the Kuabo mascot" style="width:130px;height:130px;object-fit:contain;margin:0 auto 10px;display:block;"/>
+    <div class="reveal">
+      <div data-lang="en"><h2>Get Kuabo + your welcome gift 🎁</h2><p>Enter your email to get a unique code worth <b>70 Akwɛ</b>. Download Kuabo, sign up, and enter your code in the app.</p></div>
+      <div data-lang="fr"><h2>Obtiens Kuabo + ton cadeau de bienvenue 🎁</h2><p>Entre ton email pour recevoir un code unique de <b>70 Akwɛ</b>. Télécharge Kuabo, crée ton compte, et entre ton code dans l'app.</p></div>
+      <div data-lang="es"><h2>Obtén Kuabo + tu regalo de bienvenida 🎁</h2><p>Ingresa tu email para recibir un código único de <b>70 Akwɛ</b>. Descarga Kuabo, crea tu cuenta e ingresa tu código en la app.</p></div>
     </div>
-  </div>
-</section>
 
-<!-- POSITIONING -->
-<section class="position-sect rev">
-  <div class="sect-inner" style="max-width:900px;margin:0 auto;">
-    <div class="stag" style="background:rgba(232,184,75,.1);border-color:rgba(232,184,75,.25);color:var(--gold);">🏆 Positioning</div>
-    <h2 style="color:#fff;" id="pos-h2">#1 App to guide your<br/>travel &amp; settlement</h2>
-    <p class="ssub" style="color:rgba(255,255,255,.5);max-width:480px;margin:0 auto 48px;" id="pos-sub">From stressed and lost — to guided, confident, and settled. That's what Kuabo does.</p>
-    <div class="transform-scene">
-      <div class="trans-col before"><div class="trans-emoji">😟</div><div class="trans-label-bad"><div style="font-size:11px;font-weight:800;color:#ef4444;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">❌ Before</div><div style="font-size:13px;color:#fff;font-weight:700;line-height:1.4;">Lost, stressed, no plan</div></div></div>
-      <div class="trans-arrow"><div class="arrow-icon">👉</div><div class="arrow-pill">Kuabo</div></div>
-      <div class="trans-col after"><div class="trans-emoji">😌</div><div class="trans-label-good"><div style="font-size:11px;font-weight:800;color:#22c55e;text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;">✅ After Kuabo</div><div style="font-size:13px;color:#fff;font-weight:700;line-height:1.4;">Guided, settled, thriving!</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- BADGES -->
-<section class="badges-sect">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag" style="background:rgba(232,184,75,.1);border-color:rgba(232,184,75,.25);color:var(--gold);">🏆 <span id="btag">Kuabo Badges</span></div><h2 style="color:#fff;" id="bh2">Unlock badges as you settle</h2><p class="ssub" style="color:rgba(255,255,255,.45);" id="bsub">Every step earns points and unlocks a badge. Your journey becomes a personal victory.</p></div>
-    <div class="badges-grid rev">
-      <div class="badge-card rev" style="border-color:rgba(232,184,75,.3);"><span class="badge-icon">🪪</span><div class="badge-name">SSN Master</div><div class="badge-pts" style="color:var(--gold);">+200 pts</div></div>
-      <div class="badge-card rev" style="border-color:rgba(34,197,94,.3);"><span class="badge-icon">🏦</span><div class="badge-name">First Banker</div><div class="badge-pts" style="color:#22c55e;">+150 pts</div></div>
-      <div class="badge-card rev" style="border-color:rgba(45,212,191,.3);"><span class="badge-icon">📱</span><div class="badge-name">Connected</div><div class="badge-pts" style="color:var(--teal);">+100 pts</div></div>
-      <div class="badge-card rev" style="border-color:rgba(249,115,22,.3);"><span class="badge-icon">🚗</span><div class="badge-name">Road Master</div><div class="badge-pts" style="color:var(--orange);">+175 pts</div><div class="badge-locked">🔒</div></div>
-      <div class="badge-card rev" style="border-color:rgba(167,139,250,.3);"><span class="badge-icon">🌍</span><div class="badge-name">Global Citizen</div><div class="badge-pts" style="color:var(--purple);">+500 pts</div><div class="badge-locked">🔒</div></div>
-      <div class="badge-card rev" style="border-color:rgba(239,68,68,.3);"><span class="badge-icon">🏠</span><div class="badge-name">Home Owner</div><div class="badge-pts" style="color:var(--red);">+250 pts</div><div class="badge-locked">🔒</div></div>
-      <div class="badge-card rev" style="border-color:rgba(59,130,246,.3);"><span class="badge-icon">💼</span><div class="badge-name">Career Builder</div><div class="badge-pts" style="color:var(--blue);">+300 pts</div><div class="badge-locked">🔒</div></div>
-      <div class="badge-card rev" style="border-color:rgba(234,179,8,.3);"><span class="badge-icon">🪖</span><div class="badge-name">Army Elite</div><div class="badge-pts" style="color:#eab308;">+400 pts</div><div class="badge-locked">🔒</div></div>
-      <div class="badge-card rev" style="border-color:rgba(236,72,153,.3);"><span class="badge-icon">🎓</span><div class="badge-name">Scholar</div><div class="badge-pts" style="color:#ec4899;">+200 pts</div><div class="badge-locked">🔒</div></div>
-      <div class="badge-card rev" style="border-color:rgba(232,184,75,.5);background:rgba(232,184,75,.05);"><span class="badge-icon">👑</span><div class="badge-name">Kuabo Legend</div><div class="badge-pts" style="color:var(--gold);">+1000 pts</div><div class="badge-locked">🔒</div></div>
-    </div>
-    <div class="badge-demo rev">
-      <div class="badge-demo-pill" id="bdemo-lbl">How badges unlock</div>
-      <div style="display:flex;align-items:flex-start;gap:18px;margin-top:12px;flex-wrap:wrap;justify-content:center;">
-        <div style="text-align:center;flex-shrink:0;"><div style="width:64px;height:64px;border-radius:50%;background:rgba(232,184,75,.1);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-size:28px;animation:bpulse 2s ease-in-out infinite;margin:0 auto 8px;">🪪</div><div style="font-family:'Nunito',sans-serif;font-size:13px;font-weight:900;color:#fff;margin-bottom:3px;">SSN Master</div><div style="font-size:11px;color:var(--gold);font-weight:700;">+200 pts</div></div>
-        <div style="flex:1;min-width:180px;"><div style="font-size:10px;color:rgba(255,255,255,.38);font-weight:700;margin-bottom:6px;" id="bdemo-prog">PROGRESS</div><div class="bprog"><div class="bprog-fill"></div></div><div style="display:flex;justify-content:space-between;font-size:10px;color:rgba(255,255,255,.3);margin-bottom:10px;font-weight:600;"><span id="bdemo-step">3/4 steps done</span><span style="color:var(--gold);">+200 pts</span></div><div style="display:flex;flex-direction:column;gap:5px;"><div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);"><span style="width:15px;height:15px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;flex-shrink:0;">✓</span><span id="bst1">Book SSA appointment</span></div><div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);"><span style="width:15px;height:15px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;flex-shrink:0;">✓</span><span id="bst2">Gather documents</span></div><div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.7);"><span style="width:15px;height:15px;border-radius:50%;background:var(--teal);display:flex;align-items:center;justify-content:center;font-size:8px;color:#fff;flex-shrink:0;">✓</span><span id="bst3">Visit SSA office</span></div><div style="display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;color:rgba(255,255,255,.3);"><span style="width:15px;height:15px;border-radius:50%;border:1.5px solid rgba(255,255,255,.12);flex-shrink:0;"></span><span id="bst4">Receive SSN card → <span style="color:var(--gold);">Badge unlocks! 🎉</span></span></div></div></div>
+    <!-- CODE PROMO -->
+    <div class="reveal" style="max-width:440px;margin:18px auto 0;">
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="email" id="kc-email" placeholder="your@email.com" style="flex:1;min-width:200px;padding:14px 16px;border:2px solid rgba(0,0,0,.12);border-radius:14px;font-size:15px;font-family:inherit;outline:none;"/>
+        <button class="btn" id="kc-btn" onclick="kuaboGetCode()">
+          <span data-lang="en">Get my code 🎁</span><span data-lang="fr">Obtenir mon code 🎁</span><span data-lang="es">Obtener mi código 🎁</span>
+        </button>
+      </div>
+      <div id="kc-msg" style="font-size:13px;min-height:18px;margin-top:8px;font-weight:700;"></div>
+      <!-- Résultat code -->
+      <div id="kc-result" style="display:none;margin-top:12px;background:#0b1526;border:2px solid #e8b84b;border-radius:16px;padding:18px;text-align:center;">
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="en">Your welcome code</div>
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="fr">Ton code de bienvenue</div>
+        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="es">Tu código de bienvenida</div>
+        <div id="kc-code" style="font-size:26px;font-weight:900;color:#e8b84b;letter-spacing:2px;margin:6px 0 4px;font-family:'Nunito',sans-serif;">—</div>
+        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="en">= 70 Akwɛ. Enter it in the app at sign-up. 🎉</div>
+        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="fr">= 70 Akwɛ. Entre-le dans l'app à l'inscription. 🎉</div>
+        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="es">= 70 Akwɛ. Ingrésalo en la app al registrarte. 🎉</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- GAMIFICATION -->
-<section class="sect" id="game-sect" style="background:var(--bg);">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag">🎮 <span id="gtag">Kuabo Play</span></div><h2 id="gh2">Ton parcours devient<br/><span style="color:var(--gold);">un jeu</span></h2><p class="ssub" id="gsub">XP, badges, défis, passeport mondial — chaque étape récompensée. Gratuit pour toujours.</p></div>
-    <div class="rev" style="display:flex;gap:8px;justify-content:center;margin-bottom:28px;flex-wrap:wrap;">
-      <button class="gametab on" id="gt0" onclick="showGTab(0)">🏠 Dashboard</button>
-      <button class="gametab" id="gt1" onclick="showGTab(1)">🌍 Passeport</button>
-      <button class="gametab" id="gt2" onclick="showGTab(2)">🏙️ Ma Ville</button>
-    </div>
-    <div class="gametab-c rev" id="gc0">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:860px;margin:0 auto;">
-        <div style="grid-column:1/-1;background:#fff;border:2.5px solid var(--border);border-radius:22px;padding:20px;box-shadow:0 4px 0 var(--border);position:relative;overflow:hidden;">
-          <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--teal));"></div>
-          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
-            <div style="width:52px;height:52px;border-radius:14px;background:rgba(232,184,75,.12);border:2.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Nunito',sans-serif;font-weight:900;font-size:18px;color:var(--gold-dk);position:relative;flex-shrink:0;">K<div id="g-lvl" style="position:absolute;bottom:-5px;right:-5px;width:20px;height:20px;border-radius:10px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;border:2px solid #fff;">2</div></div>
-            <div style="flex:1;min-width:0;"><div id="g-name" style="font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;color:var(--navy);">Explorer</div><div style="font-size:11px;color:var(--muted);font-weight:600;">⚡ <span id="g-xp">150</span> XP · 🪙 <span id="g-coins">32</span></div></div>
-            <div onclick="gOpenGift()" style="background:rgba(232,184,75,.1);border:2.5px solid var(--gold);border-radius:14px;padding:8px 12px;cursor:pointer;text-align:center;flex-shrink:0;transition:transform .2s;" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"><div style="font-size:22px;" id="g-gift-icon">🎁</div><div style="font-size:9px;font-weight:800;color:var(--gold-dk);">Cadeau</div></div>
-          </div>
-          <div style="display:flex;justify-content:space-between;font-size:11px;font-weight:700;margin-bottom:5px;"><span style="color:var(--muted);">XP</span><span style="color:var(--gold-dk);" id="g-xplbl">150 / 300 → Niv.3</span></div>
-          <div style="height:10px;background:var(--bg2);border-radius:10px;overflow:hidden;"><div id="g-xpbar" style="height:100%;width:50%;background:linear-gradient(90deg,var(--gold),var(--teal));border-radius:10px;transition:width 1s ease;"></div></div>
-        </div>
-        <div style="background:#fff;border:2.5px solid var(--border);border-radius:18px;padding:16px;box-shadow:0 3px 0 var(--border);display:flex;align-items:center;gap:10px;"><span style="font-size:28px;flex-shrink:0;">🔥</span><div><div id="g-streak" style="font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#f97316;">2 jours de suite</div><div style="display:flex;gap:3px;margin-top:5px;"><div class="gday on">L</div><div class="gday on">M</div><div class="gday">M</div><div class="gday">J</div><div class="gday">V</div><div class="gday">S</div><div class="gday">D</div></div></div></div>
-        <div onclick="gCheckin()" class="gcard" style="border-color:rgba(34,197,94,.4);box-shadow:0 3px 0 rgba(34,197,94,.12);"><div style="font-size:34px;margin-bottom:6px;" id="g-ci-em">🔥</div><div style="font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:#16a34a;">Check-in</div><div id="g-ci-pill" style="background:rgba(34,197,94,.1);border-radius:8px;padding:3px 9px;display:inline-block;font-size:10px;font-weight:700;color:#16a34a;margin-top:4px;">+10 XP</div></div>
-        <div onclick="gCards()" class="gcard" style="border-color:rgba(167,139,250,.4);box-shadow:0 3px 0 rgba(167,139,250,.1);"><div style="font-size:34px;margin-bottom:6px;">🃏</div><div style="font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:var(--purple);">Cartes</div><div style="background:rgba(167,139,250,.1);border-radius:8px;padding:3px 9px;display:inline-block;font-size:10px;font-weight:700;color:var(--purple);margin-top:4px;">4/30</div></div>
-        <div onclick="gChallenge()" class="gcard" style="border-color:rgba(239,68,68,.35);box-shadow:0 3px 0 rgba(239,68,68,.08);position:relative;"><div style="position:absolute;top:8px;right:8px;width:19px;height:19px;border-radius:10px;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:#fff;">5</div><div style="font-size:34px;margin-bottom:6px;">⚔️</div><div style="font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:var(--red);">Défis</div><div style="background:rgba(239,68,68,.08);border-radius:8px;padding:3px 9px;display:inline-block;font-size:10px;font-weight:700;color:var(--red);margin-top:4px;">5 actifs</div></div>
-        <div onclick="gLeader()" class="gcard" style="border-color:rgba(232,184,75,.5);box-shadow:0 3px 0 rgba(232,184,75,.15);"><div style="font-size:34px;margin-bottom:6px;">🏆</div><div style="font-family:'Nunito',sans-serif;font-size:14px;font-weight:900;color:var(--gold-dk);">Classement</div><div style="background:rgba(232,184,75,.1);border-radius:8px;padding:3px 9px;display:inline-block;font-size:10px;font-weight:700;color:var(--gold-dk);margin-top:4px;">Top 10 🌍</div></div>
-      </div>
-    </div>
-    <div class="gametab-c" id="gc1" style="display:none;">
-      <div style="max-width:600px;margin:0 auto;background:#fff;border:2.5px solid var(--border);border-radius:22px;padding:22px;box-shadow:0 4px 0 var(--border);">
-        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;"><div style="font-family:'Nunito',sans-serif;font-size:15px;font-weight:900;color:var(--navy);">🌍 Passeport Numérique</div><div style="font-size:11px;color:var(--muted);font-weight:600;"><span id="g-pc">3</span> pays</div></div>
-        <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;" id="g-flags">
-          <div class="gflag"><span style="font-size:24px;">🇺🇸</span><span style="font-size:8px;font-weight:700;color:var(--navy);">USA</span></div>
-          <div class="gflag"><span style="font-size:24px;">🇧🇯</span><span style="font-size:8px;font-weight:700;color:var(--navy);">Bénin</span></div>
-          <div class="gflag"><span style="font-size:24px;">🇫🇷</span><span style="font-size:8px;font-weight:700;color:var(--navy);">France</span></div>
-        </div>
-        <div style="display:flex;gap:8px;">
-          <button onclick="gAddFlag('🇨🇦','Canada')" class="btn-gold" style="flex:1;font-size:12px;padding:11px;">📍 GPS +50 XP</button>
-          <button onclick="gAddFlag('🇸🇳','Sénégal')" style="flex:1;padding:11px;background:var(--bg2);border:2.5px solid var(--border);border-radius:var(--r);font-size:12px;font-weight:800;color:var(--navy);cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s;">✍️ Manuel</button>
-        </div>
-      </div>
-    </div>
-    <div class="gametab-c" id="gc2" style="display:none;">
-      <div style="max-width:600px;margin:0 auto;">
-        <div style="background:linear-gradient(180deg,#0f1d3d 0%,#1e3a5f 58%,#16a34a 58%,#15803d 100%);border-radius:20px;height:195px;position:relative;overflow:hidden;border:2.5px solid var(--border);box-shadow:0 4px 0 var(--border);margin-bottom:14px;">
-          <div style="position:absolute;top:9px;left:11px;background:rgba(0,0,0,.5);border-radius:8px;padding:3px 9px;font-size:10px;font-weight:800;color:#fff;">🏙️ Atlanta — Phase 2</div>
-          <div style="position:absolute;bottom:40px;left:18px;width:44px;height:68px;background:#2dd4bf;border-radius:3px 3px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:5px;font-size:10px;">📱</div>
-          <div style="position:absolute;bottom:40px;left:74px;width:44px;height:88px;background:#e8b84b;border-radius:3px 3px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:5px;font-size:10px;">🏦</div>
-          <div style="position:absolute;bottom:40px;left:132px;width:48px;height:108px;background:#3b82f6;border-radius:3px 3px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:5px;font-size:10px;">🪪</div>
-          <div style="position:absolute;bottom:40px;left:196px;width:44px;height:56px;background:#94a3b8;opacity:.4;border-radius:3px 3px 0 0;display:flex;align-items:flex-start;justify-content:center;padding-top:5px;font-size:10px;">🔒</div>
-          <div style="position:absolute;bottom:0;left:0;right:0;height:40px;background:#374151;"></div>
-        </div>
-      </div>
+    <div class="stores reveal" style="margin-top:18px;">
+      <a class="store" data-store="ios" href="#"><span class="ic"></span><span><small>Download on the</small>App Store</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
+      <a class="store" data-store="android" href="#"><span class="ic">▶</span><span><small>Get it on</small>Google Play</span><span class="soon" data-lang="en">Soon</span><span class="soon" data-lang="fr">Bientôt</span><span class="soon" data-lang="es">Pronto</span></a>
     </div>
   </div>
 </section>
 
-<!-- MODAL CADEAU GAMIFICATION -->
-<div id="g-gift-modal" style="display:none;position:fixed;inset:0;background:rgba(11,21,38,.88);z-index:9998;align-items:center;justify-content:center;padding:16px;">
-  <div style="background:#fff;border-radius:24px;border:3px solid var(--gold);max-width:320px;width:100%;overflow:hidden;margin:auto;position:relative;top:50%;transform:translateY(-50%);">
-    <div style="height:5px;background:linear-gradient(90deg,var(--gold),var(--teal));"></div>
-    <div style="padding:24px;text-align:center;">
-      <div style="font-size:60px;margin-bottom:10px;" id="g-modal-emoji">🎁</div>
-      <div style="font-family:'Nunito',sans-serif;font-size:17px;font-weight:900;color:var(--navy);margin-bottom:7px;" id="g-modal-title">Cadeau du jour !</div>
-      <div style="font-size:12px;color:var(--muted);margin-bottom:16px;" id="g-modal-sub">Reviens chaque jour</div>
-      <div style="display:none;gap:10px;margin-bottom:14px;" id="g-modal-rwds">
-        <div style="flex:1;background:var(--bg2);border-radius:12px;border:1.5px solid var(--border);padding:12px;text-align:center;"><div style="font-size:22px;">⚡</div><div style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:var(--gold-dk);">+25</div><div style="font-size:9px;color:var(--muted);font-weight:700;">XP</div></div>
-        <div style="flex:1;background:var(--bg2);border-radius:12px;border:1.5px solid var(--border);padding:12px;text-align:center;"><div style="font-size:22px;">🪙</div><div style="font-family:'Nunito',sans-serif;font-size:20px;font-weight:900;color:var(--gold-dk);">+10</div><div style="font-size:9px;color:var(--muted);font-weight:700;">Kuaboins</div></div>
-      </div>
-      <button id="g-modal-btn" onclick="gGiftAction()" class="btn-gold" style="width:100%;">Ouvrir 🎁</button>
-    </div>
-  </div>
-</div>
-
-<!-- WORLD -->
-<section class="world-sect">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag" style="background:rgba(232,184,75,.1);border-color:rgba(232,184,75,.25);color:var(--gold);">🌍 <span id="wtag">Not just the USA</span></div><h2 style="color:#fff;" id="wh2">Kuabo goes wherever you go</h2><p class="ssub" style="color:rgba(255,255,255,.45);" id="wsub">From New York to Paris, from Toronto to Mexico City — Kuabo is your settlement guide worldwide.</p></div>
-    <div class="globe-wrap rev"><div class="gring"></div><div class="gring"></div><div class="gring"></div><div class="gcenter">🌍</div><div class="gdot" style="animation:gorbit 12s linear infinite;--s:0deg;">🇺🇸</div><div class="gdot" style="animation:gorbit 12s linear infinite;--s:72deg;">🇫🇷</div><div class="gdot" style="animation:gorbit 12s linear infinite;--s:144deg;">🇨🇦</div><div class="gdot" style="animation:gorbit 12s linear infinite;--s:216deg;">🇬🇧</div><div class="gdot" style="animation:gorbit 12s linear infinite;--s:288deg;">🇧🇯</div></div>
-    <div class="wchips rev"><div class="wchip">🇺🇸 USA</div><div class="wchip">🇨🇦 Canada</div><div class="wchip">🇫🇷 France</div><div class="wchip">🇧🇪 Belgium</div><div class="wchip">🇨🇭 Switzerland</div><div class="wchip">🇬🇧 UK</div><div class="wchip">🇲🇽 Mexico</div><div class="wchip">🇩🇪 Germany</div><div class="wchip">🌍 And more…</div></div>
-  </div>
-</section>
-
-<!-- RED FLAGS -->
-<section class="rf-sect">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag" style="background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.22);color:#f87171;">🚩 <span id="rftag">Red Flags</span></div><h2 style="color:#fff;" id="rfh2">Are you making these mistakes?</h2><p class="ssub" style="color:rgba(255,255,255,.42);" id="rfsub">Global Movers who don't use Kuabo often struggle with these.</p></div>
-    <div class="rf-grid">
-      <div class="rf-card rev"><div class="rf-flag">🚩</div><div class="rf-content"><span class="rf-num">Red Flag #1</span><div class="rf-text" id="rf1">No SSN after 2 weeks in the USA</div><div class="rf-fix">✅ Kuabo.co guides you step by step →</div></div></div>
-      <div class="rf-card rev"><div class="rf-flag">🚩</div><div class="rf-content"><span class="rf-num">Red Flag #2</span><div class="rf-text" id="rf2">Still using your home country SIM card</div><div class="rf-fix">✅ T-Mobile at airport — no SSN needed →</div></div></div>
-      <div class="rf-card rev"><div class="rf-flag">🚩</div><div class="rf-content"><span class="rf-num">Red Flag #3</span><div class="rf-text" id="rf3">Paying in cash — no US bank account</div><div class="rf-fix">✅ Chase accepts passport only →</div></div></div>
-      <div class="rf-card rev"><div class="rf-flag">🚩</div><div class="rf-content"><span class="rf-num">Red Flag #4</span><div class="rf-text" id="rf4">Not following @Kuabo.co on social media</div><div class="rf-fix">✅ Follow us — daily tips for Global Movers →</div></div></div>
-      <div class="rf-card rev"><div class="rf-flag">🚩</div><div class="rf-content"><span class="rf-num">Red Flag #5</span><div class="rf-text" id="rf5">Having a Global Mover friend without Kuabo</div><div class="rf-fix">✅ Share this page — change their life →</div></div></div>
-      <div class="rf-card rev"><div class="rf-flag">🚩</div><div class="rf-content"><span class="rf-num">Red Flag #6</span><div class="rf-text" id="rf6">Arriving with no plan, no guide, no Kuabo</div><div class="rf-fix">✅ Free app at kuabo.co →</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- NOT A LOTTERY -->
-<section class="sect">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag">⚠️ <span id="nltag">Important</span></div><h2 id="nlh2">Kuabo is NOT a visa lottery app.</h2><p class="ssub" id="nlsub">Kuabo starts where your visa ends. We help you with everything that comes after.</p></div>
-    <div class="nl-box rev"><div class="cmp-wrap"><div class="cmp no"><div class="cmph">❌ <span id="cnoh">Kuabo does NOT</span></div><div class="cmpi">✗ <span id="cn1">Enter the DV Lottery for you</span></div><div class="cmpi">✗ <span id="cn2">File your visa application</span></div><div class="cmpi">✗ <span id="cn3">Handle settlement legal cases</span></div><div class="cmpi">✗ <span id="cn4">Replace an immigration lawyer</span></div></div><div style="display:flex;align-items:center;justify-content:center;font-size:26px;color:var(--gold);padding-top:54px;">→</div><div class="cmp yes"><div class="cmph">✅ <span id="cyesh">Kuabo DOES</span></div><div class="cmpi">✓ <span id="cy1">Guide you step by step after your visa</span></div><div class="cmpi">✓ <span id="cy2">Track deadlines — SSN, bank, taxes, ID</span></div><div class="cmpi">✓ <span id="cy3">AI assistant in your language 24/7</span></div><div class="cmpi">✓ <span id="cy4">Services map, budget, community, Army</span></div></div></div></div>
-  </div>
-</section>
-
-<!-- WHO -->
-<section class="sect" style="background:var(--bg2);">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag">👥 <span id="whotag">For everyone</span></div><h2 id="whoh2">For all Global Movers,<br/>whatever your situation</h2><p class="ssub" id="whosub">DV Lottery, work visa, family, Army, Dream Chaser — Kuabo adapts to you worldwide.</p></div>
-    <div class="who-grid">
-      <div class="who-card rev" style="--wc:var(--gold);"><div class="who-em">🎲</div><div class="who-title" id="w1t">DV Lottery</div><div class="who-desc" id="w1d">Diversity Visa — full guide from day one</div><div class="who-geo">🇺🇸 USA</div></div>
-      <div class="who-card rev" style="--wc:var(--blue);"><div class="who-em">💼</div><div class="who-title" id="w2t">Work visa</div><div class="who-desc" id="w2d">H-1B, L-1, O-1, TN — pro integration</div><div class="who-geo">🇺🇸 🇫🇷</div></div>
-      <div class="who-card rev" style="--wc:var(--purple);"><div class="who-em">👨‍👩‍👧</div><div class="who-title" id="w3t">Family</div><div class="who-desc" id="w3d">I-130, Fiancé(e) — join your loved ones</div><div class="who-geo">🇺🇸 🇨🇦</div></div>
-      <div class="who-card rev" style="--wc:var(--green);"><div class="who-em">🎖️</div><div class="who-title" id="w4t">US Army</div><div class="who-desc" id="w4d">Soldiers &amp; DV — naturalization in 1 year</div><div class="who-geo">🇺🇸 USA</div></div>
-      <div class="who-card rev" style="--wc:var(--orange);"><div class="who-em">🎓</div><div class="who-title" id="w5t">Students</div><div class="who-desc" id="w5d">F-1, OPT, STEM — student life abroad</div><div class="who-geo">🇺🇸 🇫🇷 🇨🇦</div></div>
-      <div class="who-card rev" style="--wc:var(--teal);"><div class="who-em">🌍</div><div class="who-title" id="w6t">Dream Chasers</div><div class="who-desc" id="w6d">New Arrivals starting fresh anywhere</div><div class="who-geo">🌍 Worldwide</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="sect">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag">📋 <span id="howtag">How it works</span></div><h2 id="howh2">3 steps, everything becomes simple</h2></div>
-    <div class="steps-row">
-      <div class="step-c rev"><div class="step-n">1</div><div class="step-t" id="st1">Create your profile</div><div class="step-d" id="sd1">Visa type, arrival date, country. Kuabo calculates everything automatically.</div></div>
-      <div class="step-c rev"><div class="step-n">2</div><div class="step-t" id="st2">Your roadmap activates</div><div class="step-d" id="sd2">Steps organized by priority. Check them off and earn badges.</div></div>
-      <div class="step-c rev"><div class="step-n">3</div><div class="step-t" id="st3">You advance guided</div><div class="step-d" id="sd3">AI, services map, community — you're never alone, wherever you settle.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- WORLD CUP -->
-<section class="sect" style="background:var(--bg2);">
-  <div class="sect-inner"><div class="rev"><div class="wcb"><div style="font-size:48px;animation:bounce2 2s ease-in-out infinite;flex-shrink:0;">🏆</div><div><h3 style="font-family:'Nunito',sans-serif;font-size:18px;font-weight:900;color:var(--navy);margin-bottom:6px;" id="wct">World Cup 2026 — Kuabo is ready</h3><p style="font-size:13px;color:var(--muted);line-height:1.65;font-weight:600;" id="wcd">USA, Canada, Mexico — Kuabo prepares your trip, visa, hotels, tickets for a stress-free experience.</p><div style="display:flex;gap:7px;margin-top:10px;flex-wrap:wrap;"><span style="padding:4px 12px;border-radius:var(--r-sm);background:rgba(249,115,22,.1);font-size:11px;font-weight:800;color:var(--orange);border:2px solid rgba(249,115,22,.2);">🇺🇸 USA</span><span style="padding:4px 12px;border-radius:var(--r-sm);background:rgba(249,115,22,.1);font-size:11px;font-weight:800;color:var(--orange);border:2px solid rgba(249,115,22,.2);">🇨🇦 Canada</span><span style="padding:4px 12px;border-radius:var(--r-sm);background:rgba(249,115,22,.1);font-size:11px;font-weight:800;color:var(--orange);border:2px solid rgba(249,115,22,.2);">🇲🇽 Mexico</span></div></div></div></div></div>
-</section>
-
-<!-- SOCIAL -->
-<section class="sect">
-  <div class="sect-inner">
-    <div class="rev"><div class="stag">📣 <span id="soctag">Community</span></div><h2 id="soctit">Follow us, stay informed</h2><p class="ssub" id="socsub">News, settlement tips, launch date — all on our socials.</p></div>
-    <div class="srow rev">
-      <a class="socbtn" href="https://instagram.com/kuabo_app" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".5" fill="currentColor"/></svg>@kuabo_app</a>
-      <a class="socbtn" href="https://tiktok.com/@kuabo_app" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/></svg>@kuabo_app</a>
-      <a class="socbtn" href="https://twitter.com/kuabo_app" target="_blank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@kuabo_app</a>
-    </div>
-  </div>
-</section>
-
+<!-- FAQ -->
 <!-- KUA, VOTRE AGENT IA -->
-<section class="kx" id="kua">
+<section class="kx" id="kua-agent">
   <div class="kx-in">
     <div>
-      <div class="kx-kick" id="kxKick">New · coming soon to iPhone</div>
-      <h2 id="kxH2">Kua, your <em>AI agent</em>.</h2>
-      <div class="kx-qual"><span id="kxQ1">Smart</span><i></i><span id="kxQ2">Autonomous</span></div>
-      <p class="kx-lead" id="kxLead">Kua doesn't just answer: it acts for you. Before, during and after your trip, it takes care of everything — and Kuabo takes care of your settling in.</p>
+      <div class="kx-kick" id="kxKick"><span data-lang="en">New · coming soon to iPhone</span><span data-lang="fr">Nouveau · bientôt sur iPhone</span><span data-lang="es">Nuevo · muy pronto en iPhone</span></div>
+      <h2 id="kxH2"><span data-lang="en">Kua, your <em>AI agent</em>.</span><span data-lang="fr">Kua, votre <em>agent IA</em>.</span><span data-lang="es">Kua, tu <em>agente de IA</em>.</span></h2>
+      <div class="kx-qual"><span id="kxQ1"><span data-lang="en">Smart</span><span data-lang="fr">Intelligent</span><span data-lang="es">Inteligente</span></span><i></i><span id="kxQ2"><span data-lang="en">Autonomous</span><span data-lang="fr">Autonome</span><span data-lang="es">Autónomo</span></span></div>
+      <p class="kx-lead" id="kxLead"><span data-lang="en">Kua doesn't just answer: it acts for you. Before, during and after your trip, it takes care of everything — and Kuabo takes care of your settling in.</span><span data-lang="fr">Kua ne se contente pas de répondre : il agit pour vous. Avant, pendant et après le voyage, il s'occupe de tout — et Kuabo s'occupe de votre installation.</span><span data-lang="es">Kua no solo responde: actúa por ti. Antes, durante y después del viaje, se ocupa de todo — y Kuabo se ocupa de tu instalación.</span></p>
       <div class="kx-six">
-        <div class="kx-c"><div class="e">✈️</div><div><b id="kxA1">It plans your trip</b><span id="kxA1s">cheapest flight, passport, packing</span></div></div>
-        <div class="kx-c"><div class="e">🚌</div><div><b id="kxA2">It guides you on the ground</b><span id="kxA2s">buses, good spots, today's rate</span></div></div>
-        <div class="kx-c"><div class="e">🛬</div><div><b id="kxA3">It tracks your flight</b><span id="kxA3s">and reassures your family</span></div></div>
-        <div class="kx-c"><div class="e">🛡️</div><div><b id="kxA4">It spots scams</b><span id="kxA4s">a shady message? it tells you</span></div></div>
-        <div class="kx-c"><div class="e">🏠</div><div><b id="kxA5">It checks you got home</b><span id="kxA5s">safe and sound — never tracking you</span></div></div>
-        <div class="kx-c"><div class="e">🌍</div><div><b id="kxA6">It speaks your language</b><span id="kxA6s">in writing or out loud</span></div></div>
-        <div class="kx-plus" id="kxPlus">+ and much more…</div>
+        <div class="kx-c"><div class="e">✈️</div><div><b id="kxA1"><span data-lang="en">It plans your trip</span><span data-lang="fr">Il prépare votre voyage</span><span data-lang="es">Prepara tu viaje</span></b><span id="kxA1s"><span data-lang="en">cheapest flight, passport, packing</span><span data-lang="fr">vol le moins cher, passeport, valise</span><span data-lang="es">el vuelo más barato, pasaporte, maleta</span></span></div></div>
+        <div class="kx-c"><div class="e">🚌</div><div><b id="kxA2"><span data-lang="en">It guides you on the ground</span><span data-lang="fr">Il vous guide sur place</span><span data-lang="es">Te guía en el lugar</span></b><span id="kxA2s"><span data-lang="en">buses, good spots, today's rate</span><span data-lang="fr">bus, bonnes adresses, taux du jour</span><span data-lang="es">autobuses, buenos sitios, tipo de cambio</span></span></div></div>
+        <div class="kx-c"><div class="e">🛬</div><div><b id="kxA3"><span data-lang="en">It tracks your flight</span><span data-lang="fr">Il suit votre vol</span><span data-lang="es">Sigue tu vuelo</span></b><span id="kxA3s"><span data-lang="en">and reassures your family</span><span data-lang="fr">et rassure votre famille</span><span data-lang="es">y tranquiliza a tu familia</span></span></div></div>
+        <div class="kx-c"><div class="e">🛡️</div><div><b id="kxA4"><span data-lang="en">It spots scams</span><span data-lang="fr">Il repère les arnaques</span><span data-lang="es">Detecta las estafas</span></b><span id="kxA4s"><span data-lang="en">a shady message? it tells you</span><span data-lang="fr">un message douteux ? il vous le dit</span><span data-lang="es">¿un mensaje dudoso? te lo dice</span></span></div></div>
+        <div class="kx-c"><div class="e">🏠</div><div><b id="kxA5"><span data-lang="en">It checks you got home</span><span data-lang="fr">Il vérifie votre retour</span><span data-lang="es">Comprueba que llegaste</span></b><span id="kxA5s"><span data-lang="en">safe and sound — never tracking you</span><span data-lang="fr">bien rentré ? sans jamais vous suivre</span><span data-lang="es">sano y salvo — sin seguirte nunca</span></span></div></div>
+        <div class="kx-c"><div class="e">🌍</div><div><b id="kxA6"><span data-lang="en">It speaks your language</span><span data-lang="fr">Il parle votre langue</span><span data-lang="es">Habla tu idioma</span></b><span id="kxA6s"><span data-lang="en">in writing or out loud</span><span data-lang="fr">à l'écrit ou à voix haute</span><span data-lang="es">por escrito o en voz alta</span></span></div></div>
+        <div class="kx-plus" id="kxPlus"><span data-lang="en">+ and much more…</span><span data-lang="fr">+ et bien plus encore…</span><span data-lang="es">+ y mucho más…</span></div>
       </div>
-      <div class="kx-ens" id="kxEns"><b>Kua and Kuabo, together:</b> your Akwɛ, passport and offers stay in Kuabo — and Kua knows when to take you there.</div>
+      <div class="kx-ens" id="kxEns"><span data-lang="en"><b>Kua and Kuabo, together:</b> your Akwɛ, passport and offers stay in Kuabo — and Kua knows when to take you there.</span><span data-lang="fr"><b>Kua et Kuabo, ensemble :</b> vos Akwɛ, votre passeport et vos offres restent dans Kuabo — et Kua sait vous y emmener au bon moment.</span><span data-lang="es"><b>Kua y Kuabo, juntos:</b> tus Akwɛ, tu pasaporte y tus ofertas siguen en Kuabo — y Kua sabe llevarte allí en el momento justo.</span></div>
       <div class="kx-cta">
         <span class="kx-store" style="opacity:.45;filter:grayscale(1);cursor:default" aria-disabled="true"><img src="/kua-app/appstore.svg" alt="Kua — coming soon to the App Store" width="162" height="54"/></span>
-        <a class="kx-site" href="https://kua.kuabo.co" target="_blank" rel="noopener" id="kxSite">See Kua's website →</a>
+        <a class="kx-site" href="https://kua.kuabo.co" target="_blank" rel="noopener" id="kxSite"><span data-lang="en">See Kua's website →</span><span data-lang="fr">Voir le site de Kua →</span><span data-lang="es">Ver el sitio de Kua →</span></a>
       </div>
-      <div class="kx-petit" id="kxPetit">iPhone · FR · EN · ES · coming soon</div>
+      <div class="kx-petit" id="kxPetit"><span data-lang="en">iPhone · FR · EN · ES · coming soon</span><span data-lang="fr">iPhone · FR · EN · ES · bientôt disponible</span><span data-lang="es">iPhone · FR · EN · ES · muy pronto</span></div>
     </div>
     <div class="kx-scene" aria-hidden="true">
-      <div class="kx-ph p2"><div class="kx-ec"><div class="kx-top"><img src="/kua-app/visage.png" alt="" width="28" height="28"/><div><b>Kua</b><span class="kxOn">online</span></div></div><div class="kx-body">
-        <div class="kx-m moi" id="kxS2q">where is mom's plane?</div>
-        <div class="kx-card"><div class="t">✈️ AF702 · <span class="kx-tag" id="kxVol">In flight</span></div><div class="kx-vol"><b>CDG</b><div class="l"><i></i></div><b>COO</b></div><div class="s" id="kxS2a">Lands 6:12 pm in Cotonou · 14 min late</div><div class="kx-btns"><span class="ok" id="kxS2b">🔔 Tell me when it lands</span></div></div>
-        <div class="kx-m k" id="kxS2c">I'll tell you as soon as it lands 🛬</div>
+      <div class="kx-ph p2"><div class="kx-ec"><div class="kx-top"><img src="/kua-app/visage.png" alt="" width="28" height="28"/><div><b>Kua</b><span class="kxOn"><span data-lang="en">online</span><span data-lang="fr">en ligne</span><span data-lang="es">en línea</span></span></div></div><div class="kx-body">
+        <div class="kx-m moi" id="kxS2q"><span data-lang="en">where is mom's plane?</span><span data-lang="fr">il est où l'avion de maman ?</span><span data-lang="es">¿dónde está el avión de mamá?</span></div>
+        <div class="kx-card"><div class="t">✈️ AF702 · <span class="kx-tag" id="kxVol"><span data-lang="en">In flight</span><span data-lang="fr">En vol</span><span data-lang="es">En vuelo</span></span></div><div class="kx-vol"><b>CDG</b><div class="l"><i></i></div><b>COO</b></div><div class="s" id="kxS2a"><span data-lang="en">Lands 6:12 pm in Cotonou · 14 min late</span><span data-lang="fr">Arrivée 18 h 12 à Cotonou · 14 min de retard</span><span data-lang="es">Llega 18:12 a Cotonú · 14 min de retraso</span></div><div class="kx-btns"><span class="ok" id="kxS2b"><span data-lang="en">🔔 Tell me when it lands</span><span data-lang="fr">🔔 Préviens-moi à l'atterrissage</span><span data-lang="es">🔔 Avísame al aterrizar</span></span></div></div>
+        <div class="kx-m k" id="kxS2c"><span data-lang="en">I'll tell you as soon as it lands 🛬</span><span data-lang="fr">Je te préviens dès qu'il atterrit 🛬</span><span data-lang="es">Te aviso en cuanto aterrice 🛬</span></div>
       </div></div></div>
-      <div class="kx-ph p1"><div class="kx-ec"><div class="kx-top"><img src="/kua-app/visage.png" alt="" width="28" height="28"/><div><b>Kua</b><span class="kxOn">online</span></div></div><div class="kx-body">
-        <div class="kx-m moi" id="kxS1q">next 70 bus?</div>
-        <div class="kx-card"><div class="t">🚌 70 · Georgia Ave <span class="kx-tag" id="kxLive">live</span></div>
+      <div class="kx-ph p1"><div class="kx-ec"><div class="kx-top"><img src="/kua-app/visage.png" alt="" width="28" height="28"/><div><b>Kua</b><span class="kxOn"><span data-lang="en">online</span><span data-lang="fr">en ligne</span><span data-lang="es">en línea</span></span></div></div><div class="kx-body">
+        <div class="kx-m moi" id="kxS1q"><span data-lang="en">next 70 bus?</span><span data-lang="fr">le prochain bus 70 ?</span><span data-lang="es">¿el próximo bus 70?</span></div>
+        <div class="kx-card"><div class="t">🚌 70 · Georgia Ave <span class="kx-tag" id="kxLive"><span data-lang="en">live</span><span data-lang="fr">en direct</span><span data-lang="es">en directo</span></span></div>
           <div class="kx-row"><span>Georgia Ave &amp; Colesville</span><span class="min">3 min</span></div>
-          <div class="kx-row"><span id="kxS1b">the next one</span><span class="min">11 min</span></div>
-          <div class="kx-btns"><span class="ok" id="kxS1c">🔔 Remind me</span><span id="kxS1d">🧭 Leave at…</span></div></div>
-        <div class="kx-m moi" id="kxS3q">I got this text, is it real?</div>
-        <div class="kx-m k" id="kxS3r">🛡️ Careful: this looks like a scam. Don't tap the link.</div>
+          <div class="kx-row"><span id="kxS1b"><span data-lang="en">the next one</span><span data-lang="fr">le suivant</span><span data-lang="es">el siguiente</span></span><span class="min">11 min</span></div>
+          <div class="kx-btns"><span class="ok" id="kxS1c"><span data-lang="en">🔔 Remind me</span><span data-lang="fr">🔔 Préviens-moi</span><span data-lang="es">🔔 Avísame</span></span><span id="kxS1d"><span data-lang="en">🧭 Leave at…</span><span data-lang="fr">🧭 Pars à…</span><span data-lang="es">🧭 Sal a las…</span></span></div></div>
+        <div class="kx-m moi" id="kxS3q"><span data-lang="en">I got this text, is it real?</span><span data-lang="fr">on m'a envoyé ce SMS, c'est vrai ?</span><span data-lang="es">me llegó este SMS, ¿es real?</span></div>
+        <div class="kx-m k" id="kxS3r"><span data-lang="en">🛡️ Careful: this looks like a scam. Don't tap the link.</span><span data-lang="fr">🛡️ Attention : ça ressemble à une arnaque. Ne clique pas sur le lien.</span><span data-lang="es">🛡️ Cuidado: parece una estafa. No toques el enlace.</span></div>
       </div></div></div>
-      <div class="kx-notif"><div class="h"><img src="/kua-app/icone.png" alt="" width="18" height="18"/>Kua · <span id="kxNow">now</span></div><b id="kxNT">🏠 Home safe?</b><div class="nb"><span id="kxNO">Yes ✓</span><span>+15 min</span></div></div>
+      <div class="kx-notif"><div class="h"><img src="/kua-app/icone.png" alt="" width="18" height="18"/>Kua · <span id="kxNow"><span data-lang="en">now</span><span data-lang="fr">maintenant</span><span data-lang="es">ahora</span></span></div><b id="kxNT"><span data-lang="en">🏠 Home safe?</span><span data-lang="fr">🏠 Bien arrivé ?</span><span data-lang="es">🏠 ¿Llegaste bien?</span></b><div class="nb"><span id="kxNO"><span data-lang="en">Yes ✓</span><span data-lang="fr">Oui ✓</span><span data-lang="es">Sí ✓</span></span><span>+15 min</span></div></div>
       <div class="kx-rond"><img src="/kua-app/kua.png" alt="" width="190" height="227"/></div>
     </div>
   </div>
@@ -576,26 +773,26 @@
 <!-- PARTENAIRES (Kuabo Partner) -->
 <section class="kp" id="partners">
   <div class="kp-in">
-    <div class="kp-kick" id="kpKick">Kuabo Partner · for businesses</div>
-    <h2 id="kpH2">The businesses that welcome new arrivals.</h2>
-    <p class="kp-lead" id="kpLead">Restaurants, hotels, salons, shops: Kuabo brings newcomers, travellers and the diaspora to your door — and the Kuabo Partner app helps you welcome them.</p>
+    <div class="kp-kick" id="kpKick"><span data-lang="en">Kuabo Partner · for businesses</span><span data-lang="fr">Kuabo Partner · pour les commerces</span><span data-lang="es">Kuabo Partner · para negocios</span></div>
+    <h2 id="kpH2"><span data-lang="en">The businesses that welcome new arrivals.</span><span data-lang="fr">Les commerces qui accueillent ceux qui arrivent.</span><span data-lang="es">Los negocios que reciben a quienes llegan.</span></h2>
+    <p class="kp-lead" id="kpLead"><span data-lang="en">Restaurants, hotels, salons, shops: Kuabo brings newcomers, travellers and the diaspora to your door — and the Kuabo Partner app helps you welcome them.</span><span data-lang="fr">Restaurants, hôtels, salons, boutiques : Kuabo amène chez vous les nouveaux arrivants, les voyageurs et la diaspora — et l'appli Kuabo Partner vous aide à les accueillir.</span><span data-lang="es">Restaurantes, hoteles, salones, tiendas: Kuabo lleva a tu puerta a los recién llegados, viajeros y la diáspora — y la app Kuabo Partner te ayuda a recibirlos.</span></p>
     <div class="kp-et">
-      <div class="kp-e"><div class="n">1</div><b id="kpE1">Sign up your business</b><span id="kpE1s">on partners.kuabo.co, in 2 minutes. Our team checks every business.</span></div>
-      <div class="kp-e"><div class="n">2</div><b id="kpE2">Publish your offers</b><span id="kpE2s">from the Kuabo Partner app: a discount, a welcome gift… your choice.</span></div>
-      <div class="kp-e"><div class="n">3</div><b id="kpE3">Members come to you</b><span id="kpE3s">they find you on the Kuabo map and scan your QR on site.</span></div>
+      <div class="kp-e"><div class="n">1</div><b id="kpE1"><span data-lang="en">Sign up your business</span><span data-lang="fr">Inscrivez votre commerce</span><span data-lang="es">Registra tu negocio</span></b><span id="kpE1s"><span data-lang="en">on partners.kuabo.co, in 2 minutes. Our team checks every business.</span><span data-lang="fr">sur partners.kuabo.co, en 2 minutes. L'équipe vérifie chaque commerce.</span><span data-lang="es">en partners.kuabo.co, en 2 minutos. El equipo verifica cada negocio.</span></span></div>
+      <div class="kp-e"><div class="n">2</div><b id="kpE2"><span data-lang="en">Publish your offers</span><span data-lang="fr">Publiez vos offres</span><span data-lang="es">Publica tus ofertas</span></b><span id="kpE2s"><span data-lang="en">from the Kuabo Partner app: a discount, a welcome gift… your choice.</span><span data-lang="fr">depuis l'appli Kuabo Partner : une réduction, un cadeau de bienvenue… vous choisissez.</span><span data-lang="es">desde la app Kuabo Partner: un descuento, un regalo de bienvenida… tú eliges.</span></span></div>
+      <div class="kp-e"><div class="n">3</div><b id="kpE3"><span data-lang="en">Members come to you</span><span data-lang="fr">Les membres viennent chez vous</span><span data-lang="es">Los miembros vienen a ti</span></b><span id="kpE3s"><span data-lang="en">they find you on the Kuabo map and scan your QR on site.</span><span data-lang="fr">ils vous trouvent sur la carte de Kuabo et scannent votre QR sur place.</span><span data-lang="es">te encuentran en el mapa de Kuabo y escanean tu QR en el local.</span></span></div>
     </div>
     <div class="kp-duo">
-      <div class="kp-bleu"><h3 id="kpAvH">What you get</h3><ul>
-        <li>✅<span id="kpAv1"><b>Free</b> for businesses: no subscription.</span></li>
-        <li>📍<span id="kpAv2"><b>On the Kuabo map</b>, close to people who just arrived.</span></li>
-        <li>📣<span id="kpAv3"><b>Featured on our socials</b>: Instagram, TikTok, X (@kuabo_app).</span></li>
-        <li>📱<span id="kpAv4"><b>The Kuabo Partner app</b> (App Store): your offers, customers and promo link, in your pocket.</span></li>
+      <div class="kp-bleu"><h3 id="kpAvH"><span data-lang="en">What you get</span><span data-lang="fr">Ce que vous y gagnez</span><span data-lang="es">Lo que ganas</span></h3><ul>
+        <li>✅<span id="kpAv1"><span data-lang="en"><b>Free</b> for businesses: no subscription.</span><span data-lang="fr"><b>Gratuit</b> pour le commerce : pas d'abonnement.</span><span data-lang="es"><b>Gratis</b> para el negocio: sin suscripción.</span></span></li>
+        <li>📍<span id="kpAv2"><span data-lang="en"><b>On the Kuabo map</b>, close to people who just arrived.</span><span data-lang="fr"><b>Visible sur la carte</b> de Kuabo, près de ceux qui arrivent.</span><span data-lang="es"><b>Visible en el mapa</b> de Kuabo, cerca de quienes llegan.</span></span></li>
+        <li>📣<span id="kpAv3"><span data-lang="en"><b>Featured on our socials</b>: Instagram, TikTok, X (@kuabo_app).</span><span data-lang="fr"><b>Mis en avant sur nos réseaux</b> : Instagram, TikTok, X (@kuabo_app).</span><span data-lang="es"><b>Destacado en nuestras redes</b>: Instagram, TikTok, X (@kuabo_app).</span></span></li>
+        <li>📱<span id="kpAv4"><span data-lang="en"><b>The Kuabo Partner app</b> (App Store): your offers, customers and promo link, in your pocket.</span><span data-lang="fr"><b>L'appli Kuabo Partner</b> (App Store) : vos offres, vos clients et votre lien de promotion, dans votre poche.</span><span data-lang="es"><b>La app Kuabo Partner</b> (App Store): tus ofertas, tus clientes y tu enlace de promoción, en tu bolsillo.</span></span></li>
       </ul></div>
-      <div class="kp-cats"><h3 id="kpCaH">Who can become a partner?</h3><div class="kp-chips">
-        <span>🍽️ <span id="kpC1">Restaurants</span></span><span>🏨 <span id="kpC2">Hotels</span></span><span>💈 <span id="kpC3">Salons</span></span><span>🛍️ <span id="kpC4">Shops</span></span><span>🚕 <span id="kpC5">Transport</span></span><span>⚕️ <span id="kpC6">Health</span></span><span>📱 <span id="kpC7">Services</span></span>
-      </div><div class="kp-benin" id="kpBenin">🇧🇯 Our first partners are in Benin — and the network is growing.</div></div>
+      <div class="kp-cats"><h3 id="kpCaH"><span data-lang="en">Who can become a partner?</span><span data-lang="fr">Qui peut devenir partenaire ?</span><span data-lang="es">¿Quién puede ser socio?</span></h3><div class="kp-chips">
+        <span>🍽️ <span id="kpC1"><span data-lang="en">Restaurants</span><span data-lang="fr">Restaurants</span><span data-lang="es">Restaurantes</span></span></span><span>🏨 <span id="kpC2"><span data-lang="en">Hotels</span><span data-lang="fr">Hôtels</span><span data-lang="es">Hoteles</span></span></span><span>💈 <span id="kpC3"><span data-lang="en">Salons</span><span data-lang="fr">Salons</span><span data-lang="es">Salones</span></span></span><span>🛍️ <span id="kpC4"><span data-lang="en">Shops</span><span data-lang="fr">Boutiques</span><span data-lang="es">Tiendas</span></span></span><span>🚕 <span id="kpC5"><span data-lang="en">Transport</span><span data-lang="fr">Transport</span><span data-lang="es">Transporte</span></span></span><span>⚕️ <span id="kpC6"><span data-lang="en">Health</span><span data-lang="fr">Santé</span><span data-lang="es">Salud</span></span></span><span>📱 <span id="kpC7"><span data-lang="en">Services</span><span data-lang="fr">Services</span><span data-lang="es">Servicios</span></span></span>
+      </div><div class="kp-benin" id="kpBenin"><span data-lang="en">🇧🇯 Our first partners are in Benin — and the network is growing.</span><span data-lang="fr">🇧🇯 Les premiers partenaires sont au Bénin — et le réseau grandit.</span><span data-lang="es">🇧🇯 Los primeros socios están en Benín — y la red crece.</span></div></div>
     </div>
-    <div class="kp-cta"><a class="kp-b1" href="https://partners.kuabo.co" target="_blank" rel="noopener" id="kpB1">Become a partner →</a><a class="kp-b2" href="https://apps.apple.com/app/id6815081432" target="_blank" rel="noopener" id="kpB2">📱 Download Kuabo Partner</a></div>
+    <div class="kp-cta"><a class="kp-b1" href="https://partners.kuabo.co" target="_blank" rel="noopener" id="kpB1"><span data-lang="en">Become a partner →</span><span data-lang="fr">Devenir partenaire →</span><span data-lang="es">Ser socio →</span></a><a class="kp-b2" href="https://apps.apple.com/app/id6815081432" target="_blank" rel="noopener" id="kpB2"><span data-lang="en">📱 Download Kuabo Partner</span><span data-lang="fr">📱 Télécharger Kuabo Partner</span><span data-lang="es">📱 Descargar Kuabo Partner</span></a></div>
   </div>
 </section>
 
@@ -604,56 +801,171 @@
   <div class="fs-inner">
     <a href="/founder" style="flex:none;"><img class="fs-photo" src="/founder/stephane-adannou.jpg" alt="Stéphane Adannou, founder of Kuabo" width="150" height="150"/></a>
     <div class="fs-text">
-      <div class="fs-eyebrow" id="fsEyebrow">Behind Kuabo</div>
-      <h2 class="fs-h2" id="fsH2">One founder. A mission for 281M movers.</h2>
-      <p class="fs-p" id="fsP">From Bénin to the US — Stéphane Adannou built Kuabo alone, from the first line of code to an app approved by Apple.</p>
-      <a class="fs-link" href="/founder" id="fsLink">Meet the founder →</a>
+      <div class="fs-eyebrow" id="fsEyebrow"><span data-lang="en">Behind Kuabo</span><span data-lang="fr">Derrière Kuabo</span><span data-lang="es">Detrás de Kuabo</span></div>
+      <h2 class="fs-h2" id="fsH2"><span data-lang="en">One founder. A mission for 281M movers.</span><span data-lang="fr">Un fondateur. Une mission pour 281M de movers.</span><span data-lang="es">Un fundador. Una misión para 281M de movers.</span></h2>
+      <p class="fs-p" id="fsP"><span data-lang="en">From Bénin to the US — Stéphane Adannou built Kuabo alone, from the first line of code to an app approved by Apple.</span><span data-lang="fr">Du Bénin aux USA — Stéphane Adannou a bâti Kuabo seul, de la première ligne de code à une app approuvée par Apple.</span><span data-lang="es">De Benín a EE.UU. — Stéphane Adannou construyó Kuabo solo, desde la primera línea de código hasta una app aprobada por Apple.</span></p>
+      <a class="fs-link" href="/founder" id="fsLink"><span data-lang="en">Meet the founder →</span><span data-lang="fr">Découvrir le fondateur →</span><span data-lang="es">Conoce al fundador →</span></a>
     </div>
   </div>
 </section>
 
-<!-- CTA FINAL -->
-<section class="cta-sect">
-  <div class="rev" style="position:relative;z-index:1;max-width:520px;margin:0 auto;text-align:center;">
-    <svg width="90" height="90" viewBox="0 0 80 80" style="margin:0 auto 16px;display:block;animation:mascotBounce 2s ease-in-out infinite;filter:drop-shadow(0 8px 20px rgba(232,184,75,.25));"><use href="#bird"/></svg>
-    <h2 style="color:#fff;margin-bottom:12px;" id="ctah">Kuabo is here 🎉</h2>
-    <p style="font-size:16px;color:rgba(255,255,255,.55);max-width:440px;margin:0 auto 30px;font-weight:600;" id="ctas">Download Kuabo for free on the App Store. On Android? Leave your email and we'll let you know as soon as it lands on Google Play.</p>
-    <div class="cta-stores" style="margin-bottom:20px">
-      <a class="cta-sbtn" onclick="openStore('ios')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg><div><span class="cta-sbtn-lbl" id="s3l">Coming soon on</span><span class="cta-sbtn-nm">App Store</span></div></a>
-      <a class="cta-sbtn" onclick="openStore('android')"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.76c.3.17.65.19.96.08L13.64 12 3.04.17c-.29.1-.53.31-.66.62-.14.31-.14.66.01.97L8.82 12l-5.64 10.76c-.15.31-.16.67 0 1zm4.14-9.42l1.95 1.95-8.43 4.75 6.48-6.7zm1.95-4.68L7.32 11.6.84 4.9l8.43 4.76zm9.7-3.94l-3.98-2.27-2.2 2.2 2.2 2.2 4-2.13zM15.08 12l-3.05 3.05L8.98 12l3.05-3.05L15.08 12z"/></svg><div><span class="cta-sbtn-lbl" id="s4l">Coming soon on</span><span class="cta-sbtn-nm">Google Play</span></div></a>
+
+<section class="s alt">
+  <div class="wrap">
+    <div class="s-head reveal">
+      <span class="s-tag" data-lang="en">FAQ</span><span class="s-tag" data-lang="fr">FAQ</span><span class="s-tag" data-lang="es">FAQ</span>
+      <div data-lang="en"><h2>Frequently asked</h2></div>
+      <div data-lang="fr"><h2>Questions fréquentes</h2></div>
+      <div data-lang="es"><h2>Preguntas frecuentes</h2></div>
     </div>
-    <div class="cta-form"><input class="cta-input" type="email" id="ei-cta" placeholder="Your email address" onkeydown="if(event.key==='Enter')kuaboSubmit('cta')"/><button class="btn-gold" id="eb-cta" onclick="kuaboSubmit('cta')">Android? Notify me</button></div>
-    <div style="font-size:12px;min-height:18px;color:rgba(255,255,255,.5);margin-bottom:6px;" id="em-cta"></div>
-    <div class="cline hidden" style="color:rgba(255,255,255,.4);"><span class="cnum">0</span> <span id="ctacl">people already signed up</span></div>
+    <div class="faq" data-lang="en">
+      <details><summary>Is Kuabo really free?</summary><p>Yes — Kuabo is free. Later, one-on-one help from a mentor will be offered as a paid option, only if you choose it.</p></details>
+      <details><summary>Is Kuabo a visa lottery app?</summary><p>No. Kuabo starts where your visa ends — it guides you step by step after you've obtained your visa.</p></details>
+      <details><summary>Which countries does it cover?</summary><p>Worldwide — 170+ countries. The deepest guidance is for the USA today, with more destinations rolling out.</p></details>
+      <details><summary>What languages are available?</summary><p>French, English and Spanish, fully.</p></details>
+    </div>
+    <div class="faq" data-lang="fr">
+      <details><summary>Kuabo est-il vraiment gratuit ?</summary><p>Oui — Kuabo est gratuite. Plus tard, l'accompagnement par un mentor sera proposé en option payante, seulement si tu le choisis.</p></details>
+      <details><summary>Kuabo est-il une app de loterie de visa ?</summary><p>Non. Kuabo commence là où ton visa s'arrête — il te guide pas à pas une fois ton visa obtenu.</p></details>
+      <details><summary>Quels pays sont couverts ?</summary><p>Partout — 170+ pays. L'accompagnement le plus poussé concerne les USA aujourd'hui, d'autres destinations arrivent.</p></details>
+      <details><summary>Quelles langues sont disponibles ?</summary><p>Français, anglais et espagnol, entièrement.</p></details>
+    </div>
+    <div class="faq" data-lang="es">
+      <details><summary>¿Kuabo es realmente gratis?</summary><p>Sí — Kuabo es gratis. Más adelante, el acompañamiento de un mentor se ofrecerá como opción de pago, solo si lo eliges.</p></details>
+      <details><summary>¿Kuabo es una app de lotería de visas?</summary><p>No. Kuabo empieza donde termina tu visa — te guía paso a paso una vez la obtienes.</p></details>
+      <details><summary>¿Qué países cubre?</summary><p>Todo el mundo — 170+ países. La guía más completa es para EE.UU. hoy, con más destinos en camino.</p></details>
+      <details><summary>¿Qué idiomas están disponibles?</summary><p>Francés, inglés y español, completamente.</p></details>
+    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer>
-  <a class="flogo" href="#"><svg width="32" height="32" viewBox="0 0 80 80"><use href="#bird"/></svg><span class="flogo-name"><b>Ku</b>abo</span></a>
-  <p style="font-size:13px;color:var(--muted);margin-bottom:16px;font-weight:600;" id="ftag">For people brave enough to move. 🌍</p>
-  <div class="flinks"><a href="/guides">Guides</a><a href="/travel">Travel</a><a href="/founder">Founder</a><a href="/privacy" id="fpriv">Privacy</a><a href="/terms" id="fterm">Terms</a><a href="https://support.kuabo.co">Support</a><a href="mailto:support@kuabo.co">support@kuabo.co</a><a href="https://instagram.com/kuabo_app" target="_blank">Instagram</a><a href="https://tiktok.com/@kuabo_app" target="_blank">TikTok</a></div>
-  <div class="fcopy">© 2026 Kuabo. All rights reserved. Not just the USA. Everywhere. 🌍</div>
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="/coming"><img src="/kua.png" width="40" height="40" alt="Kua"/><b>K<i>u</i>abo</b></a>
+        <p class="foot-tag" data-lang="en">For those who dare to move. 🦉 Guiding 281M Global Movers, step by step.</p>
+        <p class="foot-tag" data-lang="fr">Pour ceux qui osent bouger. 🦉 On guide 281M de Global Movers, pas à pas.</p>
+        <p class="foot-tag" data-lang="es">Para quienes se atreven a moverse. 🦉 Guiamos a 281M de Global Movers, paso a paso.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4 data-lang="en">Explore</h4><h4 data-lang="fr">Explorer</h4><h4 data-lang="es">Explorar</h4>
+          <a href="#features"><span data-lang="en">Features</span><span data-lang="fr">Fonctionnalités</span><span data-lang="es">Funciones</span></a>
+          <a href="/guides">Guides</a>
+          <a href="/travel"><span data-lang="en">Travel</span><span data-lang="fr">Voyage</span><span data-lang="es">Viajes</span></a>
+          <a href="#download"><span data-lang="en">Get the app</span><span data-lang="fr">Avoir l'app</span><span data-lang="es">Obtener la app</span></a>
+        </div>
+        <div class="foot-col">
+          <h4>Kuabo</h4>
+          <a href="/founder"><span data-lang="en">The founder</span><span data-lang="fr">Le fondateur</span><span data-lang="es">El fundador</span></a>
+          <a href="https://support.kuabo.co"><span data-lang="en">Help & Support</span><span data-lang="fr">Aide & Support</span><span data-lang="es">Ayuda & Soporte</span></a>
+          <a href="/privacy"><span data-lang="en">Privacy</span><span data-lang="fr">Confidentialité</span><span data-lang="es">Privacidad</span></a>
+          <a href="/terms"><span data-lang="en">Terms</span><span data-lang="fr">Conditions</span><span data-lang="es">Términos</span></a>
+          <a href="mailto:support@kuabo.co">support@kuabo.co</a>
+        </div>
+        <div class="foot-col">
+          <h4 data-lang="en">Company</h4><h4 data-lang="fr">Entreprise</h4><h4 data-lang="es">Empresa</h4>
+          <a href="https://partners.kuabo.co" target="_blank"><span data-lang="en">For businesses</span><span data-lang="fr">Pour les commerces</span><span data-lang="es">Para comercios</span></a>
+          <a href="https://careers.kuabo.co" target="_blank"><span data-lang="en">Careers</span><span data-lang="fr">Carrières</span><span data-lang="es">Empleo</span></a>
+        </div>
+        <div class="foot-col">
+          <h4 data-lang="en">Follow</h4><h4 data-lang="fr">Suivre</h4><h4 data-lang="es">Seguir</h4>
+          <a href="https://instagram.com/kuabo_app" target="_blank">Instagram</a>
+          <a href="https://tiktok.com/@kuabo_app" target="_blank">TikTok</a>
+          <a href="https://twitter.com/kuabo_app" target="_blank">X / Twitter</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">© 2026 Kuabo. <span data-lang="en">Made for those brave enough to move.</span><span data-lang="fr">Fait pour ceux qui osent bouger.</span><span data-lang="es">Hecho para quienes se atreven a moverse.</span></div>
+  </div>
 </footer>
 
-<!-- DEMO MODAL -->
-<div class="dmov" id="dmo"><div class="dmbox"><button class="dmclose" onclick="closeDemo()">✕</button><div class="dmprog"><div class="dmdot on" id="dd0"></div><div class="dmdot" id="dd1"></div><div class="dmdot" id="dd2"></div><div class="dmdot" id="dd3"></div></div>
-<div class="dmstep on" id="ds0"><div class="dmphone"><div class="dmnotch"></div><div class="dmbody"><div style="font-size:7px;color:#e8b84b;font-weight:800;margin-bottom:5px;">🚀 PHASE 1 — LANDING</div><div style="height:4px;background:rgba(255,255,255,.08);border-radius:4px;overflow:hidden;margin-bottom:8px;"><div style="width:71%;height:100%;background:linear-gradient(90deg,#e8b84b,#2dd4bf);"></div></div></div></div><div class="dmtitle" id="dt0">Your roadmap</div><div class="dmdesc" id="dd0t">5 phases from arrival to citizenship. Check each step — Kuabo tracks and rewards you.</div><div class="dmbtns"><button class="dmskip" onclick="closeDemo()">Skip</button><button class="dmnext" onclick="demoNext()">Next →</button></div></div>
-<div class="dmstep" id="ds1"><div class="dmphone"><div class="dmnotch"></div><div class="dmbody"><div style="font-size:6px;color:#ef4444;font-weight:800;text-transform:uppercase;margin-bottom:5px;" id="dl0">⏱ Urgent deadline</div><div style="display:flex;align-items:center;gap:7px;padding:7px;background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);border-radius:8px;margin-bottom:6px;"><span style="font-size:20px;">🪪</span><div><div style="font-size:7px;font-weight:800;color:#fff;" id="dl1">Social Security #</div><div style="font-size:18px;font-weight:900;color:#ef4444;line-height:1;font-family:'Nunito',sans-serif;">4</div><div style="font-size:6px;color:rgba(255,255,255,.35);" id="dl2">days left</div></div></div></div></div><div class="dmtitle" id="dt1">Smart deadlines</div><div class="dmdesc" id="dd1t">Kuabo auto-calculates every deadline. SSN in 10 days, bank in 14, taxes in 90.</div><div class="dmbtns"><button class="dmskip" onclick="closeDemo()">Skip</button><button class="dmnext" onclick="demoNext()">Next →</button></div></div>
-<div class="dmstep" id="ds2"><div class="dmphone"><div class="dmnotch"></div><div class="dmbody"><div style="font-size:6px;color:#e8b84b;font-weight:800;text-align:center;margin-bottom:7px;">🎉 BADGE UNLOCKED!</div><div style="text-align:center;"><div style="font-size:28px;margin-bottom:4px;">😌</div><div style="width:48px;height:48px;border-radius:50%;background:rgba(232,184,75,.12);border:2px solid #e8b84b;margin:0 auto 5px;display:flex;align-items:center;justify-content:center;font-size:22px;animation:bpulse 2s ease-in-out infinite;">🪪</div><div style="font-size:8.5px;font-weight:900;color:#fff;font-family:'Nunito',sans-serif;" id="db0">SSN Master</div><div style="font-size:6px;color:#e8b84b;" id="db1">+200 points — Relief! 😌</div></div></div></div><div class="dmtitle" id="dt2">Badges &amp; Score</div><div class="dmdesc" id="dd2t">Every completed step unlocks a badge and earns points. Watch your score grow from 0 to 1000!</div><div class="dmbtns"><button class="dmskip" onclick="closeDemo()">Skip</button><button class="dmnext" onclick="demoNext()">Get notified →</button></div></div>
-<div class="dmstep" id="ds3"><svg width="80" height="80" viewBox="0 0 80 80" style="margin:0 auto 14px;display:block;animation:mascotBounce 2s ease-in-out infinite;"><use href="#bird"/></svg><div class="dmtitle" id="dt3">That's just the beginning!</div><div class="dmdesc" id="dd3t">AI, community, Army guide, services map, budget, jobs — all in one app. Worldwide. Free.</div><input type="email" id="ei-demo" placeholder="Your email" style="width:100%;margin-bottom:9px;padding:13px 16px;border:2.5px solid var(--border);border-radius:var(--r);font-size:14px;font-family:'Nunito Sans',sans-serif;color:var(--text);outline:none;" onkeydown="if(event.key==='Enter')kuaboSubmit('demo')"/><button class="btn-gold" id="eb-demo" onclick="kuaboSubmit('demo')" style="width:100%;margin-bottom:7px;">Android? Notify me</button><div style="font-size:12px;min-height:18px;color:var(--muted);" id="em-demo"></div></div>
-</div></div>
+<script src="/coming/official.js"></script>
 
-<!-- STORE MODAL -->
-<div class="stmov" id="stmo" onclick="closeStore()"><div class="dmbox" onclick="event.stopPropagation()" style="text-align:center;"><button class="dmclose" onclick="closeStore()">✕</button><svg width="72" height="72" viewBox="0 0 80 80" style="margin:0 auto 14px;display:block;animation:wiggle 3s ease-in-out infinite;"><use href="#bird"/></svg><div class="dmtitle" id="stot">Coming soon to Google Play</div><div class="dmdesc" id="stod">Kuabo is already on the App Store. On Android? Leave your email and we'll let you know as soon as it's out.</div><input type="email" id="ei-store" placeholder="Your email" style="width:100%;margin-bottom:9px;padding:13px 16px;border:2.5px solid var(--border);border-radius:var(--r);font-size:14px;font-family:'Nunito Sans',sans-serif;color:var(--text);outline:none;" onkeydown="if(event.key==='Enter')kuaboSubmit('store')"/><button class="btn-gold" id="eb-store" onclick="kuaboSubmit('store')" style="width:100%;margin-bottom:7px;">Notify me 🚀</button><div style="font-size:12px;min-height:18px;" id="em-store"></div></div></div>
+<!-- ═══ CODE PROMO + LIENS STORES (basculer live:true au lancement) ═══ -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-<!-- EMAIL MODAL -->
-<div class="emov" id="emo" onclick="if(event.target===this)closeEmail()"><div class="embox"><button class="dmclose" onclick="closeEmail()" aria-label="Close">✕</button><svg width="72" height="72" viewBox="0 0 80 80" style="margin:0 auto 14px;display:block;animation:mascotBounce 2s ease-in-out infinite;"><use href="#bird"/></svg><div class="dmtitle" id="emtitle">Kuabo on Android 🤖</div><div class="dmdesc" id="emdesc">Kuabo is already on the App Store. Leave your email and we'll let you know as soon as it lands on Google Play.</div><input type="email" id="ei-modal" class="em-input" placeholder="your@email.com" onkeydown="if(event.key==='Enter')submitEmailModal()" autocomplete="email"/><button class="btn-gold em-submit" id="eb-modal" onclick="submitEmailModal()">Notify me</button><div class="emsg-modal" id="em-modal"></div></div></div>
+const db = getFirestore(initializeApp({
+  apiKey: "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
+  authDomain: "kuabo-42d9c.firebaseapp.com",
+  projectId: "kuabo-42d9c",
+  storageBucket: "kuabo-42d9c.firebasestorage.app",
+  messagingSenderId: "774805697",
+  appId: "1:774805697:web:1fa1a94076fd8e7c8f5c40"
+}));
 
-<!-- CONFETTI CONTAINER -->
-<div id="cc"></div>
+// 🚀 STORES — passe live:true quand l'app est PUBLIQUE (iOS approuvé / Android après 14j)
+const STORES = {
+  ios:     { url: "https://apps.apple.com/app/id6782158717",                    live: true },
+  android: { url: "https://play.google.com/store/apps/details?id=co.kuabo.app", live: false },
+};
+document.querySelectorAll('a.store[data-store]').forEach(a => {
+  const s = STORES[a.dataset.store];
+  if (s && s.live) {
+    a.href = s.url; a.target = "_blank"; a.rel = "noopener";
+    a.querySelectorAll('.soon').forEach(el => el.remove());
+  }
+});
 
-<!-- JavaScript -->
-<script type="module" src="app.js?v=20261005b"></script>
+function genCode() {
+  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let code = "KUABO-";
+  for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
+  return code;
+}
+
+window.kuaboGetCode = async function() {
+  const lang = (document.documentElement.lang || 'en');
+  const T = {
+    en: { empty:"Enter your email", bad:"Invalid email", ok:"🎉 Here's your code!", err:"Error. Try again.", wait:"⏳" },
+    fr: { empty:"Entre ton email", bad:"Email invalide", ok:"🎉 Voici ton code !", err:"Erreur. Réessaie.", wait:"⏳" },
+    es: { empty:"Ingresa tu email", bad:"Email inválido", ok:"🎉 ¡Aquí está tu código!", err:"Error.", wait:"⏳" },
+  };
+  const t = T[lang] || T.en;
+  const inp = document.getElementById('kc-email');
+  const btn = document.getElementById('kc-btn');
+  const msg = document.getElementById('kc-msg');
+  const email = (inp.value || "").trim().toLowerCase();
+  const flash = (txt, ok) => { msg.textContent = txt; msg.style.color = ok ? "#16a34a" : "#ef4444"; };
+
+  if (!email) { flash(t.empty, 0); return; }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { flash(t.bad, 0); return; }
+  const old = btn.innerHTML; btn.disabled = true; btn.textContent = t.wait;
+
+  try {
+    const emailKey = email.replace(/\./g, "_dot_").replace(/@/, "_at_");
+    const waitRef = doc(db, "waitlist", emailKey);
+    const snap = await getDoc(waitRef);
+    let promoCode;
+
+    if (snap.exists() && snap.data().promoCode) {
+      promoCode = snap.data().promoCode;
+      try {
+        await setDoc(doc(db, "promo_codes", promoCode), {
+          email, createdAt: snap.data().promoAt || new Date().toISOString(), used: false, reward: 70, source: "coming"
+        });
+      } catch (e) { /* existe déjà = OK */ }
+    } else {
+      promoCode = genCode();
+      await setDoc(waitRef, { email, lang, at: new Date().toISOString(), promoCode, promoAt: new Date().toISOString() }, { merge: true });
+      await setDoc(doc(db, "promo_codes", promoCode), {
+        email, createdAt: new Date().toISOString(), used: false, reward: 70, source: "coming"
+      });
+    }
+
+    flash(t.ok, 1);
+    document.getElementById('kc-code').textContent = promoCode;
+    document.getElementById('kc-result').style.display = 'block';
+    inp.value = "";
+  } catch (e) {
+    console.error(e); flash(t.err, 0);
+  }
+  btn.disabled = false; btn.innerHTML = old;
+};
+</script>
 </body>
 </html>
