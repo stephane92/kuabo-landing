@@ -707,16 +707,9 @@
       <div id="kc-msg" style="font-size:13px;min-height:18px;margin-top:8px;font-weight:700;"></div>
       <!-- Résultat code -->
       <div id="kc-result" style="display:none;margin-top:12px;background:#0b1526;border:2px solid #e8b84b;border-radius:16px;padding:18px;text-align:center;">
-        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="en">Your welcome code</div>
-        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="fr">Ton code de bienvenue</div>
-        <div style="font-size:11px;letter-spacing:1px;text-transform:uppercase;color:#94a3b8;font-weight:800;" data-lang="es">Tu código de bienvenida</div>
-        <div id="kc-code" style="font-size:26px;font-weight:900;color:#e8b84b;letter-spacing:2px;margin:6px 0 4px;font-family:'Nunito',sans-serif;">—</div>
-        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="en">= 70 Akwɛ. Enter it in the app at sign-up. 🎉</div>
-        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="fr">= 70 Akwɛ. Entre-le dans l'app à l'inscription. 🎉</div>
-        <div style="font-size:12.5px;color:#cbd5e1;font-weight:600;" data-lang="es">= 70 Akwɛ. Ingrésalo en la app al registrarte. 🎉</div>
-        <div style="font-size:12px;color:#94a3b8;font-weight:600;margin-top:8px;" data-lang="en">📧 We're also emailing it to you, with the link to download Kuabo.</div>
-        <div style="font-size:12px;color:#94a3b8;font-weight:600;margin-top:8px;" data-lang="fr">📧 On te l'envoie aussi par email, avec le lien pour télécharger Kuabo.</div>
-        <div style="font-size:12px;color:#94a3b8;font-weight:600;margin-top:8px;" data-lang="es">📧 También te lo enviamos por email, con el enlace para descargar Kuabo.</div>
+        <div style="font-size:26px;line-height:1;">📧</div>
+        <div style="font-size:17px;font-weight:900;color:#e8b84b;margin:8px 0 6px;font-family:'Nunito',sans-serif;"><span data-lang="en">It's on its way!</span><span data-lang="fr">C'est parti !</span><span data-lang="es">¡Ya va en camino!</span></div>
+        <div style="font-size:13.5px;color:#cbd5e1;font-weight:600;line-height:1.5;"><span data-lang="en">Your 70 Akwɛ code is waiting in your inbox (check your spam folder too). Download Kuabo, sign up, and enter your code in the app.</span><span data-lang="fr">Ton code de 70 Akwɛ t'attend dans ta boîte mail (regarde aussi les indésirables). Télécharge Kuabo, crée ton compte et entre ton code dans l'app.</span><span data-lang="es">Tu código de 70 Akwɛ te espera en tu correo (revisa también el spam). Descarga Kuabo, crea tu cuenta e ingresa tu código en la app.</span></div>
       </div>
     </div>
 
@@ -890,16 +883,18 @@
 <!-- ═══ CODE PROMO + LIENS STORES (basculer live:true au lancement) ═══ -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { getFunctions, httpsCallable } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-functions.js";
 
-const db = getFirestore(initializeApp({
+const app = initializeApp({
   apiKey: "AIzaSyAfyqpqdUBixIz1_TmXzZsuoiatXfGLStQ",
   authDomain: "kuabo-42d9c.firebaseapp.com",
   projectId: "kuabo-42d9c",
   storageBucket: "kuabo-42d9c.firebasestorage.app",
   messagingSenderId: "774805697",
   appId: "1:774805697:web:1fa1a94076fd8e7c8f5c40"
-}));
+});
+// Le code est créé et envoyé par le SERVEUR, uniquement à l'adresse saisie.
+const requestGiftCode = httpsCallable(getFunctions(app, "us-central1"), "requestGiftCode");
 
 // 🚀 STORES — passe live:true quand l'app est PUBLIQUE (iOS approuvé / Android après 14j)
 const STORES = {
@@ -914,19 +909,12 @@ document.querySelectorAll('a.store[data-store]').forEach(a => {
   }
 });
 
-function genCode() {
-  const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let code = "KUABO-";
-  for (let i = 0; i < 5; i++) code += chars[Math.floor(Math.random() * chars.length)];
-  return code;
-}
-
 window.kuaboGetCode = async function() {
   const lang = (document.documentElement.lang || 'en');
   const T = {
-    en: { empty:"Enter your email", bad:"Invalid email", ok:"🎉 Here's your code!", err:"Error. Try again.", wait:"⏳" },
-    fr: { empty:"Entre ton email", bad:"Email invalide", ok:"🎉 Voici ton code !", err:"Erreur. Réessaie.", wait:"⏳" },
-    es: { empty:"Ingresa tu email", bad:"Email inválido", ok:"🎉 ¡Aquí está tu código!", err:"Error.", wait:"⏳" },
+    en: { empty:"Enter your email", bad:"Invalid email", ok:"🎉 Sent!", busy:"Too many requests — try again in a little while.", err:"Couldn't send right now. Try again.", wait:"⏳" },
+    fr: { empty:"Entre ton email", bad:"Email invalide", ok:"🎉 Envoyé !", busy:"Trop de demandes — réessaie dans un moment.", err:"Envoi impossible pour le moment. Réessaie.", wait:"⏳" },
+    es: { empty:"Ingresa tu email", bad:"Email inválido", ok:"🎉 ¡Enviado!", busy:"Demasiadas solicitudes — inténtalo en un rato.", err:"No se pudo enviar ahora. Inténtalo de nuevo.", wait:"⏳" },
   };
   const t = T[lang] || T.en;
   const inp = document.getElementById('kc-email');
@@ -938,34 +926,14 @@ window.kuaboGetCode = async function() {
   if (!email) { flash(t.empty, 0); return; }
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { flash(t.bad, 0); return; }
   const old = btn.innerHTML; btn.disabled = true; btn.textContent = t.wait;
-
   try {
-    const emailKey = email.replace(/\./g, "_dot_").replace(/@/, "_at_");
-    const waitRef = doc(db, "waitlist", emailKey);
-    const snap = await getDoc(waitRef);
-    let promoCode;
-
-    if (snap.exists() && snap.data().promoCode) {
-      promoCode = snap.data().promoCode;
-      try {
-        await setDoc(doc(db, "promo_codes", promoCode), {
-          email, createdAt: snap.data().promoAt || new Date().toISOString(), used: false, reward: 70, source: "waitlist"
-        });
-      } catch (e) { /* existe déjà = OK */ }
-    } else {
-      promoCode = genCode();
-      await setDoc(waitRef, { email, lang, at: new Date().toISOString(), promoCode, promoAt: new Date().toISOString() }, { merge: true });
-      await setDoc(doc(db, "promo_codes", promoCode), {
-        email, createdAt: new Date().toISOString(), used: false, reward: 70, source: "waitlist"
-      });
-    }
-
+    await requestGiftCode({ email, lang });
     flash(t.ok, 1);
-    document.getElementById('kc-code').textContent = promoCode;
     document.getElementById('kc-result').style.display = 'block';
     inp.value = "";
   } catch (e) {
-    console.error(e); flash(t.err, 0);
+    console.error(e);
+    flash(e && e.code === 'functions/resource-exhausted' ? t.busy : (e && e.code === 'functions/invalid-argument' ? t.bad : t.err), 0);
   }
   btn.disabled = false; btn.innerHTML = old;
 };
