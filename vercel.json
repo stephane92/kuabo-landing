@@ -1,6 +1,14 @@
 {
   "rewrites": [
     {
+      "source": "/get",
+      "destination": "/get/index.html"
+    },
+    {
+      "source": "/get/",
+      "destination": "/get/index.html"
+    },
+    {
       "source": "/go/link",
       "destination": "/go/index.html"
     },
