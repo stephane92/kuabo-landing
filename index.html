@@ -73,7 +73,7 @@
   "url": "https://www.kuabo.co",
   "description": "Kuabo — the #1 app guiding Global Movers (migrants, expats, travelers, nomads) step by step after their visa. Paperwork, deadlines, housing, budget, travel. Free, in EN/FR/ES.",
   "inLanguage": ["en", "fr", "es"],
-  "publisher": { "@type": "Organization", "name": "Kuabo", "url": "https://www.kuabo.co" }
+  "publisher": { "@type": "Organization", "@id": "https://www.kuabo.co/#organization", "name": "Kuabo", "legalName": "Kuabo, Inc.", "url": "https://www.kuabo.co" }
 }
 </script>
 
@@ -82,12 +82,14 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
+  "@id": "https://www.kuabo.co/#organization",
   "name": "Kuabo",
-  "alternateName": "Kuabo App",
+  "legalName": "Kuabo, Inc.",
+  "alternateName": ["Kuabo App", "Kuabo, Inc.", "Kuabo Inc"],
   "url": "https://www.kuabo.co",
   "logo": "https://www.kuabo.co/og-image.jpg",
   "image": "https://www.kuabo.co/og-image.jpg",
-  "description": "Kuabo is the #1 app guiding Global Movers — migrants, expats, travelers, nomads — step by step after their visa. Paperwork, deadlines, housing, budget, travel. Free. Available in English, French and Spanish.",
+  "description": "Kuabo is the #1 app guiding Global Movers — migrants, expats, travelers, nomads — step by step after their visa. Paperwork, deadlines, housing, budget, travel. Free. Available in English, French and Spanish. Kuabo and the Kua AI app are made by Kuabo, Inc., a Delaware corporation (United States).",
   "foundingDate": "2024",
   "founder": {
     "@type": "Person",
@@ -103,6 +105,8 @@
       "https://www.facebook.com/share/1GpGTAVsZQ/"
     ]
   },
+  "address": {"@type": "PostalAddress", "addressCountry": "US"},
+  "brand": [{"@type": "Brand", "name": "Kuabo"}, {"@type": "Brand", "name": "Kua AI", "url": "https://kua.kuabo.co"}],
   "knowsLanguage": ["en", "fr", "es"],
   "areaServed": {
     "@type": "Place",
@@ -144,11 +148,7 @@
     "priceCurrency": "USD",
     "availability": "https://schema.org/PreOrder"
   },
-  "publisher": {
-    "@type": "Organization",
-    "name": "Kuabo",
-    "url": "https://www.kuabo.co"
-  }
+  "publisher": { "@type": "Organization", "@id": "https://www.kuabo.co/#organization", "name": "Kuabo", "legalName": "Kuabo, Inc.", "url": "https://www.kuabo.co" }
 }
 </script>
 
@@ -160,10 +160,7 @@
   "name": "Kuabo",
   "url": "https://www.kuabo.co",
   "inLanguage": ["en", "fr", "es"],
-  "publisher": {
-    "@type": "Organization",
-    "name": "Kuabo"
-  }
+  "publisher": { "@type": "Organization", "@id": "https://www.kuabo.co/#organization", "name": "Kuabo", "legalName": "Kuabo, Inc.", "url": "https://www.kuabo.co" }
 }
 </script>
 
@@ -875,7 +872,7 @@
         </div>
       </div>
     </div>
-    <div class="foot-bot">© 2026 Kuabo. <span data-lang="en">Made for those brave enough to move.</span><span data-lang="fr">Fait pour ceux qui osent bouger.</span><span data-lang="es">Hecho para quienes se atreven a moverse.</span></div>
+    <div class="foot-bot">© 2026 Kuabo, Inc. <span data-lang="en">Made for those brave enough to move.</span><span data-lang="fr">Fait pour ceux qui osent bouger.</span><span data-lang="es">Hecho para quienes se atreven a moverse.</span></div>
   </div>
 </footer>
 

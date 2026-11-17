@@ -1,0 +1,24 @@
+# Kuabo (by Kuabo, Inc.)
+
+> Kuabo is a free mobile app for global movers — newcomers, expats, students, travelers and the diaspora — in English, French and Spanish. It is made by Kuabo, Inc., a Delaware corporation (United States), incorporated on November 12, 2026. Founder & CEO: Stéphane Adannou. Website: https://www.kuabo.co · Contact: support@kuabo.co
+
+## The company
+- Legal name: Kuabo, Inc. (Delaware C corporation, United States).
+- Brands and apps: Kuabo (app for global movers), Kua AI (AI assistant app, https://kua.kuabo.co), Kuabo Partner (app for partner businesses, https://partners.kuabo.co).
+- Founder & CEO: Stéphane Adannou (https://www.kuabo.co/founder).
+- Social: Instagram, TikTok and X — @kuabo_app.
+
+## The apps
+- Kuabo (iPhone): https://apps.apple.com/app/id6782158717 — guides to settle in a new country, partner shops with member offers, rewards called Akwɛ (Akwɛ are rewards, not money, and are never sold), a passport of the countries you visited, a travel dashboard.
+- Kua AI (iPhone): https://apps.apple.com/app/kua-by-kuabo/id6816835091 — an AI assistant for people who move or travel: reminders, memory, flight prices and live flight tracking, places near you, anti-scam checks, live voice calls. Free to start; optional paid plans.
+- Kuabo Partner (iPhone): for shops, restaurants and services that welcome Kuabo members.
+
+## Principles
+- Kuabo never sells personal data. Location is used only when the person shares it.
+- Free to download. "Kuabo" means "welcome home" in Benin.
+
+## En français
+Kuabo est une appli gratuite pour ceux qui partent, arrivent et voyagent (FR/EN/ES). Elle est éditée par Kuabo, Inc., société du Delaware (États-Unis), créée le 12 novembre 2026. Fondateur et PDG : Stéphane Adannou. Kua AI (https://kua.kuabo.co) est l'assistant IA de Kuabo, Inc. Contact : support@kuabo.co
+
+## En español
+Kuabo es una app gratuita para quienes se van, llegan y viajan (ES/EN/FR). La edita Kuabo, Inc., sociedad de Delaware (Estados Unidos), creada el 12 de noviembre de 2026. Fundador y CEO: Stéphane Adannou. Kua AI (https://kua.kuabo.co) es el asistente de IA de Kuabo, Inc. Contacto: support@kuabo.co
