@@ -696,6 +696,7 @@
     <!-- CODE PROMO -->
     <div class="reveal" style="max-width:440px;margin:18px auto 0;">
       <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <input type="text" id="kc-website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none"/>
         <input type="email" id="kc-email" placeholder="your@email.com" style="flex:1;min-width:200px;padding:14px 16px;border:2px solid rgba(0,0,0,.12);border-radius:14px;font-size:15px;font-family:inherit;outline:none;"/>
         <button class="btn" id="kc-btn" onclick="kuaboGetCode()">
           <span data-lang="en">Get my code 🎁</span><span data-lang="fr">Obtenir mon code 🎁</span><span data-lang="es">Obtener mi código 🎁</span>
@@ -925,7 +926,8 @@ window.kuaboGetCode = async function() {
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { flash(t.bad, 0); return; }
   const old = btn.innerHTML; btn.disabled = true; btn.textContent = t.wait;
   try {
-    await requestGiftCode({ email, lang });
+    // 🪤 17/11 : le champ caché « website » (vide pour un humain) part aussi : rempli = robot, le serveur n'envoie rien.
+    await requestGiftCode({ email, lang, website: (document.getElementById('kc-website') || {}).value || '' });
     flash(t.ok, 1);
     document.getElementById('kc-result').style.display = 'block';
     inp.value = "";
