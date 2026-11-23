@@ -32,29 +32,8 @@ const STORES = {
 // FIREBASE — WAITLIST + CODES PROMO
 // ═══════════════════════════════════════════════════════════
 
-// Le nombre d'inscrits vient de stats/waitlist, un document public qui ne
-// contient qu'un compteur (tenu à jour par la Cloud Function onWaitlistCreated).
-// Avant, on faisait getCountFromServer sur la collection waitlist — ce qui
-// exigeait le droit de la LISTER, et permettait donc à n'importe qui d'aspirer
-// tous les emails et codes promo. Ce droit est désormais fermé.
-async function loadCount() {
-  try {
-    const snap = await getDoc(doc(db, "stats", "waitlist"));
-    const n = snap.exists() ? (snap.data().count || 0) : 0;
-    if (n > 0) {
-      document.querySelectorAll(".cnum").forEach(el => {
-        let c = 0;
-        const s = Math.max(1, Math.ceil(n / 60));
-        const t = setInterval(() => {
-          c = Math.min(c + s, n);
-          el.textContent = c.toLocaleString();
-          if (c >= n) clearInterval(t);
-        }, 28);
-      });
-      document.querySelectorAll(".cline").forEach(el => el.classList.remove("hidden"));
-    }
-  } catch(e) {}
-}
+// 23/11/2026: the waitlist counter was removed. The number of sign-ups is private
+// (stats/* is closed to clients in firestore.rules).
 
 function genCode() {
   const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
@@ -695,7 +674,6 @@ window.setL = function(l) {
 // ═══════════════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════════════
-window.addEventListener("load", loadCount);
 
 // Langue partagée avec /guides, /privacy, /terms (clé kuabo_lang).
 // Applique la langue choisie ailleurs sur le site ; sinon EN par défaut (inchangé).
